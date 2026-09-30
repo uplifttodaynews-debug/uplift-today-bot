@@ -5,6 +5,7 @@ the headline + its narration audio. Then all segments are joined with ffmpeg.
 """
 import math
 import os
+import re
 import subprocess
 from PIL import Image, ImageDraw, ImageFont
 import config
@@ -12,14 +13,15 @@ import config
 W, H = config.VIDEO_SIZE
 
 
-def _font(size):
-    for path in config.FONT_CANDIDATES:
+def _font(size, latin=False):
+    paths = config.LATIN_FONT_CANDIDATES if latin else config.FONT_CANDIDATES
+    for path in paths:
         if os.path.exists(path):
             try:
                 return ImageFont.truetype(path, size, layout_engine=ImageFont.Layout.RAQM)
             except Exception:
                 return ImageFont.truetype(path, size)
-    raise RuntimeError("No Hindi-capable font found")
+    raise RuntimeError("No usable font found")
 
 
 def _gradient():
@@ -60,21 +62,34 @@ def _wrap(d, text, font, max_w):
     return lines
 
 
-def make_slide(text, out_png, is_title=False):
+def make_slide(text, out_png, is_title=False, caption=None):
     img = _gradient()
     d = ImageDraw.Draw(img)
     _sun(d, 110, 100, 40)
-    small = _font(34)
+    small = _font(34, latin=True)
     d.text((190, 80), "UPLIFT TODAY  |  " + config.CHANNEL_HANDLE, font=small, fill=(255, 255, 255))
     size = 76 if is_title else 64
     font = _font(size)
     lines = _wrap(d, text, font, W - 160)[:5]
     line_h = int(size * 1.45)
-    y = (H - line_h * len(lines)) // 2 + 40
+    top = 40 if caption else 40
+    y = (H - line_h * len(lines)) // 2 + (top - 60 if caption else 0)
     for ln in lines:
         w = d.textlength(ln, font=font)
         d.text(((W - w) / 2, y), ln, font=font, fill=(255, 255, 255))
         y += line_h
+    if caption:
+        cfont = _font(38, latin=True)
+        clines = _wrap(d, caption, cfont, W - 200)[:3]
+        box_h = int(38 * 1.45) * len(clines) + 30
+        box = Image.new("RGBA", (W, box_h), (40, 10, 30, 150))
+        img.paste(box, (0, H - box_h - 30), box)
+        d = ImageDraw.Draw(img)
+        cy = H - box_h - 30 + 15
+        for ln in clines:
+            w = d.textlength(ln, font=cfont)
+            d.text(((W - w) / 2, cy), ln, font=cfont, fill=(255, 255, 255))
+            cy += int(38 * 1.45)
     img.save(out_png)
 
 
@@ -85,18 +100,37 @@ def _duration(path):
     return float(out.strip())
 
 
+def _sentences(text):
+    parts = re.split(r"(?<=[.!?])\s+", (text or "").strip())
+    return [p for p in parts if p]
+
+
 def build(segments, out_mp4, workdir):
-    """segments = list of dicts: {"headline": str, "audio": mp3 path, "title_slide": bool}"""
+    """segments = list of dicts: {"headline", "audio", "title_slide", "english"(optional)}"""
     clips = []
     for i, seg in enumerate(segments):
-        png = os.path.join(workdir, f"slide_{i}.png")
         clip = os.path.join(workdir, f"clip_{i}.mp4")
-        make_slide(seg["headline"], png, is_title=seg.get("title_slide", False))
+        total = _duration(seg["audio"])
+        sents = _sentences(seg.get("english")) if config.ENGLISH_CAPTIONS else []
+        if not sents:
+            sents = [None]
+        weights = [max(len(s), 1) if s else 1 for s in sents]
+        wsum = float(sum(weights))
+        lines = []
+        for k, sent in enumerate(sents):
+            png = os.path.join(workdir, f"slide_{i}_{k}.png")
+            make_slide(seg["headline"], png, is_title=seg.get("title_slide", False), caption=sent)
+            lines.append(f"file '{os.path.abspath(png)}'")
+            lines.append(f"duration {total * weights[k] / wsum:.3f}")
+        lines.append(lines[-2])  # the concat demuxer needs the last image repeated
+        imglist = os.path.join(workdir, f"imgs_{i}.txt")
+        with open(imglist, "w") as f:
+            f.write("\n".join(lines) + "\n")
         subprocess.check_call([
             "ffmpeg", "-y", "-loglevel", "error",
-            "-loop", "1", "-i", png, "-i", seg["audio"],
-            "-c:v", "libx264", "-tune", "stillimage", "-pix_fmt", "yuv420p",
-            "-r", "25", "-c:a", "aac", "-b:a", "160k", "-ar", "44100", "-ac", "2",
+            "-f", "concat", "-safe", "0", "-i", imglist, "-i", seg["audio"],
+            "-c:v", "libx264", "-pix_fmt", "yuv420p", "-r", "25",
+            "-c:a", "aac", "-b:a", "160k", "-ar", "44100", "-ac", "2",
             "-shortest", clip])
         clips.append(clip)
     listfile = os.path.join(workdir, "list.txt")
@@ -130,7 +164,7 @@ def make_thumbnail(title, out_png):
         d.text(((W - w) / 2, y), ln, font=font, fill=(255, 255, 255),
                stroke_width=7, stroke_fill=(70, 10, 50))
         y += line_h
-    tag = _font(40)
+    tag = _font(40, latin=True)
     label = "UPLIFT TODAY  |  " + config.CHANNEL_HANDLE
     w = d.textlength(label, font=tag)
     d.text(((W - w) / 2, 660), label, font=tag, fill=(255, 244, 200))
