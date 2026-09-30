@@ -1,6 +1,6 @@
 # daily.yml - tells GitHub when and how to run the bot.
 # For now it runs ONLY when you press the "Run workflow" button (safe for testing).
-# Later we will add a daily schedule here.
+# All the bot's files live in this same folder (.github/workflows).
 name: Daily bulletin
 
 on:
@@ -10,6 +10,9 @@ jobs:
   run:
     runs-on: ubuntu-latest
     timeout-minutes: 30
+    defaults:
+      run:
+        working-directory: .github/workflows
     steps:
       - name: Get the code
         uses: actions/checkout@v4
