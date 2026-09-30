@@ -111,7 +111,7 @@ def upload(path, content_type):
     return info["file_url"]
 
 
-def lipsync_test():
+def lipsync_test(model="veed/fabric-1.0", extra=None, outname="kavya_test.mp4"):
     """Hindi line -> Google voice -> talking Kavya (VEED Fabric, 480p). Saves anchor/test/."""
     import base64
     import time
@@ -123,10 +123,10 @@ def lipsync_test():
     body = {
         "image_url": upload(img, "image/jpeg"),
         "audio_url": upload(audio, "audio/mpeg"),
-        "resolution": "480p",
     }
+    body.update(extra if extra is not None else {"resolution": "480p"})
     h = {"Authorization": f"Key {KEY}", "Content-Type": "application/json"}
-    r = requests.post("https://queue.fal.run/veed/fabric-1.0", headers=h, json=body, timeout=300)
+    r = requests.post("https://queue.fal.run/" + model, headers=h, json=body, timeout=300)
     print("submit", r.status_code, r.text[:300])
     if r.status_code >= 300:
         raise RuntimeError(f"submit failed {r.status_code}: {r.text[:600]}")
@@ -142,7 +142,7 @@ def lipsync_test():
     if res.status_code >= 300:
         raise RuntimeError(f"result failed {res.status_code}: {res.text[:1500]}")
     url = res.json()["video"]["url"]
-    with open(os.path.join(OUT, "test", "kavya_test.mp4"), "wb") as f:
+    with open(os.path.join(OUT, "test", outname), "wb") as f:
         f.write(requests.get(url, timeout=300).content)
     print("saved test video")
 
@@ -150,7 +150,15 @@ def lipsync_test():
 if __name__ == "__main__" and len(sys.argv) > 1 and sys.argv[1] == "test":
     import traceback
     try:
-        lipsync_test()
+        for model, extra, name in [
+            ("fal-ai/kling-video/ai-avatar/v2/standard", {}, "test_kling_standard.mp4"),
+            ("fal-ai/kling-video/ai-avatar/v2/pro", {}, "test_kling_pro.mp4"),
+        ]:
+            try:
+                lipsync_test(model, extra, name)
+            except Exception:
+                import traceback as tb
+                open(os.path.join(OUT, "test", name + ".error.txt"), "w").write(tb.format_exc())
     except Exception:
         os.makedirs(os.path.join(OUT, "test"), exist_ok=True)
         open(os.path.join(OUT, "test", "error.txt"), "w").write(traceback.format_exc())
