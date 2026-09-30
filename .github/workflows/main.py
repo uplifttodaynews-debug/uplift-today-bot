@@ -147,7 +147,14 @@ def main():
     tags = ["good news", "positive news", "uplift today", "अच्छी खबर",
             "सकारात्मक खबर", "hindi news", "inspiring news"]
 
-    upload.upload(mp4, data["title"], description, tags, thumb)
+    try:
+        upload.upload(mp4, data["title"], description, tags, thumb)
+    except Exception as e:
+        if "uploadLimitExceeded" in str(e):
+            print("[main] YouTube's daily upload limit for this channel is reached. Not retrying - "
+                  "it resets within 24 hours.")
+            return SKIPPED
+        raise
     return 0
 
 
