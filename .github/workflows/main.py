@@ -15,6 +15,9 @@ import video
 import upload
 
 
+SKIPPED = 3  # exit code meaning 'no video today' (GitHub then emails you)
+
+
 def limit_per_source(stories):
     """Keep at most MAX_PER_SOURCE stories from any one website."""
     counts, kept = {}, []
@@ -34,7 +37,7 @@ def main():
     print(f"[main] {len(items)} candidate stories")
     if len(items) < config.MIN_STORIES:
         print("[main] Not enough good news today - skipping.")
-        return 0
+        return SKIPPED
 
     data = script_writer.write(items)
     stories = limit_per_source(data["stories"])
@@ -48,7 +51,7 @@ def main():
     stories = passed[: config.NUM_STORIES]
     if len(stories) < config.MIN_STORIES:
         print(f"[main] Only {len(stories)} stories passed the checks - skipping today.")
-        return 0
+        return SKIPPED
     sources_used = sorted({s["source"]["source"] for s in stories if s.get("source")})
     print(f"[main] {len(stories)} stories passed. Sources: {', '.join(sources_used)}")
 
