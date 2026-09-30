@@ -62,7 +62,7 @@ def _wrap(d, text, font, max_w):
     return lines
 
 
-def make_slide(text, out_png, is_title=False, caption=None):
+def make_slide(text, out_png, is_title=False, caption=None, headline_en=None):
     img = _gradient()
     d = ImageDraw.Draw(img)
     _sun(d, 110, 100, 40)
@@ -78,6 +78,15 @@ def make_slide(text, out_png, is_title=False, caption=None):
         w = d.textlength(ln, font=font)
         d.text(((W - w) / 2, y), ln, font=font, fill=(255, 255, 255))
         y += line_h
+    if headline_en:
+        # English version of the headline: ONE line, shrunk to fit if needed
+        size_en = 46
+        efont = _font(size_en, latin=True)
+        while d.textlength(headline_en, font=efont) > W - 160 and size_en > 26:
+            size_en -= 2
+            efont = _font(size_en, latin=True)
+        w = d.textlength(headline_en, font=efont)
+        d.text(((W - w) / 2, y + 4), headline_en, font=efont, fill=(255, 236, 190))
     if caption:
         cfont = _font(38, latin=True)
         clines = _wrap(d, caption, cfont, W - 200)[:3]
@@ -119,7 +128,8 @@ def build(segments, out_mp4, workdir):
         lines = []
         for k, sent in enumerate(sents):
             png = os.path.join(workdir, f"slide_{i}_{k}.png")
-            make_slide(seg["headline"], png, is_title=seg.get("title_slide", False), caption=sent)
+            make_slide(seg["headline"], png, is_title=seg.get("title_slide", False), caption=sent,
+                       headline_en=seg.get("headline_en"))
             lines.append(f"file '{os.path.abspath(png)}'")
             lines.append(f"duration {total * weights[k] / wsum:.3f}")
         lines.append(lines[-2])  # the concat demuxer needs the last image repeated

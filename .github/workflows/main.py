@@ -70,16 +70,17 @@ def main():
         except Exception as e:
             print(f"[main] English captions skipped: {e}")
 
-    def add(headline, text, name, title_slide=False, eng=""):
+    def add(headline, text, name, title_slide=False, eng="", headline_en=""):
         mp3 = os.path.join(work, f"{name}.mp3")
         tts.speak(text, mp3)
-        segments.append({"headline": headline, "audio": mp3, "title_slide": title_slide, "english": eng})
+        segments.append({"headline": headline, "audio": mp3, "title_slide": title_slide,
+                         "english": eng, "headline_en": headline_en if config.ENGLISH_CAPTIONS else ""})
 
-    add("आज की अच्छी खबरें", data["intro"], "intro", True, english[0])
+    add("आज की अच्छी खबरें", data["intro"], "intro", True, english[0], "Today's Good News")
     for i, s in enumerate(stories):
-        add(s.get("headline", ""), s["narration"], f"story{i}", False, english[1 + i])
-    add("आज का विचार", data["thought"], "thought", True, english[-2])
-    add("धन्यवाद! सब्सक्राइब करें", data["outro"], "outro", True, english[-1])
+        add(s.get("headline", ""), s["narration"], f"story{i}", False, english[1 + i], english_heads[i])
+    add("आज का विचार", data["thought"], "thought", True, english[-2], "Thought of the Day")
+    add("धन्यवाद! सब्सक्राइब करें", data["outro"], "outro", True, english[-1], "Thank you! Please subscribe")
 
     mp4 = os.path.join(work, "bulletin.mp4")
     secs = video.build(segments, mp4, work)
