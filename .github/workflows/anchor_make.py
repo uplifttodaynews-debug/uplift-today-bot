@@ -113,7 +113,8 @@ def lipsync_test():
     h = {"Authorization": f"Key {KEY}", "Content-Type": "application/json"}
     r = requests.post("https://queue.fal.run/veed/fabric-1.0", headers=h, json=body, timeout=300)
     print("submit", r.status_code, r.text[:300])
-    r.raise_for_status()
+    if r.status_code >= 300:
+        raise RuntimeError(f"submit failed {r.status_code}: {r.text[:600]}")
     sub = r.json()
     for _ in range(120):
         st = requests.get(sub["status_url"], headers=h, timeout=60).json()
@@ -131,7 +132,13 @@ def lipsync_test():
 
 
 if __name__ == "__main__" and len(sys.argv) > 1 and sys.argv[1] == "test":
-    lipsync_test()
+    import traceback
+    try:
+        lipsync_test()
+    except Exception:
+        os.makedirs(os.path.join(OUT, "test"), exist_ok=True)
+        open(os.path.join(OUT, "test", "error.txt"), "w").write(traceback.format_exc())
+        print("test failed, see anchor/test/error.txt")
 elif __name__ == "__main__" and len(sys.argv) > 1 and sys.argv[1] == "outfits":
     outfits()
 elif __name__ == "__main__" and len(sys.argv) > 1 and sys.argv[1] == "fair3":
