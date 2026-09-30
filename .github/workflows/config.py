@@ -28,8 +28,6 @@ EXTRA_CANDIDATES = 3             # AI writes a few extra stories, the fact-check
 
 # ---- Positive news sources (RSS). Used only as LEADS for facts. ----
 RSS_FEEDS = [
-    "https://www.thebetterindia.com/feed/",
-    "https://www.goodgoodgood.co/articles/rss.xml",
     "https://www.goodnewsnetwork.org/feed/",
     "https://www.positive.news/feed/",
     "https://reasonstobecheerful.world/feed/",
@@ -54,3 +52,11 @@ FONT_CANDIDATES = [
 ]
 GRADIENT_TOP = (255, 150, 60)
 GRADIENT_BOTTOM = (190, 55, 100)
+
+# ---- English captions under the Hindi headline ----
+ENGLISH_CAPTIONS = True          # False = no English captions
+LATIN_FONT_CANDIDATES = [        # fonts that have English letters
+    "/usr/share/fonts/truetype/noto/NotoSans-Bold.ttf",
+    "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf",
+    "/usr/share/fonts/truetype/freefont/FreeSansBold.ttf",
+]
