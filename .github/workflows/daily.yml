@@ -1,10 +1,19 @@
 # daily.yml - tells GitHub when and how to run the bot.
-# For now it runs ONLY when you press the "Run workflow" button (safe for testing).
-# All the bot's files live in this same folder (.github/workflows).
+# - Runs every day automatically (see "cron" below), and also when you press "Run workflow".
+# - All the bot's files live in this same folder (.github/workflows).
+# - If a run FAILS or SKIPS the day, GitHub emails you.
 name: Daily bulletin
 
 on:
   workflow_dispatch:
+  schedule:
+    # Times are in UTC. "30 0 * * *" = 00:30 UTC = 6:00 AM in India, 5:30 PM (day before) in California.
+    # GitHub can start runs 10-30 minutes late, so the video is ready around 6:30-7:00 AM India time.
+    - cron: "30 0 * * *"
+
+permissions:
+  contents: read
+  actions: write   # lets the keep-alive step below work
 
 jobs:
   run:
@@ -30,11 +39,28 @@ jobs:
       - name: Install Python packages
         run: pip install -r requirements.txt
 
-      - name: Make and upload the bulletin
+      - name: Make and upload the bulletin (tries twice)
         env:
           YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
           YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
           YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
           GOOGLE_TTS_API_KEY: ${{ secrets.GOOGLE_TTS_API_KEY }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-        run: python main.py
+        run: |
+          for attempt in 1 2; do
+            python main.py && exit 0
+            code=$?
+            if [ "$code" -eq 3 ]; then
+              echo "No video today (not enough good stories). Not retrying."
+              exit 3
+            fi
+            echo "Attempt $attempt failed. Waiting 2 minutes before trying again..."
+            sleep 120
+          done
+          exit 1
+
+      - name: Keep the daily schedule alive
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow enable daily.yml --repo "$GITHUB_REPOSITORY" || echo "keep-alive skipped"
