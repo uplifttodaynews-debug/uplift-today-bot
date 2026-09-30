@@ -96,6 +96,21 @@ def outfits():
         print("saved", path, flush=True)
 
 
+def upload(path, content_type):
+    """Upload a file to fal storage and return a normal https URL (data URLs are too long for fal)."""
+    h = {"Authorization": f"Key {KEY}", "Content-Type": "application/json"}
+    r = requests.post("https://rest.alpha.fal.ai/storage/upload/initiate?storage_type=fal-cdn-v3", headers=h,
+                      json={"content_type": content_type, "file_name": os.path.basename(path)}, timeout=60)
+    if r.status_code >= 300:
+        raise RuntimeError(f"upload initiate failed {r.status_code}: {r.text[:500]}")
+    info = r.json()
+    put = requests.put(info["upload_url"], data=open(path, "rb").read(),
+                       headers={"Content-Type": content_type}, timeout=300)
+    if put.status_code >= 300:
+        raise RuntimeError(f"upload failed {put.status_code}: {put.text[:500]}")
+    return info["file_url"]
+
+
 def lipsync_test():
     """Hindi line -> Google voice -> talking Kavya (VEED Fabric, 480p). Saves anchor/test/."""
     import base64
@@ -106,8 +121,8 @@ def lipsync_test():
     tts.speak("नमस्ते! आपका स्वागत है अपलिफ्ट टुडे में। आज की सबसे अच्छी और उम्मीद भरी खबरें, सीधे आपके लिए।", audio)
     img = os.path.join(OUT, "outfits", "0_navy_blazer.jpg")
     body = {
-        "image_url": "data:image/jpeg;base64," + base64.b64encode(open(img, "rb").read()).decode(),
-        "audio_url": "data:audio/mpeg;base64," + base64.b64encode(open(audio, "rb").read()).decode(),
+        "image_url": upload(img, "image/jpeg"),
+        "audio_url": upload(audio, "audio/mpeg"),
         "resolution": "480p",
     }
     h = {"Authorization": f"Key {KEY}", "Content-Type": "application/json"}
