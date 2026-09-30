@@ -24,6 +24,7 @@ GEMINI_MODEL = "gemini-3.8-flash"
 NUM_STORIES = 5                  # 5 stories of ~70 words ~ 3 minutes
 MIN_STORIES = 3                  # fewer good stories than this = skip the day
 MAX_PER_SOURCE = 2               # no more than 2 stories from the same website
+EXTRA_CANDIDATES = 3             # AI writes a few extra stories, the fact-check keeps the good ones
 
 # ---- Positive news sources (RSS). Used only as LEADS for facts. ----
 RSS_FEEDS = [
