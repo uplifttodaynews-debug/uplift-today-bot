@@ -1,6 +1,7 @@
 """
 news.py - Step 1: collect candidate positive stories from RSS feeds.
 We only keep the headline and a short summary as a LEAD. We never copy articles.
+Stories from the different sites are mixed in turn, so no single site dominates.
 """
 import re
 import feedparser
@@ -13,8 +14,9 @@ def _clean(text):
 
 
 def collect():
-    items = []
+    per_feed = []
     for url in config.RSS_FEEDS:
+        kept = []
         try:
             feed = feedparser.parse(url)
         except Exception as e:
@@ -29,11 +31,19 @@ def collect():
                 continue  # quick safety filter
             if not title:
                 continue
-            items.append({
+            kept.append({
                 "title": title,
                 "summary": summary,
                 "source": source,
                 "link": entry.get("link", ""),
             })
-        print(f"[news] {source}: kept so far {len(items)}")
+        print(f"[news] {source}: kept {len(kept)}")
+        per_feed.append(kept)
+
+    # Mix the feeds in turn: one from each site, then the next from each...
+    items = []
+    for i in range(config.MAX_ITEMS_PER_FEED):
+        for kept in per_feed:
+            if i < len(kept):
+                items.append(kept[i])
     return items
