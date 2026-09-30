@@ -1,11 +1,11 @@
 """
-make_intro.py - creates the ORIGINAL "evening news" opening (run once by Claude, not by the daily bot).
-  intro/intro.mp4  = about 9 seconds: sunrise animation + "UPLIFT TODAY" title + a driving news-style theme
-                     (snare roll, timpani, brass-style stabs, rising fanfare, big final chord).
-The theme is our own composition in the general style of TV news openings - it is not any real channel's tune.
+make_intro.py - creates the ORIGINAL cinematic news opening (run once by Claude, not by the daily bot).
+  intro/intro.mp4 = about 12.5 seconds: dark cinematic build -> big synchronised hit -> "UPLIFT TODAY".
+Style: serious, authoritative, urgent - D minor, deep pulsing sub bass, sustained synth/string textures,
+sharp percussion, rising tension, crescendo, synchronised hits. Everything (motif, rhythm, sounds) is our
+own composition and sound design; it is in the general style of TV news openings, not any real channel's tune.
 Usage: python make_intro.py [output_folder]
 """
-import math
 import os
 import shutil
 import subprocess
@@ -20,164 +20,230 @@ import video
 from make_music import piano_note, reverb, hz
 
 SR = 44100
-BPM = 144
+BPM = 120
 BEAT = 60.0 / BPM
-EIGHTH = BEAT / 2
 BAR = BEAT * 4
-BARS = 2
-TAIL = 1.7
-TOTAL = BAR * BARS + TAIL
-HIT = BAR * BARS            # time of the final chord
+BUILD_BARS = 5
+HIT = BAR * BUILD_BARS          # the final big hit, 10.0 s
+TAIL = 2.6
+TOTAL = HIT + TAIL
 
 
-# ------------------------------------------------------------------ sounds
+# ------------------------------------------------------------------ sound building blocks
 def _add(buf, t, sig):
     s = int(t * SR)
-    if s >= len(buf):
+    if s >= len(buf) or s < 0:
         return
     e = min(s + len(sig), len(buf))
     buf[s:e] += sig[: e - s]
 
 
-def brass(midi, length, vel=1.0):
-    n = int((length + 0.12) * SR)
+def sub_bass(midi, length, vel=1.0):
+    n = int((length + 0.15) * SR)
+    t = np.arange(n) / SR
+    f = hz(midi)
+    sig = np.sin(2 * np.pi * f * t) + 0.35 * np.sin(2 * np.pi * 2 * f * t)
+    sig = np.tanh(1.6 * sig) * 0.7                                    # warm saturation
+    env = np.minimum(1, t / 0.006) * np.where(t < length, 1.0, np.exp(-(t - length) / 0.05))
+    env *= 0.6 + 0.4 * np.exp(-t / 0.18)
+    return sig * env * vel * 0.9
+
+
+def pluck(midi, length=0.11, vel=1.0, bright=1.0):
+    n = int((length + 0.1) * SR)
     t = np.arange(n) / SR
     f = hz(midi)
     sig = np.zeros(n)
+    for k in range(1, 11):
+        sig += np.sin(2 * np.pi * f * k * t + 0.4 * k) / k * np.exp(-t * (18 + 10 * k) / bright)
+    env = np.minimum(1, t / 0.002)
+    return sig * env * vel * 0.30
+
+
+def pad(midi, length, vel=1.0):
+    n = int(length * SR)
+    t = np.arange(n) / SR
+    f = hz(midi)
+    sig = np.zeros(n)
+    for d in (-0.2, 0.0, 0.2):
+        ff = f * (1 + d / 100)
+        for k in range(1, 7):
+            sig += np.sin(2 * np.pi * ff * k * t + k) / k ** 1.1
+    env = np.minimum(1, t / 1.2) * np.minimum(1, (length - t) / 0.4)
+    return sig * env * vel * 0.03
+
+
+def lead(midi, length, vel=1.0):
+    """Sustained synth/cello-like lead with a little vibrato."""
+    n = int((length + 0.2) * SR)
+    t = np.arange(n) / SR
+    f = hz(midi) * (1 + 0.004 * np.sin(2 * np.pi * 5.2 * t) * np.minimum(1, t / 0.3))
+    ph = 2 * np.pi * np.cumsum(f) / SR
+    sig = np.zeros(n)
     for k in range(1, 9):
-        sig += np.sin(2 * np.pi * f * k * t + 0.3 * k) / k ** 0.9
-        sig += 0.5 * np.sin(2 * np.pi * f * 1.004 * k * t) / k ** 0.9      # slight chorus
-    env = np.minimum(1, t / 0.012) * np.where(t < length, 1.0, np.exp(-(t - length) / 0.04))
-    env *= 0.75 + 0.25 * np.exp(-t / 0.15)                                  # bite at the start
+        sig += np.sin(k * ph) / k ** 0.85
+    env = np.minimum(1, t / 0.025) * np.where(t < length, 1.0, np.exp(-(t - length) / 0.1))
     return sig * env * vel * 0.16
 
 
-def string_pad(midi, length):
+def kick(vel=1.0, length=0.5):
     n = int(length * SR)
     t = np.arange(n) / SR
-    f = hz(midi)
-    sig = np.zeros(n)
-    for d in (-0.15, 0.0, 0.15):
-        ff = f * (1 + d / 100)
-        for k in range(1, 6):
-            sig += np.sin(2 * np.pi * ff * k * t) / k
-    env = np.minimum(1, t / 1.6) * np.minimum(1, (length - t) / 0.6)
-    return sig * env * 0.03
-
-
-def kick(vel=1.0, length=0.45):
-    n = int(length * SR)
-    t = np.arange(n) / SR
-    freq = 50 + 110 * np.exp(-t / 0.03)
+    freq = 46 + 120 * np.exp(-t / 0.025)
     ph = 2 * np.pi * np.cumsum(freq) / SR
-    return np.sin(ph) * np.exp(-t / 0.16) * vel * 0.9
+    return np.tanh(1.4 * np.sin(ph)) * np.exp(-t / 0.18) * vel
 
 
-def timpani(midi, vel=1.0, length=1.2):
+def timpani(midi, vel=1.0, length=1.4):
     n = int(length * SR)
     t = np.arange(n) / SR
     f = hz(midi)
-    sig = np.sin(2 * np.pi * (f * (1 + 0.25 * np.exp(-t / 0.05))) * t) * np.exp(-t / 0.45)
-    sig += 0.4 * np.sin(2 * np.pi * f * 1.5 * t) * np.exp(-t / 0.25)
-    return sig * vel * 0.8
+    sig = np.sin(2 * np.pi * (f * (1 + 0.3 * np.exp(-t / 0.05))) * t) * np.exp(-t / 0.5)
+    sig += 0.4 * np.sin(2 * np.pi * f * 1.5 * t) * np.exp(-t / 0.3)
+    return sig * vel * 0.85
 
 
-def snare(vel=1.0, length=0.22, seed=1):
+def snare(vel=1.0, length=0.25, seed=1):
     rng = np.random.default_rng(seed)
     n = int(length * SR)
     t = np.arange(n) / SR
     noise = rng.standard_normal(n)
-    noise = noise - np.convolve(noise, np.ones(18) / 18, mode="same")      # take out the lows
-    tone = np.sin(2 * np.pi * 190 * t) * np.exp(-t / 0.04) * 0.5
-    return (noise * np.exp(-t / 0.06) * 0.6 + tone) * vel * 0.55
+    noise = noise - np.convolve(noise, np.ones(14) / 14, mode="same")
+    tone = np.sin(2 * np.pi * 200 * t) * np.exp(-t / 0.04) * 0.5
+    return (noise * np.exp(-t / 0.07) * 0.65 + tone) * vel * 0.6
 
 
-def crash(length=2.2, seed=9):
+def crash(length=2.6, seed=9, vel=1.0):
     rng = np.random.default_rng(seed)
     n = int(length * SR)
     t = np.arange(n) / SR
     noise = rng.standard_normal(n)
-    noise = noise - np.convolve(noise, np.ones(8) / 8, mode="same")
-    return noise * np.exp(-t / 0.8) * 0.22
+    noise = noise - np.convolve(noise, np.ones(6) / 6, mode="same")
+    return noise * np.exp(-t / 0.9) * 0.26 * vel
 
 
-def bell(midi, length=2.0, vel=1.0):
+def riser(length, seed=3):
+    """Filtered-noise swell plus a rising sine sweep: the classic 'tension' rise."""
+    rng = np.random.default_rng(seed)
     n = int(length * SR)
     t = np.arange(n) / SR
-    f = hz(midi)
-    return (np.sin(2 * np.pi * f * t) + 0.4 * np.sin(2 * np.pi * f * 2.76 * t)) * np.exp(-t / 0.7) * 0.12 * vel
+    x = t / length
+    noise = rng.standard_normal(n)
+    noise = noise - np.convolve(noise, np.ones(10) / 10, mode="same")
+    sweep = np.sin(2 * np.pi * np.cumsum(180 + 2400 * x ** 2) / SR)
+    return (noise * 0.22 + sweep * 0.18) * (x ** 2.2)
 
 
-# ------------------------------------------------------------------ composition (key of D major)
-D, A, Bm, G = 2, 9, 11, 7                     # pitch classes
-CHORDS = [  # bar -> (bass midi, chord midi notes)
-    (38, [62, 69, 74]),         # D
-    (45, [64, 69, 73]),         # A
-    (47, [62, 66, 71]),         # Bm
-    (43, [62, 67, 71]),         # G
+def brass_stab(midis, length=0.9, vel=1.0):
+    n = int((length + 0.15) * SR)
+    t = np.arange(n) / SR
+    out = np.zeros(n)
+    for m in midis:
+        f = hz(m)
+        for k in range(1, 9):
+            out += np.sin(2 * np.pi * f * k * t + 0.3 * k) / k ** 0.9 * 0.06
+    env = np.minimum(1, t / 0.012) * np.where(t < length, 1.0, np.exp(-(t - length) / 0.08))
+    env *= 0.7 + 0.3 * np.exp(-t / 0.2)
+    return out * env * vel
+
+
+def big_hit(mono, t, size=1.0, chord=(38, 45, 50, 53, 57, 62)):
+    """Synchronised hit: kick + timpani + sub boom + brass/orchestra stab + cymbal."""
+    _add(mono, t, kick(1.0 * size))
+    _add(mono, t, timpani(38, 1.0 * size))
+    _add(mono, t, sub_bass(26, 0.9 * size + 0.2, 1.1 * size))
+    _add(mono, t, brass_stab(list(chord), 0.8 * size + 0.2, 1.0 * size))
+    _add(mono, t, crash(1.4 + 1.2 * size, vel=0.6 * size))
+
+
+# ------------------------------------------------------------------ composition (D minor / Dorian)
+BASS = [26, 26, 34, 31, 33]                    # D1 D1 Bb1 G1 A1
+TRIADS = [                                      # sustained textures (midi)
+    [50, 57, 62, 65],                           # Dm
+    [50, 57, 62, 65],                           # Dm
+    [46, 53, 58, 62],                           # Bb
+    [43, 50, 55, 58],                           # Gm
+    [45, 52, 57, 61],                           # A (tension)
 ]
-STAB = [0, 2, 3, 5, 6]          # eighth-note positions of the brass stabs in each bar (syncopated)
-MELODY = [
-    [(0, 74, 2), (2, 78, 1), (3, 81, 1), (4, 86, 4)],
-    [(0, 85, 2), (2, 88, 1), (3, 85, 1), (4, 81, 2), (6, 83, 1), (7, 86, 1)],
+PLUCK_NOTES = [                                 # 16th-note ostinato pattern per bar (root, 5th, octave, 5th)
+    [50, 57, 62, 57], [50, 57, 62, 57], [46, 53, 58, 53], [43, 50, 55, 50], [45, 52, 57, 52],
 ]
+MOTIF_A = [(0, 74, 1.5), (1.5, 77, 0.5), (2, 81, 1.0), (3, 79, 1.0)]     # D F A G  (asks a question)
+MOTIF_B = [(0, 74, 1.5), (1.5, 77, 0.5), (2, 82, 1.0), (3, 81, 1.0)]     # D F Bb A (rises higher)
 
 
 def render_theme():
     total = int(TOTAL * SR)
-    L = np.zeros(total)
-    R = np.zeros(total)
     mono = np.zeros(total)
-    for bar in range(BARS):
+    for bar in range(BUILD_BARS):
         tb = bar * BAR
-        bass, chord = CHORDS[bar]
-        swell = 0.85 + 0.15 * bar / (BARS - 1)           # the piece grows louder as it goes
-        # driving bass pulse in eighths
-        for i in range(16):
-            _add(mono, tb + i * EIGHTH / 2, brass(bass + 12 * (i % 2), EIGHTH / 2 * 0.75, 0.75 * swell))
-        # brass stabs
-        for e in STAB:
-            for m in chord:
-                _add(mono, tb + e * EIGHTH, brass(m, EIGHTH * 0.85, swell))
-        # melody in brass + piano
-        for (e, m, ln) in MELODY[bar]:
-            _add(mono, tb + e * EIGHTH, brass(m, ln * EIGHTH * 0.95, 1.25 * swell))
-            _add(mono, tb + e * EIGHTH, piano_note(m - 12, 0.8) * 0.9)
-        # strings
-        for m in chord:
-            _add(mono, tb, string_pad(m - 12, BAR + 0.5))
-        # drums
-        for b in range(4):
-            _add(mono, tb + b * BEAT, kick(0.85 * swell))
-        if bar == 0:   # snare roll building up
+        grow = 0.55 + 0.45 * bar / (BUILD_BARS - 1)
+        # deep pulsing bass: quarters in bar 0, then driving eighths
+        steps = 4 if bar == 0 else 8
+        for i in range(steps):
+            _add(mono, tb + i * BAR / steps, sub_bass(BASS[bar], BAR / steps * 0.85, (0.75 + 0.25 * (i % 2 == 0)) * grow))
+        # sustained textures
+        for m in TRIADS[bar]:
+            _add(mono, tb, pad(m, BAR + 0.6, 0.6 + 0.6 * grow))
+            _add(mono, tb, pad(m + 12, BAR + 0.6, 0.35 * grow))
+        # 16th-note synth ticks (from bar 1); faster brightness later
+        if bar >= 1:
+            notes = PLUCK_NOTES[bar]
             for i in range(16):
-                _add(mono, tb + i * BEAT / 4, snare(0.25 + 0.6 * i / 15, seed=i))
-        else:
+                acc = 1.0 if i % 4 == 0 else 0.6
+                m = notes[i % 4] + (12 if bar >= 3 and i % 8 >= 4 else 0)
+                _add(mono, tb + i * BAR / 16, pluck(m, 0.1, acc * grow, bright=1.0 + 0.3 * bar))
+        # percussion
+        if bar == 0:
+            _add(mono, tb, kick(0.7))
+            _add(mono, tb + 2 * BEAT, kick(0.55))
+        elif bar == 1:
+            for b in (0, 2):
+                _add(mono, tb + b * BEAT, kick(0.75))
             for b in (1, 3):
-                _add(mono, tb + b * BEAT, snare(swell, seed=bar * 10 + b))
-            for i in range(4):                                  # 16th-note fill at the end of each bar
-                _add(mono, tb + 3.5 * BEAT + i * BEAT / 8, snare(0.5 + 0.12 * i, seed=100 + bar * 4 + i))
-        if bar == BARS - 1:                                     # timpani roll into the final hit
-            for i in range(8):
-                _add(mono, tb + 3 * BEAT + i * BEAT / 8, timpani(38, 0.5 + 0.07 * i, 0.4))
-    # the big final chord
-    for m in [38, 50, 57, 62, 66, 69, 74, 78, 81, 86]:
-        _add(mono, HIT, brass(m, 1.3, 1.2))
-    _add(mono, HIT, piano_note(74, 1.0) * 1.1)
+                _add(mono, tb + b * BEAT, snare(0.35, seed=bar * 7 + b))
+        elif bar in (2, 3):
+            for b in range(4):
+                _add(mono, tb + b * BEAT, kick(0.9))
+            for b in (1, 3):
+                _add(mono, tb + b * BEAT, snare(0.85, seed=bar * 7 + b))
+            if bar == 3:
+                for i, m in enumerate([43, 41, 38]):            # tom-like accents in the last beat
+                    _add(mono, tb + 3 * BEAT + i * BEAT / 3, timpani(m, 0.7, 0.5))
+        else:  # bar 4: snare roll accelerating, kicks dropping out for tension
+            _add(mono, tb, kick(0.8))
+            n_hits = 0
+            tt = 0.0
+            step = BEAT / 2
+            while tt < BAR - 0.02:
+                _add(mono, tb + tt, snare(0.3 + 0.7 * tt / BAR, seed=200 + n_hits))
+                n_hits += 1
+                tt += step * (1 - 0.8 * tt / BAR)                # shorter and shorter gaps
+    # lead motif: bars 2 and 3 (piano doubles it for clarity), rising run in bar 4
+    for (b, m, ln) in MOTIF_A:
+        _add(mono, 2 * BAR + b * BEAT, lead(m, ln * BEAT * 0.95, 1.0))
+        _add(mono, 2 * BAR + b * BEAT, piano_note(m - 12, 0.85) * 0.55)
+    for (b, m, ln) in MOTIF_B:
+        _add(mono, 3 * BAR + b * BEAT, lead(m, ln * BEAT * 0.95, 1.1))
+        _add(mono, 3 * BAR + b * BEAT, piano_note(m - 12, 0.9) * 0.6)
+    run = [81, 83, 85, 86, 88, 89, 91, 93]                      # rising harmonic-minor run into the hit
+    for i, m in enumerate(run):
+        _add(mono, 4 * BAR + i * BAR / 8, lead(m, BAR / 8 * 0.9, 0.9 + 0.05 * i))
+    # tension riser across the last two bars
+    _add(mono, 3 * BAR, riser(2 * BAR)[: int(2 * BAR * SR)] * 0.9)
+    # synchronised hits: bar 2 (motif enters), bar 4 (final build), and the big finish
+    big_hit(mono, 2 * BAR, 0.75, chord=(38, 45, 50, 53))
+    big_hit(mono, 4 * BAR, 0.65, chord=(33, 45, 52, 57, 61))
+    big_hit(mono, HIT, 1.25, chord=(26, 38, 45, 50, 53, 57, 62, 65, 69))
     _add(mono, HIT, piano_note(62, 1.0) * 1.1)
-    _add(mono, HIT, piano_note(50, 1.0) * 1.1)
-    _add(mono, HIT, timpani(38, 1.2, 1.6))
-    _add(mono, HIT, kick(1.0, 0.6))
-    _add(mono, HIT, crash())
-    for i, m in enumerate([86, 90, 93, 98]):                    # sparkle on top
-        _add(mono, HIT + 0.05 + i * 0.12, bell(m, 2.0, 1.0))
-    # stereo + hall
-    rng = np.random.default_rng(5)
-    L = reverb(mono, rng, seconds=1.4, mix=0.22)
-    R = reverb(mono * 0.98, np.random.default_rng(6), seconds=1.4, mix=0.22)
+    _add(mono, HIT, piano_note(74, 1.0) * 0.9)
+    # hall reverb, slightly different each side = wide stereo
+    L = reverb(mono, np.random.default_rng(5), seconds=2.0, mix=0.24)
+    R = reverb(mono * 0.98, np.random.default_rng(6), seconds=2.0, mix=0.24)
     st = np.stack([L, R], axis=1)
-    fade = int(0.9 * SR)
+    fade = int(1.2 * SR)
     st[-fade:] *= np.linspace(1, 0, fade)[:, None]
+    st[: int(0.15 * SR)] *= np.linspace(0, 1, int(0.15 * SR))[:, None]
     st /= np.max(np.abs(st)) + 1e-9
     return st * 0.8
 
@@ -191,7 +257,7 @@ def save_wav(stereo, path):
         w.writeframes(pcm.tobytes())
 
 
-# ------------------------------------------------------------------ pictures
+# ------------------------------------------------------------------ pictures (synchronised to the music)
 W, H = config.VIDEO_SIZE
 FPS = 25
 
@@ -201,65 +267,98 @@ def ease(x):
     return 1 - (1 - x) ** 3
 
 
-def frame(t, base, title_font, small_font, hindi_font, tag_font):
-    img = base.copy().convert("RGBA")
+def _dark_gradient(warm):
+    """Night-blue top to a warm glow at the bottom; `warm` (0..1) grows as the sun nears."""
+    img = Image.new("RGB", (W, H))
+    px = img.load()
+    top = (10, 10, 28)
+    bot = (int(40 + 150 * warm), int(14 + 70 * warm), int(48 + 10 * warm))
+    for y in range(H):
+        t = (y / (H - 1)) ** 1.6
+        c = tuple(int(top[i] + (bot[i] - top[i]) * t) for i in range(3))
+        for x in range(0, W, 1):
+            px[x, y] = c
+    return img
+
+
+_GRAD = {}
+
+
+def gradient_for(warm):
+    key = round(warm * 20)
+    if key not in _GRAD:
+        _GRAD[key] = _dark_gradient(key / 20)
+    return _GRAD[key]
+
+
+def frame(t, fonts):
+    title_font, tag_font, hindi_font, small_font = fonts
+    warm = ease(t / HIT) * 0.9
+    img = gradient_for(warm).convert("RGBA")
     d = ImageDraw.Draw(img, "RGBA")
-    horizon = int(H * 0.72)
-    # expanding rings from the sun position
-    cx, cy = W // 2, horizon - 30
-    for k in range(4):
-        rt = (t * 0.9 - k * 0.22)
-        if rt > 0:
-            r = int(rt * 1100)
-            a = int(max(0, 110 * (1 - rt * 1.0)))
-            d.ellipse([cx - r, cy - r, cx + r, cy + r], outline=(255, 230, 170, a), width=3)
-    # sun rises from the horizon over the first 2 seconds
-    rise = ease(t / 1.0)
-    sun_y = horizon + 70 - rise * 65
-    glow = int(200 + 60 * rise)
-    for g in range(6, 0, -1):
-        rr = 62 + g * 12
-        d.ellipse([cx - rr, sun_y - rr, cx + rr, sun_y + rr], fill=(255, 210, 120, int(12 * rise)))
+    horizon = int(H * 0.74)
+    cx = W // 2
+    # pulse rings on every beat (they get stronger as the music builds)
+    for k in range(int(t / BEAT) + 1):
+        bt = k * BEAT
+        age = t - bt
+        if 0 <= age < 1.3 and bt < HIT + 0.01:
+            r = int(40 + age * 620)
+            a = int(max(0, (90 + 60 * bt / HIT) * (1 - age / 1.3)))
+            d.ellipse([cx - r, horizon - r, cx + r, horizon + r], outline=(255, 214, 150, a), width=2)
+    # horizontal light line that widens, then the sun slowly rises behind the horizon
+    rise = ease(t / (HIT + 0.6))
+    sun_y = horizon + 95 - rise * 122
+    for g in range(7, 0, -1):
+        rr = 60 + g * 16
+        d.ellipse([cx - rr, sun_y - rr, cx + rr, sun_y + rr], fill=(255, 190, 110, int(10 + 12 * rise)))
     video._sun(d, cx, sun_y, 60)
-    # ground band (hides the lower part of the sun)
-    d.rectangle([0, horizon + 60, W, H], fill=(58, 14, 42, 255))
-    d.rectangle([0, horizon + 56, W, horizon + 62], fill=(255, 196, 120, 255))
-    # title
-    title = "UPLIFT TODAY"
-    tw = d.textlength(title, font=title_font)
-    p = ease((t - 0.8) / 0.6)
-    if p > 0:
-        ty = int(85 - (1 - p) * 40)
-        panel = Image.new("RGBA", (W, 325), (55, 10, 40, int(120 * p)))
-        img.paste(panel, (0, 60), panel)
+    d.rectangle([0, horizon, W, H], fill=(20, 8, 30, 255))
+    wline = int(W * ease(t / 2.0))
+    d.rectangle([cx - wline // 2, horizon - 1, cx + wline // 2, horizon + 3], fill=(255, 205, 130, 255))
+    # the question-motif moment (bar 3): small gold caption fades in
+    if t >= 2 * BAR:
+        p = ease((t - 2 * BAR) / 0.5) * (1 - ease((t - HIT + 0.4) / 0.3))
+        txt = "T O D A Y ' S   G O O D   N E W S"
+        w = d.textlength(txt, font=small_font)
+        d.text(((W - w) / 2, 250), txt, font=small_font, fill=(255, 214, 150, int(255 * p)))
+        bar_w = int(300 * ease((t - 2 * BAR) / 0.6))
+        d.rectangle([cx - bar_w, 300, cx + bar_w, 303], fill=(255, 205, 130, int(255 * p)))
+    # the final hit: white flash, title slams in
+    if t >= HIT - 0.03:
+        a = ease((t - HIT + 0.03) / 0.12)
+        settle = 1 - ease((t - HIT) / 0.35)
+        scale_off = int(26 * settle)
+        title = "UPLIFT TODAY"
+        tw = d.textlength(title, font=title_font)
+        layer = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+        ld = ImageDraw.Draw(layer)
+        ld.rectangle([0, 80 - scale_off, W, 425 + scale_off], fill=(30, 8, 38, int(150 * a)))
+        ld.text(((W - tw) / 2 + 5, 105 + 6), title, font=title_font, fill=(0, 0, 0, int(200 * a)))
+        ld.text(((W - tw) / 2, 105), title, font=title_font, fill=(255, 255, 255, int(255 * a)),
+                stroke_width=2, stroke_fill=(90, 20, 50, int(255 * a)))
+        bl = int((tw / 2 + 50) * ease((t - HIT - 0.1) / 0.5))
+        ld.rectangle([cx - bl, 252, cx + bl, 259], fill=(255, 200, 110, int(255 * a)))
+        img = Image.alpha_composite(img, layer)
         d = ImageDraw.Draw(img, "RGBA")
-        shadow = Image.new("RGBA", (W, H), (0, 0, 0, 0))
-        sd = ImageDraw.Draw(shadow)
-        sd.text(((W - tw) / 2 + 4, ty + 5), title, font=title_font, fill=(40, 6, 30, int(200 * p)))
-        img = Image.alpha_composite(img, shadow)
-        d = ImageDraw.Draw(img, "RGBA")
-        d.text(((W - tw) / 2, ty), title, font=title_font, fill=(255, 255, 255, int(255 * p)),
-               stroke_width=2, stroke_fill=(70, 10, 50, int(255 * p)))
-        # gold bars sweep in from both sides
-        bar_len = int(ease((t - 0.9) / 0.6) * (tw / 2 + 40))
-        by = ty + int(title_font.size * 1.25)
-        d.rectangle([W // 2 - bar_len, by, W // 2 + bar_len, by + 7], fill=(255, 200, 110, 255))
-    # hindi + english tag
-    p2 = ease((t - 1.8) / 0.6)
-    if p2 > 0:
-        htxt = "आज की अच्छी खबरें"
-        hw = d.textlength(htxt, font=hindi_font)
-        d.text(((W - hw) / 2, 256 + (1 - p2) * 20), htxt, font=hindi_font, fill=(255, 236, 190, int(255 * p2)))
-        tag = "Good news. Every day."
-        tgw = d.textlength(tag, font=tag_font)
-        d.text(((W - tgw) / 2, 322 + (1 - p2) * 20), tag, font=tag_font, fill=(255, 255, 255, int(230 * p2)))
-    # flash on the final hit
-    if HIT - 0.05 <= t <= HIT + 0.45:
-        a = int(170 * (1 - (t - HIT + 0.05) / 0.5))
-        d.rectangle([0, 0, W, H], fill=(255, 250, 235, max(a, 0)))
-    # fade in from black at the very start
-    if t < 0.2:
-        d.rectangle([0, 0, W, H], fill=(0, 0, 0, int(255 * (1 - t / 0.2))))
+        p2 = ease((t - HIT - 0.5) / 0.6)
+        if p2 > 0:
+            h = "आज की अच्छी खबरें"
+            hw = d.textlength(h, font=hindi_font)
+            d.text(((W - hw) / 2, 290 + (1 - p2) * 16), h, font=hindi_font, fill=(255, 236, 190, int(255 * p2)))
+            tg = "Good news. Every day."
+            tgw = d.textlength(tg, font=tag_font)
+            d.text(((W - tgw) / 2, 364 + (1 - p2) * 16), tg, font=tag_font, fill=(255, 255, 255, int(235 * p2)))
+        fl = int(210 * (1 - ease((t - HIT) / 0.45)))
+        if fl > 0:
+            d.rectangle([0, 0, W, H], fill=(255, 248, 232, fl))
+    # smaller flashes on the earlier hits
+    for hb in (2 * BAR, 4 * BAR):
+        if hb - 0.02 <= t <= hb + 0.3:
+            d.rectangle([0, 0, W, H], fill=(255, 230, 190, int(90 * (1 - (t - hb + 0.02) / 0.32))))
+    # fade in from black
+    if t < 0.4:
+        d.rectangle([0, 0, W, H], fill=(0, 0, 0, int(255 * (1 - t / 0.4))))
     return img.convert("RGB")
 
 
@@ -270,19 +369,16 @@ def main(outdir):
     os.makedirs(work)
     wav = os.path.join(work, "theme.wav")
     save_wav(render_theme(), wav)
-    base = video._gradient()
-    title_font = video._font(118, latin=True)
-    small_font = video._font(34, latin=True)
-    hindi_font = video._font(64)
-    tag_font = video._font(44, latin=True)
+    fonts = (video._font(118, latin=True), video._font(44, latin=True), video._font(64), video._font(30, latin=True))
     n = int(TOTAL * FPS)
     for i in range(n):
-        frame(i / FPS, base, title_font, small_font, hindi_font, tag_font).save(os.path.join(work, f"f{i:04d}.png"))
+        frame(i / FPS, fonts).save(os.path.join(work, f"f{i:04d}.png"))
     out = os.path.join(outdir, "intro.mp4")
     subprocess.check_call([
         "ffmpeg", "-y", "-loglevel", "error", "-framerate", str(FPS), "-i", os.path.join(work, "f%04d.png"),
         "-i", wav, "-c:v", "libx264", "-pix_fmt", "yuv420p", "-r", str(FPS),
-        "-af", "alimiter=limit=0.9:level=disabled", "-c:a", "aac", "-b:a", "160k", "-ar", "44100", "-ac", "2", "-shortest", out])
+        "-af", "alimiter=limit=0.9:level=disabled",
+        "-c:a", "aac", "-b:a", "192k", "-ar", "44100", "-ac", "2", "-shortest", out])
     shutil.copy(wav, os.path.join(outdir, "theme_preview.wav"))
     shutil.rmtree(work)
     print("made", out, round(TOTAL, 2), "seconds")
