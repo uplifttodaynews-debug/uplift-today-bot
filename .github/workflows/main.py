@@ -39,7 +39,13 @@ def main():
     data = script_writer.write(items)
     stories = limit_per_source(data["stories"])
     print(f"[main] AI wrote {len(stories)} stories; fact-checking them...")
-    stories = script_writer.verify(stories)[: config.NUM_STORIES]
+    passed, failed = script_writer.verify(stories)
+    if failed and len(passed) < config.NUM_STORIES:
+        print(f"[main] {len(failed)} stories flagged - asking the writer to fix them...")
+        fixed = script_writer.repair(failed)
+        again_ok, _ = script_writer.verify(fixed)
+        passed += again_ok
+    stories = passed[: config.NUM_STORIES]
     if len(stories) < config.MIN_STORIES:
         print(f"[main] Only {len(stories)} stories passed the checks - skipping today.")
         return 0
