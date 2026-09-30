@@ -1,1 +1,1 @@
-Test run requested 2026-09-30 (first use of the run-now trigger).
+test run 2026-09-30 19:37:00 UTC
