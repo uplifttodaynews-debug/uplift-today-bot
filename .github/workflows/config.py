@@ -28,6 +28,8 @@ EXTRA_CANDIDATES = 3             # AI writes a few extra stories, the fact-check
 
 # ---- Positive news sources (RSS). Used only as LEADS for facts. ----
 RSS_FEEDS = [
+    "https://www.thebetterindia.com/feed/",
+    "https://www.goodgoodgood.co/articles/rss.xml",
     "https://www.goodnewsnetwork.org/feed/",
     "https://www.positive.news/feed/",
     "https://reasonstobecheerful.world/feed/",
