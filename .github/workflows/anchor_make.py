@@ -73,7 +73,32 @@ def fair3():
         print("saved", path, flush=True)
 
 
-if __name__ == "__main__" and len(sys.argv) > 1 and sys.argv[1] == "fair3":
+OUTFITS = [
+    ("mustard_blazer", "a soft mustard-yellow blazer over a white top"),
+    ("teal_kurta", "a simple teal-green kurta with a fine subtle embroidered neckline"),
+    ("maroon_blazer", "a deep maroon blazer over a cream shirt"),
+    ("peach_kurta", "a simple pastel peach kurta with a delicate neckline"),
+    ("grey_blazer", "a light grey blazer over a royal blue shirt"),
+    ("ivory_blazer", "an ivory blazer over a sky-blue top"),
+]
+
+
+def outfits():
+    base = os.path.join(OUT, "fair", "fair_edit_2.jpg")
+    os.makedirs(os.path.join(OUT, "outfits"), exist_ok=True)
+    import shutil
+    shutil.copy(base, os.path.join(OUT, "outfits", "0_navy_blazer.jpg"))
+    for i, (name, desc) in enumerate(OUTFITS, start=1):
+        data = edit(base, f"Change only her clothing: she now wears {desc}. Keep exactly the same face, "
+                          "skin tone, smile, ponytail, pose, camera angle and the same background.", 100 + i)
+        path = os.path.join(OUT, "outfits", f"{i}_{name}.jpg")
+        open(path, "wb").write(data)
+        print("saved", path, flush=True)
+
+
+if __name__ == "__main__" and len(sys.argv) > 1 and sys.argv[1] == "outfits":
+    outfits()
+elif __name__ == "__main__" and len(sys.argv) > 1 and sys.argv[1] == "fair3":
     fair3()
 elif __name__ == "__main__":
     for i, seed in enumerate([11, 222, 3333, 44444], start=1):
