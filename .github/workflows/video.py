@@ -134,11 +134,41 @@ def _sentences(text):
     return [p for p in parts if p]
 
 
+def intro_path():
+    """Full path of the news-style opening, or None if it is switched off / missing."""
+    if not getattr(config, "INTRO_CLIP", ""):
+        return None
+    p = os.path.join(os.path.dirname(os.path.abspath(__file__)), config.INTRO_CLIP)
+    return p if os.path.exists(p) else None
+
+
+def intro_length():
+    p = intro_path()
+    return _duration(p) if p else 0.0
+
+
+def _talking_clip(seg, clip):
+    """Re-encode the talking-presenter video to our format, exactly as long as the voice."""
+    subprocess.check_call([
+        "ffmpeg", "-y", "-loglevel", "error", "-i", seg["clip"], "-i", seg["audio"],
+        "-map", "0:v", "-map", "1:a",
+        "-vf", f"scale=-2:{H},crop={W}:{H},tpad=stop_mode=clone:stop_duration=3,fps=25,format=yuv420p",
+        "-c:v", "libx264", "-r", "25", "-c:a", "aac", "-b:a", "160k", "-ar", "44100", "-ac", "2",
+        "-shortest", clip])
+
+
 def build(segments, out_mp4, workdir):
-    """segments = list of dicts: {"headline", "audio", "title_slide", "english"(optional)}"""
+    """segments = list of dicts: {"headline", "audio", "title_slide", "english"(optional), "clip"(optional)}"""
     clips = []
+    opening = intro_path()
+    if opening:
+        clips.append(opening)
     for i, seg in enumerate(segments):
         clip = os.path.join(workdir, f"clip_{i}.mp4")
+        if seg.get("clip"):
+            _talking_clip(seg, clip)
+            clips.append(clip)
+            continue
         total = _duration(seg["audio"])
         sents = _sentences(seg.get("english")) if config.ENGLISH_CAPTIONS else []
         if not sents:

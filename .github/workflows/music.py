@@ -20,17 +20,19 @@ def pick_track():
     return tracks[datetime.date.today().toordinal() % len(tracks)]  # a different one each day
 
 
-def mix(video_in, video_out, duration):
+def mix(video_in, video_out, duration, start=0.0):
     track = pick_track()
     if not track or not config.BACKGROUND_MUSIC:
         return False
-    fade_out_start = max(duration - 4, 0)
+    music_len = max(duration - start, 1)
+    fade_out_start = max(music_len - 4, 0)
+    delay_ms = int(start * 1000)
     vol = config.MUSIC_VOLUME
     intro = config.MUSIC_INTRO_SECONDS
     boost = config.MUSIC_INTRO_BOOST
     filt = (
         "[0:a]asplit=2[voice][sc];"
-        f"[1:a]volume={vol},volume='if(lt(t,{intro}),{boost},1)':eval=frame,afade=t=in:st=0:d=2,afade=t=out:st={fade_out_start:.2f}:d=4[m];"
+        f"[1:a]volume={vol},volume='if(lt(t,{intro}),{boost},1)':eval=frame,afade=t=in:st=0:d=2,afade=t=out:st={fade_out_start:.2f}:d=4,adelay={delay_ms}|{delay_ms}[m];"
         "[m][sc]sidechaincompress=threshold=0.03:ratio=3:attack=30:release=500[duck];"
         "[voice][duck]amix=inputs=2:duration=first:dropout_transition=0:normalize=0,alimiter=limit=0.95[a]"
     )

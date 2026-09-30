@@ -11,6 +11,7 @@ import config
 import news
 import script_writer
 import music
+import avatar
 import stock
 import tts
 import video
@@ -90,9 +91,12 @@ def main():
     def add(headline, text, name, title_slide=False, eng="", headline_en="", queries=None):
         mp3 = os.path.join(work, f"{name}.mp3")
         tts.speak(text, mp3)
-        segments.append({"headline": headline, "audio": mp3, "title_slide": title_slide,
-                         "english": eng, "headline_en": headline_en if config.ENGLISH_CAPTIONS else "",
-                         "backgrounds": photos(queries or [], name)})
+        seg = {"headline": headline, "audio": mp3, "title_slide": title_slide,
+               "english": eng, "headline_en": headline_en if config.ENGLISH_CAPTIONS else "",
+               "backgrounds": photos(queries or [], name)}
+        if name == "intro" and config.ANCHOR and video._duration(mp3) <= config.ANCHOR_MAX_SECONDS:
+            seg["clip"] = avatar.make_clip(mp3, os.path.join(work, "anchor_intro.mp4"))
+        segments.append(seg)
 
     fq = config.FIXED_SLIDE_QUERIES
     add("आज की अच्छी खबरें", data["intro"], "intro", True, english[0], "Today's Good News", [fq["intro"]])
@@ -108,7 +112,7 @@ def main():
     print(f"[main] video ready, {secs:.0f} seconds")
     try:
         mixed = os.path.join(work, "bulletin_music.mp4")
-        if music.mix(mp4, mixed, secs):
+        if music.mix(mp4, mixed, secs, start=video.intro_length()):
             mp4 = mixed
     except Exception as e:
         print(f"[main] background music skipped: {e}")
@@ -134,7 +138,7 @@ def main():
         + ("\n\nStock photos (for illustration only - they do not show the actual events):\n"
            + "\n".join(f"- Photo by {c['photographer']} on Pexels: {c['url']}" for c in credits)
            if credits else "")
-        + "\n\nMusic: original track created for Uplift Today."
+        + "\n\nMusic: original tracks created for Uplift Today. Our presenter Kavya is an AI-generated character."
         + "\n\nThis video was made with AI: the script is AI-written from public news "
           "sources, and the voice is synthetic.\n"
           "इस वीडियो में AI द्वारा बनाई गई आवाज़ और स्क्रिप्ट का उपयोग हुआ है।\n\n"

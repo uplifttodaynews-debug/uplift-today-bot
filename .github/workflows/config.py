@@ -67,8 +67,8 @@ LATIN_FONT_CANDIDATES = [        # fonts that have English letters
 BACKGROUND_MUSIC = True
 MUSIC_FOLDER = "music"
 MUSIC_VOLUME = 0.40              # how loud the music is before it ducks under the voice
-MUSIC_INTRO_BOOST = 1.6          # music is this many times louder during the intro
-MUSIC_INTRO_SECONDS = 14         # how long the louder intro lasts (then it eases down)
+MUSIC_INTRO_BOOST = 1.3          # piano is a little louder during the greeting
+MUSIC_INTRO_SECONDS = 12         # how long (after the opening) the louder part lasts
 
 # ---- Stock photos (Pexels). Needs the PEXELS_API_KEY secret; without it the sunrise gradient is used ----
 STOCK_PHOTOS = True
@@ -78,3 +78,11 @@ FIXED_SLIDE_QUERIES = {          # for the opening, thought and closing slides
     "thought": "calm lake morning",
     "outro": "sunlight through trees",
 }
+
+# ---- News-style opening (about 5 seconds, made once by make_intro.py) ----
+INTRO_CLIP = "intro/intro.mp4"   # set to "" to switch the opening off
+
+# ---- Talking AI presenter (Kavya) via fal.ai. Needs the FAL_KEY secret. ----
+ANCHOR = True
+ANCHOR_MODEL = "fal-ai/kling-video/ai-avatar/v2/pro"   # the clip you chose (about $0.115 per second)
+ANCHOR_MAX_SECONDS = 14          # safety cap so the daily cost stays small; longer greetings use the normal slide
