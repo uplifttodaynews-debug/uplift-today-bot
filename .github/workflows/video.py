@@ -62,8 +62,26 @@ def _wrap(d, text, font, max_w):
     return lines
 
 
-def make_slide(text, out_png, is_title=False, caption=None, headline_en=None):
-    img = _gradient()
+_BG_CACHE = {}
+
+
+def _photo_background(path):
+    """Crop a photo to fill the frame and darken it so the text stays easy to read."""
+    if path in _BG_CACHE:
+        return _BG_CACHE[path].copy()
+    src = Image.open(path).convert("RGB")
+    scale = max(W / src.width, H / src.height)
+    src = src.resize((int(src.width * scale) + 1, int(src.height * scale) + 1), Image.LANCZOS)
+    left, top = (src.width - W) // 2, (src.height - H) // 2
+    img = src.crop((left, top, left + W, top + H))
+    shade = Image.new("RGBA", (W, H), (45, 10, 35, 120))        # warm dark tint over everything
+    img = Image.alpha_composite(img.convert("RGBA"), shade).convert("RGB")
+    _BG_CACHE[path] = img
+    return img.copy()
+
+
+def make_slide(text, out_png, is_title=False, caption=None, headline_en=None, background=None):
+    img = _photo_background(background) if background else _gradient()
     d = ImageDraw.Draw(img)
     _sun(d, 110, 100, 40)
     small = _font(34, latin=True)
@@ -76,7 +94,8 @@ def make_slide(text, out_png, is_title=False, caption=None, headline_en=None):
     y = (H - line_h * len(lines)) // 2 + (top - 60 if caption else 0)
     for ln in lines:
         w = d.textlength(ln, font=font)
-        d.text(((W - w) / 2, y), ln, font=font, fill=(255, 255, 255))
+        d.text(((W - w) / 2, y), ln, font=font, fill=(255, 255, 255),
+               stroke_width=3 if background else 0, stroke_fill=(45, 10, 35))
         y += line_h
     if headline_en:
         # English version of the headline: ONE line, shrunk to fit if needed
@@ -86,7 +105,8 @@ def make_slide(text, out_png, is_title=False, caption=None, headline_en=None):
             size_en -= 2
             efont = _font(size_en, latin=True)
         w = d.textlength(headline_en, font=efont)
-        d.text(((W - w) / 2, y + 4), headline_en, font=efont, fill=(255, 236, 190))
+        d.text(((W - w) / 2, y + 4), headline_en, font=efont, fill=(255, 236, 190),
+               stroke_width=2 if background else 0, stroke_fill=(45, 10, 35))
     if caption:
         cfont = _font(38, latin=True)
         clines = _wrap(d, caption, cfont, W - 200)[:3]
@@ -128,8 +148,10 @@ def build(segments, out_mp4, workdir):
         lines = []
         for k, sent in enumerate(sents):
             png = os.path.join(workdir, f"slide_{i}_{k}.png")
+            bgs = [b for b in (seg.get("backgrounds") or []) if b]
+            bg = bgs[min(int(k * len(bgs) / len(sents)), len(bgs) - 1)] if bgs else None
             make_slide(seg["headline"], png, is_title=seg.get("title_slide", False), caption=sent,
-                       headline_en=seg.get("headline_en"))
+                       headline_en=seg.get("headline_en"), background=bg)
             lines.append(f"file '{os.path.abspath(png)}'")
             lines.append(f"duration {total * weights[k] / wsum:.3f}")
         lines.append(lines[-2])  # the concat demuxer needs the last image repeated

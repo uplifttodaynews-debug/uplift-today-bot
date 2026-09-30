@@ -62,3 +62,17 @@ LATIN_FONT_CANDIDATES = [        # fonts that have English letters
     "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf",
     "/usr/share/fonts/truetype/freefont/FreeSansBold.ttf",
 ]
+
+# ---- Background music (original tracks in the music/ folder) ----
+BACKGROUND_MUSIC = True
+MUSIC_FOLDER = "music"
+MUSIC_VOLUME = 0.22              # how loud the music is before it ducks under the voice
+
+# ---- Stock photos (Pexels). Needs the PEXELS_API_KEY secret; without it the sunrise gradient is used ----
+STOCK_PHOTOS = True
+PHOTOS_PER_STORY = 2             # the picture changes once in the middle of each story
+FIXED_SLIDE_QUERIES = {          # for the opening, thought and closing slides
+    "intro": "sunrise sky",
+    "thought": "calm lake morning",
+    "outro": "sunlight through trees",
+}

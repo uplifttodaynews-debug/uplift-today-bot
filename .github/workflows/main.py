@@ -10,6 +10,8 @@ import tempfile
 import config
 import news
 import script_writer
+import music
+import stock
 import tts
 import video
 import upload
@@ -70,21 +72,46 @@ def main():
         except Exception as e:
             print(f"[main] English captions skipped: {e}")
 
-    def add(headline, text, name, title_slide=False, eng="", headline_en=""):
+    # ---- stock photos for the backgrounds (falls back to the sunrise gradient) ----
+    credits = []
+    day = datetime.date.today().toordinal()
+
+    def photos(queries, tag):
+        found = []
+        if not config.STOCK_PHOTOS:
+            return found
+        for j, q in enumerate(queries[: config.PHOTOS_PER_STORY]):
+            res = stock.fetch(q, os.path.join(work, f"{tag}_{j}.jpg"), seed=day + j)
+            if res:
+                found.append(res["path"])
+                credits.append(res)
+        return found
+
+    def add(headline, text, name, title_slide=False, eng="", headline_en="", queries=None):
         mp3 = os.path.join(work, f"{name}.mp3")
         tts.speak(text, mp3)
         segments.append({"headline": headline, "audio": mp3, "title_slide": title_slide,
-                         "english": eng, "headline_en": headline_en if config.ENGLISH_CAPTIONS else ""})
+                         "english": eng, "headline_en": headline_en if config.ENGLISH_CAPTIONS else "",
+                         "backgrounds": photos(queries or [], name)})
 
-    add("आज की अच्छी खबरें", data["intro"], "intro", True, english[0], "Today's Good News")
+    fq = config.FIXED_SLIDE_QUERIES
+    add("आज की अच्छी खबरें", data["intro"], "intro", True, english[0], "Today's Good News", [fq["intro"]])
     for i, s in enumerate(stories):
-        add(s.get("headline", ""), s["narration"], f"story{i}", False, english[1 + i], english_heads[i])
-    add("आज का विचार", data["thought"], "thought", True, english[-2], "Thought of the Day")
-    add("धन्यवाद! सब्सक्राइब करें", data["outro"], "outro", True, english[-1], "Thank you! Please subscribe")
+        add(s.get("headline", ""), s["narration"], f"story{i}", False, english[1 + i], english_heads[i],
+            s.get("visual_queries") or [])
+    add("आज का विचार", data["thought"], "thought", True, english[-2], "Thought of the Day", [fq["thought"]])
+    add("धन्यवाद! सब्सक्राइब करें", data["outro"], "outro", True, english[-1], "Thank you! Please subscribe", [fq["outro"]])
+    print(f"[main] {len(credits)} stock photos used")
 
     mp4 = os.path.join(work, "bulletin.mp4")
     secs = video.build(segments, mp4, work)
     print(f"[main] video ready, {secs:.0f} seconds")
+    try:
+        mixed = os.path.join(work, "bulletin_music.mp4")
+        if music.mix(mp4, mixed, secs):
+            mp4 = mixed
+    except Exception as e:
+        print(f"[main] background music skipped: {e}")
 
     thumb = os.path.join(work, "thumb.png")
     video.make_thumbnail(data["title"], thumb)
@@ -104,6 +131,10 @@ def main():
            if any(english_heads) else "")
         + "\n\nSources / स्रोत (facts rewritten in our own words):\n"
         + "\n".join(src_lines)
+        + ("\n\nStock photos (for illustration only - they do not show the actual events):\n"
+           + "\n".join(f"- Photo by {c['photographer']} on Pexels: {c['url']}" for c in credits)
+           if credits else "")
+        + "\n\nMusic: original track created for Uplift Today."
         + "\n\nThis video was made with AI: the script is AI-written from public news "
           "sources, and the voice is synthetic.\n"
           "इस वीडियो में AI द्वारा बनाई गई आवाज़ और स्क्रिप्ट का उपयोग हुआ है।\n\n"

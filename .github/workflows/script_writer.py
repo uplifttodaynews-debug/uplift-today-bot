@@ -63,9 +63,14 @@ RULES:
    any real person.
 7. "title" = a YouTube title in {config.LANGUAGE_NAME}, under 70 characters, hopeful, truthful.
 8. "headline" for each story = a very short on-screen headline (max 6 words).
+9. "visual_queries" for each story = exactly 2 short English search phrases (2-3 words each) for
+   FREE STOCK PHOTOS that loosely illustrate the theme (for example "solar panels", "green forest",
+   "hospital corridor", "children classroom"). Choose scenery, nature, buildings and objects.
+   NEVER ask for people's faces, famous places, brands, logos, flags, or anything that would
+   pretend to show the actual event.
 
 Return ONLY JSON with this exact shape:
-{{"title": "...", "intro": "...", "stories": [{{"lead_index": 0, "headline": "...", "narration": "..."}}],
+{{"title": "...", "intro": "...", "stories": [{{"lead_index": 0, "headline": "...", "visual_queries": ["...", "..."], "narration": "..."}}],
   "thought": "...", "outro": "..."}}
 
 "intro" = a 1-2 sentence greeting that says the channel name "Uplift Today" and welcomes viewers to
