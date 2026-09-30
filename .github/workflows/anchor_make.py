@@ -124,7 +124,8 @@ def lipsync_test():
         time.sleep(5)
     res = requests.get(sub["response_url"], headers=h, timeout=60)
     print("result", res.status_code, res.text[:300])
-    res.raise_for_status()
+    if res.status_code >= 300:
+        raise RuntimeError(f"result failed {res.status_code}: {res.text[:1500]}")
     url = res.json()["video"]["url"]
     with open(os.path.join(OUT, "test", "kavya_test.mp4"), "wb") as f:
         f.write(requests.get(url, timeout=300).content)
