@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/home/runner/work/uplift-today-bot/uplift-today-bot/.github/workflows/anchor_make.py", line 137, in <module>
+    lipsync_test()
+  File "/home/runner/work/uplift-today-bot/uplift-today-bot/.github/workflows/anchor_make.py", line 127, in lipsync_test
+    res.raise_for_status()
+  File "/opt/hostedtoolcache/Python/3.12.14/x64/lib/python3.12/site-packages/requests/models.py", line 1167, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 422 Client Error: Unprocessable Entity for url: https://queue.fal.run/veed/fabric-1.0/requests/01a0f3fe-b55c-7313-9609-a4d93f36b24f
