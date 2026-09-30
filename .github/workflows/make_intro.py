@@ -1,6 +1,6 @@
 """
 make_intro.py - creates the ORIGINAL cinematic news opening (run once by Claude, not by the daily bot).
-  intro/intro.mp4 = about 12.5 seconds: dark cinematic build -> big synchronised hit -> "UPLIFT TODAY".
+  intro/intro.mp4 = about 6 seconds: dark cinematic build -> big synchronised hit -> "UPLIFT TODAY".
 Style: serious, authoritative, urgent - D minor, deep pulsing sub bass, sustained synth/string textures,
 sharp percussion, rising tension, crescendo, synchronised hits. Everything (motif, rhythm, sounds) is our
 own composition and sound design; it is in the general style of TV news openings, not any real channel's tune.
@@ -20,12 +20,12 @@ import video
 from make_music import piano_note, reverb, hz
 
 SR = 44100
-BPM = 120
+BPM = 160
 BEAT = 60.0 / BPM
 BAR = BEAT * 4
-BUILD_BARS = 5
-HIT = BAR * BUILD_BARS          # the final big hit, 10.0 s
-TAIL = 2.6
+BUILD_BARS = 3
+HIT = BAR * BUILD_BARS          # the final big hit, 4.5 s
+TAIL = 1.5
 TOTAL = HIT + TAIL
 
 
@@ -157,16 +157,14 @@ def big_hit(mono, t, size=1.0, chord=(38, 45, 50, 53, 57, 62)):
 
 
 # ------------------------------------------------------------------ composition (D minor / Dorian)
-BASS = [26, 26, 34, 31, 33]                    # D1 D1 Bb1 G1 A1
+BASS = [26, 34, 33]                    # D1 D1 Bb1 G1 A1
 TRIADS = [                                      # sustained textures (midi)
     [50, 57, 62, 65],                           # Dm
-    [50, 57, 62, 65],                           # Dm
     [46, 53, 58, 62],                           # Bb
-    [43, 50, 55, 58],                           # Gm
     [45, 52, 57, 61],                           # A (tension)
 ]
 PLUCK_NOTES = [                                 # 16th-note ostinato pattern per bar (root, 5th, octave, 5th)
-    [50, 57, 62, 57], [50, 57, 62, 57], [46, 53, 58, 53], [43, 50, 55, 50], [45, 52, 57, 52],
+    [50, 57, 62, 57], [46, 53, 58, 53], [45, 52, 57, 52],
 ]
 MOTIF_A = [(0, 74, 1.5), (1.5, 77, 0.5), (2, 81, 1.0), (3, 79, 1.0)]     # D F A G  (asks a question)
 MOTIF_B = [(0, 74, 1.5), (1.5, 77, 0.5), (2, 82, 1.0), (3, 81, 1.0)]     # D F Bb A (rises higher)
@@ -191,25 +189,17 @@ def render_theme():
             notes = PLUCK_NOTES[bar]
             for i in range(16):
                 acc = 1.0 if i % 4 == 0 else 0.6
-                m = notes[i % 4] + (12 if bar >= 3 and i % 8 >= 4 else 0)
+                m = notes[i % 4] + (12 if bar >= 2 and i % 8 >= 4 else 0)
                 _add(mono, tb + i * BAR / 16, pluck(m, 0.1, acc * grow, bright=1.0 + 0.3 * bar))
         # percussion
         if bar == 0:
             _add(mono, tb, kick(0.7))
             _add(mono, tb + 2 * BEAT, kick(0.55))
         elif bar == 1:
-            for b in (0, 2):
-                _add(mono, tb + b * BEAT, kick(0.75))
-            for b in (1, 3):
-                _add(mono, tb + b * BEAT, snare(0.35, seed=bar * 7 + b))
-        elif bar in (2, 3):
             for b in range(4):
                 _add(mono, tb + b * BEAT, kick(0.9))
             for b in (1, 3):
                 _add(mono, tb + b * BEAT, snare(0.85, seed=bar * 7 + b))
-            if bar == 3:
-                for i, m in enumerate([43, 41, 38]):            # tom-like accents in the last beat
-                    _add(mono, tb + 3 * BEAT + i * BEAT / 3, timpani(m, 0.7, 0.5))
         else:  # bar 4: snare roll accelerating, kicks dropping out for tension
             _add(mono, tb, kick(0.8))
             n_hits = 0
@@ -221,19 +211,15 @@ def render_theme():
                 tt += step * (1 - 0.8 * tt / BAR)                # shorter and shorter gaps
     # lead motif: bars 2 and 3 (piano doubles it for clarity), rising run in bar 4
     for (b, m, ln) in MOTIF_A:
-        _add(mono, 2 * BAR + b * BEAT, lead(m, ln * BEAT * 0.95, 1.0))
-        _add(mono, 2 * BAR + b * BEAT, piano_note(m - 12, 0.85) * 0.55)
-    for (b, m, ln) in MOTIF_B:
-        _add(mono, 3 * BAR + b * BEAT, lead(m, ln * BEAT * 0.95, 1.1))
-        _add(mono, 3 * BAR + b * BEAT, piano_note(m - 12, 0.9) * 0.6)
+        _add(mono, 1 * BAR + b * BEAT, lead(m, ln * BEAT * 0.95, 1.0))
+        _add(mono, 1 * BAR + b * BEAT, piano_note(m - 12, 0.85) * 0.55)
     run = [81, 83, 85, 86, 88, 89, 91, 93]                      # rising harmonic-minor run into the hit
     for i, m in enumerate(run):
-        _add(mono, 4 * BAR + i * BAR / 8, lead(m, BAR / 8 * 0.9, 0.9 + 0.05 * i))
+        _add(mono, 2 * BAR + i * BAR / 8, lead(m, BAR / 8 * 0.9, 0.9 + 0.05 * i))
     # tension riser across the last two bars
-    _add(mono, 3 * BAR, riser(2 * BAR)[: int(2 * BAR * SR)] * 0.9)
+    _add(mono, 1 * BAR, riser(2 * BAR)[: int(2 * BAR * SR)] * 0.9)
     # synchronised hits: bar 2 (motif enters), bar 4 (final build), and the big finish
-    big_hit(mono, 2 * BAR, 0.75, chord=(38, 45, 50, 53))
-    big_hit(mono, 4 * BAR, 0.65, chord=(33, 45, 52, 57, 61))
+    big_hit(mono, 1 * BAR, 0.75, chord=(38, 45, 50, 53))
     big_hit(mono, HIT, 1.25, chord=(26, 38, 45, 50, 53, 57, 62, 65, 69))
     _add(mono, HIT, piano_note(62, 1.0) * 1.1)
     _add(mono, HIT, piano_note(74, 1.0) * 0.9)
@@ -299,12 +285,12 @@ def frame(t, fonts):
     horizon = int(H * 0.74)
     cx = W // 2
     # pulse rings on every beat (they get stronger as the music builds)
-    for k in range(int(t / BEAT) + 1):
-        bt = k * BEAT
+    for k in range(int(t / (2 * BEAT)) + 1):
+        bt = k * 2 * BEAT
         age = t - bt
         if 0 <= age < 1.3 and bt < HIT + 0.01:
             r = int(40 + age * 620)
-            a = int(max(0, (90 + 60 * bt / HIT) * (1 - age / 1.3)))
+            a = int(max(0, (60 + 40 * bt / HIT) * (1 - age / 1.3) ** 1.5))
             d.ellipse([cx - r, horizon - r, cx + r, horizon + r], outline=(255, 214, 150, a), width=2)
     # horizontal light line that widens, then the sun slowly rises behind the horizon
     rise = ease(t / (HIT + 0.6))
@@ -314,20 +300,20 @@ def frame(t, fonts):
         d.ellipse([cx - rr, sun_y - rr, cx + rr, sun_y + rr], fill=(255, 190, 110, int(10 + 12 * rise)))
     video._sun(d, cx, sun_y, 60)
     d.rectangle([0, horizon, W, H], fill=(20, 8, 30, 255))
-    wline = int(W * ease(t / 2.0))
+    wline = int(W * ease(t / 1.0))
     d.rectangle([cx - wline // 2, horizon - 1, cx + wline // 2, horizon + 3], fill=(255, 205, 130, 255))
     # the question-motif moment (bar 3): small gold caption fades in
-    if t >= 2 * BAR:
-        p = ease((t - 2 * BAR) / 0.5) * (1 - ease((t - HIT + 0.4) / 0.3))
+    if t >= 1 * BAR:
+        p = ease((t - 1 * BAR) / 0.4) * (1 - ease((t - HIT + 0.4) / 0.3))
         txt = "T O D A Y ' S   G O O D   N E W S"
         w = d.textlength(txt, font=small_font)
         d.text(((W - w) / 2, 250), txt, font=small_font, fill=(255, 214, 150, int(255 * p)))
-        bar_w = int(300 * ease((t - 2 * BAR) / 0.6))
+        bar_w = int(300 * ease((t - 1 * BAR) / 0.5))
         d.rectangle([cx - bar_w, 300, cx + bar_w, 303], fill=(255, 205, 130, int(255 * p)))
     # the final hit: white flash, title slams in
     if t >= HIT - 0.03:
-        a = ease((t - HIT + 0.03) / 0.12)
-        settle = 1 - ease((t - HIT) / 0.35)
+        a = ease((t - HIT + 0.03) / 0.35)
+        settle = 1 - ease((t - HIT) / 0.5)
         scale_off = int(26 * settle)
         title = "UPLIFT TODAY"
         tw = d.textlength(title, font=title_font)
@@ -341,7 +327,7 @@ def frame(t, fonts):
         ld.rectangle([cx - bl, 252, cx + bl, 259], fill=(255, 200, 110, int(255 * a)))
         img = Image.alpha_composite(img, layer)
         d = ImageDraw.Draw(img, "RGBA")
-        p2 = ease((t - HIT - 0.5) / 0.6)
+        p2 = ease((t - HIT - 0.25) / 0.4)
         if p2 > 0:
             h = "आज की अच्छी खबरें"
             hw = d.textlength(h, font=hindi_font)
@@ -349,16 +335,9 @@ def frame(t, fonts):
             tg = "Good news. Every day."
             tgw = d.textlength(tg, font=tag_font)
             d.text(((W - tgw) / 2, 364 + (1 - p2) * 16), tg, font=tag_font, fill=(255, 255, 255, int(235 * p2)))
-        fl = int(210 * (1 - ease((t - HIT) / 0.45)))
-        if fl > 0:
-            d.rectangle([0, 0, W, H], fill=(255, 248, 232, fl))
-    # smaller flashes on the earlier hits
-    for hb in (2 * BAR, 4 * BAR):
-        if hb - 0.02 <= t <= hb + 0.3:
-            d.rectangle([0, 0, W, H], fill=(255, 230, 190, int(90 * (1 - (t - hb + 0.02) / 0.32))))
     # fade in from black
-    if t < 0.4:
-        d.rectangle([0, 0, W, H], fill=(0, 0, 0, int(255 * (1 - t / 0.4))))
+    if t < 0.25:
+        d.rectangle([0, 0, W, H], fill=(0, 0, 0, int(255 * (1 - t / 0.25))))
     return img.convert("RGB")
 
 
