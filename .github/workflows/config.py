@@ -18,7 +18,7 @@ PRIVACY = "private"
 VOICE_NAME = "hi-IN-Chirp3-HD-Aoede"
 
 # ---- AI writer (Gemini). If Google retires this name, change it here. ----
-GEMINI_MODEL = "gemini-2.5-flash"
+GEMINI_MODEL = "gemini-3.8-flash"
 
 # ---- Bulletin size ----
 NUM_STORIES = 4                  # 4 stories ~ 3 minutes
