@@ -154,3 +154,21 @@ def repair(failed):
             item.pop("problem", None)
             fixed.append(item)
     return fixed
+
+
+def translate(texts):
+    """Translate finished Hindi lines into plain English captions (faithful, nothing added)."""
+    numbered = "\n".join(f"[{i}] {t}" for i, t in enumerate(texts))
+    prompt = (
+        f"Translate each {config.LANGUAGE_NAME} line into natural, simple English for on-screen captions. "
+        "Translate faithfully: do NOT add, remove or explain anything, and keep every name and number. "
+        "Keep sentence breaks, using normal punctuation.\n"
+        'Return ONLY JSON: {"results": [{"i": 0, "english": "..."}]}\n\n' + numbered
+    )
+    result = _call(prompt, 0.0)
+    out = [""] * len(texts)
+    for r in result.get("results", []):
+        i = r.get("i")
+        if isinstance(i, int) and 0 <= i < len(texts):
+            out[i] = (r.get("english") or "").strip()
+    return out
