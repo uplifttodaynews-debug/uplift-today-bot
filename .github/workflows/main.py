@@ -1,6 +1,6 @@
 """
 main.py - runs the whole daily job from start to finish.
-Collect news -> write Hindi script -> voice -> video -> upload.
+Collect news -> write Hindi script -> fact-check -> voice -> video -> upload.
 """
 import datetime
 import os
@@ -15,6 +15,17 @@ import video
 import upload
 
 
+def limit_per_source(stories):
+    """Keep at most MAX_PER_SOURCE stories from any one website."""
+    counts, kept = {}, []
+    for s in stories:
+        name = s["source"]["source"] if s.get("source") else "?"
+        counts[name] = counts.get(name, 0) + 1
+        if counts[name] <= config.MAX_PER_SOURCE:
+            kept.append(s)
+    return kept
+
+
 def main():
     work = tempfile.mkdtemp(prefix="uplift_")  # temp folder, deleted with the runner
     today = datetime.date.today().strftime("%d %B %Y")
@@ -26,10 +37,14 @@ def main():
         return 0
 
     data = script_writer.write(items)
-    stories = data["stories"]
+    stories = limit_per_source(data["stories"])
+    print(f"[main] AI wrote {len(stories)} stories; fact-checking them...")
+    stories = script_writer.verify(stories)[: config.NUM_STORIES]
     if len(stories) < config.MIN_STORIES:
-        print(f"[main] Only {len(stories)} good stories - skipping today.")
+        print(f"[main] Only {len(stories)} stories passed the checks - skipping today.")
         return 0
+    sources_used = sorted({s["source"]["source"] for s in stories if s.get("source")})
+    print(f"[main] {len(stories)} stories passed. Sources: {', '.join(sources_used)}")
 
     # ---- voice for every piece ----
     segments = []
@@ -40,7 +55,7 @@ def main():
         segments.append({"headline": headline, "audio": mp3, "title_slide": title_slide})
 
     add("आज की अच्छी खबरें", data["intro"], "intro", True)
-    for i, s in enumerate(stories[: config.NUM_STORIES]):
+    for i, s in enumerate(stories):
         add(s.get("headline", ""), s["narration"], f"story{i}")
     add("आज का विचार", data["thought"], "thought", True)
     add("धन्यवाद! सब्सक्राइब करें", data["outro"], "outro", True)
