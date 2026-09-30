@@ -96,7 +96,43 @@ def outfits():
         print("saved", path, flush=True)
 
 
-if __name__ == "__main__" and len(sys.argv) > 1 and sys.argv[1] == "outfits":
+def lipsync_test():
+    """Hindi line -> Google voice -> talking Kavya (VEED Fabric, 480p). Saves anchor/test/."""
+    import base64
+    import time
+    import tts
+    os.makedirs(os.path.join(OUT, "test"), exist_ok=True)
+    audio = os.path.join(OUT, "test", "line.mp3")
+    tts.speak("नमस्ते! आपका स्वागत है अपलिफ्ट टुडे में। आज की सबसे अच्छी और उम्मीद भरी खबरें, सीधे आपके लिए।", audio)
+    img = os.path.join(OUT, "outfits", "0_navy_blazer.jpg")
+    body = {
+        "image_url": "data:image/jpeg;base64," + base64.b64encode(open(img, "rb").read()).decode(),
+        "audio_url": "data:audio/mpeg;base64," + base64.b64encode(open(audio, "rb").read()).decode(),
+        "resolution": "480p",
+    }
+    h = {"Authorization": f"Key {KEY}", "Content-Type": "application/json"}
+    r = requests.post("https://queue.fal.run/veed/fabric-1.0", headers=h, json=body, timeout=300)
+    print("submit", r.status_code, r.text[:300])
+    r.raise_for_status()
+    sub = r.json()
+    for _ in range(120):
+        st = requests.get(sub["status_url"], headers=h, timeout=60).json()
+        print("status", st.get("status"), flush=True)
+        if st.get("status") == "COMPLETED":
+            break
+        time.sleep(5)
+    res = requests.get(sub["response_url"], headers=h, timeout=60)
+    print("result", res.status_code, res.text[:300])
+    res.raise_for_status()
+    url = res.json()["video"]["url"]
+    with open(os.path.join(OUT, "test", "kavya_test.mp4"), "wb") as f:
+        f.write(requests.get(url, timeout=300).content)
+    print("saved test video")
+
+
+if __name__ == "__main__" and len(sys.argv) > 1 and sys.argv[1] == "test":
+    lipsync_test()
+elif __name__ == "__main__" and len(sys.argv) > 1 and sys.argv[1] == "outfits":
     outfits()
 elif __name__ == "__main__" and len(sys.argv) > 1 and sys.argv[1] == "fair3":
     fair3()

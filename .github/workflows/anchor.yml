@@ -24,6 +24,7 @@ jobs:
       - name: Create pictures
         env:
           FAL_KEY: ${{ secrets.FAL_KEY }}
+          GOOGLE_TTS_API_KEY: ${{ secrets.GOOGLE_TTS_API_KEY }}
         run: python .github/workflows/anchor_make.py "$(head -1 anchor-request.txt | tr -d '\r')"
       - name: Save pictures into the repo
         run: |
