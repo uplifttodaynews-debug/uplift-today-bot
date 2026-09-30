@@ -66,7 +66,9 @@ LATIN_FONT_CANDIDATES = [        # fonts that have English letters
 # ---- Background music (original tracks in the music/ folder) ----
 BACKGROUND_MUSIC = True
 MUSIC_FOLDER = "music"
-MUSIC_VOLUME = 0.22              # how loud the music is before it ducks under the voice
+MUSIC_VOLUME = 0.40              # how loud the music is before it ducks under the voice
+MUSIC_INTRO_BOOST = 1.6          # music is this many times louder during the intro
+MUSIC_INTRO_SECONDS = 14         # how long the louder intro lasts (then it eases down)
 
 # ---- Stock photos (Pexels). Needs the PEXELS_API_KEY secret; without it the sunrise gradient is used ----
 STOCK_PHOTOS = True

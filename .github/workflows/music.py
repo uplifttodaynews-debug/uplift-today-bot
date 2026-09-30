@@ -26,11 +26,13 @@ def mix(video_in, video_out, duration):
         return False
     fade_out_start = max(duration - 4, 0)
     vol = config.MUSIC_VOLUME
+    intro = config.MUSIC_INTRO_SECONDS
+    boost = config.MUSIC_INTRO_BOOST
     filt = (
         "[0:a]asplit=2[voice][sc];"
-        f"[1:a]volume={vol},afade=t=in:st=0:d=2,afade=t=out:st={fade_out_start:.2f}:d=4[m];"
-        "[m][sc]sidechaincompress=threshold=0.02:ratio=6:attack=30:release=500[duck];"
-        "[voice][duck]amix=inputs=2:duration=first:dropout_transition=0:normalize=0[a]"
+        f"[1:a]volume={vol},volume='if(lt(t,{intro}),{boost},1)':eval=frame,afade=t=in:st=0:d=2,afade=t=out:st={fade_out_start:.2f}:d=4[m];"
+        "[m][sc]sidechaincompress=threshold=0.03:ratio=3:attack=30:release=500[duck];"
+        "[voice][duck]amix=inputs=2:duration=first:dropout_transition=0:normalize=0,alimiter=limit=0.95[a]"
     )
     subprocess.check_call([
         "ffmpeg", "-y", "-loglevel", "error",
