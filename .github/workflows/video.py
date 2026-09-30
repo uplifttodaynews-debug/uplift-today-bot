@@ -110,14 +110,28 @@ def build(segments, out_mp4, workdir):
 
 
 def make_thumbnail(title, out_png):
+    """Bold thumbnail: big sun, huge outlined title, readable on a phone."""
     img = _gradient()
     d = ImageDraw.Draw(img)
-    _sun(d, W // 2, 190, 90)
-    font = _font(84)
-    lines = _wrap(d, title, font, W - 120)[:3]
-    y = 360
+    _sun(d, W // 2, 160, 85)
+    # dark band behind the title so it stays readable
+    band = Image.new("RGBA", (W, 400), (60, 10, 40, 110))
+    img.paste(band, (0, 320), band)
+    d = ImageDraw.Draw(img)
+    font = _font(104)
+    lines = _wrap(d, title, font, W - 100)[:3]
+    if len(lines) > 2:
+        font = _font(84)
+        lines = _wrap(d, title, font, W - 100)[:3]
+    line_h = int(font.size * 1.3)
+    y = 340 + (360 - line_h * len(lines)) // 2
     for ln in lines:
         w = d.textlength(ln, font=font)
-        d.text(((W - w) / 2, y), ln, font=font, fill=(255, 255, 255))
-        y += 120
+        d.text(((W - w) / 2, y), ln, font=font, fill=(255, 255, 255),
+               stroke_width=7, stroke_fill=(70, 10, 50))
+        y += line_h
+    tag = _font(40)
+    label = "UPLIFT TODAY  |  " + config.CHANNEL_HANDLE
+    w = d.textlength(label, font=tag)
+    d.text(((W - w) / 2, 660), label, font=tag, fill=(255, 244, 200))
     img.save(out_png)
