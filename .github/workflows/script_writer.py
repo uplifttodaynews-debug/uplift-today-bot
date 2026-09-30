@@ -41,7 +41,7 @@ ONLY positive, uplifting news, read aloud by a warm, professional female news an
 Below are candidate story leads (number, source, headline, summary).
 
 RULES:
-1. Choose the {config.NUM_STORIES} best stories. Prefer science, health, environment recovery,
+1. Choose the {config.NUM_STORIES + config.EXTRA_CANDIDATES} best stories. Prefer science, health, environment recovery,
    kindness, education, sports achievements, community heroes. REJECT anything about war, crime,
    politics, disasters, tragedy, illness without a clear hopeful outcome, or anything with a
    negative or frightening feel.
@@ -50,10 +50,15 @@ RULES:
    dates, causes or quotes. If a detail is not in the lead, leave it out. Do not add background
    from your own memory. If a lead has too little information for a full story, skip it.
 4. Write in natural SPOKEN {config.LANGUAGE_NAME} (Devanagari script), in your OWN words. Never copy
-   sentences from the lead. Use SHORT sentences (under 15 words each), simple everyday words,
-   and a warm conversational tone, like talking to a friend. Avoid long lists of numbers and
-   heavy formal words. Each story: 60-80 words, in 4-6 short sentences.
-5. Return fewer than {config.NUM_STORIES} stories if there are not enough good ones.
+   sentences from the lead. Use SHORT sentences (under 15 words each) and a warm conversational
+   tone, like talking to a friend.
+   LANGUAGE LEVEL: use simple, everyday Hindi that an ordinary person speaks at home. Do NOT use
+   heavy, formal or Sanskritized words (no "shuddh" bookish Hindi). Where an English word is what
+   people really say (doctor, hospital, school, computer, scientist, research, team, electric,
+   solar, energy, rupees, million), write that English word in Devanagari, like "doctor",
+   "scientist", "hospital" - this is normal spoken Hindi/Hinglish. Avoid long lists of numbers.
+   Each story: 60-80 words, in 4-6 short sentences.
+5. Return fewer than {config.NUM_STORIES + config.EXTRA_CANDIDATES} stories if there are not enough good ones.
 6. "thought" = one short, original, uplifting line in {config.LANGUAGE_NAME}. Do NOT attribute it to
    any real person.
 7. "title" = a YouTube title in {config.LANGUAGE_NAME}, under 70 characters, hopeful, truthful.
@@ -82,32 +87,70 @@ def write(items):
 
 
 def verify(stories):
-    """Second, independent check. Keeps only stories fully supported by their lead."""
+    """Second, independent check. Returns (passed, failed). failed items carry 'problem'."""
     checks = []
-    for n, s in enumerate(stories):
-        src = s.get("source")
+    for n, s_ in enumerate(stories):
+        src = s_.get("source")
         if not src:
             continue
         checks.append(
             f"[{n}] SOURCE LEAD: {src['title']} - {src['summary']}\n"
-            f"    NARRATION ({config.LANGUAGE_NAME}): {s['narration']}"
+            f"    NARRATION ({config.LANGUAGE_NAME}): {s_['narration']}"
         )
     if not checks:
-        return []
+        return [], []
     prompt = (
-        "You are a strict fact-checker. For each item, compare the NARRATION with the SOURCE LEAD. "
-        "The narration is supported ONLY IF every name, number, place, date and claim in it appears "
-        "in the lead (paraphrasing is fine). It is NOT supported if it adds any new fact, guesses a "
-        "cause, exaggerates, or changes the meaning. It is also NOT acceptable if the story is "
-        "sad, political or frightening rather than uplifting.\n"
+        "You are a fact-checker for a positive-news bulletin. For each item, compare the NARRATION "
+        "with the SOURCE LEAD.\n"
+        "The narration is SUPPORTED if every claim in it is stated in the lead (paraphrasing is fine). "
+        "You MAY accept plain, undisputed geography that only names the country or continent of a place "
+        "the lead names (for example Athens -> Greece) - that is not a problem.\n"
+        "It is NOT supported if it adds a claim, a number, a name, a date, a cause, a result, a benefit "
+        "or an opinion that is not in the lead, exaggerates, or changes the meaning. It is also NOT "
+        "acceptable if the story is sad, political or frightening rather than uplifting.\n"
         'Return ONLY JSON: {"results": [{"i": 0, "supported": true, "problem": ""}]}\n\n'
         + "\n\n".join(checks)
     )
     result = _call(prompt, 0.0)
-    ok = set()
-    for r in result.get("results", []):
-        if r.get("supported") is True:
-            ok.add(r.get("i"))
+    verdict = {r.get("i"): r for r in result.get("results", [])}
+    passed, failed = [], []
+    for n, s_ in enumerate(stories):
+        r = verdict.get(n)
+        if r and r.get("supported") is True:
+            passed.append(s_)
         else:
-            print(f"[verify] dropped story {r.get('i')}: {r.get('problem', '')}")
-    return [s for n, s in enumerate(stories) if n in ok]
+            problem = (r or {}).get("problem", "not checked")
+            print(f"[verify] story {n} flagged: {problem}")
+            s_["problem"] = problem
+            failed.append(s_)
+    return passed, failed
+
+
+def repair(failed):
+    """Ask the writer to rewrite flagged stories using ONLY the facts in each lead."""
+    parts = []
+    for n, s_ in enumerate(failed):
+        src = s_["source"]
+        parts.append(
+            f"[{n}] SOURCE LEAD: {src['title']} - {src['summary']}\n"
+            f"    OLD NARRATION: {s_['narration']}\n"
+            f"    PROBLEM FOUND: {s_.get('problem', '')}"
+        )
+    prompt = (
+        f"Rewrite each {config.LANGUAGE_NAME} news narration so it uses ONLY facts stated in its SOURCE "
+        "LEAD. Remove the problem described. Do not add benefits, results, opinions, places, numbers "
+        "or background that the lead does not state. Keep it warm, positive, in simple everyday spoken "
+        f"{config.LANGUAGE_NAME} (Devanagari) with short sentences, 45-70 words. If the lead has too little "
+        "information, write a shorter narration rather than adding anything.\n"
+        'Return ONLY JSON: {"results": [{"i": 0, "narration": "..."}]}\n\n' + "\n\n".join(parts)
+    )
+    result = _call(prompt, 0.2)
+    fixed = []
+    for r in result.get("results", []):
+        i = r.get("i")
+        if isinstance(i, int) and 0 <= i < len(failed) and r.get("narration"):
+            item = dict(failed[i])
+            item["narration"] = r["narration"]
+            item.pop("problem", None)
+            fixed.append(item)
+    return fixed
