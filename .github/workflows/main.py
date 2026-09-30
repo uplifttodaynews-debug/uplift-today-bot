@@ -58,16 +58,28 @@ def main():
     # ---- voice for every piece ----
     segments = []
 
-    def add(headline, text, name, title_slide=False):
+    # ---- English captions (translated from the FINAL Hindi text) ----
+    texts = [data["intro"]] + [s["narration"] for s in stories] + [data["thought"], data["outro"]]
+    heads = [s.get("headline", "") for s in stories]
+    english, english_heads = [""] * len(texts), [""] * len(heads)
+    if config.ENGLISH_CAPTIONS:
+        try:
+            tr = script_writer.translate(texts + heads)
+            english, english_heads = tr[: len(texts)], tr[len(texts):]
+            print("[main] English captions ready")
+        except Exception as e:
+            print(f"[main] English captions skipped: {e}")
+
+    def add(headline, text, name, title_slide=False, eng=""):
         mp3 = os.path.join(work, f"{name}.mp3")
         tts.speak(text, mp3)
-        segments.append({"headline": headline, "audio": mp3, "title_slide": title_slide})
+        segments.append({"headline": headline, "audio": mp3, "title_slide": title_slide, "english": eng})
 
-    add("आज की अच्छी खबरें", data["intro"], "intro", True)
+    add("आज की अच्छी खबरें", data["intro"], "intro", True, english[0])
     for i, s in enumerate(stories):
-        add(s.get("headline", ""), s["narration"], f"story{i}")
-    add("आज का विचार", data["thought"], "thought", True)
-    add("धन्यवाद! सब्सक्राइब करें", data["outro"], "outro", True)
+        add(s.get("headline", ""), s["narration"], f"story{i}", False, english[1 + i])
+    add("आज का विचार", data["thought"], "thought", True, english[-2])
+    add("धन्यवाद! सब्सक्राइब करें", data["outro"], "outro", True, english[-1])
 
     mp4 = os.path.join(work, "bulletin.mp4")
     secs = video.build(segments, mp4, work)
@@ -87,6 +99,8 @@ def main():
         f"{data['title']}\n\n"
         f"Uplift Today - हर सुबह सिर्फ़ अच्छी और प्रेरणादायक खबरें। ({today})\n\n"
         + "\n".join(f"• {s.get('headline','')}" for s in stories)
+        + ("\n\nEnglish summary:\n" + "\n".join(f"• {h}" for h in english_heads if h)
+           if any(english_heads) else "")
         + "\n\nSources / स्रोत (facts rewritten in our own words):\n"
         + "\n".join(src_lines)
         + "\n\nThis video was made with AI: the script is AI-written from public news "
