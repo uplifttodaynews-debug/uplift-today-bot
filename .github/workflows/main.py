@@ -136,7 +136,7 @@ def main():
         + "\n\nSources / स्रोत (facts rewritten in our own words):\n"
         + "\n".join(src_lines)
         + ("\n\nStock photos (for illustration only - they do not show the actual events):\n"
-           + "\n".join(f"- Photo by {c['photographer']} on Pexels: {c['url']}" for c in credits)
+           + "\n".join(f"- Photo by {c['photographer']} on {c.get('source', 'Pexels')}: {c['url']}" for c in credits)
            if credits else "")
         + "\n\nMusic: original tracks created for Uplift Today. Our presenter Kavya is an AI-generated character."
         + "\n\nThis video was made with AI: the script is AI-written from public news "
