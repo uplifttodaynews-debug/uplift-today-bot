@@ -32,6 +32,8 @@ RSS_FEEDS = [
     "https://www.positive.news/feed/",
     "https://reasonstobecheerful.world/feed/",
     "https://www.optimistdaily.com/feed/",
+    "https://www.thebetterindia.com/feed/",
+    "https://www.goodgoodgood.co/articles/rss.xml",
 ]
 MAX_ITEMS_PER_FEED = 8
 
