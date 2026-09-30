@@ -1,11 +1,16 @@
 # daily.yml - tells GitHub when and how to run the bot.
-# - Runs every day automatically (see "cron" below), and also when you press "Run workflow".
+# - Runs every day automatically (see "cron" below), when you press "Run workflow",
+#   and when run-now.txt is changed (a quick way to start a test run).
 # - All the bot's files live in this same folder (.github/workflows).
 # - If a run FAILS or SKIPS the day, GitHub emails you.
 name: Daily bulletin
 
 on:
   workflow_dispatch:
+  push:
+    # Saving a change to the file "run-now.txt" (and ONLY that file) starts a test run.
+    paths:
+      - run-now.txt
   schedule:
     # Times are in UTC. "30 0 * * *" = 00:30 UTC = 6:00 AM in India, 5:30 PM (day before) in California.
     # GitHub can start runs 10-30 minutes late, so the video is ready around 6:30-7:00 AM India time.
