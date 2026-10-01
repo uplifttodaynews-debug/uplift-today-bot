@@ -50,9 +50,12 @@ jobs:
           PREVIEW_ONLY: "1"
         run: |
           if [ "$(head -1 ../../preview-now.txt | tr -d '\r')" = "no-kavya" ]; then export ANCHOR_OFF=1; fi
-          python main.py
+          mkdir -p ../../previews
+          python -u main.py 2>&1 | python redact.py
+          exit ${PIPESTATUS[0]}
 
       - name: Save the preview into the repo
+        if: always()
         run: |
           cd ../..
           git config user.name "uplift-bot"
