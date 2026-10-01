@@ -73,6 +73,11 @@ def main():
     if len(stories) < config.MIN_STORIES:
         print(f"[main] Only {len(stories)} stories passed the checks - skipping today.")
         return SKIPPED
+    for k_ in ("title", "intro", "thought", "outro"):
+        data[k_] = script_writer.polish_hindi(data.get(k_))
+    for s_ in stories:
+        s_["headline"] = script_writer.polish_hindi(s_.get("headline"))
+        s_["narration"] = script_writer.polish_hindi(s_.get("narration"))
     sources_used = sorted({s["source"]["source"] for s in stories if s.get("source")})
     print(f"[main] {len(stories)} stories passed. Sources: {', '.join(sources_used)}")
 
@@ -155,7 +160,7 @@ def main():
         segments.append(seg)
 
     fq = config.FIXED_SLIDE_QUERIES
-    add("आज की अच्छी खबरें", data["intro"], "intro", True, english[0], "Today's Uplifting News", [fq["intro"]], ("UPLIFT", "TODAY"))
+    add("आज की पॉज़िटिव ख़बरें", data["intro"], "intro", True, english[0], "Today's Uplifting News", [fq["intro"]], ("UPLIFT", "TODAY"))
     for i, s in enumerate(stories):
         add(s.get("headline", ""), s["narration"], f"story{i}", False, english[1 + i], english_heads[i],
             s.get("visual_queries") or [], ("STORY", f"{i + 1:02d}"), True,
@@ -186,7 +191,7 @@ def main():
             src_lines.append(f"- {src['source']}: {src['link']}")
     description = (
         f"{data['title']}\n\n"
-        f"Uplift Today - हर सुबह सिर्फ़ अच्छी और प्रेरणादायक खबरें। ({today})\n\n"
+        f"Uplift Today - हर सुबह सिर्फ़ अच्छी और प्रेरणादायक ख़बरें। ({today})\n\n"
         + "\n".join(f"• {s.get('headline','')}" for s in stories)
         + ("\n\nEnglish summary:\n" + "\n".join(f"• {h}" for h in english_heads if h)
            if any(english_heads) else "")

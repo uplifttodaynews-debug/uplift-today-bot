@@ -163,25 +163,29 @@ def _cands_videos(query, n=8):
     return out
 
 
-def _best_photos_once(headline, narration, queries, out_prefix, want, loose, kind="photo"):
-    """Look at many candidate photos and let Gemini choose the ones that really suit the story.
-    Returns a list of {"path","photographer","url","source"} (possibly empty -> sunrise picture is used)."""
-    import base64
-    import script_writer
+def _gather(queries, kind):
     cands, seen = [], set()
     for q in queries:
         for c in (_cands_videos(q) if kind == "video" else _cands_pexels(q) + _cands_pixabay(q)):
             if c["full"] not in seen:
                 seen.add(c["full"])
                 cands.append(c)
-    cands = cands[:16 if kind == "video" else 20]
+    return cands
+
+
+def _best_photos_once(headline, narration, cands, out_prefix, want, loose, kind="photo"):
+    """Score the candidates with Gemini and keep only the ones that clearly show the story."""
+    import base64
+    import script_writer
+    cands = cands[:18 if kind == "video" else 24]
     if not cands:
         return []
     parts = [{"text": (
         "You are a strict picture editor for a positive-news TV bulletin. STORY HEADLINE: " + (headline or "") +
         "\nSTORY: " + (narration or "") + "\n\nBelow are numbered candidate " + ("video clips (one preview frame of each)" if kind == "video" else "photos") +
         ". Score EVERY candidate from 0 to 10 for how well it shows THIS story's actual subject "
-        "(the specific place, activity, people or object the story is about). 9-10 = clearly the subject of the story; "
+        "(the specific place, activity, people or object the story is about). If the story is about a named place "
+        "(a city or country), a photo that is recognisably from there scores highest and a generic scene scores at most 7. 9-10 = clearly the subject of the story; "
         "7-8 = same subject type/setting, a viewer would accept it; 4-6 = only generally related scenery; 0-3 = unrelated, "
         "misleading, dirty/ugly, shows close-up faces, brands, logos, text, flags, or looks unprofessional. "
         + ("Generic scenery of the right kind of place or nature is acceptable here (score it up to 7). " if loose else
@@ -230,16 +234,17 @@ def _best_photos_once(headline, narration, queries, out_prefix, want, loose, kin
 
 
 def best_photos(headline, narration, queries, out_prefix, want=2, kind="photo"):
-    """First the specific searches; if nothing fits, broader searches and a more generous check."""
-    out = _best_photos_once(headline, narration, queries, out_prefix, want, False, kind)
+    """First the specific searches; if nothing fits, add broader searches and score everything again, more generously."""
+    first = _gather(queries, kind)
+    out = _best_photos_once(headline, narration, first, out_prefix, want, False, kind)
     if out:
         return out
     try:
         import script_writer
         r = script_writer._call(
             "Story headline: " + (headline or "") + "\nStory: " + (narration or "") +
-            "\nGive 4 SHORT, broad stock-photo search phrases (2-3 words, English) for generic scenery that "
-            "would suit this story, e.g. 'coastal park', 'city skyline', 'green park trees', 'sea sunset'. "
+            "\nGive 4 SHORT stock-photo search phrases (1-3 words, English): the main subject alone, the place "
+            "if one is named (for example 'Athens Greece'), and generic scenery of the same kind of setting. "
             'No people, no names. Return ONLY JSON: {"queries": ["...", "..."]}', 0.3)
         broad = [q for q in r.get("queries", []) if isinstance(q, str)][:4]
     except Exception as e:
@@ -248,4 +253,6 @@ def best_photos(headline, narration, queries, out_prefix, want=2, kind="photo"):
     if not broad:
         return []
     print(f"[stock] second try with broader searches: {broad}")
-    return _best_photos_once(headline, narration, broad, out_prefix, want, True, kind)
+    seen = {c["full"] for c in first}
+    more = [c for c in _gather(broad, kind) if c["full"] not in seen]
+    return _best_photos_once(headline, narration, first + more, out_prefix, want, True, kind)

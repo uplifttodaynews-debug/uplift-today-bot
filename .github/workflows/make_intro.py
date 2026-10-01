@@ -442,7 +442,7 @@ def frame(t, fonts):
         d.rounded_rectangle([cx - bl, yl, cx + bl, yl + 7], radius=4, fill=(255, 205, 40, int(255 * a)))
         p2 = ease((t - HIT - 0.25) / 0.4)
         if p2 > 0:
-            h = "आज की अच्छी खबरें"
+            h = "आज की पॉज़िटिव ख़बरें"
             hw = d.textlength(h, font=hindi_font)
             d.text(((W - hw) / 2 + 2, yl + 22 + (1 - p2) * 14 + 2), h, font=hindi_font, fill=(10, 50, 130, int(170 * p2)))
             d.text(((W - hw) / 2, yl + 22 + (1 - p2) * 14), h, font=hindi_font, fill=(255, 255, 255, int(255 * p2)))

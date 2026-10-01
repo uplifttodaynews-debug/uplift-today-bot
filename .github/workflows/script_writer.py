@@ -64,19 +64,27 @@ RULES:
    any real person.
 7. "title" = a YouTube title in {config.LANGUAGE_NAME}, under 70 characters, hopeful, truthful.
 8. "headline" for each story = a very short on-screen headline (max 6 words).
-9. "visual_queries" for each story = exactly 3 short English search phrases (2-4 words each) for FREE
-   STOCK PHOTOS that would literally show the SUBJECT and SETTING of THIS story, most specific first
-   (for example "wildlife overpass highway", "seabirds wetland coast", "river plastic waste", "airport
-   runway aerial", "solar panels field", "children classroom India"). Use concrete things that appear in a
-   photo, never abstract words or verbs like "cleaning", "initiative" or "success". NEVER ask for famous
-   people, brands, logos, flags, or anything that would pretend to show the actual event.
+9. "visual_queries" for each story = exactly 4 short English search phrases (1-4 words each) for FREE
+   STOCK PHOTOS AND VIDEOS that would literally show the SUBJECT and SETTING of THIS story:
+   (a) the main living or physical subject on its own, one or two words ("monkey", "deer", "wetland birds",
+   "solar panels", "school children");
+   (b) the subject in its setting ("monkey sanctuary forest", "wildlife overpass highway");
+   (c) if the story names a city, region or country, the place itself ("Athens Greece", "Athens coast",
+   "Jharkhand India river"), otherwise another specific view of the subject;
+   (d) one more concrete view (aerial, close-up, wide shot).
+   Use concrete things that appear in a photo, never abstract words or verbs like "cleaning", "initiative"
+   or "success". NEVER ask for famous people, brands, logos, flags, or anything that would pretend to show
+   the actual event.
+10. SPELLING AND WORDS: always write the Hindi word for news with the dot under the first letter:
+   ख़बर / ख़बरें (never खबर). Never use the word "सकारात्मक"; say the English word "positive" in
+   Devanagari ("पॉज़िटिव") instead, e.g. "पॉज़िटिव ख़बरें".
 
 Return ONLY JSON with this exact shape:
-{{"title": "...", "intro": "...", "stories": [{{"lead_index": 0, "headline": "...", "visual_queries": ["...", "...", "..."], "narration": "..."}}],
+{{"title": "...", "intro": "...", "stories": [{{"lead_index": 0, "headline": "...", "visual_queries": ["...", "...", "...", "..."], "narration": "..."}}],
   "thought": "...", "outro": "..."}}
 
 "intro" = ONE short sentence (at most 14 words, it must be spoken in under 10 seconds) that says the channel name "Uplift Today" and welcomes viewers to
-today's good news. "outro" = a 1-2 sentence warm goodbye asking viewers to subscribe.
+today's positive news (say "पॉज़िटिव ख़बरें"). "outro" = a 1-2 sentence warm goodbye asking viewers to subscribe.
 
 LEADS:
 {leads}
@@ -179,3 +187,10 @@ def translate(texts):
         if isinstance(i, int) and 0 <= i < len(texts):
             out[i] = (r.get("english") or "").strip()
     return out
+
+
+def polish_hindi(text):
+    """Fixed spelling/wording preferences for spoken Hindi (so the voice says them the way we want)."""
+    if not isinstance(text, str):
+        return text
+    return text.replace("खबर", "ख़बर").replace("सकारात्मक", "पॉज़िटिव")
