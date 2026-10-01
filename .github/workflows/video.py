@@ -287,7 +287,7 @@ def make_fixed_layers(headline, headline_en, tag, date_text, top_png, lower_png)
 def make_ticker(items, out_png):
     """One long strip of text for the scrolling ticker (the same text twice, so it can wrap around)."""
     f = _font(28, latin=True)
-    one = "   \u25cf   ".join(["UPLIFT TODAY - GOOD NEWS"] + [i for i in items if i]) + "   \u25cf   "
+    one = "   \u2022   ".join(["UPLIFT TODAY - GOOD NEWS"] + [i for i in items if i]) + "   \u2022   "
     probe = ImageDraw.Draw(Image.new("RGB", (10, 10)))
     L = int(probe.textlength(one, font=f)) + 4
     img = Image.new("RGBA", (L * 2 + W, TICK_H), (0, 0, 0, 0))
