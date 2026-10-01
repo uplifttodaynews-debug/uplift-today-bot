@@ -6,37 +6,43 @@
 [news] Good Good Good: kept 8
 [main] 45 candidate stories
 [main] AI wrote 8 stories; fact-checking them...
-[verify] story 3 flagged: The narration claims that their traditional knowledge and care kept the green forests completely safe ("उनकी पारंपरिक समझ और देखभाल ने हरे-भरे जंगलों को पूरी तरह सुरक्षित रखा है"), which is not mentioned in the lead.
-[verify] story 4 flagged: The lead cuts off mid-sentence ("I know a place...") and never states that Sunil gave his job interview there or that young people are getting electricity and quiet environments at the libraries.
-[verify] story 7 flagged: The narration mentions rare seabirds ("दुर्लभ समुद्री पक्षी") and turning concrete ("कंक्रीट") into wetlands, which are details not supported by the lead.
-[main] 5 stories passed. Sources: Good Good Good, Good News Network, The Better India : Latest Posts, The Optimist Daily: Making Solutions the News
+[verify] story 3 flagged: The narration claims that the libraries helped Sunil with his studies, which is not supported by the lead (which mentions his concern about a power outage during a job interview and cuts off before explaining how the library was used).
+[verify] story 7 flagged: The narration adds unsupported claims that the monkeys now roam freely and that caring for them gave veterans peace of mind and a new direction in life.
+[main] 5 stories passed. Sources: Good News Network, Positive News, The Optimist Daily: Making Solutions the News
 [main] English captions ready
-[stock] 'New shoots sprout on the tree ': best scores [6.0, 4.0, 4.0] (need 8)
-[stock] 'New shoots sprout on the tree ': 16 candidates, 0 matched
-[stock] second try with broader searches: ['sprouting tree stump', 'rolling green hills', 'lone green tree', 'new plant growth']
-[stock] 'New shoots sprout on the tree ': best scores [7.0, 7.0, 6.0] (need 6)
-[stock] 'New shoots sprout on the tree ': 16 candidates, 2 matched
-[main] story0: 2 video clip(s)
-[stock] 'Safe bridge built for animals': best scores [8.0, 5.0, 4.0] (need 8)
-[stock] 'Safe bridge built for animals': 20 candidates, 1 matched
-[stock] 'Two sisters removed plastic wa': best scores [7.0, 7.0, 6.0] (need 8)
-[stock] 'Two sisters removed plastic wa': 16 candidates, 0 matched
-[stock] second try with broader searches: ['clean lake shore', 'scenic river bank', 'lush green park', 'nature picnic area']
-[stock] 'Two sisters removed plastic wa': best scores [7.0, 6.0, 6.0] (need 6)
-[stock] 'Two sisters removed plastic wa': 16 candidates, 2 matched
+[main] greeting is 4.5 s long
+[avatar] talking clip ready (3_maroon_blazer.jpg)
+[stock] 'Famous Sycamore Tree Green Aga': best scores [7.0, 7.0, 6.0] (need 8)
+[stock] 'Famous Sycamore Tree Green Aga': 18 candidates, 0 matched
+[stock] second try with broader searches: ['sprouting tree stump', 'sycamore tree', 'British countryside', 'rolling green hills']
+[stock] 'Famous Sycamore Tree Green Aga': best scores [6.0, 5.0, 5.0] (need 6)
+[stock] 'Famous Sycamore Tree Green Aga': 18 candidates, 1 matched
+[stock] 'Famous Sycamore Tree Green Aga': best scores [9.0, 9.0, 7.0] (need 8)
+[stock] 'Famous Sycamore Tree Green Aga': 24 candidates, 1 matched
+[main] story0: 1 video clip(s)
+[stock] 'Golf Course Becomes a Home for': best scores [7.0, 7.0, 7.0] (need 8)
+[stock] 'Golf Course Becomes a Home for': 24 candidates, 0 matched
+[stock] second try with broader searches: ['coastal birds', 'England coast', 'coastal wetland', 'nature reserve']
+[stock] 'Golf Course Becomes a Home for': best scores [8.0, 8.0, 7.0] (need 6)
+[stock] 'Golf Course Becomes a Home for': 24 candidates, 2 matched
+[stock] 'Indigenous People Saved Forest': best scores [7.0, 7.0, 3.0] (need 8)
+[stock] 'Indigenous People Saved Forest': 18 candidates, 0 matched
+[stock] second try with broader searches: ['Peru rainforest', 'Forest fire', 'Lush forest canopy', 'Tropical rainforest']
+[stock] 'Indigenous People Saved Forest': best scores [7.0, 7.0, 5.0] (need 6)
+[stock] 'Indigenous People Saved Forest': 18 candidates, 2 matched
 [main] story2: 2 video clip(s)
-[stock] 'Monkeys get a safe home': best scores [7.0, 7.0, 7.0] (need 8)
-[stock] 'Monkeys get a safe home': 20 candidates, 0 matched
-[stock] second try with broader searches: ['lush green forest', 'open nature reserve', 'sunlit woodland trees', 'peaceful forest landscape']
-[stock] 'Monkeys get a safe home': best scores [7.0, 6.0, 6.0] (need 6)
-[stock] 'Monkeys get a safe home': 20 candidates, 2 matched
-[stock] 'Massive park created from an o': best scores [7.0, 6.0, 5.0] (need 8)
-[stock] 'Massive park created from an o': 15 candidates, 0 matched
-[stock] second try with broader searches: ['coastal park landscape', 'aerial green park', 'lush botanical garden', 'sunny seaside park']
-[stock] 'Massive park created from an o': best scores [8.0, 8.0, 6.0] (need 6)
-[stock] 'Massive park created from an o': 16 candidates, 2 matched
+[stock] 'Overpass Saves Lives in Colora': best scores [6.0, 6.0, 5.0] (need 8)
+[stock] 'Overpass Saves Lives in Colora': 24 candidates, 0 matched
+[stock] second try with broader searches: ['wildlife overpass', 'Colorado USA', 'mountain highway', 'deer crossing']
+[stock] 'Overpass Saves Lives in Colora': best scores [7.0, 7.0, 7.0] (need 6)
+[stock] 'Overpass Saves Lives in Colora': 24 candidates, 2 matched
+[stock] 'Old Airport to Become a Giant ': best scores [6.0, 4.0, 4.0] (need 8)
+[stock] 'Old Airport to Become a Giant ': 18 candidates, 0 matched
+[stock] second try with broader searches: ['Athens Greece', 'abandoned airport', 'urban park', 'coastal park']
+[stock] 'Old Airport to Become a Giant ': best scores [7.0, 6.0, 5.0] (need 6)
+[stock] 'Old Airport to Become a Giant ': 18 candidates, 2 matched
 [main] story4: 2 video clip(s)
-[main] 12 stock photos used
-[main] video ready, 140 seconds
+[main] 13 stock photos used
+[main] video ready, 133 seconds
 [music] mixed in piano_hope.mp3
 [main] PREVIEW saved in previews/ - nothing was uploaded to YouTube
