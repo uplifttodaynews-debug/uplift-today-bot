@@ -1,0 +1,33 @@
+[news] Good News Network: kept 8
+[news] Positive News: kept 8
+[news] Reasons to be Cheerful: kept 7
+[news] The Optimist Daily: Making Solutions the News: kept 7
+[news] The Better India : Latest Posts: kept 7
+[news] Good Good Good: kept 8
+[main] 45 candidate stories
+[main] AI wrote 8 stories; fact-checking them...
+[verify] story 0 flagged: The lead states that collisions decreased by 91 percent, so claiming that animals and vehicles pass 'without any danger' is an exaggeration.
+[verify] story 1 flagged: The claim that their hard work has become a major inspiration for the entire region is an added opinion not stated in the lead.
+[verify] story 2 flagged: The narration describes the birds as 'rare' (दुर्लभ पक्षियों), which is not mentioned in the lead.
+[verify] story 4 flagged: The lead does not state that veterans found deep mental peace by caring for the animals.
+[verify] story 5 flagged: The lead cuts off before stating whether Sunil actually took his interview at the library.
+[verify] story 6 flagged: The lead says the dogs were adopted, but does not mention that a family adopted them.
+[verify] story 7 flagged: The lead does not mention that the Indigenous community is guarding the forest by patrolling day and night.
+[main] 7 stories flagged - asking the writer to fix them...
+[main] 5 stories passed. Sources: Good Good Good, Good News Network, The Better India : Latest Posts, The Optimist Daily: Making Solutions the News
+[main] English captions ready
+[stock] 'Massive park created from an o': 12 candidates, 1 matched
+[stock] 'Massive park created from an o': 16 candidates, 0 matched
+[stock] second try with broader searches: ['coastal city park', 'aerial city park', 'lush green park', 'mediterranean garden']
+[stock] 'Massive park created from an o': 16 candidates, 1 matched
+[main] story0: 1 video clip(s)
+[stock] 'Lives saved by wildlife overpa': 16 candidates, 2 matched
+[stock] 'Two sisters removed eighty ton': 12 candidates, 2 matched
+[main] story2: 2 video clip(s)
+[stock] 'Golf course becomes a home for': 16 candidates, 2 matched
+[stock] 'New refuge for monkeys and vet': 12 candidates, 2 matched
+[main] story4: 2 video clip(s)
+[main] 13 stock photos used
+[main] video ready, 123 seconds
+[music] mixed in piano_hope.mp3
+[main] PREVIEW saved in previews/ - nothing was uploaded to YouTube
