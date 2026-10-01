@@ -88,7 +88,7 @@ def _pexels(query, out_path, seed=0):
 
 
 # ---------------------------------------------------------------- smart picking
-def _cands_pexels(query, n=6):
+def _cands_pexels(query, n=8):
     key = os.environ.get("PEXELS_API_KEY", "").strip()
     if not key or not query:
         return []
@@ -105,7 +105,7 @@ def _cands_pexels(query, n=6):
         return []
 
 
-def _cands_pixabay(query, n=6):
+def _cands_pixabay(query, n=8):
     key = os.environ.get("PIXABAY_API_KEY", "").strip()
     if not key or not query:
         return []
@@ -174,16 +174,19 @@ def _best_photos_once(headline, narration, queries, out_prefix, want, loose, kin
             if c["full"] not in seen:
                 seen.add(c["full"])
                 cands.append(c)
-    cands = cands[:12 if kind == "video" else 16]
+    cands = cands[:16 if kind == "video" else 20]
     if not cands:
         return []
     parts = [{"text": (
-        "You choose illustration photos for a positive-news video. STORY HEADLINE: " + (headline or "") +
-        "\nSTORY: " + (narration or "") + "\n\nBelow are numbered candidate photos. Pick up to " + str(want) +
-        (" video clips (a preview frame of each is shown)" if kind == "video" else " photos") + " that clearly and plausibly illustrate THIS story's subject and setting (best first). Reject photos "
-        "that are unrelated, odd, misleading, show close-up faces, brands, logos, text or flags, or look "
-        "unprofessional. " + ("Be generous: a photo of the same kind of place, nature or activity (not necessarily the exact one) is fine. " if loose else "") + "If none is a good fit return an empty list.\n"
-        'Return ONLY JSON: {"picks": [3, 7]}')}]
+        "You are a strict picture editor for a positive-news TV bulletin. STORY HEADLINE: " + (headline or "") +
+        "\nSTORY: " + (narration or "") + "\n\nBelow are numbered candidate " + ("video clips (one preview frame of each)" if kind == "video" else "photos") +
+        ". Score EVERY candidate from 0 to 10 for how well it shows THIS story's actual subject "
+        "(the specific place, activity, people or object the story is about). 9-10 = clearly the subject of the story; "
+        "7-8 = same subject type/setting, a viewer would accept it; 4-6 = only generally related scenery; 0-3 = unrelated, "
+        "misleading, dirty/ugly, shows close-up faces, brands, logos, text, flags, or looks unprofessional. "
+        + ("Generic scenery of the right kind of place or nature is acceptable here (score it up to 7). " if loose else
+           "Do not give 7 or more to something that merely looks nice. ") +
+        'Return ONLY JSON: {"scores": [{"i": 0, "score": 8}, {"i": 1, "score": 2}]}')}]
     usable = []
     for c in cands:
         try:
@@ -196,11 +199,15 @@ def _best_photos_once(headline, narration, queries, out_prefix, want, loose, kin
             continue
     if not usable:
         return []
+    need = 7 if loose else 8
     try:
-        picks = script_writer._call(parts, 0.0).get("picks", [])
+        sc = script_writer._call(parts, 0.0).get("scores", [])
+        ranked = sorted([(float(x.get("score", 0)), int(x["i"])) for x in sc if isinstance(x, dict) and "i" in x], reverse=True)
+        picks = [i for (v, i) in ranked if v >= need][:want]
+        print(f"[stock] '{(headline or '')[:30]}': best scores {[v for (v, i) in ranked[:3]]} (need {need})")
     except Exception as e:
-        print(f"[stock] picture check failed, using the first results: {e}")
-        picks = list(range(min(want, len(usable))))
+        print(f"[stock] picture check failed, using nothing from this search: {e}")
+        picks = []
     out = []
     for n_, idx in enumerate([i for i in picks if isinstance(i, int) and 0 <= i < len(usable)][:want]):
         c = usable[idx]
