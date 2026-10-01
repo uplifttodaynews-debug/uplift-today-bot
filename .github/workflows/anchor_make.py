@@ -147,7 +147,22 @@ def lipsync_test(model="veed/fabric-1.0", extra=None, outname="kavya_test.mp4"):
     print("saved test video")
 
 
-if __name__ == "__main__" and len(sys.argv) > 1 and sys.argv[1] == "test":
+def studio():
+    """Empty TV news studio pictures (no people) to use as the backdrop of the bulletin."""
+    os.makedirs(os.path.join(OUT, "studio"), exist_ok=True)
+    prompt = ("Wide cinematic photograph of an empty modern television news studio, no people, no text, "
+              "a large curved LED video wall glowing in deep blue with warm golden light, glossy white anchor desk "
+              "in the foreground, soft studio lighting, bokeh highlights, shallow depth of field, "
+              "professional broadcast set, realistic, high quality")
+    for i, seed in enumerate([7, 70, 700], start=1):
+        data = generate(prompt, seed)
+        open(os.path.join(OUT, "studio", f"studio_{i}.jpg"), "wb").write(data)
+        print("saved studio", i, flush=True)
+
+
+if __name__ == "__main__" and len(sys.argv) > 1 and sys.argv[1] == "studio":
+    studio()
+elif __name__ == "__main__" and len(sys.argv) > 1 and sys.argv[1] == "test":
     import traceback
     try:
         for model, extra, name in [
