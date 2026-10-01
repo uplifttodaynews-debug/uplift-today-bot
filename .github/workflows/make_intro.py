@@ -253,89 +253,182 @@ def ease(x):
     return 1 - (1 - x) ** 3
 
 
-def _dark_gradient(warm):
-    """Night-blue top to a warm glow at the bottom; `warm` (0..1) grows as the sun nears."""
-    img = Image.new("RGB", (W, H))
-    px = img.load()
-    top = (150, 18, 48)                 # vivid crimson red
-    bot = (255, int(95 + 60 * warm), int(25 + 10 * warm))   # bright orange-gold glow
-    for y in range(H):
-        t = (y / (H - 1)) ** 1.6
-        c = tuple(int(top[i] + (bot[i] - top[i]) * t) for i in range(3))
-        for x in range(0, W, 1):
-            px[x, y] = c
-    return img
+import math as _m
+
+_CACHE2 = {}
+SS = 2
 
 
-_GRAD = {}
+def _sky():
+    a = np.zeros((H, W, 3), dtype=np.float32)
+    ys = np.linspace(0, 1, H)[:, None]
+    top = np.array([22, 104, 214], dtype=np.float32)
+    mid = np.array([70, 170, 248], dtype=np.float32)
+    low = np.array([255, 215, 140], dtype=np.float32)
+    k = np.clip(ys / 0.55, 0, 1)
+    c1 = top + (mid - top) * k
+    k2 = np.clip((ys - 0.5) / 0.35, 0, 1) ** 1.3
+    c = c1 + (low - c1) * k2
+    a[:] = c[:, None, :] if c.ndim == 2 else c
+    return Image.fromarray(np.clip(a, 0, 255).astype("uint8"), "RGB")
 
 
-def gradient_for(warm):
-    key = round(warm * 20)
-    if key not in _GRAD:
-        _GRAD[key] = _dark_gradient(key / 20)
-    return _GRAD[key]
+def _glow_layer():
+    yy, xx = np.mgrid[0:H, 0:W]
+    d = np.sqrt(((xx - W / 2) / 1.5) ** 2 + (yy - 500) ** 2)
+    al = np.clip(1 - d / 330, 0, 1) ** 1.6
+    img = np.zeros((H, W, 4), dtype=np.uint8)
+    img[..., 0] = 255
+    img[..., 1] = 205
+    img[..., 2] = 90
+    img[..., 3] = (al * 230).astype("uint8")
+    return Image.fromarray(img, "RGBA")
+
+
+def _clouds():
+    from PIL import ImageFilter
+    rng = np.random.default_rng(5)
+    lay = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+    d = ImageDraw.Draw(lay)
+    for side in (0, 1):
+        for _ in range(26):
+            x = rng.uniform(-40, 260) if side == 0 else rng.uniform(W - 260, W + 40)
+            y = rng.uniform(380, 480)
+            rx, ry = rng.uniform(40, 90), rng.uniform(22, 50)
+            warm = (y - 380) / 100
+            col = (255, int(250 - 40 * warm), int(240 - 90 * warm), 235)
+            d.ellipse([x - rx, y - ry, x + rx, y + ry], fill=col)
+    return lay.filter(ImageFilter.GaussianBlur(7))
+
+
+def _grad(h, c0, c1):
+    a = np.linspace(0, 1, h)[:, None, None]
+    arr = np.array(c0)[None, None, :] * (1 - a) + np.array(c1)[None, None, :] * a
+    arr = np.repeat(arr, W * SS, axis=1)
+    return Image.fromarray(arr.astype("uint8"), "RGB")
+
+
+def _waves(t):
+    """Three layered hills drawn at 2x and shrunk (smooth edges); they gently drift."""
+    w2, h2 = W * SS, H * SS
+    out = Image.new("RGBA", (w2, h2), (0, 0, 0, 0))
+
+    def band(top_fn, c0, c1, line=None):
+        pts = [(x, top_fn(x / SS) * SS) for x in range(0, w2 + 1, 8)]
+        mask = Image.new("L", (w2, h2), 0)
+        ImageDraw.Draw(mask).polygon(pts + [(w2, h2), (0, h2)], fill=255)
+        g = _grad(h2, c0, c1)
+        out.paste(g, (0, 0), mask)
+        if line:
+            ImageDraw.Draw(out).line(pts, fill=line, width=SS * 3)
+
+    ph = t * 1.1
+    # back: golden-orange hills, high at both sides, low in the middle
+    band(lambda x: 575 - 150 * (abs(2 * x / W - 1) ** 1.6) + 7 * _m.sin(x / 95 + ph),
+         (255, 196, 40), (255, 120, 15), line=(255, 240, 150, 255))
+    # middle: orange to red stripe
+    band(lambda x: 610 - 40 * (2 * x / W - 1) ** 2 + 9 * _m.sin(x / 120 + ph * 1.3 + 1.5),
+         (255, 150, 25), (250, 70, 30), line=(255, 220, 120, 255))
+    # front: deep blue water
+    band(lambda x: 640 + 12 * _m.sin(x / 150 + ph * 0.9 + 3) + 10 * (2 * x / W - 1),
+         (20, 130, 235), (8, 50, 160), line=(70, 210, 255, 255))
+    return out.resize((W, H), Image.LANCZOS)
+
+
+def _gold_text(layer, xy, text, font):
+    """Gold gradient letters with a dark-gold 3D edge."""
+    x, y = xy
+    ld = ImageDraw.Draw(layer)
+    for i in range(10, 0, -1):
+        ld.text((x + i * 0.7, y + i), text, font=font, fill=(176, 96, 8, 255))
+    mask = Image.new("L", layer.size, 0)
+    ImageDraw.Draw(mask).text((x, y), text, font=font, fill=255)
+    g = _grad(H, (255, 240, 110), (255, 150, 15)).resize(layer.size)
+    layer.paste(g, (0, 0), mask)
 
 
 def frame(t, fonts):
     title_font, tag_font, hindi_font, small_font = fonts
-    warm = 0.8 + 0.2 * ease(t / HIT)
-    img = gradient_for(warm).convert("RGBA")
-    d = ImageDraw.Draw(img, "RGBA")
-    horizon = int(H * 0.74)
+    if "sky" not in _CACHE2:
+        _CACHE2["sky"] = _sky().convert("RGBA")
+        _CACHE2["glow"] = _glow_layer()
+        _CACHE2["clouds"] = _clouds()
     cx = W // 2
-    # pulse rings on every beat (they get stronger as the music builds)
+    img = _CACHE2["sky"].copy()
+    glow = _CACHE2["glow"].copy()
+    glow.putalpha(glow.getchannel("A").point(lambda v: int(v * (0.65 + 0.35 * ease(t / HIT)))))
+    img = Image.alpha_composite(img, glow)
+    img = Image.alpha_composite(img, _CACHE2["clouds"])
+    d = ImageDraw.Draw(img, "RGBA")
+    # the sun rises from behind the hills; its rays grow
+    rise = ease(t / (HIT + 0.4))
+    sun_y = 640 - rise * 125
+    r = 104
+    ray = ease(t / (HIT - 0.5))
+    for i in range(9):
+        ang = _m.radians(180 + 20 + i * 17.5)
+        r0, r1 = r * 1.2, r * (1.28 + 0.3 * ray)
+        d.line([(cx + _m.cos(ang) * r0, sun_y + _m.sin(ang) * r0), (cx + _m.cos(ang) * r1, sun_y + _m.sin(ang) * r1)],
+               fill=(255, 226, 90, 255), width=7)
+    sun = Image.new("RGBA", (2 * r, 2 * r), (0, 0, 0, 0))
+    sg = _grad(2 * r, (255, 236, 90), (255, 150, 15)).resize((2 * r, 2 * r))
+    m = Image.new("L", (2 * r * 4, 2 * r * 4), 0)
+    ImageDraw.Draw(m).ellipse([0, 0, 2 * r * 4 - 1, 2 * r * 4 - 1], fill=255)
+    m = m.resize((2 * r, 2 * r), Image.LANCZOS)
+    img.paste(sg, (cx - r, int(sun_y - r)), m)
+    # thin golden arc drawn across the top
+    arc = ease((t - 0.2) / (HIT - 0.4))
+    if arc > 0:
+        R = 640
+        a0 = 180 + (1 - arc) * 0.0
+        sweep = 180 * arc
+        bbox = [cx - R, 640 - R, cx + R, 640 + R]
+        d.arc(bbox, 270 - sweep / 2, 270 + sweep / 2, fill=(255, 205, 60, 255), width=4)
+    img = Image.alpha_composite(img, _waves(t))
+    d = ImageDraw.Draw(img, "RGBA")
+    # soft beat pulses of light from the sun
     for k in range(int(t / (2 * BEAT)) + 1):
         bt = k * 2 * BEAT
         age = t - bt
-        if 0 <= age < 1.3 and bt < HIT + 0.01:
-            r = int(40 + age * 620)
-            a = int(max(0, (60 + 40 * bt / HIT) * (1 - age / 1.3) ** 1.5))
-            d.ellipse([cx - r, horizon - r, cx + r, horizon + r], outline=(255, 214, 150, a), width=2)
-    # horizontal light line that widens, then the sun slowly rises behind the horizon
-    rise = ease(t / (HIT + 0.6))
-    sun_y = horizon + 95 - rise * 122
-    for g in range(7, 0, -1):
-        rr = 60 + g * 16
-        d.ellipse([cx - rr, sun_y - rr, cx + rr, sun_y + rr], fill=(255, 120, 30, int(26 + 20 * rise)))
-    video._sun(d, cx, sun_y, 60)
-    d.rectangle([0, horizon, W, H], fill=(70, 10, 40, 255))
-    wline = int(W * ease(t / 1.0))
-    d.rectangle([cx - wline // 2, horizon - 1, cx + wline // 2, horizon + 3], fill=(255, 205, 130, 255))
-    # the question-motif moment (bar 3): small gold caption fades in
-    p = ease((t - 1 * BAR) / 0.4) * (1 - ease((t - HIT + 0.4) / 0.3)) if t >= 1 * BAR else 0
+        if 0 <= age < 1.0 and bt < HIT + 0.01:
+            rr = int(60 + age * 500)
+            a = int(max(0, (30 + 20 * bt / HIT) * (1 - age / 1.0) ** 1.5))
+            d.ellipse([cx - rr, sun_y - rr, cx + rr, sun_y + rr], outline=(255, 245, 200, a), width=3)
+    # small caption before the title
+    p = ease((t - BAR) / 0.4) * (1 - ease((t - HIT + 0.4) / 0.3)) if t >= BAR else 0
     if p > 0.01:
         txt = "T O D A Y ' S   G O O D   N E W S"
         w = d.textlength(txt, font=small_font)
-        d.text(((W - w) / 2, 250), txt, font=small_font, fill=(255, 214, 150, int(255 * p)))
-        bar_w = int(300 * ease((t - 1 * BAR) / 0.5))
-        d.rectangle([cx - bar_w, 300, cx + bar_w, 303], fill=(255, 205, 130, int(255 * p)))
-    # the final hit: white flash, title slams in
+        d.text(((W - w) / 2 + 2, 172), txt, font=small_font, fill=(10, 50, 130, int(150 * p)))
+        d.text(((W - w) / 2, 170), txt, font=small_font, fill=(255, 255, 255, int(255 * p)))
+        bw = int(300 * ease((t - BAR) / 0.5))
+        d.rounded_rectangle([cx - bw, 222, cx + bw, 227], radius=3, fill=(255, 205, 60, int(255 * p)))
+    # the big hit: the title slams in
     if t >= HIT - 0.03:
-        a = ease((t - HIT + 0.03) / 0.35)
-        settle = 1 - ease((t - HIT) / 0.5)
-        scale_off = int(26 * settle)
-        title = "UPLIFT TODAY"
-        tw = d.textlength(title, font=title_font)
+        a = ease((t - HIT + 0.03) / 0.3)
+        drop = int(30 * (1 - ease((t - HIT) / 0.45)))
+        up, td = "UPLIFT", "TODAY"
+        uw, gw = d.textlength(up + " ", font=title_font), d.textlength(td, font=title_font)
+        x0 = (W - (uw + gw)) / 2
+        y0 = 72 - drop
         layer = Image.new("RGBA", (W, H), (0, 0, 0, 0))
         ld = ImageDraw.Draw(layer)
-        ld.rectangle([0, 80 - scale_off, W, 425 + scale_off], fill=(90, 8, 30, int(165 * a)))
-        ld.text(((W - tw) / 2 + 5, 105 + 6), title, font=title_font, fill=(0, 0, 0, int(200 * a)))
-        ld.text(((W - tw) / 2, 105), title, font=title_font, fill=(255, 255, 255, int(255 * a)),
-                stroke_width=2, stroke_fill=(190, 40, 20, int(255 * a)))
-        bl = int((tw / 2 + 50) * ease((t - HIT - 0.1) / 0.5))
-        ld.rectangle([cx - bl, 252, cx + bl, 259], fill=(255, 200, 110, int(255 * a)))
+        for i in range(10, 0, -1):
+            ld.text((x0 + i * 0.7, y0 + i), up, font=title_font, fill=(120, 150, 205, 255))
+        ld.text((x0, y0), up, font=title_font, fill=(255, 255, 255, 255))
+        _gold_text(layer, (x0 + uw, y0), td, title_font)
+        layer.putalpha(layer.getchannel("A").point(lambda v: int(v * a)))
         img = Image.alpha_composite(img, layer)
         d = ImageDraw.Draw(img, "RGBA")
+        bl = int(((uw + gw) / 2) * ease((t - HIT - 0.1) / 0.5))
+        yl = y0 + 170
+        d.rounded_rectangle([cx - bl, yl, cx + bl, yl + 7], radius=4, fill=(255, 205, 40, int(255 * a)))
         p2 = ease((t - HIT - 0.25) / 0.4)
         if p2 > 0:
             h = "आज की अच्छी खबरें"
             hw = d.textlength(h, font=hindi_font)
-            d.text(((W - hw) / 2, 290 + (1 - p2) * 16), h, font=hindi_font, fill=(255, 236, 190, int(255 * p2)))
-            tg = "Good news. Every day."
-            tgw = d.textlength(tg, font=tag_font)
-            d.text(((W - tgw) / 2, 364 + (1 - p2) * 16), tg, font=tag_font, fill=(255, 255, 255, int(235 * p2)))
-    # fade in from black
+            d.text(((W - hw) / 2 + 2, yl + 22 + (1 - p2) * 14 + 2), h, font=hindi_font, fill=(10, 50, 130, int(170 * p2)))
+            d.text(((W - hw) / 2, yl + 22 + (1 - p2) * 14), h, font=hindi_font, fill=(255, 255, 255, int(255 * p2)))
     return img.convert("RGB")
 
 
@@ -346,7 +439,7 @@ def main(outdir):
     os.makedirs(work)
     wav = os.path.join(work, "theme.wav")
     save_wav(render_theme(), wav)
-    fonts = (video._font(118, latin=True), video._font(44, latin=True), video._font(64), video._font(30, latin=True))
+    fonts = (video._font(122, latin=True), video._font(44, latin=True), video._font(54), video._font(30, latin=True))
     n = int(TOTAL * FPS)
     for i in range(n):
         frame(i / FPS, fonts).save(os.path.join(work, f"f{i:04d}.png"))
