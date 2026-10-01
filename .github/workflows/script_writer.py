@@ -11,13 +11,14 @@ import config
 
 
 def _call(prompt, temperature):
+    """`prompt` is a text string, or a list of parts (text and/or inline images) for picture checks."""
     key = os.environ["GEMINI_API_KEY"]
     url = (
         "https://generativelanguage.googleapis.com/v1beta/models/"
         f"{config.GEMINI_MODEL}:generateContent"
     )
     body = {
-        "contents": [{"parts": [{"text": prompt}]}],
+        "contents": [{"parts": [{"text": prompt}] if isinstance(prompt, str) else prompt}],
         "generationConfig": {
             "responseMimeType": "application/json",
             "temperature": temperature,
@@ -63,14 +64,15 @@ RULES:
    any real person.
 7. "title" = a YouTube title in {config.LANGUAGE_NAME}, under 70 characters, hopeful, truthful.
 8. "headline" for each story = a very short on-screen headline (max 6 words).
-9. "visual_queries" for each story = exactly 2 short English search phrases (2-3 words each) for
-   FREE STOCK PHOTOS that loosely illustrate the theme (for example "solar panels", "green forest",
-   "hospital corridor", "children classroom"). Choose scenery, nature, buildings and objects.
-   NEVER ask for people's faces, famous places, brands, logos, flags, or anything that would
-   pretend to show the actual event.
+9. "visual_queries" for each story = exactly 3 short English search phrases (2-4 words each) for FREE
+   STOCK PHOTOS that would literally show the SUBJECT and SETTING of THIS story, most specific first
+   (for example "wildlife overpass highway", "seabirds wetland coast", "river plastic waste", "airport
+   runway aerial", "solar panels field", "children classroom India"). Use concrete things that appear in a
+   photo, never abstract words or verbs like "cleaning", "initiative" or "success". NEVER ask for famous
+   people, brands, logos, flags, or anything that would pretend to show the actual event.
 
 Return ONLY JSON with this exact shape:
-{{"title": "...", "intro": "...", "stories": [{{"lead_index": 0, "headline": "...", "visual_queries": ["...", "..."], "narration": "..."}}],
+{{"title": "...", "intro": "...", "stories": [{{"lead_index": 0, "headline": "...", "visual_queries": ["...", "...", "..."], "narration": "..."}}],
   "thought": "...", "outro": "..."}}
 
 "intro" = a 1-2 sentence greeting that says the channel name "Uplift Today" and welcomes viewers to

@@ -7,7 +7,7 @@ import math
 import os
 import re
 import subprocess
-from PIL import Image, ImageDraw, ImageFont
+from PIL import Image, ImageDraw, ImageFilter, ImageFont
 import config
 
 W, H = config.VIDEO_SIZE
@@ -157,29 +157,51 @@ def _talking_clip(seg, clip):
         "-shortest", clip])
 
 
-# ------------------------------------------------------------------ news-report layout
-# The picture sits in a framed window (like a report on a news channel) instead of running behind the text.
-# A bright lower-third bar carries the headline, and the picture drifts in very slowly ("Ken Burns").
-FRAME = (140, 30, 1000, 420)           # x, y, width, height of the picture window
-BAR_Y, BAR_H = 462, 120
-CAP_Y = 596
-NAVY_TOP, NAVY_BOT = (10, 14, 46), (50, 16, 70)
-CRIMSON = (216, 30, 91)
-GOLD = (255, 194, 77)
-PH_W, PH_H = int(FRAME[2] * 1.2), int(FRAME[3] * 1.2)    # a little larger than the window so it can zoom
+# ------------------------------------------------------------------ TV-news set layout
+# Studio backdrop, a framed picture window (like the report window on a news channel), a white
+# lower-third bar with a blue label tab and the channel logo, an English caption strip, a date box
+# and a scrolling news ticker. Colours: blue / white / black (no red or yellow).
+FRAME = (180, 62, 920, 372)            # x, y, width, height of the picture window
+TAB_Y, TAB_H = 438, 28
+BAR_X0, BAR_X1, BAR_Y, BAR_H = 50, 1230, 466, 96
+CAP_Y, CAP_H = 572, 76
+TICK_Y, TICK_H = 662, 58
+BLUE = (18, 76, 172)
+NAVY = (8, 22, 64)
+WHITE = (255, 255, 255)
+INK = (14, 14, 20)
+GREY = (70, 82, 112)
+ZOOM_RATE, ZOOM_MAX = 0.00035, 1.18     # very slow, smooth push-in
+PH_W, PH_H = int(FRAME[2] * 1.25), int(FRAME[3] * 1.25)
+TICK_SPEED = 90                          # pixels per second
+_STUDIO = {}
 
 
-def _backdrop():
-    img = Image.new("RGB", (W, H))
-    d = ImageDraw.Draw(img)
-    for y in range(H):
-        t = y / (H - 1)
-        d.line([(0, y), (W, y)], fill=tuple(int(NAVY_TOP[i] + (NAVY_BOT[i] - NAVY_TOP[i]) * t) for i in range(3)))
-    return img
+def _studio():
+    if "img" in _STUDIO:
+        return _STUDIO["img"].copy()
+    p = os.path.join(os.path.dirname(os.path.abspath(__file__)), "studio", "studio.jpg")
+    if os.path.exists(p):
+        src = Image.open(p).convert("RGB")
+        scale = max(W / src.width, H / src.height)
+        src = src.resize((int(src.width * scale) + 1, int(src.height * scale) + 1), Image.LANCZOS)
+        left, top = (src.width - W) // 2, (src.height - H) // 2
+        img = src.crop((left, top, left + W, top + H))
+        img = img.filter(ImageFilter.GaussianBlur(2.2))
+        shade = Image.new("RGBA", (W, H), (4, 10, 36, 105))
+        img = Image.alpha_composite(img.convert("RGBA"), shade).convert("RGB")
+    else:
+        img = Image.new("RGB", (W, H))
+        d = ImageDraw.Draw(img)
+        for y in range(H):
+            t = y / (H - 1)
+            d.line([(0, y), (W, y)], fill=(int(8 + 20 * t), int(18 + 30 * t), int(60 + 50 * t)))
+    _STUDIO["img"] = img
+    return img.copy()
 
 
 def _fallback_art():
-    """Sunrise picture used when no stock photo was found."""
+    """Sunrise picture used when no suitable stock photo was found."""
     img = Image.new("RGB", (PH_W, PH_H))
     d = ImageDraw.Draw(img)
     a, b = config.GRADIENT_TOP, config.GRADIENT_BOTTOM
@@ -208,99 +230,148 @@ def _fit_size(d, text, max_w, start, stop, latin=False):
     return font
 
 
-def make_fixed_layers(headline, headline_en, tag, top_png, lower_png):
-    """top_png: picture border + channel bug (always on).  lower_png: the lower-third bar (slides in)."""
+def _spaced(d, x, y, text, font, fill, gap=2):
+    for ch in text:
+        d.text((x, y), ch, font=font, fill=fill)
+        x += d.textlength(ch, font=font) + gap
+    return x
+
+
+def make_fixed_layers(headline, headline_en, tag, date_text, top_png, lower_png):
+    """top_png: picture border, date box, ticker label (always on). lower_png: tab + white bar (slides in)."""
     fx, fy, fw, fh = FRAME
     top = Image.new("RGBA", (W, H), (0, 0, 0, 0))
     d = ImageDraw.Draw(top)
-    d.rectangle([fx - 5, fy - 5, fx + fw + 4, fy + fh + 4], outline=(255, 255, 255, 255), width=5)
-    d.rectangle([fx - 5, fy + fh + 4, fx + fw + 4, fy + fh + 10], fill=GOLD + (255,))
-    pill = Image.new("RGBA", (330, 54), (10, 14, 46, 215))
-    top.paste(pill, (fx + 16, fy + 16), pill)
-    d = ImageDraw.Draw(top)
-    _sun(d, fx + 16 + 30, fy + 16 + 27, 14)
-    d.text((fx + 16 + 62, fy + 16 + 9), "UPLIFT TODAY", font=_font(30, latin=True), fill=(255, 255, 255, 255))
+    d.rectangle([fx - 4, fy - 4, fx + fw + 3, fy + fh + 3], outline=WHITE + (255,), width=4)
+    # date box, top right (black with white text)
+    df = _font(26, latin=True)
+    dw = d.textlength(date_text, font=df)
+    d.rectangle([W - 40 - dw - 36, 14, W - 14, 52], fill=(0, 0, 0, 235))
+    d.text((W - 14 - dw - 18, 18), date_text, font=df, fill=WHITE + (255,))
+    # ticker label at the left of the ticker strip
+    d.rectangle([0, TICK_Y, 172, TICK_Y + TICK_H], fill=BLUE + (255,))
+    lf = _font(28, latin=True)
+    lt = "LATEST"
+    d.text(((172 - d.textlength(lt, font=lf)) / 2, TICK_Y + 13), lt, font=lf, fill=WHITE + (255,))
     top.save(top_png)
 
     low = Image.new("RGBA", (W, H), (0, 0, 0, 0))
     d = ImageDraw.Draw(low)
-    tag_w = 220
-    d.rectangle([fx, BAR_Y, fx + tag_w, BAR_Y + BAR_H], fill=GOLD + (255,))
     small, big = tag if tag else ("", "")
-    if small:
-        sf = _font(24, latin=True)
-        sw = d.textlength(small, font=sf)
-        d.text((fx + (tag_w - sw) / 2, BAR_Y + 14), small, font=sf, fill=(10, 14, 46, 255))
-    if big:
-        bf = _fit_size(d, big, tag_w - 24, 58, 24, latin=True)
-        bw = d.textlength(big, font=bf)
-        d.text((fx + (tag_w - bw) / 2, BAR_Y + 44), big, font=bf, fill=(10, 14, 46, 255))
-    bx0, bx1 = fx + tag_w, fx + fw
-    d.rectangle([bx0, BAR_Y, bx1, BAR_Y + BAR_H], fill=CRIMSON + (255,))
-    d.rectangle([bx0, BAR_Y, bx1, BAR_Y + 4], fill=(255, 255, 255, 255))
-    maxw = bx1 - bx0 - 40
-    hf = _fit_size(d, headline, maxw, 54, 36)
+    tab_text = (small + " " + big).strip() or "GOOD NEWS"
+    tf = _font(20, latin=True)
+    tw = sum(d.textlength(c, font=tf) + 2 for c in tab_text)
+    d.rectangle([BAR_X0, TAB_Y, BAR_X0 + tw + 40, TAB_Y + TAB_H], fill=BLUE + (255,))
+    _spaced(d, BAR_X0 + 20, TAB_Y + 3, tab_text, tf, WHITE + (255,))
+    d.rectangle([BAR_X0, BAR_Y, BAR_X1, BAR_Y + BAR_H], fill=WHITE + (255,))
+    d.rectangle([BAR_X0, BAR_Y, BAR_X0 + 8, BAR_Y + BAR_H], fill=BLUE + (255,))
+    # channel logo block at the right end of the bar
+    lx0 = BAR_X1 - 270
+    d.rectangle([lx0, BAR_Y, BAR_X1, BAR_Y + BAR_H], fill=NAVY + (255,))
+    _sun(d, lx0 + 52, BAR_Y + BAR_H // 2, 18)
+    d.text((lx0 + 92, BAR_Y + 16), "UPLIFT", font=_font(30, latin=True), fill=WHITE + (255,))
+    d.text((lx0 + 92, BAR_Y + 50), "TODAY", font=_font(30, latin=True), fill=(170, 205, 255, 255))
+    maxw = lx0 - BAR_X0 - 44
+    hf = _fit_size(d, headline, maxw, 46, 30)
     lines = [headline] if d.textlength(headline, font=hf) <= maxw else _wrap(d, headline, hf, maxw)[:2]
-    y = BAR_Y + 14
+    y = BAR_Y + 6
     for ln in lines:
-        d.text((bx0 + 20, y), ln, font=hf, fill=(255, 255, 255, 255))
-        y += int(hf.size * 1.3)
-    if headline_en:
-        ef = _fit_size(d, headline_en, maxw, 30, 20, latin=True)
-        d.text((bx0 + 20, BAR_Y + BAR_H - 14 - ef.size * 1.2), headline_en, font=ef, fill=(255, 226, 150, 255))
+        d.text((BAR_X0 + 26, y), ln, font=hf, fill=INK + (255,))
+        y += int(hf.size * 1.28)
+    if headline_en and len(lines) == 1:
+        ef = _fit_size(d, headline_en, maxw, 26, 18, latin=True)
+        d.text((BAR_X0 + 26, BAR_Y + BAR_H - 10 - int(ef.size * 1.25)), headline_en, font=ef, fill=GREY + (255,))
     low.save(lower_png)
 
 
+def make_ticker(items, out_png):
+    """One long strip of text for the scrolling ticker (the same text twice, so it can wrap around)."""
+    f = _font(28, latin=True)
+    one = "   \u25cf   ".join(["UPLIFT TODAY - GOOD NEWS"] + [i for i in items if i]) + "   \u25cf   "
+    probe = ImageDraw.Draw(Image.new("RGB", (10, 10)))
+    L = int(probe.textlength(one, font=f)) + 4
+    img = Image.new("RGBA", (L * 2 + W, TICK_H), (0, 0, 0, 0))
+    d = ImageDraw.Draw(img)
+    d.text((0, 11), one, font=f, fill=WHITE + (255,))
+    d.text((L, 11), one, font=f, fill=WHITE + (255,))
+    d.text((2 * L, 11), one, font=f, fill=WHITE + (255,))
+    img.save(out_png)
+    return L
+
+
 def make_base(caption, out_png):
-    """Backdrop + caption strip (changes with every sentence)."""
-    img = _backdrop()
+    """Studio backdrop + picture shadow + caption strip + ticker strip (the caption changes every sentence)."""
+    img = _studio()
     fx, fy, fw, fh = FRAME
     d = ImageDraw.Draw(img, "RGBA")
-    d.rectangle([fx + 10, fy + 10, fx + fw + 14, fy + fh + 14], fill=(0, 0, 0, 120))     # soft shadow
+    d.rectangle([fx + 8, fy + 8, fx + fw + 12, fy + fh + 12], fill=(0, 0, 0, 120))
+    d.rectangle([0, TICK_Y, W, TICK_Y + TICK_H], fill=NAVY + (250,))
     if caption:
-        cf = _font(34, latin=True)
-        clines = _wrap(d, caption, cf, W - 240)[:2]
-        box_h = int(34 * 1.4) * len(clines) + 22
-        y0 = CAP_Y + (H - CAP_Y - box_h) // 2 - 6
-        d.rectangle([0, y0 - 6, W, y0 + box_h], fill=(6, 8, 30, 235))
-        cy = y0 + 8
+        cf = _font(32, latin=True)
+        clines = _wrap(d, caption, cf, W - 260)[:2]
+        d.rectangle([BAR_X0, CAP_Y, BAR_X1, CAP_Y + CAP_H], fill=(5, 12, 40, 225))
+        lh = int(32 * 1.3)
+        cy = CAP_Y + (CAP_H - lh * len(clines)) // 2 - 2
         for ln in clines:
             w = d.textlength(ln, font=cf)
-            d.text(((W - w) / 2, cy), ln, font=cf, fill=(255, 255, 255, 255))
-            cy += int(34 * 1.4)
+            d.text(((W - w) / 2, cy), ln, font=cf, fill=WHITE + (255,))
+            cy += lh
     img.save(out_png)
 
 
-def _render_piece(base, photo, top, lower, dur, offset, first, out):
-    """One sentence: slow zoom on the picture, bar slides in on the first sentence of a story."""
+def _render_piece(base, photo_png, top, lower, ticker, ticker_len, dur, offset, first, gt, out):
+    """One sentence of a story. The picture is zoomed frame by frame with exact sub-pixel maths (no shaking)."""
     fx, fy, fw, fh = FRAME
-    zoom = f"min(1.0+0.00045*(on+{offset}),1.2)"
+    n = max(int(round(dur * 25)), 1)
     slide = ("overlay=x='-w*pow(1-min(t/0.5,1),2)':y=0" if first else "overlay=0:0")
     filt = (
-        f"[1:v]zoompan=z='{zoom}':x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':d=1:s={fw}x{fh}:fps=25[p];"
-        f"[0:v][p]overlay={fx}:{fy}[a];[a][2:v]overlay=0:0[b];[b][3:v]{slide}[v]"
+        f"[0:v][4:v]overlay={fx}:{fy}[a];"
+        f"[a][3:v]overlay=x='-mod({TICK_SPEED}*(t+{gt:.3f}),{ticker_len})':y={TICK_Y}[b];"
+        f"[b][1:v]overlay=0:0[c];[c][2:v]{slide}[v]"
     )
     cmd = ["ffmpeg", "-y", "-loglevel", "error"]
-    for p in (base, photo, top, lower):
+    for p in (base, top, lower, ticker):
         cmd += ["-loop", "1", "-framerate", "25", "-t", f"{dur:.3f}", "-i", p]
-    cmd += ["-filter_complex", filt, "-map", "[v]", "-c:v", "libx264", "-preset", "veryfast", "-crf", "20",
-            "-pix_fmt", "yuv420p", "-r", "25", "-t", f"{dur:.3f}", out]
-    subprocess.check_call(cmd)
+    cmd += ["-f", "rawvideo", "-pix_fmt", "rgb24", "-s", f"{fw}x{fh}", "-framerate", "25", "-i", "pipe:0",
+            "-filter_complex", filt, "-map", "[v]", "-c:v", "libx264", "-preset", "veryfast", "-crf", "20",
+            "-pix_fmt", "yuv420p", "-r", "25", "-frames:v", str(n), out]
+    proc = subprocess.Popen(cmd, stdin=subprocess.PIPE)
+    src = Image.open(photo_png).convert("RGB")
+    try:
+        for f in range(n):
+            z = min(1.0 + ZOOM_RATE * (offset + f), ZOOM_MAX)
+            ww, hh = PH_W / z, PH_H / z
+            im = src.transform((fw, fh), Image.AFFINE,
+                               (ww / fw, 0, (PH_W - ww) / 2, 0, hh / fh, (PH_H - hh) / 2),
+                               resample=Image.BICUBIC)
+            proc.stdin.write(im.tobytes())
+    finally:
+        proc.stdin.close()
+        rc = proc.wait()
+    if rc != 0:
+        raise RuntimeError("ffmpeg failed while drawing a story clip")
 
 
 def build(segments, out_mp4, workdir):
     """segments = list of dicts: {"headline", "audio", "english", "headline_en", "tag", "backgrounds", "clip"(optional)}"""
+    import datetime
+    date_text = datetime.date.today().strftime("%B %d").upper().replace(" 0", " ")
+    ticker_png = os.path.join(workdir, "ticker.png")
+    ticker_len = make_ticker([sg.get("headline_en") for sg in segments if (sg.get("tag") or ("",))[0] == "STORY"], ticker_png)
     clips = []
+    gt = 0.0
     opening = intro_path()
     if opening:
         clips.append(opening)
+        gt += _duration(opening)
     for i, seg in enumerate(segments):
         clip = os.path.join(workdir, f"clip_{i}.mp4")
+        total = _duration(seg["audio"])
         if seg.get("clip"):
             _talking_clip(seg, clip)
             clips.append(clip)
+            gt += total
             continue
-        total = _duration(seg["audio"])
         sents = _sentences(seg.get("english")) if config.ENGLISH_CAPTIONS else []
         if not sents:
             sents = [None]
@@ -309,7 +380,7 @@ def build(segments, out_mp4, workdir):
         bgs = [b for b in (seg.get("backgrounds") or []) if b]
         top_png = os.path.join(workdir, f"top_{i}.png")
         lower_png = os.path.join(workdir, f"lower_{i}.png")
-        make_fixed_layers(seg["headline"], seg.get("headline_en"), seg.get("tag"), top_png, lower_png)
+        make_fixed_layers(seg["headline"], seg.get("headline_en"), seg.get("tag"), date_text, top_png, lower_png)
         fits, last_key, offset, pieces = {}, None, 0, []
         for k, sent in enumerate(sents):
             dur = total * weights[k] / wsum
@@ -322,8 +393,9 @@ def build(segments, out_mp4, workdir):
             base = os.path.join(workdir, f"base_{i}_{k}.png")
             make_base(sent, base)
             piece = os.path.join(workdir, f"piece_{i}_{k}.mp4")
-            _render_piece(base, fits[key], top_png, lower_png, dur, offset, k == 0, piece)
+            _render_piece(base, fits[key], top_png, lower_png, ticker_png, ticker_len, dur, offset, k == 0, gt, piece)
             offset += int(round(dur * 25))
+            gt += dur
             pieces.append(piece)
         plist = os.path.join(workdir, f"pieces_{i}.txt")
         with open(plist, "w") as f:

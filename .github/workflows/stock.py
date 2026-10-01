@@ -85,3 +85,94 @@ def _pexels(query, out_path, seed=0):
     except Exception as e:
         print(f"[stock] skipped '{query}': {e}")
         return None
+
+
+# ---------------------------------------------------------------- smart picking
+def _cands_pexels(query, n=6):
+    key = os.environ.get("PEXELS_API_KEY", "").strip()
+    if not key or not query:
+        return []
+    try:
+        r = requests.get(API, headers={"Authorization": key},
+                         params={"query": query, "orientation": "landscape", "size": "large", "per_page": n}, timeout=30)
+        if r.status_code != 200:
+            return []
+        return [{"thumb": p["src"].get("medium") or p["src"]["large"], "full": p["src"].get("large2x") or p["src"]["large"],
+                 "photographer": p.get("photographer", "Unknown"), "url": p.get("url", "https://www.pexels.com"),
+                 "source": "Pexels"} for p in r.json().get("photos", [])]
+    except Exception as e:
+        print(f"[stock] Pexels candidates skipped '{query}': {e}")
+        return []
+
+
+def _cands_pixabay(query, n=6):
+    key = os.environ.get("PIXABAY_API_KEY", "").strip()
+    if not key or not query:
+        return []
+    try:
+        r = requests.get("https://pixabay.com/api/",
+                         params={"key": key, "q": query[:100], "image_type": "photo", "orientation": "horizontal",
+                                 "safesearch": "true", "per_page": max(n, 3), "min_width": 1280}, timeout=30)
+        if r.status_code != 200:
+            return []
+        return [{"thumb": h.get("webformatURL") or h["largeImageURL"], "full": h["largeImageURL"],
+                 "photographer": h.get("user", "Unknown"), "url": h.get("pageURL", "https://pixabay.com"),
+                 "source": "Pixabay"} for h in r.json().get("hits", [])[:n]]
+    except Exception as e:
+        print(f"[stock] Pixabay candidates skipped '{query}': {e}")
+        return []
+
+
+def best_photos(headline, narration, queries, out_prefix, want=2):
+    """Look at many candidate photos and let Gemini choose the ones that really suit the story.
+    Returns a list of {"path","photographer","url","source"} (possibly empty -> sunrise picture is used)."""
+    import base64
+    import script_writer
+    cands, seen = [], set()
+    for q in queries:
+        for c in _cands_pexels(q) + _cands_pixabay(q):
+            if c["full"] not in seen:
+                seen.add(c["full"])
+                cands.append(c)
+    cands = cands[:16]
+    if not cands:
+        return []
+    parts = [{"text": (
+        "You choose illustration photos for a positive-news video. STORY HEADLINE: " + (headline or "") +
+        "\nSTORY: " + (narration or "") + "\n\nBelow are numbered candidate photos. Pick up to " + str(want) +
+        " photos that clearly and plausibly illustrate THIS story's subject and setting (best first). Reject photos "
+        "that are unrelated, odd, misleading, show close-up faces, brands, logos, text or flags, or look "
+        "unprofessional. If none is a good fit return an empty list.\n"
+        'Return ONLY JSON: {"picks": [3, 7]}')}]
+    usable = []
+    for c in cands:
+        try:
+            img = requests.get(c["thumb"], timeout=30)
+            img.raise_for_status()
+            parts.append({"text": f"Photo {len(usable)}:"})
+            parts.append({"inlineData": {"mimeType": "image/jpeg", "data": base64.b64encode(img.content).decode()}})
+            usable.append(c)
+        except Exception:
+            continue
+    if not usable:
+        return []
+    try:
+        picks = script_writer._call(parts, 0.0).get("picks", [])
+    except Exception as e:
+        print(f"[stock] picture check failed, using the first results: {e}")
+        picks = list(range(min(want, len(usable))))
+    out = []
+    for n_, idx in enumerate([i for i in picks if isinstance(i, int) and 0 <= i < len(usable)][:want]):
+        c = usable[idx]
+        path = f"{out_prefix}_{n_}.jpg"
+        try:
+            data = requests.get(c["full"], timeout=60)
+            data.raise_for_status()
+            with open(path, "wb") as f:
+                f.write(data.content)
+            Image.open(path).verify()
+            out.append({"path": path, "photographer": c["photographer"], "url": c["url"], "source": c["source"]})
+        except Exception as e:
+            print(f"[stock] download skipped: {e}")
+    print(f"[stock] '{(headline or '')[:30]}': {len(usable)} candidates, {len(out)} matched")
+    return out

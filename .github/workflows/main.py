@@ -106,12 +106,20 @@ def main():
                 credits.append(res)
         return found
 
-    def add(headline, text, name, title_slide=False, eng="", headline_en="", queries=None, tag=None):
+    def story_photos(headline, text, queries, tag):
+        if not config.STOCK_PHOTOS:
+            return []
+        res = stock.best_photos(headline, text, queries, os.path.join(work, tag))
+        credits.extend(res)
+        return [r["path"] for r in res]
+
+    def add(headline, text, name, title_slide=False, eng="", headline_en="", queries=None, tag=None, smart=False):
         mp3 = os.path.join(work, f"{name}.mp3")
         tts.speak(text, mp3)
         seg = {"headline": headline, "audio": mp3, "title_slide": title_slide,
                "english": eng, "headline_en": headline_en if config.ENGLISH_CAPTIONS else "",
-               "backgrounds": photos(queries or [], name), "tag": tag}
+               "backgrounds": (story_photos(headline_en or headline, eng or text, queries or [], name) if smart
+                               else photos(queries or [], name)), "tag": tag}
         if name == "intro" and config.ANCHOR and video._duration(mp3) <= config.ANCHOR_MAX_SECONDS:
             seg["clip"] = avatar.make_clip(mp3, os.path.join(work, "anchor_intro.mp4"))
         segments.append(seg)
@@ -120,7 +128,7 @@ def main():
     add("आज की अच्छी खबरें", data["intro"], "intro", True, english[0], "Today's Good News", [fq["intro"]], ("UPLIFT", "TODAY"))
     for i, s in enumerate(stories):
         add(s.get("headline", ""), s["narration"], f"story{i}", False, english[1 + i], english_heads[i],
-            s.get("visual_queries") or [], ("STORY", f"{i + 1:02d}"))
+            s.get("visual_queries") or [], ("STORY", f"{i + 1:02d}"), True)
     add("आज का विचार", data["thought"], "thought", True, english[-2], "Thought of the Day", [fq["thought"]], ("TODAY'S", "THOUGHT"))
     add("धन्यवाद! सब्सक्राइब करें", data["outro"], "outro", True, english[-1], "Thank you! Please subscribe", [fq["outro"]], ("THANK", "YOU"))
     print(f"[main] {len(credits)} stock photos used")
