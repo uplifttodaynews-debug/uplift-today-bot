@@ -116,6 +116,21 @@ def main():
     def add(headline, text, name, title_slide=False, eng="", headline_en="", queries=None, tag=None, smart=False):
         mp3 = os.path.join(work, f"{name}.mp3")
         tts.speak(text, mp3)
+        if name == "intro" and config.ANCHOR:  # noqa
+            for _try in range(3):
+                if video._duration(mp3) <= config.ANCHOR_MAX_SECONDS:
+                    break
+                try:                       # the greeting is read by Kavya: keep it short so her clip stays cheap
+                    r = script_writer._call(
+                        "Shorten this Hindi news greeting to ONE short sentence of at most 14 words that still says "
+                        "the channel name Uplift Today (written as in the original). Keep the same language and script.\n"
+                        "Text: " + text + '\nReturn ONLY JSON: {"text": "..."}', 0.2)
+                    text = r.get("text", text) or text
+                except Exception as e:
+                    print(f"[main] could not shorten the greeting: {e}")
+                    break
+                tts.speak(text, mp3)
+            print(f"[main] greeting is {video._duration(mp3):.1f} s long")
         seg = {"headline": headline, "audio": mp3, "title_slide": title_slide,
                "english": eng, "headline_en": headline_en if config.ENGLISH_CAPTIONS else "",
                "backgrounds": (story_photos(headline_en or headline, eng or text, queries or [], name) if smart

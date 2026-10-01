@@ -75,7 +75,7 @@ Return ONLY JSON with this exact shape:
 {{"title": "...", "intro": "...", "stories": [{{"lead_index": 0, "headline": "...", "visual_queries": ["...", "...", "..."], "narration": "..."}}],
   "thought": "...", "outro": "..."}}
 
-"intro" = a 1-2 sentence greeting that says the channel name "Uplift Today" and welcomes viewers to
+"intro" = ONE short sentence (at most 14 words, it must be spoken in under 10 seconds) that says the channel name "Uplift Today" and welcomes viewers to
 today's good news. "outro" = a 1-2 sentence warm goodbye asking viewers to subscribe.
 
 LEADS:
