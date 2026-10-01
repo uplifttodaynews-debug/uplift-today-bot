@@ -257,8 +257,8 @@ def _dark_gradient(warm):
     """Night-blue top to a warm glow at the bottom; `warm` (0..1) grows as the sun nears."""
     img = Image.new("RGB", (W, H))
     px = img.load()
-    top = (24, 14, 96)                  # vivid deep indigo
-    bot = (int(190 + 65 * warm), int(70 + 90 * warm), int(80 - 20 * warm))   # bright orange-gold glow
+    top = (150, 18, 48)                 # vivid crimson red
+    bot = (255, int(95 + 60 * warm), int(25 + 10 * warm))   # bright orange-gold glow
     for y in range(H):
         t = (y / (H - 1)) ** 1.6
         c = tuple(int(top[i] + (bot[i] - top[i]) * t) for i in range(3))
@@ -279,7 +279,7 @@ def gradient_for(warm):
 
 def frame(t, fonts):
     title_font, tag_font, hindi_font, small_font = fonts
-    warm = 0.55 + 0.45 * ease(t / HIT)
+    warm = 0.8 + 0.2 * ease(t / HIT)
     img = gradient_for(warm).convert("RGBA")
     d = ImageDraw.Draw(img, "RGBA")
     horizon = int(H * 0.74)
@@ -297,9 +297,9 @@ def frame(t, fonts):
     sun_y = horizon + 95 - rise * 122
     for g in range(7, 0, -1):
         rr = 60 + g * 16
-        d.ellipse([cx - rr, sun_y - rr, cx + rr, sun_y + rr], fill=(255, 200, 120, int(16 + 16 * rise)))
+        d.ellipse([cx - rr, sun_y - rr, cx + rr, sun_y + rr], fill=(255, 120, 30, int(26 + 20 * rise)))
     video._sun(d, cx, sun_y, 60)
-    d.rectangle([0, horizon, W, H], fill=(40, 14, 88, 255))
+    d.rectangle([0, horizon, W, H], fill=(70, 10, 40, 255))
     wline = int(W * ease(t / 1.0))
     d.rectangle([cx - wline // 2, horizon - 1, cx + wline // 2, horizon + 3], fill=(255, 205, 130, 255))
     # the question-motif moment (bar 3): small gold caption fades in
@@ -319,10 +319,10 @@ def frame(t, fonts):
         tw = d.textlength(title, font=title_font)
         layer = Image.new("RGBA", (W, H), (0, 0, 0, 0))
         ld = ImageDraw.Draw(layer)
-        ld.rectangle([0, 80 - scale_off, W, 425 + scale_off], fill=(30, 8, 38, int(150 * a)))
+        ld.rectangle([0, 80 - scale_off, W, 425 + scale_off], fill=(90, 8, 30, int(165 * a)))
         ld.text(((W - tw) / 2 + 5, 105 + 6), title, font=title_font, fill=(0, 0, 0, int(200 * a)))
         ld.text(((W - tw) / 2, 105), title, font=title_font, fill=(255, 255, 255, int(255 * a)),
-                stroke_width=2, stroke_fill=(90, 20, 50, int(255 * a)))
+                stroke_width=2, stroke_fill=(190, 40, 20, int(255 * a)))
         bl = int((tw / 2 + 50) * ease((t - HIT - 0.1) / 0.5))
         ld.rectangle([cx - bl, 252, cx + bl, 259], fill=(255, 200, 110, int(255 * a)))
         img = Image.alpha_composite(img, layer)

@@ -37,7 +37,7 @@ def _gradient():
 
 
 def _sun(d, cx, cy, r):
-    col = (255, 244, 200)
+    col = (255, 150, 30)
     for i in range(12):
         ang = math.radians(i * 30)
         d.line(

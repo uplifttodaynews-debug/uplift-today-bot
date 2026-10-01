@@ -123,7 +123,7 @@ def _cands_pixabay(query, n=6):
         return []
 
 
-def best_photos(headline, narration, queries, out_prefix, want=2):
+def _best_photos_once(headline, narration, queries, out_prefix, want, loose):
     """Look at many candidate photos and let Gemini choose the ones that really suit the story.
     Returns a list of {"path","photographer","url","source"} (possibly empty -> sunrise picture is used)."""
     import base64
@@ -142,7 +142,7 @@ def best_photos(headline, narration, queries, out_prefix, want=2):
         "\nSTORY: " + (narration or "") + "\n\nBelow are numbered candidate photos. Pick up to " + str(want) +
         " photos that clearly and plausibly illustrate THIS story's subject and setting (best first). Reject photos "
         "that are unrelated, odd, misleading, show close-up faces, brands, logos, text or flags, or look "
-        "unprofessional. If none is a good fit return an empty list.\n"
+        "unprofessional. " + ("Be generous: a photo of the same kind of place, nature or activity (not necessarily the exact one) is fine. " if loose else "") + "If none is a good fit return an empty list.\n"
         'Return ONLY JSON: {"picks": [3, 7]}')}]
     usable = []
     for c in cands:
@@ -176,3 +176,25 @@ def best_photos(headline, narration, queries, out_prefix, want=2):
             print(f"[stock] download skipped: {e}")
     print(f"[stock] '{(headline or '')[:30]}': {len(usable)} candidates, {len(out)} matched")
     return out
+
+
+def best_photos(headline, narration, queries, out_prefix, want=2):
+    """First the specific searches; if nothing fits, broader searches and a more generous check."""
+    out = _best_photos_once(headline, narration, queries, out_prefix, want, False)
+    if out:
+        return out
+    try:
+        import script_writer
+        r = script_writer._call(
+            "Story headline: " + (headline or "") + "\nStory: " + (narration or "") +
+            "\nGive 4 SHORT, broad stock-photo search phrases (2-3 words, English) for generic scenery that "
+            "would suit this story, e.g. 'coastal park', 'city skyline', 'green park trees', 'sea sunset'. "
+            'No people, no names. Return ONLY JSON: {"queries": ["...", "..."]}', 0.3)
+        broad = [q for q in r.get("queries", []) if isinstance(q, str)][:4]
+    except Exception as e:
+        print(f"[stock] broad queries failed: {e}")
+        broad = []
+    if not broad:
+        return []
+    print(f"[stock] second try with broader searches: {broad}")
+    return _best_photos_once(headline, narration, broad, out_prefix, want, True)
