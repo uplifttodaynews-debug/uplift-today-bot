@@ -113,7 +113,22 @@ def main():
         credits.extend(res)
         return [r["path"] for r in res]
 
-    def add(headline, text, name, title_slide=False, eng="", headline_en="", queries=None, tag=None, smart=False):
+    def story_media(headline, text, queries, tag, want_video):
+        if want_video:
+            vids = stock.best_photos(headline, text, queries, os.path.join(work, tag + "_v"), want=2, kind="video")
+            if vids:
+                credits.extend(vids)
+                paths = [v["path"] for v in vids]
+                if len(paths) < 2:                         # one clip + one photo keeps the picture changing
+                    pics = stock.best_photos(headline, text, queries, os.path.join(work, tag), want=1)
+                    credits.extend(pics)
+                    paths += [p["path"] for p in pics]
+                print(f"[main] {tag}: {len(vids)} video clip(s)")
+                return paths
+            print(f"[main] {tag}: no good video clip, using photos")
+        return story_photos(headline, text, queries, tag)
+
+    def add(headline, text, name, title_slide=False, eng="", headline_en="", queries=None, tag=None, smart=False, video=False):
         mp3 = os.path.join(work, f"{name}.mp3")
         tts.speak(text, mp3)
         if name == "intro" and config.ANCHOR:  # noqa
@@ -133,7 +148,7 @@ def main():
             print(f"[main] greeting is {video._duration(mp3):.1f} s long")
         seg = {"headline": headline, "audio": mp3, "title_slide": title_slide,
                "english": eng, "headline_en": headline_en if config.ENGLISH_CAPTIONS else "",
-               "backgrounds": (story_photos(headline_en or headline, eng or text, queries or [], name) if smart
+               "backgrounds": (story_media(headline_en or headline, eng or text, queries or [], name, video) if smart
                                else photos(queries or [], name)), "tag": tag}
         if name == "intro" and config.ANCHOR and video._duration(mp3) <= config.ANCHOR_MAX_SECONDS:
             seg["clip"] = avatar.make_clip(mp3, os.path.join(work, "anchor_intro.mp4"))
@@ -143,7 +158,8 @@ def main():
     add("आज की अच्छी खबरें", data["intro"], "intro", True, english[0], "Today's Uplifting News", [fq["intro"]], ("UPLIFT", "TODAY"))
     for i, s in enumerate(stories):
         add(s.get("headline", ""), s["narration"], f"story{i}", False, english[1 + i], english_heads[i],
-            s.get("visual_queries") or [], ("STORY", f"{i + 1:02d}"), True)
+            s.get("visual_queries") or [], ("STORY", f"{i + 1:02d}"), True,
+            video=bool(config.STOCK_VIDEOS and (i * config.VIDEO_SHARE) % 1 < config.VIDEO_SHARE - 1e-9))
     add("आज का विचार", data["thought"], "thought", True, english[-2], "Thought of the Day", [fq["thought"]], ("TODAY'S", "THOUGHT"))
     add("धन्यवाद! सब्सक्राइब करें", data["outro"], "outro", True, english[-1], "Thank you! Please subscribe", [fq["outro"]], ("THANK", "YOU"))
     print(f"[main] {len(credits)} stock photos used")

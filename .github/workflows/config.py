@@ -72,6 +72,8 @@ MUSIC_INTRO_SECONDS = 12         # how long (after the opening) the louder part 
 
 # ---- Stock photos (Pexels). Needs the PEXELS_API_KEY secret; without it the sunrise gradient is used ----
 STOCK_PHOTOS = True
+STOCK_VIDEOS = True              # use short stock video clips for some stories
+VIDEO_SHARE = 0.5                # about this share of the stories get video clips (the rest photos)
 PHOTOS_PER_STORY = 2             # the picture changes once in the middle of each story
 FIXED_SLIDE_QUERIES = {          # for the opening, thought and closing slides
     "intro": "sunrise sky",

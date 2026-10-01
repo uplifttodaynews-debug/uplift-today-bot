@@ -123,24 +123,64 @@ def _cands_pixabay(query, n=6):
         return []
 
 
-def _best_photos_once(headline, narration, queries, out_prefix, want, loose):
+def _cands_videos(query, n=8):
+    """Short stock video clips (Pexels if a key exists, plus Pixabay). `full` is a ~720p file."""
+    out = []
+    pk = os.environ.get("PEXELS_API_KEY", "").strip()
+    if pk and query:
+        try:
+            r = requests.get("https://api.pexels.com/videos/search", headers={"Authorization": pk},
+                             params={"query": query, "orientation": "landscape", "size": "medium", "per_page": n}, timeout=30)
+            if r.status_code == 200:
+                for v in r.json().get("videos", []):
+                    if (v.get("duration") or 0) < 4:
+                        continue
+                    files = [f for f in v.get("video_files", []) if f.get("file_type") == "video/mp4" and (f.get("width") or 0) >= 960]
+                    files.sort(key=lambda f: abs((f.get("width") or 0) - 1280))
+                    if files:
+                        out.append({"thumb": v.get("image"), "full": files[0]["link"], "photographer": (v.get("user") or {}).get("name", "Unknown"),
+                                    "url": v.get("url", "https://www.pexels.com"), "source": "Pexels"})
+        except Exception as e:
+            print(f"[stock] Pexels videos skipped '{query}': {e}")
+    xk = os.environ.get("PIXABAY_API_KEY", "").strip()
+    if xk and query:
+        try:
+            r = requests.get("https://pixabay.com/api/videos/", params={"key": xk, "q": query[:100], "safesearch": "true", "per_page": max(n, 3)}, timeout=30)
+            if r.status_code == 200:
+                for h in r.json().get("hits", []):
+                    vids = h.get("videos") or {}
+                    pick = next((vids[k] for k in ("medium", "small") if vids.get(k, {}).get("url") and (vids[k].get("width") or 0) >= 900), None)
+                    if not pick or (h.get("duration") or 0) < 4 or (pick.get("size") or 0) > 45_000_000:
+                        continue
+                    thumb = pick.get("thumbnail") or (f"https://i.vimeocdn.com/video/{h['picture_id']}_640x360.jpg" if h.get("picture_id") else None)
+                    if thumb:
+                        out.append({"thumb": thumb, "full": pick["url"], "photographer": h.get("user", "Unknown"),
+                                    "url": h.get("pageURL", "https://pixabay.com"), "source": "Pixabay"})
+            else:
+                print(f"[stock] Pixabay videos error {r.status_code} for '{query}'")
+        except Exception as e:
+            print(f"[stock] Pixabay videos skipped '{query}': {e}")
+    return out
+
+
+def _best_photos_once(headline, narration, queries, out_prefix, want, loose, kind="photo"):
     """Look at many candidate photos and let Gemini choose the ones that really suit the story.
     Returns a list of {"path","photographer","url","source"} (possibly empty -> sunrise picture is used)."""
     import base64
     import script_writer
     cands, seen = [], set()
     for q in queries:
-        for c in _cands_pexels(q) + _cands_pixabay(q):
+        for c in (_cands_videos(q) if kind == "video" else _cands_pexels(q) + _cands_pixabay(q)):
             if c["full"] not in seen:
                 seen.add(c["full"])
                 cands.append(c)
-    cands = cands[:16]
+    cands = cands[:12 if kind == "video" else 16]
     if not cands:
         return []
     parts = [{"text": (
         "You choose illustration photos for a positive-news video. STORY HEADLINE: " + (headline or "") +
         "\nSTORY: " + (narration or "") + "\n\nBelow are numbered candidate photos. Pick up to " + str(want) +
-        " photos that clearly and plausibly illustrate THIS story's subject and setting (best first). Reject photos "
+        (" video clips (a preview frame of each is shown)" if kind == "video" else " photos") + " that clearly and plausibly illustrate THIS story's subject and setting (best first). Reject photos "
         "that are unrelated, odd, misleading, show close-up faces, brands, logos, text or flags, or look "
         "unprofessional. " + ("Be generous: a photo of the same kind of place, nature or activity (not necessarily the exact one) is fine. " if loose else "") + "If none is a good fit return an empty list.\n"
         'Return ONLY JSON: {"picks": [3, 7]}')}]
@@ -164,13 +204,17 @@ def _best_photos_once(headline, narration, queries, out_prefix, want, loose):
     out = []
     for n_, idx in enumerate([i for i in picks if isinstance(i, int) and 0 <= i < len(usable)][:want]):
         c = usable[idx]
-        path = f"{out_prefix}_{n_}.jpg"
+        path = f"{out_prefix}_{n_}.mp4" if kind == "video" else f"{out_prefix}_{n_}.jpg"
         try:
-            data = requests.get(c["full"], timeout=60)
+            data = requests.get(c["full"], timeout=180)
             data.raise_for_status()
             with open(path, "wb") as f:
                 f.write(data.content)
-            Image.open(path).verify()
+            if kind == "video":
+                if os.path.getsize(path) < 50_000:
+                    raise ValueError("video file too small")
+            else:
+                Image.open(path).verify()
             out.append({"path": path, "photographer": c["photographer"], "url": c["url"], "source": c["source"]})
         except Exception as e:
             print(f"[stock] download skipped: {e}")
@@ -178,9 +222,9 @@ def _best_photos_once(headline, narration, queries, out_prefix, want, loose):
     return out
 
 
-def best_photos(headline, narration, queries, out_prefix, want=2):
+def best_photos(headline, narration, queries, out_prefix, want=2, kind="photo"):
     """First the specific searches; if nothing fits, broader searches and a more generous check."""
-    out = _best_photos_once(headline, narration, queries, out_prefix, want, False)
+    out = _best_photos_once(headline, narration, queries, out_prefix, want, False, kind)
     if out:
         return out
     try:
@@ -197,4 +241,4 @@ def best_photos(headline, narration, queries, out_prefix, want=2):
     if not broad:
         return []
     print(f"[stock] second try with broader searches: {broad}")
-    return _best_photos_once(headline, narration, broad, out_prefix, want, True)
+    return _best_photos_once(headline, narration, broad, out_prefix, want, True, kind)

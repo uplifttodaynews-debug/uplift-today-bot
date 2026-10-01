@@ -324,17 +324,28 @@ def _render_piece(base, photo_png, top, lower, ticker, ticker_len, dur, offset, 
     fx, fy, fw, fh = FRAME
     n = max(int(round(dur * 25)), 1)
     slide = ("overlay=x='-w*pow(1-min(t/0.5,1),2)':y=0" if first else "overlay=0:0")
+    is_video = str(photo_png).lower().endswith(".mp4")
+    pic = (f"[4:v]scale={fw}:{fh}:force_original_aspect_ratio=increase,crop={fw}:{fh},fps=25,setsar=1,"
+           "format=yuv420p[vid];[0:v][vid]") if is_video else "[0:v][4:v]"
     filt = (
-        f"[0:v][4:v]overlay={fx}:{fy}[a];"
+        f"{pic}overlay={fx}:{fy}[a];"
         f"[a][3:v]overlay=x='-mod({TICK_SPEED}*(t+{gt:.3f}),{ticker_len})':y={TICK_Y}[b];"
         f"[b][1:v]overlay=0:0[c];[c][2:v]{slide}[v]"
     )
     cmd = ["ffmpeg", "-y", "-loglevel", "error"]
     for p in (base, top, lower, ticker):
         cmd += ["-loop", "1", "-framerate", "25", "-t", f"{dur:.3f}", "-i", p]
-    cmd += ["-f", "rawvideo", "-pix_fmt", "rgb24", "-s", f"{fw}x{fh}", "-framerate", "25", "-i", "pipe:0",
-            "-filter_complex", filt, "-map", "[v]", "-c:v", "libx264", "-preset", "veryfast", "-crf", "20",
+    if is_video:
+        cl = _duration(photo_png) or 5.0
+        start = (offset / 25.0) % max(cl - 0.5, 1.0)
+        cmd += ["-stream_loop", "-1", "-ss", f"{start:.3f}", "-i", photo_png]
+    else:
+        cmd += ["-f", "rawvideo", "-pix_fmt", "rgb24", "-s", f"{fw}x{fh}", "-framerate", "25", "-i", "pipe:0"]
+    cmd += ["-filter_complex", filt, "-map", "[v]", "-c:v", "libx264", "-preset", "veryfast", "-crf", "20",
             "-pix_fmt", "yuv420p", "-r", "25", "-frames:v", str(n), out]
+    if is_video:
+        subprocess.check_call(cmd)
+        return
     proc = subprocess.Popen(cmd, stdin=subprocess.PIPE)
     src = Image.open(photo_png).convert("RGB")
     try:
@@ -352,6 +363,18 @@ def _render_piece(base, photo_png, top, lower, ticker, ticker_len, dur, offset, 
         raise RuntimeError("ffmpeg failed while drawing a story clip")
 
 
+def _dissolve(a, b, out, fade=0.35):
+    """Presenter clip `a` dissolves into news clip `b`; length and sound stay exactly a + b."""
+    da = _duration(a)
+    subprocess.check_call([
+        "ffmpeg", "-y", "-loglevel", "error", "-i", a, "-i", b, "-filter_complex",
+        f"[1:v]tpad=start_duration={fade}:start_mode=clone[b];"
+        f"[0:v][b]xfade=transition=fade:duration={fade}:offset={da - fade:.3f},format=yuv420p[v];"
+        "[0:a][1:a]concat=n=2:v=0:a=1[a]",
+        "-map", "[v]", "-map", "[a]", "-c:v", "libx264", "-preset", "veryfast", "-crf", "20", "-r", "25",
+        "-c:a", "aac", "-b:a", "160k", "-ar", "44100", "-ac", "2", out])
+
+
 def build(segments, out_mp4, workdir):
     """segments = list of dicts: {"headline", "audio", "english", "headline_en", "tag", "backgrounds", "clip"(optional)}"""
     import datetime
@@ -359,6 +382,7 @@ def build(segments, out_mp4, workdir):
     ticker_png = os.path.join(workdir, "ticker.png")
     ticker_len = make_ticker([sg.get("headline_en") for sg in segments if (sg.get("tag") or ("",))[0] == "STORY"], ticker_png)
     clips = []
+    pending = None
     gt = 0.0
     opening = intro_path()
     if opening:
@@ -370,6 +394,7 @@ def build(segments, out_mp4, workdir):
         if seg.get("clip"):
             _talking_clip(seg, clip)
             clips.append(clip)
+            pending = clip
             gt += total
             continue
         sents = _sentences(seg.get("english")) if config.ENGLISH_CAPTIONS else []
@@ -386,6 +411,8 @@ def build(segments, out_mp4, workdir):
             dur = total * weights[k] / wsum
             bg = bgs[min(int(k * len(bgs) / len(sents)), len(bgs) - 1)] if bgs else None
             key = bg or "fallback"
+            if key not in fits and bg and str(bg).lower().endswith(".mp4"):
+                fits[key] = bg
             if key not in fits:
                 fits[key] = fit_photo(bg, os.path.join(workdir, f"photo_{i}_{len(fits)}.png"))
             if key != last_key:
@@ -406,6 +433,16 @@ def build(segments, out_mp4, workdir):
             "-map", "0:v", "-map", "1:a", "-c:v", "copy", "-c:a", "aac", "-b:a", "160k", "-ar", "44100",
             "-ac", "2", "-shortest", clip])
         clips.append(clip)
+        if pending:                                   # soft dissolve from the presenter into the news set
+            try:
+                merged = os.path.join(workdir, f"merged_{i}.mp4")
+                _dissolve(pending, clip, merged)
+                clips.pop()
+                clips.pop()
+                clips.append(merged)
+            except Exception as e:
+                print(f"[video] dissolve skipped: {e}")
+            pending = None
     listfile = os.path.join(workdir, "list.txt")
     with open(listfile, "w") as f:
         for c in clips:
