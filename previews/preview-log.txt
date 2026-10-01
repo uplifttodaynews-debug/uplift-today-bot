@@ -6,50 +6,37 @@
 [news] Good Good Good: kept 8
 [main] 45 candidate stories
 [main] AI wrote 8 stories; fact-checking them...
-[verify] story 0 flagged: The narration adds an unsupported emotional claim that nature's new life has brought a smile to people's faces.
-[verify] story 1 flagged: The narration adds unsupported claims that other animals are crossing safely and that the initiative is saving animals' lives.
-[verify] story 2 flagged: The narration adds an unsupported claim that several beautiful areas across the state are now shining again thanks to their efforts.
-[verify] story 3 flagged: The narration adds an unsupported opinion that this unique effort deepens the bond between humans and animals.
-[verify] story 4 flagged: The narration adds an unsupported claim that the community's efforts are protecting both greenery and wildlife.
-[verify] story 5 flagged: The narration claims the library offers strong electricity and internet and that Sunil completed his interview there, which is not mentioned in the lead.
-[verify] story 7 flagged: The narration adds an unsupported opinion praising the initiative as truly wonderful.
-[main] 7 stories flagged - asking the writer to fix them...
-[verify] story 5 flagged: The source lead does not state that the place Sunil thought of was a library (it ends at "I know a place..."); saying he thought of a library adds information not in the lead.
+[verify] story 3 flagged: The narration claims that their traditional knowledge and care kept the green forests completely safe ("उनकी पारंपरिक समझ और देखभाल ने हरे-भरे जंगलों को पूरी तरह सुरक्षित रखा है"), which is not mentioned in the lead.
+[verify] story 4 flagged: The lead cuts off mid-sentence ("I know a place...") and never states that Sunil gave his job interview there or that young people are getting electricity and quiet environments at the libraries.
+[verify] story 7 flagged: The narration mentions rare seabirds ("दुर्लभ समुद्री पक्षी") and turning concrete ("कंक्रीट") into wetlands, which are details not supported by the lead.
 [main] 5 stories passed. Sources: Good Good Good, Good News Network, The Better India : Latest Posts, The Optimist Daily: Making Solutions the News
 [main] English captions ready
-[stock] 'Old airport becomes a massive ': best scores [6.0, 5.0, 4.0] (need 8)
-[stock] 'Old airport becomes a massive ': 16 candidates, 0 matched
-[stock] second try with broader searches: ['coastal city park', 'aerial green park', 'urban park landscape', 'mediterranean coast landscape']
-[stock] 'Old airport becomes a massive ': best scores [8.0, 8.0, 5.0] (need 7)
-[stock] 'Old airport becomes a massive ': 16 candidates, 2 matched
+[stock] 'New shoots sprout on the tree ': best scores [6.0, 4.0, 4.0] (need 8)
+[stock] 'New shoots sprout on the tree ': 16 candidates, 0 matched
+[stock] second try with broader searches: ['sprouting tree stump', 'rolling green hills', 'lone green tree', 'new plant growth']
+[stock] 'New shoots sprout on the tree ': best scores [7.0, 7.0, 6.0] (need 6)
+[stock] 'New shoots sprout on the tree ': 16 candidates, 2 matched
 [main] story0: 2 video clip(s)
-[stock] 'Tree turns green again in Brit': best scores [1.0, 1.0, 1.0] (need 8)
-[stock] 'Tree turns green again in Brit': 3 candidates, 0 matched
-[stock] second try with broader searches: ['green rolling hills', 'lone tree landscape', 'sprouting tree stump', 'rural valley landscape']
-[stock] 'Tree turns green again in Brit': best scores [7.0, 5.0, 5.0] (need 7)
-[stock] 'Tree turns green again in Brit': 4 candidates, 1 matched
-[stock] 'Wildlife overpass saves animal': best scores [7.0, 5.0, 4.0] (need 8)
-[stock] 'Wildlife overpass saves animal': 16 candidates, 0 matched
-[stock] second try with broader searches: ['mountain highway', 'wildlife crossing bridge', 'pine forest road', 'mountain nature landscape']
-[stock] 'Wildlife overpass saves animal': best scores [6.0, 6.0, 5.0] (need 7)
-[stock] 'Wildlife overpass saves animal': 16 candidates, 0 matched
-[main] story2: no good video clip, using photos
-[stock] 'Wildlife overpass saves animal': best scores [6.0, 5.0, 5.0] (need 8)
-[stock] 'Wildlife overpass saves animal': 17 candidates, 0 matched
-[stock] second try with broader searches: ['wildlife overpass', 'mountain highway', 'pine forest landscape', 'highway overpass']
-[stock] 'Wildlife overpass saves animal': best scores [5.0, 5.0, 4.0] (need 7)
-[stock] 'Wildlife overpass saves animal': 4 candidates, 0 matched
-[stock] 'Two sisters cleaned up plastic': best scores [7.0, 7.0, 6.0] (need 8)
-[stock] 'Two sisters cleaned up plastic': 20 candidates, 0 matched
-[stock] second try with broader searches: ['serene lake shore', 'public picnic park', 'river bank nature', 'clean forest stream']
-[stock] 'Two sisters cleaned up plastic': best scores [7.0, 6.0, 6.0] (need 7)
-[stock] 'Two sisters cleaned up plastic': 20 candidates, 1 matched
-[stock] 'Rescued monkeys find a safe ho': best scores [8.0, 7.0, 7.0] (need 8)
-[stock] 'Rescued monkeys find a safe ho': 16 candidates, 1 matched
-[stock] 'Rescued monkeys find a safe ho': best scores [8.0, 8.0, 8.0] (need 8)
-[stock] 'Rescued monkeys find a safe ho': 20 candidates, 1 matched
-[main] story4: 1 video clip(s)
-[main] 9 stock photos used
-[main] video ready, 126 seconds
+[stock] 'Safe bridge built for animals': best scores [8.0, 5.0, 4.0] (need 8)
+[stock] 'Safe bridge built for animals': 20 candidates, 1 matched
+[stock] 'Two sisters removed plastic wa': best scores [7.0, 7.0, 6.0] (need 8)
+[stock] 'Two sisters removed plastic wa': 16 candidates, 0 matched
+[stock] second try with broader searches: ['clean lake shore', 'scenic river bank', 'lush green park', 'nature picnic area']
+[stock] 'Two sisters removed plastic wa': best scores [7.0, 6.0, 6.0] (need 6)
+[stock] 'Two sisters removed plastic wa': 16 candidates, 2 matched
+[main] story2: 2 video clip(s)
+[stock] 'Monkeys get a safe home': best scores [7.0, 7.0, 7.0] (need 8)
+[stock] 'Monkeys get a safe home': 20 candidates, 0 matched
+[stock] second try with broader searches: ['lush green forest', 'open nature reserve', 'sunlit woodland trees', 'peaceful forest landscape']
+[stock] 'Monkeys get a safe home': best scores [7.0, 6.0, 6.0] (need 6)
+[stock] 'Monkeys get a safe home': 20 candidates, 2 matched
+[stock] 'Massive park created from an o': best scores [7.0, 6.0, 5.0] (need 8)
+[stock] 'Massive park created from an o': 15 candidates, 0 matched
+[stock] second try with broader searches: ['coastal park landscape', 'aerial green park', 'lush botanical garden', 'sunny seaside park']
+[stock] 'Massive park created from an o': best scores [8.0, 8.0, 6.0] (need 6)
+[stock] 'Massive park created from an o': 16 candidates, 2 matched
+[main] story4: 2 video clip(s)
+[main] 12 stock photos used
+[main] video ready, 140 seconds
 [music] mixed in piano_hope.mp3
 [main] PREVIEW saved in previews/ - nothing was uploaded to YouTube
