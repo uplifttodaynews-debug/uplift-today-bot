@@ -412,13 +412,13 @@ def frame(t, fonts):
             a = int(max(0, (30 + 20 * bt / HIT) * (1 - age / 1.0) ** 1.5))
             d.ellipse([cx - rr, sun_y - rr, cx + rr, sun_y + rr], outline=(255, 245, 200, a), width=3)
     # small caption before the title
-    p = ease((t - BAR) / 0.4) * (1 - ease((t - HIT + 0.4) / 0.3)) if t >= BAR else 0
+    p = 1.0 * (1 - ease((t - HIT + 0.4) / 0.3))
     if p > 0.01:
-        txt = "T O D A Y ' S   G O O D   N E W S"
+        txt = "T O D A Y ' S   U P L I F T I N G   N E W S"
         w = d.textlength(txt, font=small_font)
         d.text(((W - w) / 2 + 2, 172), txt, font=small_font, fill=(10, 50, 130, int(150 * p)))
         d.text(((W - w) / 2, 170), txt, font=small_font, fill=(255, 255, 255, int(255 * p)))
-        bw = int(300 * ease((t - BAR) / 0.5))
+        bw = int(300 * ease(max(t, 0.02) / 0.4 + 0.05))
         d.rounded_rectangle([cx - bw, 222, cx + bw, 227], radius=3, fill=(255, 205, 60, int(255 * p)))
     # the big hit: the title slams in
     if t >= HIT - 0.03:

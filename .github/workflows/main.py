@@ -140,7 +140,7 @@ def main():
         segments.append(seg)
 
     fq = config.FIXED_SLIDE_QUERIES
-    add("आज की अच्छी खबरें", data["intro"], "intro", True, english[0], "Today's Good News", [fq["intro"]], ("UPLIFT", "TODAY"))
+    add("आज की अच्छी खबरें", data["intro"], "intro", True, english[0], "Today's Uplifting News", [fq["intro"]], ("UPLIFT", "TODAY"))
     for i, s in enumerate(stories):
         add(s.get("headline", ""), s["narration"], f"story{i}", False, english[1 + i], english_heads[i],
             s.get("visual_queries") or [], ("STORY", f"{i + 1:02d}"), True)
