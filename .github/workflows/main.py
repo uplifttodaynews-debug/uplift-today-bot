@@ -32,7 +32,25 @@ def limit_per_source(stories):
     return kept
 
 
+def save_preview(mp4, thumb, description, work):
+    """Preview mode: do NOT upload to YouTube. Save a smaller copy in the repo folder previews/."""
+    import shutil
+    import subprocess
+    out = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", "previews")
+    os.makedirs(out, exist_ok=True)
+    subprocess.check_call([
+        "ffmpeg", "-y", "-loglevel", "error", "-i", mp4, "-vf", "scale=960:-2",
+        "-c:v", "libx264", "-crf", "27", "-preset", "veryfast", "-c:a", "aac", "-b:a", "128k",
+        os.path.join(out, "preview.mp4")])
+    shutil.copy(thumb, os.path.join(out, "thumbnail.png"))
+    with open(os.path.join(out, "description.txt"), "w", encoding="utf-8") as f:
+        f.write(description)
+    print("[main] PREVIEW saved in previews/ - nothing was uploaded to YouTube")
+
+
 def main():
+    if os.environ.get("ANCHOR_OFF") == "1":
+        config.ANCHOR = False
     work = tempfile.mkdtemp(prefix="uplift_")  # temp folder, deleted with the runner
     today = datetime.date.today().strftime("%d %B %Y")
 
@@ -147,6 +165,9 @@ def main():
     tags = ["good news", "positive news", "uplift today", "अच्छी खबर",
             "सकारात्मक खबर", "hindi news", "inspiring news"]
 
+    if os.environ.get("PREVIEW_ONLY") == "1":
+        save_preview(mp4, thumb, description, work)
+        return 0
     try:
         upload.upload(mp4, data["title"], description, tags, thumb)
     except Exception as e:

@@ -1,0 +1,63 @@
+# preview.yml - makes the whole bulletin but does NOT upload it to YouTube.
+# The video is saved (smaller) in the previews/ folder so Claude can show it to you.
+# Start it by changing preview-now.txt. Line 1: "full" (with the paid talking presenter) or "no-kavya" (free).
+name: Preview bulletin (no YouTube upload)
+
+on:
+  workflow_dispatch:
+  push:
+    # Changing preview-now.txt (and ONLY that file) starts a preview. Line 1 may be "full" or "no-kavya".
+    paths:
+      - preview-now.txt
+
+permissions:
+  contents: write
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    defaults:
+      run:
+        working-directory: .github/workflows
+    steps:
+      - name: Get the code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install fonts and video tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg fonts-noto-core libraqm0 libfribidi0
+
+      - name: Install Python packages
+        run: pip install -r requirements.txt
+
+      - name: Make the preview (one attempt, nothing is uploaded)
+        env:
+          YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
+          YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
+          YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
+          GOOGLE_TTS_API_KEY: ${{ secrets.GOOGLE_TTS_API_KEY }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
+          PIXABAY_API_KEY: ${{ secrets.PIXABAY_API_KEY }}
+          FAL_KEY: ${{ secrets.FAL_KEY }}
+          PREVIEW_ONLY: "1"
+        run: |
+          if [ "$(head -1 ../../preview-now.txt | tr -d '\r')" = "no-kavya" ]; then export ANCHOR_OFF=1; fi
+          python main.py
+
+      - name: Save the preview into the repo
+        run: |
+          cd ../..
+          git config user.name "uplift-bot"
+          git config user.email "uplift-bot@users.noreply.github.com"
+          git add previews
+          git commit -m "Preview video" || echo "nothing new"
+          git pull --rebase -q || true
+          git push
