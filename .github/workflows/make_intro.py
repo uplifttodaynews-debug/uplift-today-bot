@@ -257,8 +257,8 @@ def _dark_gradient(warm):
     """Night-blue top to a warm glow at the bottom; `warm` (0..1) grows as the sun nears."""
     img = Image.new("RGB", (W, H))
     px = img.load()
-    top = (10, 10, 28)
-    bot = (int(40 + 150 * warm), int(14 + 70 * warm), int(48 + 10 * warm))
+    top = (24, 14, 96)                  # vivid deep indigo
+    bot = (int(190 + 65 * warm), int(70 + 90 * warm), int(80 - 20 * warm))   # bright orange-gold glow
     for y in range(H):
         t = (y / (H - 1)) ** 1.6
         c = tuple(int(top[i] + (bot[i] - top[i]) * t) for i in range(3))
@@ -279,7 +279,7 @@ def gradient_for(warm):
 
 def frame(t, fonts):
     title_font, tag_font, hindi_font, small_font = fonts
-    warm = ease(t / HIT) * 0.9
+    warm = 0.55 + 0.45 * ease(t / HIT)
     img = gradient_for(warm).convert("RGBA")
     d = ImageDraw.Draw(img, "RGBA")
     horizon = int(H * 0.74)
@@ -297,14 +297,14 @@ def frame(t, fonts):
     sun_y = horizon + 95 - rise * 122
     for g in range(7, 0, -1):
         rr = 60 + g * 16
-        d.ellipse([cx - rr, sun_y - rr, cx + rr, sun_y + rr], fill=(255, 190, 110, int(10 + 12 * rise)))
+        d.ellipse([cx - rr, sun_y - rr, cx + rr, sun_y + rr], fill=(255, 200, 120, int(16 + 16 * rise)))
     video._sun(d, cx, sun_y, 60)
-    d.rectangle([0, horizon, W, H], fill=(20, 8, 30, 255))
+    d.rectangle([0, horizon, W, H], fill=(40, 14, 88, 255))
     wline = int(W * ease(t / 1.0))
     d.rectangle([cx - wline // 2, horizon - 1, cx + wline // 2, horizon + 3], fill=(255, 205, 130, 255))
     # the question-motif moment (bar 3): small gold caption fades in
-    if t >= 1 * BAR:
-        p = ease((t - 1 * BAR) / 0.4) * (1 - ease((t - HIT + 0.4) / 0.3))
+    p = ease((t - 1 * BAR) / 0.4) * (1 - ease((t - HIT + 0.4) / 0.3)) if t >= 1 * BAR else 0
+    if p > 0.01:
         txt = "T O D A Y ' S   G O O D   N E W S"
         w = d.textlength(txt, font=small_font)
         d.text(((W - w) / 2, 250), txt, font=small_font, fill=(255, 214, 150, int(255 * p)))
@@ -336,8 +336,6 @@ def frame(t, fonts):
             tgw = d.textlength(tg, font=tag_font)
             d.text(((W - tgw) / 2, 364 + (1 - p2) * 16), tg, font=tag_font, fill=(255, 255, 255, int(235 * p2)))
     # fade in from black
-    if t < 0.25:
-        d.rectangle([0, 0, W, H], fill=(0, 0, 0, int(255 * (1 - t / 0.25))))
     return img.convert("RGB")
 
 

@@ -157,8 +157,139 @@ def _talking_clip(seg, clip):
         "-shortest", clip])
 
 
+# ------------------------------------------------------------------ news-report layout
+# The picture sits in a framed window (like a report on a news channel) instead of running behind the text.
+# A bright lower-third bar carries the headline, and the picture drifts in very slowly ("Ken Burns").
+FRAME = (140, 30, 1000, 420)           # x, y, width, height of the picture window
+BAR_Y, BAR_H = 462, 120
+CAP_Y = 596
+NAVY_TOP, NAVY_BOT = (10, 14, 46), (50, 16, 70)
+CRIMSON = (216, 30, 91)
+GOLD = (255, 194, 77)
+PH_W, PH_H = int(FRAME[2] * 1.2), int(FRAME[3] * 1.2)    # a little larger than the window so it can zoom
+
+
+def _backdrop():
+    img = Image.new("RGB", (W, H))
+    d = ImageDraw.Draw(img)
+    for y in range(H):
+        t = y / (H - 1)
+        d.line([(0, y), (W, y)], fill=tuple(int(NAVY_TOP[i] + (NAVY_BOT[i] - NAVY_TOP[i]) * t) for i in range(3)))
+    return img
+
+
+def _fallback_art():
+    """Sunrise picture used when no stock photo was found."""
+    img = Image.new("RGB", (PH_W, PH_H))
+    d = ImageDraw.Draw(img)
+    a, b = config.GRADIENT_TOP, config.GRADIENT_BOTTOM
+    for y in range(PH_H):
+        t = y / (PH_H - 1)
+        d.line([(0, y), (PH_W, y)], fill=tuple(int(a[i] + (b[i] - a[i]) * t) for i in range(3)))
+    _sun(d, PH_W // 2, PH_H // 2, 95)
+    return img
+
+
+def fit_photo(path, out_png):
+    src = Image.open(path).convert("RGB") if path else _fallback_art()
+    scale = max(PH_W / src.width, PH_H / src.height)
+    src = src.resize((int(src.width * scale) + 1, int(src.height * scale) + 1), Image.LANCZOS)
+    left, top = (src.width - PH_W) // 2, (src.height - PH_H) // 2
+    src.crop((left, top, left + PH_W, top + PH_H)).save(out_png)
+    return out_png
+
+
+def _fit_size(d, text, max_w, start, stop, latin=False):
+    size = start
+    font = _font(size, latin=latin)
+    while d.textlength(text, font=font) > max_w and size > stop:
+        size -= 2
+        font = _font(size, latin=latin)
+    return font
+
+
+def make_fixed_layers(headline, headline_en, tag, top_png, lower_png):
+    """top_png: picture border + channel bug (always on).  lower_png: the lower-third bar (slides in)."""
+    fx, fy, fw, fh = FRAME
+    top = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+    d = ImageDraw.Draw(top)
+    d.rectangle([fx - 5, fy - 5, fx + fw + 4, fy + fh + 4], outline=(255, 255, 255, 255), width=5)
+    d.rectangle([fx - 5, fy + fh + 4, fx + fw + 4, fy + fh + 10], fill=GOLD + (255,))
+    pill = Image.new("RGBA", (330, 54), (10, 14, 46, 215))
+    top.paste(pill, (fx + 16, fy + 16), pill)
+    d = ImageDraw.Draw(top)
+    _sun(d, fx + 16 + 30, fy + 16 + 27, 14)
+    d.text((fx + 16 + 62, fy + 16 + 9), "UPLIFT TODAY", font=_font(30, latin=True), fill=(255, 255, 255, 255))
+    top.save(top_png)
+
+    low = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+    d = ImageDraw.Draw(low)
+    tag_w = 220
+    d.rectangle([fx, BAR_Y, fx + tag_w, BAR_Y + BAR_H], fill=GOLD + (255,))
+    small, big = tag if tag else ("", "")
+    if small:
+        sf = _font(24, latin=True)
+        sw = d.textlength(small, font=sf)
+        d.text((fx + (tag_w - sw) / 2, BAR_Y + 14), small, font=sf, fill=(10, 14, 46, 255))
+    if big:
+        bf = _fit_size(d, big, tag_w - 24, 58, 24, latin=True)
+        bw = d.textlength(big, font=bf)
+        d.text((fx + (tag_w - bw) / 2, BAR_Y + 44), big, font=bf, fill=(10, 14, 46, 255))
+    bx0, bx1 = fx + tag_w, fx + fw
+    d.rectangle([bx0, BAR_Y, bx1, BAR_Y + BAR_H], fill=CRIMSON + (255,))
+    d.rectangle([bx0, BAR_Y, bx1, BAR_Y + 4], fill=(255, 255, 255, 255))
+    maxw = bx1 - bx0 - 40
+    hf = _fit_size(d, headline, maxw, 54, 36)
+    lines = [headline] if d.textlength(headline, font=hf) <= maxw else _wrap(d, headline, hf, maxw)[:2]
+    y = BAR_Y + 14
+    for ln in lines:
+        d.text((bx0 + 20, y), ln, font=hf, fill=(255, 255, 255, 255))
+        y += int(hf.size * 1.3)
+    if headline_en:
+        ef = _fit_size(d, headline_en, maxw, 30, 20, latin=True)
+        d.text((bx0 + 20, BAR_Y + BAR_H - 14 - ef.size * 1.2), headline_en, font=ef, fill=(255, 226, 150, 255))
+    low.save(lower_png)
+
+
+def make_base(caption, out_png):
+    """Backdrop + caption strip (changes with every sentence)."""
+    img = _backdrop()
+    fx, fy, fw, fh = FRAME
+    d = ImageDraw.Draw(img, "RGBA")
+    d.rectangle([fx + 10, fy + 10, fx + fw + 14, fy + fh + 14], fill=(0, 0, 0, 120))     # soft shadow
+    if caption:
+        cf = _font(34, latin=True)
+        clines = _wrap(d, caption, cf, W - 240)[:2]
+        box_h = int(34 * 1.4) * len(clines) + 22
+        y0 = CAP_Y + (H - CAP_Y - box_h) // 2 - 6
+        d.rectangle([0, y0 - 6, W, y0 + box_h], fill=(6, 8, 30, 235))
+        cy = y0 + 8
+        for ln in clines:
+            w = d.textlength(ln, font=cf)
+            d.text(((W - w) / 2, cy), ln, font=cf, fill=(255, 255, 255, 255))
+            cy += int(34 * 1.4)
+    img.save(out_png)
+
+
+def _render_piece(base, photo, top, lower, dur, offset, first, out):
+    """One sentence: slow zoom on the picture, bar slides in on the first sentence of a story."""
+    fx, fy, fw, fh = FRAME
+    zoom = f"min(1.0+0.00045*(on+{offset}),1.2)"
+    slide = ("overlay=x='-w*pow(1-min(t/0.5,1),2)':y=0" if first else "overlay=0:0")
+    filt = (
+        f"[1:v]zoompan=z='{zoom}':x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':d=1:s={fw}x{fh}:fps=25[p];"
+        f"[0:v][p]overlay={fx}:{fy}[a];[a][2:v]overlay=0:0[b];[b][3:v]{slide}[v]"
+    )
+    cmd = ["ffmpeg", "-y", "-loglevel", "error"]
+    for p in (base, photo, top, lower):
+        cmd += ["-loop", "1", "-framerate", "25", "-t", f"{dur:.3f}", "-i", p]
+    cmd += ["-filter_complex", filt, "-map", "[v]", "-c:v", "libx264", "-preset", "veryfast", "-crf", "20",
+            "-pix_fmt", "yuv420p", "-r", "25", "-t", f"{dur:.3f}", out]
+    subprocess.check_call(cmd)
+
+
 def build(segments, out_mp4, workdir):
-    """segments = list of dicts: {"headline", "audio", "title_slide", "english"(optional), "clip"(optional)}"""
+    """segments = list of dicts: {"headline", "audio", "english", "headline_en", "tag", "backgrounds", "clip"(optional)}"""
     clips = []
     opening = intro_path()
     if opening:
@@ -175,25 +306,33 @@ def build(segments, out_mp4, workdir):
             sents = [None]
         weights = [max(len(s), 1) if s else 1 for s in sents]
         wsum = float(sum(weights))
-        lines = []
+        bgs = [b for b in (seg.get("backgrounds") or []) if b]
+        top_png = os.path.join(workdir, f"top_{i}.png")
+        lower_png = os.path.join(workdir, f"lower_{i}.png")
+        make_fixed_layers(seg["headline"], seg.get("headline_en"), seg.get("tag"), top_png, lower_png)
+        fits, last_key, offset, pieces = {}, None, 0, []
         for k, sent in enumerate(sents):
-            png = os.path.join(workdir, f"slide_{i}_{k}.png")
-            bgs = [b for b in (seg.get("backgrounds") or []) if b]
+            dur = total * weights[k] / wsum
             bg = bgs[min(int(k * len(bgs) / len(sents)), len(bgs) - 1)] if bgs else None
-            make_slide(seg["headline"], png, is_title=seg.get("title_slide", False), caption=sent,
-                       headline_en=seg.get("headline_en"), background=bg)
-            lines.append(f"file '{os.path.abspath(png)}'")
-            lines.append(f"duration {total * weights[k] / wsum:.3f}")
-        lines.append(lines[-2])  # the concat demuxer needs the last image repeated
-        imglist = os.path.join(workdir, f"imgs_{i}.txt")
-        with open(imglist, "w") as f:
-            f.write("\n".join(lines) + "\n")
+            key = bg or "fallback"
+            if key not in fits:
+                fits[key] = fit_photo(bg, os.path.join(workdir, f"photo_{i}_{len(fits)}.png"))
+            if key != last_key:
+                offset, last_key = 0, key
+            base = os.path.join(workdir, f"base_{i}_{k}.png")
+            make_base(sent, base)
+            piece = os.path.join(workdir, f"piece_{i}_{k}.mp4")
+            _render_piece(base, fits[key], top_png, lower_png, dur, offset, k == 0, piece)
+            offset += int(round(dur * 25))
+            pieces.append(piece)
+        plist = os.path.join(workdir, f"pieces_{i}.txt")
+        with open(plist, "w") as f:
+            for p in pieces:
+                f.write(f"file '{os.path.abspath(p)}'\n")
         subprocess.check_call([
-            "ffmpeg", "-y", "-loglevel", "error",
-            "-f", "concat", "-safe", "0", "-i", imglist, "-i", seg["audio"],
-            "-c:v", "libx264", "-pix_fmt", "yuv420p", "-r", "25",
-            "-c:a", "aac", "-b:a", "160k", "-ar", "44100", "-ac", "2",
-            "-shortest", clip])
+            "ffmpeg", "-y", "-loglevel", "error", "-f", "concat", "-safe", "0", "-i", plist, "-i", seg["audio"],
+            "-map", "0:v", "-map", "1:a", "-c:v", "copy", "-c:a", "aac", "-b:a", "160k", "-ar", "44100",
+            "-ac", "2", "-shortest", clip])
         clips.append(clip)
     listfile = os.path.join(workdir, "list.txt")
     with open(listfile, "w") as f:
