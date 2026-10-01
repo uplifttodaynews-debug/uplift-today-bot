@@ -286,19 +286,36 @@ def _glow_layer():
 
 
 def _clouds():
-    from PIL import ImageFilter
-    rng = np.random.default_rng(5)
-    lay = Image.new("RGBA", (W, H), (0, 0, 0, 0))
-    d = ImageDraw.Draw(lay)
-    for side in (0, 1):
-        for _ in range(26):
-            x = rng.uniform(-40, 260) if side == 0 else rng.uniform(W - 260, W + 40)
-            y = rng.uniform(380, 480)
-            rx, ry = rng.uniform(40, 90), rng.uniform(22, 50)
-            warm = (y - 380) / 100
-            col = (255, int(250 - 40 * warm), int(240 - 90 * warm), 235)
-            d.ellipse([x - rx, y - ry, x + rx, y + ry], fill=col)
-    return lay.filter(ImageFilter.GaussianBlur(7))
+    """Crisp, smooth cumulus (union of circles, drawn at 2x), white on top fading to warm gold underneath."""
+    rng = np.random.default_rng(11)
+    S = 2
+    mask = Image.new("L", (W * S, H * S), 0)
+    d = ImageDraw.Draw(mask)
+
+    def puff(cx, base, width, height):
+        n = int(width / 26)
+        for i in range(n):
+            u = (i + rng.uniform(0.2, 0.8)) / n
+            hump = 1 - abs(2 * u - 1) ** 1.8
+            r = rng.uniform(0.4, 0.6) * height * (0.4 + 0.7 * hump)
+            x, y = cx - width / 2 + u * width, base - r * 0.55
+            d.ellipse([(x - r) * S, (y - r) * S, (x + r) * S, (y + r) * S], fill=255)
+        d.rectangle([(cx - width / 2 - r) * S, base * S, (cx + width / 2 + r) * S, (base + 200) * S], fill=0)
+
+    puff(70, 470, 380, 130)
+    puff(215, 480, 220, 80)
+    puff(W - 80, 470, 400, 140)
+    puff(W - 250, 485, 200, 70)
+    mask = mask.resize((W, H), Image.LANCZOS)
+    ys = np.linspace(0, 1, H)[:, None, None]
+    y0, y1 = 345, 450
+    k = np.clip((ys - y0) / (y1 - y0), 0, 1)
+    top, bot = np.array([255, 253, 248]), np.array([255, 190, 120])
+    col = (top * (1 - k) + bot * k)
+    col = np.repeat(col, W, axis=1).astype("uint8")
+    lay = Image.fromarray(col, "RGB").convert("RGBA")
+    lay.putalpha(mask)
+    return lay
 
 
 def _grad(h, c0, c1):
