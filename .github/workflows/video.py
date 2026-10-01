@@ -212,8 +212,27 @@ def _fallback_art():
     return img
 
 
-def fit_photo(path, out_png):
-    src = Image.open(path).convert("RGB") if path else _fallback_art()
+def _headline_card(text):
+    """Plain blue news graphic with the story headline - used when no photo or clip clearly fits a story."""
+    img = Image.new("RGB", (PH_W, PH_H))
+    d = ImageDraw.Draw(img)
+    for y in range(PH_H):
+        t = y / (PH_H - 1)
+        d.line([(0, y), (PH_W, y)], fill=tuple(int(BLUE[i] + (NAVY[i] - BLUE[i]) * t) for i in range(3)))
+    font = _font(64, latin=True)
+    lines = _wrap(d, text or "Uplift Today", font, int(PH_W * 0.8))[:3]
+    lh = int(64 * 1.25)
+    y = (PH_H - lh * len(lines)) // 2
+    for ln in lines:
+        w = d.textlength(ln, font=font)
+        d.text(((PH_W - w) / 2, y), ln, font=font, fill=WHITE)
+        y += lh
+    d.rectangle([PH_W // 2 - 90, y + 10, PH_W // 2 + 90, y + 14], fill=WHITE)
+    return img
+
+
+def fit_photo(path, out_png, card_text=None):
+    src = Image.open(path).convert("RGB") if path else (_headline_card(card_text) if card_text else _fallback_art())
     scale = max(PH_W / src.width, PH_H / src.height)
     src = src.resize((int(src.width * scale) + 1, int(src.height * scale) + 1), Image.LANCZOS)
     left, top = (src.width - PH_W) // 2, (src.height - PH_H) // 2
@@ -414,7 +433,9 @@ def build(segments, out_mp4, workdir):
             if key not in fits and bg and str(bg).lower().endswith(".mp4"):
                 fits[key] = bg
             if key not in fits:
-                fits[key] = fit_photo(bg, os.path.join(workdir, f"photo_{i}_{len(fits)}.png"))
+                is_story = (seg.get("tag") or ("",))[0] == "STORY"
+                fits[key] = fit_photo(bg, os.path.join(workdir, f"photo_{i}_{len(fits)}.png"),
+                                      card_text=(seg.get("headline_en") or seg.get("headline")) if (is_story and not bg) else None)
             if key != last_key:
                 offset, last_key = 0, key
             base = os.path.join(workdir, f"base_{i}_{k}.png")

@@ -199,7 +199,7 @@ def _best_photos_once(headline, narration, queries, out_prefix, want, loose, kin
             continue
     if not usable:
         return []
-    need = 7 if loose else 8
+    need = 6 if loose else 8
     try:
         sc = script_writer._call(parts, 0.0).get("scores", [])
         ranked = sorted([(float(x.get("score", 0)), int(x["i"])) for x in sc if isinstance(x, dict) and "i" in x], reverse=True)
