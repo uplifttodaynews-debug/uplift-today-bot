@@ -6,43 +6,38 @@
 [news] Good Good Good: kept 8
 [main] 45 candidate stories
 [main] AI wrote 8 stories; fact-checking them...
-[verify] story 3 flagged: The narration claims that the libraries helped Sunil with his studies, which is not supported by the lead (which mentions his concern about a power outage during a job interview and cuts off before explaining how the library was used).
-[verify] story 7 flagged: The narration adds unsupported claims that the monkeys now roam freely and that caring for them gave veterans peace of mind and a new direction in life.
-[main] 5 stories passed. Sources: Good News Network, Positive News, The Optimist Daily: Making Solutions the News
+[verify] story 6 flagged: The source lead cuts off midway through a quote and does not state that the library provided Sunil Totti with an uninterrupted place to prepare for his interview.
+[main] special day greeting is used
+[main] 5 stories passed. Sources: Good News Network, The Better India : Latest Posts, The Optimist Daily: Making Solutions the News
 [main] English captions ready
-[main] greeting is 4.5 s long
-[avatar] talking clip ready (3_maroon_blazer.jpg)
-[stock] 'Famous Sycamore Tree Green Aga': best scores [7.0, 7.0, 6.0] (need 8)
-[stock] 'Famous Sycamore Tree Green Aga': 18 candidates, 0 matched
-[stock] second try with broader searches: ['sprouting tree stump', 'sycamore tree', 'British countryside', 'rolling green hills']
-[stock] 'Famous Sycamore Tree Green Aga': best scores [6.0, 5.0, 5.0] (need 6)
-[stock] 'Famous Sycamore Tree Green Aga': 18 candidates, 1 matched
-[stock] 'Famous Sycamore Tree Green Aga': best scores [9.0, 9.0, 7.0] (need 8)
-[stock] 'Famous Sycamore Tree Green Aga': 24 candidates, 1 matched
-[main] story0: 1 video clip(s)
-[stock] 'Golf Course Becomes a Home for': best scores [7.0, 7.0, 7.0] (need 8)
-[stock] 'Golf Course Becomes a Home for': 24 candidates, 0 matched
-[stock] second try with broader searches: ['coastal birds', 'England coast', 'coastal wetland', 'nature reserve']
-[stock] 'Golf Course Becomes a Home for': best scores [8.0, 8.0, 7.0] (need 6)
-[stock] 'Golf Course Becomes a Home for': 24 candidates, 2 matched
-[stock] 'Indigenous People Saved Forest': best scores [7.0, 7.0, 3.0] (need 8)
-[stock] 'Indigenous People Saved Forest': 18 candidates, 0 matched
-[stock] second try with broader searches: ['Peru rainforest', 'Forest fire', 'Lush forest canopy', 'Tropical rainforest']
-[stock] 'Indigenous People Saved Forest': best scores [7.0, 7.0, 5.0] (need 6)
-[stock] 'Indigenous People Saved Forest': 18 candidates, 2 matched
+[main] greeting is 6.1 s long
+[avatar] skipped: 403 Client Error: Forbidden for url: https://rest.alpha.fal.ai/storage/upload/initiate?storage_type=fal-cdn-v3
+[stock] 'A new beginning for Britain's ': best scores [5.0, 5.0, 4.0] (need 8)
+[stock] 'A new beginning for Britain's ': 18 candidates, 0 matched
+[stock] second try with broader searches: ['sprouting tree stump', 'tree regrowth', 'Sycamore Gap', 'English countryside']
+[stock] 'A new beginning for Britain's ': best scores [7.0, 6.0, 5.0] (need 6)
+[stock] 'A new beginning for Britain's ': 18 candidates, 2 matched
+[main] story0: 2 video clip(s)
+[stock] 'Golf course becomes a home for': best scores [8.0, 6.0, 6.0] (need 8)
+[stock] 'Golf course becomes a home for': 24 candidates, 1 matched
+[stock] 'Wildlife overpass saves animal': best scores [7.0, 7.0, 7.0] (need 8)
+[stock] 'Wildlife overpass saves animal': 18 candidates, 0 matched
+[stock] second try with broader searches: ['wildlife overpass', 'Colorado', 'deer crossing', 'mountain highway']
+[stock] 'Wildlife overpass saves animal': best scores [7.0, 7.0, 6.0] (need 6)
+[stock] 'Wildlife overpass saves animal': 18 candidates, 2 matched
 [main] story2: 2 video clip(s)
-[stock] 'Overpass Saves Lives in Colora': best scores [6.0, 6.0, 5.0] (need 8)
-[stock] 'Overpass Saves Lives in Colora': 24 candidates, 0 matched
-[stock] second try with broader searches: ['wildlife overpass', 'Colorado USA', 'mountain highway', 'deer crossing']
-[stock] 'Overpass Saves Lives in Colora': best scores [7.0, 7.0, 7.0] (need 6)
-[stock] 'Overpass Saves Lives in Colora': 24 candidates, 2 matched
-[stock] 'Old Airport to Become a Giant ': best scores [6.0, 4.0, 4.0] (need 8)
-[stock] 'Old Airport to Become a Giant ': 18 candidates, 0 matched
-[stock] second try with broader searches: ['Athens Greece', 'abandoned airport', 'urban park', 'coastal park']
-[stock] 'Old Airport to Become a Giant ': best scores [7.0, 6.0, 5.0] (need 6)
-[stock] 'Old Airport to Become a Giant ': 18 candidates, 2 matched
+[stock] 'Airport becomes Europe's large': best scores [6.0, 5.0, 5.0] (need 8)
+[stock] 'Airport becomes Europe's large': 24 candidates, 0 matched
+[stock] second try with broader searches: ['urban park', 'Athens Greece', 'coastal park', 'park landscape']
+[stock] 'Airport becomes Europe's large': best scores [7.0, 7.0, 6.0] (need 6)
+[stock] 'Airport becomes Europe's large': 24 candidates, 2 matched
+[stock] 'Wonderful initiative by Jharkh': best scores [7.0, 6.0, 5.0] (need 8)
+[stock] 'Wonderful initiative by Jharkh': 17 candidates, 0 matched
+[stock] second try with broader searches: ['plastic waste', 'Hazaribagh Jharkhand', 'water pollution', 'clean river landscape']
+[stock] 'Wonderful initiative by Jharkh': best scores [7.0, 7.0, 6.0] (need 6)
+[stock] 'Wonderful initiative by Jharkh': 18 candidates, 2 matched
 [main] story4: 2 video clip(s)
-[main] 13 stock photos used
-[main] video ready, 133 seconds
-[music] mixed in piano_hope.mp3
+[main] 12 stock photos used
+[main] video ready, 149 seconds
+[music] mixed in piano_sunrise.mp3
 [main] PREVIEW saved in previews/ - nothing was uploaded to YouTube
