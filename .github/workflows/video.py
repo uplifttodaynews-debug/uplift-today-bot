@@ -152,7 +152,8 @@ def _talking_clip(seg, clip):
     subprocess.check_call([
         "ffmpeg", "-y", "-loglevel", "error", "-i", seg["clip"], "-i", seg["audio"],
         "-map", "0:v", "-map", "1:a",
-        "-vf", f"scale=-2:{H},crop={W}:{H},tpad=stop_mode=clone:stop_duration=3,fps=25,format=yuv420p",
+        "-vf", f"scale=-2:{H},crop={W}:{H},"
+               f"crop=iw/{config.ANCHOR_ZOOM}:ih/{config.ANCHOR_ZOOM}:(iw-iw/{config.ANCHOR_ZOOM})/2:0,scale={W}:{H},tpad=stop_mode=clone:stop_duration=3,fps=25,format=yuv420p",
         "-c:v", "libx264", "-r", "25", "-c:a", "aac", "-b:a", "160k", "-ar", "44100", "-ac", "2",
         "-shortest", clip])
 
@@ -474,29 +475,62 @@ def build(segments, out_mp4, workdir):
     return _duration(out_mp4)
 
 
-def make_thumbnail(title, out_png):
-    """Bold thumbnail: big sun, huge outlined title, readable on a phone."""
-    img = _gradient()
+def make_thumbnail(title, out_png, face_path=None):
+    """Bold thumbnail in the channel's blue-sky / golden-sun look; Kavya's picture on the right if given."""
+    import math
+    img = Image.new("RGB", (W, H))
+    px = ImageDraw.Draw(img)
+    for y in range(H):                                   # sky: deep blue at the top, lighter and warmer near the horizon
+        t = y / (H - 1)
+        top, mid, low = (22, 104, 214), (70, 170, 248), (255, 214, 140)
+        c = tuple(int(top[i] + (mid[i] - top[i]) * min(t / 0.55, 1)) for i in range(3))
+        k = max(0.0, (t - 0.5) / 0.4) ** 1.3
+        c = tuple(int(c[i] + (low[i] - c[i]) * min(k, 1)) for i in range(3))
+        px.line([(0, y), (W, y)], fill=c)
     d = ImageDraw.Draw(img)
-    _sun(d, W // 2, 160, 85)
-    # dark band behind the title so it stays readable
-    band = Image.new("RGBA", (W, 400), (60, 10, 40, 110))
-    img.paste(band, (0, 320), band)
+    # golden sun behind orange hills and blue water (bottom strip)
+    d.ellipse([330 - 110, 690 - 110, 330 + 110, 690 + 110], fill=(255, 205, 60))
+    hills = [(x, int(640 - 70 * (abs(2 * x / W - 1) ** 1.6) + 10 * math.sin(x / 90))) for x in range(0, W + 1, 8)]
+    d.polygon(hills + [(W, H), (0, H)], fill=(255, 140, 20))
+    water = [(x, int(668 + 8 * math.sin(x / 130 + 2))) for x in range(0, W + 1, 8)]
+    d.polygon(water + [(W, H), (0, H)], fill=(10, 60, 170))
+    # Kavya on the right
+    if face_path and os.path.exists(face_path):
+        try:
+            src = Image.open(face_path).convert("RGB")
+            cw = int(src.height * 0.74)
+            left = max(0, min(src.width - cw, int(src.width * 0.5 - cw / 2)))
+            face = src.crop((left, 0, left + cw, src.height)).resize((480, 648), Image.LANCZOS)
+            fx, fy = 745, 36
+            sh = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+            ImageDraw.Draw(sh).rounded_rectangle([fx + 8, fy + 10, fx + 488, fy + 658], radius=26, fill=(0, 20, 70, 120))
+            img.paste(sh, (0, 0), sh)
+            mask = Image.new("L", (480, 648), 0)
+            ImageDraw.Draw(mask).rounded_rectangle([0, 0, 479, 647], radius=22, fill=255)
+            frame = Image.new("RGB", (492, 660), (255, 255, 255))
+            img.paste(frame, (fx - 6, fy - 6), Image.new("L", (492, 660), 255))
+            img.paste(face, (fx, fy), mask)
+        except Exception as e:
+            print(f"[video] thumbnail picture skipped: {e}")
+            face_path = None
+    text_w = 660 if face_path else W - 100
     d = ImageDraw.Draw(img)
-    font = _font(104)
-    lines = _wrap(d, title, font, W - 100)[:3]
-    if len(lines) > 2:
-        font = _font(84)
-        lines = _wrap(d, title, font, W - 100)[:3]
-    line_h = int(font.size * 1.3)
-    y = 340 + (360 - line_h * len(lines)) // 2
+    # gold channel badge
+    badge = _font(40, latin=True)
+    label = "UPLIFT TODAY"
+    bw = int(d.textlength(label, font=badge)) + 50
+    d.rounded_rectangle([40, 36, 40 + bw, 104], radius=14, fill=(255, 205, 40))
+    d.text((65, 44), label, font=badge, fill=(20, 40, 110))
+    # headline
+    font = _font(96)
+    lines = _wrap(d, title, font, text_w)
+    if len(lines) > 3:
+        font = _font(80)
+        lines = _wrap(d, title, font, text_w)[:4]
+    line_h = int(font.size * 1.28)
+    y = 130
     for ln in lines:
-        w = d.textlength(ln, font=font)
-        d.text(((W - w) / 2, y), ln, font=font, fill=(255, 255, 255),
-               stroke_width=7, stroke_fill=(70, 10, 50))
+        d.text((44, y), ln, font=font, fill=(255, 255, 255), stroke_width=7, stroke_fill=(10, 40, 120))
         y += line_h
-    tag = _font(40, latin=True)
-    label = "UPLIFT TODAY  |  " + config.CHANNEL_HANDLE
-    w = d.textlength(label, font=tag)
-    d.text(((W - w) / 2, 660), label, font=tag, fill=(255, 244, 200))
+    d.rounded_rectangle([44, y + 6, 44 + 230, y + 14], radius=4, fill=(255, 205, 40))
     img.save(out_png)

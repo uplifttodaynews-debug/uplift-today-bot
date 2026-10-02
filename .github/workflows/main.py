@@ -184,7 +184,7 @@ def main():
         print(f"[main] background music skipped: {e}")
 
     thumb = os.path.join(work, "thumb.png")
-    video.make_thumbnail(data["title"], thumb)
+    video.make_thumbnail(data["title"], thumb, avatar.todays_picture())
 
     # ---- description with sources + disclosures ----
     src_lines, seen = [], set()
