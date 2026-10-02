@@ -11,11 +11,10 @@ on:
     # Saving a change to the file "run-now.txt" (and ONLY that file) starts a test run.
     paths:
       - run-now.txt
-  # TEMPORARILY OFF (YouTube daily upload limit reached during testing). Claude switches it back on.
-  # schedule:
-  #   # Times are in UTC. "30 0 * * *" = 00:30 UTC = 6:00 AM in India, 5:30 PM (day before) in California.
-  #   # GitHub can start runs 10-30 minutes late, so the video is ready around 6:30-7:00 AM India time.
-  #   - cron: "30 0 * * *"
+  schedule:
+    # Times are in UTC. "30 0 * * *" = 00:30 UTC = 6:00 AM in India, 5:30 PM (day before) in California.
+    # GitHub can start runs 10-30 minutes late, so the video is ready around 6:30-7:00 AM India time.
+    - cron: "30 0 * * *"
 
 permissions:
   contents: read
