@@ -37,7 +37,7 @@ def todays_picture():
     pics = sorted(glob.glob(os.path.join(OUTFITS, "*.jpg")))
     if not pics:
         return None
-    return pics[datetime.date.today().weekday() % len(pics)]
+    return pics[config.today_india().weekday() % len(pics)]
 
 
 def make_clip(audio_path, out_path):

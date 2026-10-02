@@ -397,7 +397,7 @@ def _dissolve(a, b, out, fade=0.35):
 def build(segments, out_mp4, workdir):
     """segments = list of dicts: {"headline", "audio", "english", "headline_en", "tag", "backgrounds", "clip"(optional)}"""
     import datetime
-    date_text = datetime.date.today().strftime("%B %d").upper().replace(" 0", " ")
+    date_text = config.today_india().strftime("%B %d").upper().replace(" 0", " ")
     ticker_png = os.path.join(workdir, "ticker.png")
     ticker_len = make_ticker([sg.get("headline_en") for sg in segments if (sg.get("tag") or ("",))[0] == "STORY"], ticker_png)
     clips = []

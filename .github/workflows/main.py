@@ -52,7 +52,7 @@ def main():
     if os.environ.get("ANCHOR_OFF") == "1":
         config.ANCHOR = False
     work = tempfile.mkdtemp(prefix="uplift_")  # temp folder, deleted with the runner
-    today = datetime.date.today().strftime("%d %B %Y")
+    today = config.today_india().strftime("%d %B %Y")
 
     items = news.collect()
     print(f"[main] {len(items)} candidate stories")
@@ -78,6 +78,10 @@ def main():
     for s_ in stories:
         s_["headline"] = script_writer.polish_hindi(s_.get("headline"))
         s_["narration"] = script_writer.polish_hindi(s_.get("narration"))
+    special = config.SPECIAL_DAYS.get((config.today_india().month, config.today_india().day))
+    if special:
+        print("[main] special day greeting is used")
+        data["intro"] = special
     sources_used = sorted({s["source"]["source"] for s in stories if s.get("source")})
     print(f"[main] {len(stories)} stories passed. Sources: {', '.join(sources_used)}")
 
@@ -98,7 +102,7 @@ def main():
 
     # ---- stock photos for the backgrounds (falls back to the sunrise gradient) ----
     credits = []
-    day = datetime.date.today().toordinal()
+    day = config.today_india().toordinal()
 
     def photos(queries, tag):
         found = []

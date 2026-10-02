@@ -88,3 +88,22 @@ INTRO_CLIP = "intro/intro.mp4"   # set to "" to switch the opening off
 ANCHOR = True
 ANCHOR_MODEL = "fal-ai/kling-video/ai-avatar/v2/pro"   # the clip you chose (about $0.115 per second)
 ANCHOR_MAX_SECONDS = 14          # safety cap so the daily cost stays small; longer greetings use the normal slide
+
+
+# ---- India date and special-day greetings ----
+import datetime as _dt
+from zoneinfo import ZoneInfo as _Zone
+
+
+def today_india():
+    """Today's date in India (the daily build runs at 23:30 UTC, which is already tomorrow in India)."""
+    return _dt.datetime.now(_Zone("Asia/Kolkata")).date()
+
+
+# (month, day): what Kavya says first on that day (Hindi). Fixed-date national days only.
+SPECIAL_DAYS = {
+    (1, 1): "नया साल मुबारक हो! अपलिफ्ट टुडे में आपका स्वागत है। आइए सुनें आज की पॉज़िटिव ख़बरें।",
+    (1, 26): "गणतंत्र दिवस की हार्दिक शुभकामनाएं! अपलिफ्ट टुडे में आपका स्वागत है। आइए सुनें आज की पॉज़िटिव ख़बरें।",
+    (8, 15): "स्वतंत्रता दिवस की हार्दिक शुभकामनाएं! अपलिफ्ट टुडे में आपका स्वागत है। आइए सुनें आज की पॉज़िटिव ख़बरें।",
+    (10, 2): "गांधी जयंती की हार्दिक शुभकामनाएं! अपलिफ्ट टुडे में आपका स्वागत है। आइए सुनें आज की पॉज़िटिव ख़बरें।",
+}
