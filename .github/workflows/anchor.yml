@@ -25,11 +25,16 @@ jobs:
         env:
           FAL_KEY: ${{ secrets.FAL_KEY }}
           GOOGLE_TTS_API_KEY: ${{ secrets.GOOGLE_TTS_API_KEY }}
-        run: python .github/workflows/anchor_make.py "$(head -1 anchor-request.txt | tr -d '\r')"
+        run: |
+          mkdir -p anchor
+          python -u .github/workflows/anchor_make.py "$(head -1 anchor-request.txt | tr -d '\r')" 2>&1 | sed "s/${FAL_KEY:-__none__}/***/g; s/${GOOGLE_TTS_API_KEY:-__none__}/***/g" | tee anchor/run-log.txt
+          exit ${PIPESTATUS[0]}
       - name: Save pictures into the repo
+        if: always()
         run: |
           git config user.name "uplift-bot"
           git config user.email "uplift-bot@users.noreply.github.com"
           git add anchor
           git commit -m "Add anchor pictures" || echo "nothing new"
+          git pull --rebase -X theirs -q || true
           git push

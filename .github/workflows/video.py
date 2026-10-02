@@ -475,62 +475,69 @@ def build(segments, out_mp4, workdir):
     return _duration(out_mp4)
 
 
-def make_thumbnail(title, out_png, face_path=None):
-    """Bold thumbnail in the channel's blue-sky / golden-sun look; Kavya's picture on the right if given."""
+def make_thumbnail(title, out_png, photo_path=None):
+    """Thumbnail: a strong story photo full-bleed, dark-blue fade on the left for the big headline,
+    gold channel badge and a sun mark. Without a photo it falls back to the blue-sky / golden-sun design."""
     import math
-    img = Image.new("RGB", (W, H))
-    px = ImageDraw.Draw(img)
-    for y in range(H):                                   # sky: deep blue at the top, lighter and warmer near the horizon
-        t = y / (H - 1)
-        top, mid, low = (22, 104, 214), (70, 170, 248), (255, 214, 140)
-        c = tuple(int(top[i] + (mid[i] - top[i]) * min(t / 0.55, 1)) for i in range(3))
-        k = max(0.0, (t - 0.5) / 0.4) ** 1.3
-        c = tuple(int(c[i] + (low[i] - c[i]) * min(k, 1)) for i in range(3))
-        px.line([(0, y), (W, y)], fill=c)
-    d = ImageDraw.Draw(img)
-    # golden sun behind orange hills and blue water (bottom strip)
-    d.ellipse([330 - 110, 690 - 110, 330 + 110, 690 + 110], fill=(255, 205, 60))
-    hills = [(x, int(640 - 70 * (abs(2 * x / W - 1) ** 1.6) + 10 * math.sin(x / 90))) for x in range(0, W + 1, 8)]
-    d.polygon(hills + [(W, H), (0, H)], fill=(255, 140, 20))
-    water = [(x, int(668 + 8 * math.sin(x / 130 + 2))) for x in range(0, W + 1, 8)]
-    d.polygon(water + [(W, H), (0, H)], fill=(10, 60, 170))
-    # Kavya on the right
-    if face_path and os.path.exists(face_path):
+    img = None
+    if photo_path and os.path.exists(photo_path):
         try:
-            src = Image.open(face_path).convert("RGB")
-            cw = int(src.height * 0.74)
-            left = max(0, min(src.width - cw, int(src.width * 0.5 - cw / 2)))
-            face = src.crop((left, 0, left + cw, src.height)).resize((480, 648), Image.LANCZOS)
-            fx, fy = 745, 36
-            sh = Image.new("RGBA", (W, H), (0, 0, 0, 0))
-            ImageDraw.Draw(sh).rounded_rectangle([fx + 8, fy + 10, fx + 488, fy + 658], radius=26, fill=(0, 20, 70, 120))
-            img.paste(sh, (0, 0), sh)
-            mask = Image.new("L", (480, 648), 0)
-            ImageDraw.Draw(mask).rounded_rectangle([0, 0, 479, 647], radius=22, fill=255)
-            frame = Image.new("RGB", (492, 660), (255, 255, 255))
-            img.paste(frame, (fx - 6, fy - 6), Image.new("L", (492, 660), 255))
-            img.paste(face, (fx, fy), mask)
+            src = Image.open(photo_path).convert("RGB")
+            sc = max(W / src.width, H / src.height)
+            src = src.resize((int(src.width * sc) + 1, int(src.height * sc) + 1), Image.LANCZOS)
+            l, t = (src.width - W) // 2, (src.height - H) // 2
+            img = src.crop((l, t, l + W, t + H))
+            # a little more punch: slightly brighter and richer colour
+            from PIL import ImageEnhance
+            img = ImageEnhance.Color(ImageEnhance.Contrast(img).enhance(1.08)).enhance(1.15)
+            fade = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+            fd = ImageDraw.Draw(fade)
+            for x in range(W):                                   # navy fade from the left edge to ~65% of the width
+                a_ = int(235 * max(0.0, 1 - x / (W * 0.68)) ** 1.15)
+                fd.line([(x, 0), (x, H)], fill=(8, 24, 80, a_))
+            img = Image.alpha_composite(img.convert("RGBA"), fade).convert("RGB")
         except Exception as e:
-            print(f"[video] thumbnail picture skipped: {e}")
-            face_path = None
-    text_w = 660 if face_path else W - 100
+            print(f"[video] thumbnail photo skipped: {e}")
+            img = None
+    if img is None:
+        img = Image.new("RGB", (W, H))
+        px = ImageDraw.Draw(img)
+        for y in range(H):
+            t = y / (H - 1)
+            top, mid, low = (22, 104, 214), (70, 170, 248), (255, 214, 140)
+            c = tuple(int(top[i] + (mid[i] - top[i]) * min(t / 0.55, 1)) for i in range(3))
+            k = max(0.0, (t - 0.5) / 0.4) ** 1.3
+            c = tuple(int(c[i] + (low[i] - c[i]) * min(k, 1)) for i in range(3))
+            px.line([(0, y), (W, y)], fill=c)
+        d0 = ImageDraw.Draw(img)
+        d0.ellipse([900 - 130, 640 - 130, 900 + 130, 640 + 130], fill=(255, 205, 60))
+        hills = [(x, int(650 - 80 * (abs(2 * x / W - 1) ** 1.6) + 10 * math.sin(x / 90))) for x in range(0, W + 1, 8)]
+        d0.polygon(hills + [(W, H), (0, H)], fill=(255, 140, 20))
+        water = [(x, int(680 + 8 * math.sin(x / 130 + 2))) for x in range(0, W + 1, 8)]
+        d0.polygon(water + [(W, H), (0, H)], fill=(10, 60, 170))
     d = ImageDraw.Draw(img)
-    # gold channel badge
+    # gold channel badge with a small sun
     badge = _font(40, latin=True)
     label = "UPLIFT TODAY"
-    bw = int(d.textlength(label, font=badge)) + 50
-    d.rounded_rectangle([40, 36, 40 + bw, 104], radius=14, fill=(255, 205, 40))
-    d.text((65, 44), label, font=badge, fill=(20, 40, 110))
-    # headline
-    font = _font(96)
+    bw = int(d.textlength(label, font=badge)) + 120
+    d.rounded_rectangle([40, 36, 40 + bw, 108], radius=16, fill=(255, 205, 40))
+    _sun(d, 40 + 44, 72, 17)
+    d.text((40 + 86, 46), label, font=badge, fill=(20, 40, 110))
+    # headline, left aligned, as large as fits in up to 4 lines
+    text_w = 720
+    font = _font(104)
     lines = _wrap(d, title, font, text_w)
-    if len(lines) > 3:
-        font = _font(80)
-        lines = _wrap(d, title, font, text_w)[:4]
-    line_h = int(font.size * 1.28)
-    y = 130
+    for size in (96, 88, 80, 72):
+        if len(lines) <= 3:
+            break
+        font = _font(size)
+        lines = _wrap(d, title, font, text_w)
+    lines = lines[:4]
+    line_h = int(font.size * 1.26)
+    y = 150
     for ln in lines:
-        d.text((44, y), ln, font=font, fill=(255, 255, 255), stroke_width=7, stroke_fill=(10, 40, 120))
+        d.text((44, y), ln, font=font, fill=(255, 255, 255), stroke_width=7, stroke_fill=(8, 28, 100))
         y += line_h
-    d.rounded_rectangle([44, y + 6, 44 + 230, y + 14], radius=4, fill=(255, 205, 40))
+    d.rounded_rectangle([44, y + 8, 44 + 260, y + 16], radius=4, fill=(255, 205, 40))
+    d.text((44, y + 30), "आज की पॉज़िटिव ख़बरें", font=_font(46), fill=(255, 226, 120), stroke_width=4, stroke_fill=(8, 28, 100))
     img.save(out_png)

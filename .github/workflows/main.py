@@ -207,7 +207,26 @@ def main():
         print(f"[main] background music skipped: {e}")
 
     thumb = os.path.join(work, "thumb.png")
-    video.make_thumbnail(data["title"], thumb, avatar.todays_picture())
+    thumb_src = None
+    for sg_ in segments:                                   # the first story's photo (or a frame of its video) is the thumbnail picture
+        if (sg_.get("tag") or ("",))[0] != "STORY":
+            continue
+        for b_ in sg_.get("backgrounds") or []:
+            if str(b_).lower().endswith(".mp4"):
+                try:
+                    import subprocess
+                    fr = os.path.join(work, "thumb_frame.jpg")
+                    subprocess.check_call(["ffmpeg", "-y", "-loglevel", "error", "-ss", "1.5", "-i", b_, "-frames:v", "1", "-q:v", "2", fr])
+                    thumb_src = fr
+                except Exception as e:
+                    print(f"[main] could not take a frame from the clip: {e}")
+            else:
+                thumb_src = b_
+            if thumb_src:
+                break
+        if thumb_src:
+            break
+    video.make_thumbnail(data["title"], thumb, thumb_src)
 
     # ---- description with sources + disclosures ----
     src_lines, seen = [], set()
