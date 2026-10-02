@@ -32,6 +32,29 @@ def limit_per_source(stories):
     return kept
 
 
+def pick_stories(passed):
+    """Best stories by impact; at most one animal story; the strongest one goes first."""
+    def imp(s):
+        try:
+            return float(s.get("impact", 5))
+        except Exception:
+            return 5.0
+    ranked = sorted(passed, key=imp, reverse=True)
+    chosen, animals = [], 0
+    for s in ranked:
+        if str(s.get("topic", "")).lower() == "animals":
+            if animals >= 1:
+                continue
+            animals += 1
+        chosen.append(s)
+        if len(chosen) >= config.NUM_STORIES:
+            break
+    if len(chosen) < config.MIN_STORIES:          # not enough without the cap: fill up in impact order
+        chosen = ranked[: config.NUM_STORIES]
+    print("[main] stories by impact:", [(str(s.get("topic")), s.get("impact")) for s in chosen])
+    return chosen
+
+
 def save_preview(mp4, thumb, description, work):
     """Preview mode: do NOT upload to YouTube. Save a smaller copy in the repo folder previews/."""
     import shutil
@@ -69,7 +92,7 @@ def main():
         fixed = script_writer.repair(failed)
         again_ok, _ = script_writer.verify(fixed)
         passed += again_ok
-    stories = passed[: config.NUM_STORIES]
+    stories = pick_stories(passed)
     if len(stories) < config.MIN_STORIES:
         print(f"[main] Only {len(stories)} stories passed the checks - skipping today.")
         return SKIPPED

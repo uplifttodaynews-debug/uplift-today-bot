@@ -96,6 +96,39 @@ def outfits():
         print("saved", path, flush=True)
 
 
+LOOKS = [
+    ("0_navy_blazer_ponytail", None,
+     "a navy blazer over a white top", "her hair in a sleek low ponytail over one shoulder"),
+    ("1_mustard_blazer_bun", "mustard_blazer",
+     "a soft mustard-yellow blazer over a white top", "her hair in a neat low bun at the back of her head"),
+    ("2_teal_kurta_braid", "teal_kurta",
+     "a simple teal-green kurta with a fine subtle embroidered neckline", "her hair in one long neat side braid over her shoulder"),
+    ("3_maroon_blazer_halfup", "maroon_blazer",
+     "a deep maroon blazer over a cream shirt", "her hair half tied up at the back and half falling softly behind her shoulders"),
+    ("4_peach_kurta_ponytail", "peach_kurta",
+     "a simple pastel peach kurta with a delicate neckline", "her hair in a high neat ponytail"),
+    ("5_grey_blazer_bun", "grey_blazer",
+     "a light grey blazer over a royal blue shirt", "her hair in a smooth bun at the back of her head"),
+    ("6_ivory_blazer_braid", "ivory_blazer",
+     "an ivory blazer over a sky-blue top", "her hair in a neat low braid down her back"),
+]
+
+
+def looks():
+    """One look per weekday: outfit AND hairstyle (ponytail / bun / braid / half-up). Saved in anchor/looks/."""
+    base = os.path.join(OUT, "fair", "fair_edit_2.jpg")
+    os.makedirs(os.path.join(OUT, "looks"), exist_ok=True)
+    import shutil
+    shutil.copy(base, os.path.join(OUT, "looks", LOOKS[0][0] + ".jpg"))
+    for i, (name, _k, clothes, hair) in enumerate(LOOKS[1:], start=1):
+        data = edit(base, f"Change her clothing to {clothes}, and change her hairstyle to {hair}. Keep exactly the same face, "
+                          "skin tone, smile, expression, pose, camera angle and the same background. Her hands stay down "
+                          "and out of the picture.", 200 + i)
+        path = os.path.join(OUT, "looks", f"{name}.jpg")
+        open(path, "wb").write(data)
+        print("saved", path, flush=True)
+
+
 def upload(path, content_type):
     """Upload a file to fal storage and return a normal https URL (data URLs are too long for fal)."""
     h = {"Authorization": f"Key {KEY}", "Content-Type": "application/json"}
@@ -178,6 +211,8 @@ elif __name__ == "__main__" and len(sys.argv) > 1 and sys.argv[1] == "test":
         os.makedirs(os.path.join(OUT, "test"), exist_ok=True)
         open(os.path.join(OUT, "test", "error.txt"), "w").write(traceback.format_exc())
         print("test failed, see anchor/test/error.txt")
+elif __name__ == "__main__" and len(sys.argv) > 1 and sys.argv[1] == "looks":
+    looks()
 elif __name__ == "__main__" and len(sys.argv) > 1 and sys.argv[1] == "outfits":
     outfits()
 elif __name__ == "__main__" and len(sys.argv) > 1 and sys.argv[1] == "fair3":

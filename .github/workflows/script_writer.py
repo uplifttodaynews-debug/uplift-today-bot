@@ -42,10 +42,18 @@ ONLY positive, uplifting news, read aloud by a warm, professional female news an
 Below are candidate story leads (number, source, headline, summary).
 
 RULES:
-1. Choose the {config.NUM_STORIES + config.EXTRA_CANDIDATES} best stories. Prefer science, health, environment recovery,
-   kindness, education, sports achievements, community heroes. REJECT anything about war, crime,
-   politics, disasters, tragedy, illness without a clear hopeful outcome, or anything with a
-   negative or frightening feel.
+1. Choose the {config.NUM_STORIES + config.EXTRA_CANDIDATES} best stories. We want REAL, IMPACTFUL, MORALE-BOOSTING news:
+   a concrete good outcome for real people or the planet (lives improved or saved, a problem actually
+   solved, measurable results, a breakthrough, courage, kindness, a community or individual who made a
+   difference, a young person or ordinary person who overcame odds). Prefer stories ABOUT PEOPLE: health,
+   education, science and inventions, community heroes, environment recovery that helps people, sports
+   achievements. Give each story an "impact" score from 1 to 10 (10 = changes many lives or deeply
+   inspiring; 5 = nice but small) and a "topic": one of people, health, science, environment, education,
+   sports, animals, other. Animal or wildlife stories are allowed only when they are truly significant,
+   and at most ONE per bulletin. REJECT fluff and cute-only items, celebrity news, product launches or
+   marketing, corporate PR donations, listicles, opinion pieces, and anything about war, crime, politics,
+   disasters, tragedy, illness without a clear hopeful outcome, or anything with a negative or
+   frightening feel. Put the most inspiring, highest-impact story first.
 2. Choose stories from DIFFERENT sources. Never more than {config.MAX_PER_SOURCE} stories from the same source.
 3. Use ONLY facts that appear in the lead text. Do NOT invent or guess names, numbers, places,
    dates, causes or quotes. If a detail is not in the lead, leave it out. Do not add background
@@ -80,7 +88,7 @@ RULES:
    Devanagari ("पॉज़िटिव") instead, e.g. "पॉज़िटिव ख़बरें".
 
 Return ONLY JSON with this exact shape:
-{{"title": "...", "intro": "...", "stories": [{{"lead_index": 0, "headline": "...", "visual_queries": ["...", "...", "...", "..."], "narration": "..."}}],
+{{"title": "...", "intro": "...", "stories": [{{"lead_index": 0, "topic": "people", "impact": 8, "headline": "...", "visual_queries": ["...", "...", "...", "..."], "narration": "..."}}],
   "thought": "...", "outro": "..."}}
 
 "intro" = ONE short sentence (at most 14 words, it must be spoken in under 10 seconds) that says the channel name "Uplift Today" and welcomes viewers to
