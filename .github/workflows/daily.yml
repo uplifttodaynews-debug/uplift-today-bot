@@ -12,9 +12,10 @@ on:
     paths:
       - run-now.txt
   schedule:
-    # Times are in UTC. "30 0 * * *" = 00:30 UTC = 6:00 AM in India, 5:30 PM (day before) in California.
-    # GitHub can start runs 10-30 minutes late, so the video is ready around 6:30-7:00 AM India time.
-    - cron: "30 0 * * *"
+    # Times are in UTC. "30 23 * * *" = 23:30 UTC = 5:00 AM in India (next day), 4:30 PM in California.
+    # GitHub can start runs 10-30 minutes late and the video takes ~12 minutes, so it is ready
+    # around 5:30-6:00 AM India time, leaving time to review it and publish at 7:00 AM.
+    - cron: "30 23 * * *"
 
 permissions:
   contents: read
