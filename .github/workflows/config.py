@@ -87,7 +87,7 @@ INTRO_CLIP = "intro/intro.mp4"   # set to "" to switch the opening off
 # ---- Talking AI presenter (Kavya) via fal.ai. Needs the FAL_KEY secret. ----
 ANCHOR = True
 ANCHOR_MODEL = "fal-ai/kling-video/ai-avatar/v2/pro"   # the clip you chose (about $0.115 per second)
-ANCHOR_ZOOM = 1.2                # slight zoom on the presenter, anchored at the top, so her hands stay out of frame
+ANCHOR_ZOOM = 1.35               # slight zoom on the presenter, anchored at the top, so her hands stay out of frame
 ANCHOR_MAX_SECONDS = 14          # safety cap so the daily cost stays small; longer greetings use the normal slide
 
 
