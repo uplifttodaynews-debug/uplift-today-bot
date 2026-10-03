@@ -32,13 +32,14 @@ def _call(prompt, temperature):
 
 
 BLOCKED = ("sex", "sexual", "contracept", "steril", "condom", "abortion", "pregnan", "fertility",
-           "porn", "erotic", "genital", "std ", "hiv", "mating", "gene drive", "genetically modified mosquito",
+           "porn", "erotic", "genital", "std", "hiv", "mating", "gene drive", "genetically modified mosquito",
            "mosquito", "dengue", "malaria vector", "insect")
 
 
 def _blocked(it):
     t = (it.get("title", "") + " " + it.get("summary", "")).lower()
-    return any(b in t for b in BLOCKED)
+    import re
+    return any(re.search(r"\b" + re.escape(b), t) for b in BLOCKED)
 
 
 def _write_prompt(items):
