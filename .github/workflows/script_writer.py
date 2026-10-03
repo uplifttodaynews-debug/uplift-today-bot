@@ -31,9 +31,9 @@ def _call(prompt, temperature):
     return json.loads(text)
 
 
-BLOCKED = ("sex", "sexual", "contracept", "sterili", "sterilis", "condom", "abortion", "pregnan", "fertility",
+BLOCKED = ("sex", "sexual", "contracept", "steril", "condom", "abortion", "pregnan", "fertility",
            "porn", "erotic", "genital", "std ", "hiv", "mating", "gene drive", "genetically modified mosquito",
-           "mosquito")
+           "mosquito", "dengue", "malaria vector", "insect")
 
 
 def _blocked(it):
@@ -43,7 +43,6 @@ def _blocked(it):
 
 def _write_prompt(items):
     import random, datetime
-    items = [it for it in items if not _blocked(it)] or items
     themes = ["gratitude", "small kindness", "patience", "courage", "hope after hard times", "teamwork",
               "learning something new", "helping a stranger", "starting again", "the power of a smile",
               "hard work paying off", "sharing joy", "believing in yourself", "caring for nature"]
@@ -121,6 +120,8 @@ LEADS:
 
 
 def write(items):
+    items = [it for it in items if not _blocked(it)] or items   # filter BEFORE numbering, so lead_index matches
+    print(f"[writer] {len(items)} leads after the family-safe filter")
     data = _call(_write_prompt(items), 0.7)
     stories = [s for s in data.get("stories", []) if s.get("narration")]
     for s in stories:
