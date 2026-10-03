@@ -70,7 +70,8 @@ RULES:
 5. Return fewer than {config.NUM_STORIES + config.EXTRA_CANDIDATES} stories if there are not enough good ones.
 6. "thought" = one short, original, uplifting line in {config.LANGUAGE_NAME}. Do NOT attribute it to
    any real person.
-7. "title" = a YouTube title in {config.LANGUAGE_NAME}, under 70 characters, hopeful, truthful.
+7. "title" = a YouTube title in {config.LANGUAGE_NAME}, under 70 characters, hopeful, truthful. Do NOT put any number
+   of stories in the title (no "8 news", no "5 stories"); name the most inspiring story or the feeling instead.
 8. "headline" for each story = a very short on-screen headline (max 6 words).
 9. "visual_queries" for each story = exactly 4 short English search phrases (1-4 words each) for FREE
    STOCK PHOTOS AND VIDEOS that would literally show the SUBJECT and SETTING of THIS story:
