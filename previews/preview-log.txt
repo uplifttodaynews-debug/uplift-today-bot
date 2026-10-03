@@ -6,42 +6,84 @@
 [news] Good Good Good: kept 6
 [main] 43 candidate stories
 [main] AI wrote 8 stories; fact-checking them...
-[verify] story 3 flagged: The narration claims that this will rapidly reduce the Asian tiger mosquito population and will provide great protection from dangerous diseases, adding claims not verified in the lead.
-[verify] story 4 flagged: The narration claims that this work gave employment and self-respect to village women, which is not mentioned in the lead.
-[verify] story 5 flagged: The narration makes unsupported claims about libraries having quiet environments, thousands of youths' futures being shaped, and multiple youths giving job interviews there, whereas the lead only introduces Sunil Totti's anecdote.
-[main] stories by impact: [('people', 10), ('health', 9), ('science', 8), ('environment', 7), ('animals', 7)]
-[main] 5 stories passed. Sources: Good Good Good, Good News Network, The Better India : Latest Posts, The Optimist Daily: Making Solutions the News
+[verify] story 0 flagged: The narration discusses Tiranga Mountain Rescue saving soldiers on Everest in India, which has completely no connection to Lisbon releasing sterile mosquitoes to fight dengue.
+[verify] story 1 flagged: The narration describes libraries being revived in Nairobi, Kenya, which is completely unrelated to ethical fashion scaling up.
+[verify] story 2 flagged: The narration describes forest fire prevention in Peru, which is completely unrelated to a mine clean-up award in British Columbia, Canada.
+[verify] story 3 flagged: The narration describes a solar-powered train in Jujuy, Argentina, which is unrelated to the C2C LAB in Berlin.
+[verify] story 4 flagged: The narration describes beekeeping in Himachal Pradesh, India, which is unrelated to Singapore paying people to read.
+[verify] story 5 flagged: The narration describes wind turbines on Ross Island in Antarctica, which is unrelated to a retired FBI agent tracking down apple trees.
+[verify] story 7 flagged: The narration describes a primate sanctuary in Mississippi run by veterans, which is completely unrelated to Jagadish Chandra Bose and the crescograph.
+[main] 7 stories flagged - asking the writer to fix them...
+[main] stories by impact: [('people', 9), ('education', 8), ('environment', 8), ('science', 8), ('education', 7)]
+[main] 5 stories passed. Sources: Good News Network, Positive News, Reasons to be Cheerful, The Optimist Daily: Making Solutions the News
 [main] English captions ready
-[main] greeting is 4.5 s long
+[main] greeting is 5.1 s long
 [avatar] talking clip ready (0_navy_blazer_ponytail.jpg)
-[stock] '400 soldiers rescued in the sn': best scores [7.0, 6.0, 5.0] (need 8)
-[stock] '400 soldiers rescued in the sn': 18 candidates, 0 matched
-[stock] second try with broader searches: ['snow rescue gear', 'Mount Everest', 'snowy mountain peaks', 'mountain blizzard']
-[stock] '400 soldiers rescued in the sn': best scores [7.0, 7.0, 7.0] (need 6)
-[stock] '400 soldiers rescued in the sn': 18 candidates, 2 matched
-[main] story0: 2 video clip(s)
-[stock] 'Simple urine test for cancer': best scores [8.0, 8.0, 7.0] (need 8)
-[stock] 'Simple urine test for cancer': 24 candidates, 2 matched
-[stock] 'Nuclear fusion from clean fuel': best scores [7.0, 6.0, 6.0] (need 8)
-[stock] 'Nuclear fusion from clean fuel': 18 candidates, 0 matched
-[stock] second try with broader searches: ['nuclear fusion', 'fusion reactor', 'China', 'physics laboratory']
-[stock] 'Nuclear fusion from clean fuel': best scores [8.0, 7.0, 7.0] (need 6)
-[stock] 'Nuclear fusion from clean fuel': 18 candidates, 2 matched
+[stock] 'Saved the lives of 400 soldier': best scores [1.0, 0.0, 0.0] (need 8)
+[stock] 'Saved the lives of 400 soldier': 18 candidates, 0 matched
+[stock] second try with broader searches: ['tiger mosquito', 'Lisbon Portugal', 'urban neighborhood', 'city park']
+[stock] 'Saved the lives of 400 soldier': best scores [3.0, 3.0, 3.0] (need 6)
+[stock] 'Saved the lives of 400 soldier': 18 candidates, 0 matched
+[main] story0: no good video clip, using photos
+[stock] 'Saved the lives of 400 soldier': best scores [0.0, 0.0, 0.0] (need 8)
+[stock] 'Saved the lives of 400 soldier': 24 candidates, 0 matched
+[stock] second try with broader searches: ['Tiger mosquito', 'Lisbon Portugal', 'Urban park', 'Mosquito close up']
+[stock] 'Saved the lives of 400 soldier': best scores [1.0, 1.0, 1.0] (need 6)
+[stock] 'Saved the lives of 400 soldier': 24 candidates, 0 matched
+[stock] 'Libraries turned into modern h': best scores [9.0, 7.0, 4.0] (need 8)
+[stock] 'Libraries turned into modern h': 24 candidates, 1 matched
+[stock] 'Saved forests from fire': best scores [6.0, 5.0, 4.0] (need 8)
+[stock] 'Saved forests from fire': 18 candidates, 0 matched
+[stock] second try with broader searches: ['mine reclamation', 'British Columbia Canada', 'Canadian forest', 'reforestation']
+[stock] 'Saved forests from fire': best scores [7.0, 6.0, 6.0] (need 6)
+[stock] 'Saved forests from fire': 18 candidates, 2 matched
 [main] story2: 2 video clip(s)
-[stock] 'The wonder of wind energy in A': best scores [7.0, 6.0, 5.0] (need 8)
-[stock] 'The wonder of wind energy in A': 12 candidates, 0 matched
-[stock] second try with broader searches: ['wind turbines', 'Ross Island Antarctica', 'polar landscape', 'snow covered tundra']
-[stock] 'The wonder of wind energy in A': best scores [7.0, 6.0, 5.0] (need 6)
-[stock] 'The wonder of wind energy in A': 22 candidates, 2 matched
-[stock] 'A new home for monkeys and sol': best scores [8.0, 7.0, 7.0] (need 8)
-[stock] 'A new home for monkeys and sol': 18 candidates, 1 matched
-[stock] 'A new home for monkeys and sol': best scores [7.0, 7.0, 7.0] (need 8)
-[stock] 'A new home for monkeys and sol': 14 candidates, 0 matched
-[stock] second try with broader searches: ['rescued monkey', 'Mississippi', 'primate sanctuary', 'wildlife sanctuary']
-[stock] 'A new home for monkeys and sol': best scores [8.0, 8.0, 8.0] (need 6)
-[stock] 'A new home for monkeys and sol': 24 candidates, 1 matched
-[main] story4: 1 video clip(s)
-[main] 13 stock photos used
-[main] video ready, 141 seconds
+[stock] 'A unique debut for the solar t': best scores [6.0, 5.0, 5.0] (need 8)
+[stock] 'A unique debut for the solar t': 24 candidates, 0 matched
+[stock] broad queries failed: Gemini error 402: {
+  "error": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+  }
+}
+
+[stock] picture check failed, using nothing from this search: Gemini error 402: {
+  "error": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+  }
+}
+
+[stock] 'Museums will remain completely': 18 candidates, 0 matched
+[stock] broad queries failed: Gemini error 402: {
+  "error": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+  }
+}
+
+[main] story4: no good video clip, using photos
+[stock] picture check failed, using nothing from this search: Gemini error 402: {
+  "error": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+  }
+}
+
+[stock] 'Museums will remain completely': 24 candidates, 0 matched
+[stock] broad queries failed: Gemini error 402: {
+  "error": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+  }
+}
+
+[main] 6 stock photos used
+[main] video ready, 117 seconds
 [music] mixed in piano_bright.mp3
 [main] PREVIEW saved in previews/ - nothing was uploaded to YouTube
