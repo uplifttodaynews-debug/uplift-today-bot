@@ -5,41 +5,52 @@
 [news] The Better India : Latest Posts: kept 8
 [news] Good Good Good: kept 6
 [main] 43 candidate stories
+[writer] 42 leads after the family-safe filter
 [main] AI wrote 8 stories; fact-checking them...
-[verify] story 0 flagged: The narration discusses Tiranga Mountain Rescue saving soldiers on Everest in India, which has completely no connection to Lisbon releasing sterile mosquitoes to fight dengue.
-[verify] story 1 flagged: The narration describes libraries being revived in Nairobi, Kenya, which is completely unrelated to ethical fashion scaling up.
-[verify] story 2 flagged: The narration describes forest fire prevention in Peru, which is completely unrelated to a mine clean-up award in British Columbia, Canada.
-[verify] story 3 flagged: The narration describes a solar-powered train in Jujuy, Argentina, which is unrelated to the C2C LAB in Berlin.
-[verify] story 4 flagged: The narration describes beekeeping in Himachal Pradesh, India, which is unrelated to Singapore paying people to read.
-[verify] story 5 flagged: The narration describes wind turbines on Ross Island in Antarctica, which is unrelated to a retired FBI agent tracking down apple trees.
-[verify] story 7 flagged: The narration describes a primate sanctuary in Mississippi run by veterans, which is completely unrelated to Jagadish Chandra Bose and the crescograph.
-[main] 7 stories flagged - asking the writer to fix them...
-[main] stories by impact: [('people', 9), ('education', 8), ('environment', 8), ('science', 8), ('education', 7)]
-[main] 5 stories passed. Sources: Good News Network, Positive News, Reasons to be Cheerful, The Optimist Daily: Making Solutions the News
-[main] English captions ready
-[main] greeting is 5.1 s long
+[verify] story 2 flagged: The narration claims that passengers can travel without harming the environment, but the lead only mentions Tren Solar recharging an ancient Andean route and solar radiation, without stating that passengers are traveling on it or that it is a step toward green energy without harming the environment.
+[verify] story 3 flagged: The narration states that the libraries provide guaranteed electricity and internet for young people to study and do job interviews, but the lead cuts off before revealing what place Sunil was thinking of or confirming that the libraries offer these facilities.
+[verify] story 4 flagged: The narration claims that alongside honey, people's earnings/incomes are increasing (लोगों की कमाई भी बढ़ रही है), which is not mentioned in the lead.
+[verify] story 7 flagged: The narration claims that caring for the monkeys gives veterans mental peace and joy (मानसिक सुकून और खुशी), which is not stated in the lead.
+[main] 4 stories flagged - asking the writer to fix them...
+[main] stories by impact: [('people', 9), ('environment', 8), ('science', 8), ('education', 8), ('people', 8)]
+[main] 5 stories passed. Sources: Positive News, Reasons to be Cheerful, The Better India : Latest Posts, The Optimist Daily: Making Solutions the News
+[main] English captions skipped: Gemini error 402: {
+  "error": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+  }
+}
+
+[main] greeting is 3.9 s long
 [avatar] talking clip ready (0_navy_blazer_ponytail.jpg)
-[stock] 'Saved the lives of 400 soldier': best scores [1.0, 0.0, 0.0] (need 8)
-[stock] 'Saved the lives of 400 soldier': 18 candidates, 0 matched
-[stock] second try with broader searches: ['tiger mosquito', 'Lisbon Portugal', 'urban neighborhood', 'city park']
-[stock] 'Saved the lives of 400 soldier': best scores [3.0, 3.0, 3.0] (need 6)
-[stock] 'Saved the lives of 400 soldier': 18 candidates, 0 matched
+[stock] picture check failed, using nothing from this search: Gemini error 402: {
+  "error": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+  }
+}
+
+[stock] 'पहाड़ों में बचाई 400 जानें': 18 candidates, 0 matched
+[stock] broad queries failed: Gemini error 402: {
+  "error": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+  }
+}
+
 [main] story0: no good video clip, using photos
-[stock] 'Saved the lives of 400 soldier': best scores [0.0, 0.0, 0.0] (need 8)
-[stock] 'Saved the lives of 400 soldier': 24 candidates, 0 matched
-[stock] second try with broader searches: ['Tiger mosquito', 'Lisbon Portugal', 'Urban park', 'Mosquito close up']
-[stock] 'Saved the lives of 400 soldier': best scores [1.0, 1.0, 1.0] (need 6)
-[stock] 'Saved the lives of 400 soldier': 24 candidates, 0 matched
-[stock] 'Libraries turned into modern h': best scores [9.0, 7.0, 4.0] (need 8)
-[stock] 'Libraries turned into modern h': 24 candidates, 1 matched
-[stock] 'Saved forests from fire': best scores [6.0, 5.0, 4.0] (need 8)
-[stock] 'Saved forests from fire': 18 candidates, 0 matched
-[stock] second try with broader searches: ['mine reclamation', 'British Columbia Canada', 'Canadian forest', 'reforestation']
-[stock] 'Saved forests from fire': best scores [7.0, 6.0, 6.0] (need 6)
-[stock] 'Saved forests from fire': 18 candidates, 2 matched
-[main] story2: 2 video clip(s)
-[stock] 'A unique debut for the solar t': best scores [6.0, 5.0, 5.0] (need 8)
-[stock] 'A unique debut for the solar t': 24 candidates, 0 matched
+[stock] picture check failed, using nothing from this search: Gemini error 402: {
+  "error": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+  }
+}
+
+[stock] 'पहाड़ों में बचाई 400 जानें': 24 candidates, 0 matched
 [stock] broad queries failed: Gemini error 402: {
   "error": {
     "code": 402,
@@ -56,7 +67,76 @@
   }
 }
 
-[stock] 'Museums will remain completely': 18 candidates, 0 matched
+[stock] 'जंगल की आग पर काबू': 24 candidates, 0 matched
+[stock] broad queries failed: Gemini error 402: {
+  "error": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+  }
+}
+
+[stock] picture check failed, using nothing from this search: Gemini error 402: {
+  "error": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+  }
+}
+
+[stock] 'अर्जेंटीना में चली सोलर ट्रेन': 18 candidates, 0 matched
+[stock] broad queries failed: Gemini error 402: {
+  "error": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+  }
+}
+
+[main] story2: no good video clip, using photos
+[stock] picture check failed, using nothing from this search: Gemini error 402: {
+  "error": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+  }
+}
+
+[stock] 'अर्जेंटीना में चली सोलर ट्रेन': 24 candidates, 0 matched
+[stock] broad queries failed: Gemini error 402: {
+  "error": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+  }
+}
+
+[stock] picture check failed, using nothing from this search: Gemini error 402: {
+  "error": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+  }
+}
+
+[stock] 'नैरोबी की लाइब्रेरी बनीं मददगा': 24 candidates, 0 matched
+[stock] broad queries failed: Gemini error 402: {
+  "error": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+  }
+}
+
+[stock] picture check failed, using nothing from this search: Gemini error 402: {
+  "error": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+  }
+}
+
+[stock] 'हिमाचल में मधुमक्खी पालन क्रां': 18 candidates, 0 matched
 [stock] broad queries failed: Gemini error 402: {
   "error": {
     "code": 402,
@@ -74,7 +154,7 @@
   }
 }
 
-[stock] 'Museums will remain completely': 24 candidates, 0 matched
+[stock] 'हिमाचल में मधुमक्खी पालन क्रां': 24 candidates, 0 matched
 [stock] broad queries failed: Gemini error 402: {
   "error": {
     "code": 402,
@@ -83,7 +163,7 @@
   }
 }
 
-[main] 6 stock photos used
-[main] video ready, 117 seconds
+[main] 3 stock photos used
+[main] video ready, 121 seconds
 [music] mixed in piano_bright.mp3
 [main] PREVIEW saved in previews/ - nothing was uploaded to YouTube
