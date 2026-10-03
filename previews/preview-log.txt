@@ -1,43 +1,47 @@
 [news] Good News Network: kept 8
 [news] Positive News: kept 8
 [news] Reasons to be Cheerful: kept 7
-[news] The Optimist Daily: Making Solutions the News: kept 7
-[news] The Better India : Latest Posts: kept 7
-[news] Good Good Good: kept 8
-[main] 45 candidate stories
+[news] The Optimist Daily: Making Solutions the News: kept 6
+[news] The Better India : Latest Posts: kept 8
+[news] Good Good Good: kept 6
+[main] 43 candidate stories
 [main] AI wrote 8 stories; fact-checking them...
-[verify] story 6 flagged: The source lead cuts off midway through a quote and does not state that the library provided Sunil Totti with an uninterrupted place to prepare for his interview.
-[main] special day greeting is used
-[main] 5 stories passed. Sources: Good News Network, The Better India : Latest Posts, The Optimist Daily: Making Solutions the News
+[verify] story 3 flagged: The narration claims that this will rapidly reduce the Asian tiger mosquito population and will provide great protection from dangerous diseases, adding claims not verified in the lead.
+[verify] story 4 flagged: The narration claims that this work gave employment and self-respect to village women, which is not mentioned in the lead.
+[verify] story 5 flagged: The narration makes unsupported claims about libraries having quiet environments, thousands of youths' futures being shaped, and multiple youths giving job interviews there, whereas the lead only introduces Sunil Totti's anecdote.
+[main] stories by impact: [('people', 10), ('health', 9), ('science', 8), ('environment', 7), ('animals', 7)]
+[main] 5 stories passed. Sources: Good Good Good, Good News Network, The Better India : Latest Posts, The Optimist Daily: Making Solutions the News
 [main] English captions ready
-[main] greeting is 6.1 s long
-[avatar] skipped: 403 Client Error: Forbidden for url: https://rest.alpha.fal.ai/storage/upload/initiate?storage_type=fal-cdn-v3
-[stock] 'A new beginning for Britain's ': best scores [5.0, 5.0, 4.0] (need 8)
-[stock] 'A new beginning for Britain's ': 18 candidates, 0 matched
-[stock] second try with broader searches: ['sprouting tree stump', 'tree regrowth', 'Sycamore Gap', 'English countryside']
-[stock] 'A new beginning for Britain's ': best scores [7.0, 6.0, 5.0] (need 6)
-[stock] 'A new beginning for Britain's ': 18 candidates, 2 matched
+[main] greeting is 4.5 s long
+[avatar] talking clip ready (0_navy_blazer_ponytail.jpg)
+[stock] '400 soldiers rescued in the sn': best scores [7.0, 6.0, 5.0] (need 8)
+[stock] '400 soldiers rescued in the sn': 18 candidates, 0 matched
+[stock] second try with broader searches: ['snow rescue gear', 'Mount Everest', 'snowy mountain peaks', 'mountain blizzard']
+[stock] '400 soldiers rescued in the sn': best scores [7.0, 7.0, 7.0] (need 6)
+[stock] '400 soldiers rescued in the sn': 18 candidates, 2 matched
 [main] story0: 2 video clip(s)
-[stock] 'Golf course becomes a home for': best scores [8.0, 6.0, 6.0] (need 8)
-[stock] 'Golf course becomes a home for': 24 candidates, 1 matched
-[stock] 'Wildlife overpass saves animal': best scores [7.0, 7.0, 7.0] (need 8)
-[stock] 'Wildlife overpass saves animal': 18 candidates, 0 matched
-[stock] second try with broader searches: ['wildlife overpass', 'Colorado', 'deer crossing', 'mountain highway']
-[stock] 'Wildlife overpass saves animal': best scores [7.0, 7.0, 6.0] (need 6)
-[stock] 'Wildlife overpass saves animal': 18 candidates, 2 matched
+[stock] 'Simple urine test for cancer': best scores [8.0, 8.0, 7.0] (need 8)
+[stock] 'Simple urine test for cancer': 24 candidates, 2 matched
+[stock] 'Nuclear fusion from clean fuel': best scores [7.0, 6.0, 6.0] (need 8)
+[stock] 'Nuclear fusion from clean fuel': 18 candidates, 0 matched
+[stock] second try with broader searches: ['nuclear fusion', 'fusion reactor', 'China', 'physics laboratory']
+[stock] 'Nuclear fusion from clean fuel': best scores [8.0, 7.0, 7.0] (need 6)
+[stock] 'Nuclear fusion from clean fuel': 18 candidates, 2 matched
 [main] story2: 2 video clip(s)
-[stock] 'Airport becomes Europe's large': best scores [6.0, 5.0, 5.0] (need 8)
-[stock] 'Airport becomes Europe's large': 24 candidates, 0 matched
-[stock] second try with broader searches: ['urban park', 'Athens Greece', 'coastal park', 'park landscape']
-[stock] 'Airport becomes Europe's large': best scores [7.0, 7.0, 6.0] (need 6)
-[stock] 'Airport becomes Europe's large': 24 candidates, 2 matched
-[stock] 'Wonderful initiative by Jharkh': best scores [7.0, 6.0, 5.0] (need 8)
-[stock] 'Wonderful initiative by Jharkh': 17 candidates, 0 matched
-[stock] second try with broader searches: ['plastic waste', 'Hazaribagh Jharkhand', 'water pollution', 'clean river landscape']
-[stock] 'Wonderful initiative by Jharkh': best scores [7.0, 7.0, 6.0] (need 6)
-[stock] 'Wonderful initiative by Jharkh': 18 candidates, 2 matched
-[main] story4: 2 video clip(s)
-[main] 12 stock photos used
-[main] video ready, 149 seconds
-[music] mixed in piano_sunrise.mp3
+[stock] 'The wonder of wind energy in A': best scores [7.0, 6.0, 5.0] (need 8)
+[stock] 'The wonder of wind energy in A': 12 candidates, 0 matched
+[stock] second try with broader searches: ['wind turbines', 'Ross Island Antarctica', 'polar landscape', 'snow covered tundra']
+[stock] 'The wonder of wind energy in A': best scores [7.0, 6.0, 5.0] (need 6)
+[stock] 'The wonder of wind energy in A': 22 candidates, 2 matched
+[stock] 'A new home for monkeys and sol': best scores [8.0, 7.0, 7.0] (need 8)
+[stock] 'A new home for monkeys and sol': 18 candidates, 1 matched
+[stock] 'A new home for monkeys and sol': best scores [7.0, 7.0, 7.0] (need 8)
+[stock] 'A new home for monkeys and sol': 14 candidates, 0 matched
+[stock] second try with broader searches: ['rescued monkey', 'Mississippi', 'primate sanctuary', 'wildlife sanctuary']
+[stock] 'A new home for monkeys and sol': best scores [8.0, 8.0, 8.0] (need 6)
+[stock] 'A new home for monkeys and sol': 24 candidates, 1 matched
+[main] story4: 1 video clip(s)
+[main] 13 stock photos used
+[main] video ready, 141 seconds
+[music] mixed in piano_bright.mp3
 [main] PREVIEW saved in previews/ - nothing was uploaded to YouTube
