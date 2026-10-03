@@ -31,7 +31,24 @@ def _call(prompt, temperature):
     return json.loads(text)
 
 
+BLOCKED = ("sex", "sexual", "contracept", "sterili", "sterilis", "condom", "abortion", "pregnan", "fertility",
+           "porn", "erotic", "genital", "std ", "hiv", "mating", "gene drive", "genetically modified mosquito",
+           "mosquito")
+
+
+def _blocked(it):
+    t = (it.get("title", "") + " " + it.get("summary", "")).lower()
+    return any(b in t for b in BLOCKED)
+
+
 def _write_prompt(items):
+    import random, datetime
+    items = [it for it in items if not _blocked(it)] or items
+    themes = ["gratitude", "small kindness", "patience", "courage", "hope after hard times", "teamwork",
+              "learning something new", "helping a stranger", "starting again", "the power of a smile",
+              "hard work paying off", "sharing joy", "believing in yourself", "caring for nature"]
+    theme = random.choice(themes)
+    day = datetime.date.today().isoformat()
     lines = []
     for i, it in enumerate(items):
         lines.append(f"[{i}] ({it['source']}) {it['title']} - {it['summary']}")
@@ -69,7 +86,10 @@ RULES:
    Each story: 60-80 words, in 4-6 short sentences.
 5. Return fewer than {config.NUM_STORIES + config.EXTRA_CANDIDATES} stories if there are not enough good ones.
 6. "thought" = one short, original, uplifting line in {config.LANGUAGE_NAME}. Do NOT attribute it to
-   any real person.
+   any real person. It must be FRESH every day: today is {day} and today's theme is "{theme}"; build the
+   thought and the outro around that theme and never reuse a stock line.
+   REJECT any lead about sex, reproduction, contraception, sterilisation, fertility, pregnancy or
+   mosquito/insect control experiments; the bulletin is for the whole family.
 7. "title" = a YouTube title in {config.LANGUAGE_NAME}, under 70 characters, hopeful, truthful. Do NOT put any number
    of stories in the title (no "8 news", no "5 stories"); name the most inspiring story or the feeling instead.
 8. "headline" for each story = a very short on-screen headline (max 6 words).
