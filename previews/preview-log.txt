@@ -2,41 +2,43 @@
 [main] 4 candidate stories
 [writer] 4 leads after the family-safe filter
 [main] AI wrote 4 stories; fact-checking them...
-[verify] story 3 flagged: The narration adds unsupported philosophical and emotional commentary not present in the lead (e.g. machines cannot understand human emotions/patience, family elders' guidance matters most in difficult times, warmth of relationships in the tech era).
-[main] 1 stories flagged - asking the writer to fix them...
-[main] approved order: ['आवाज़ से इमारतें बनाते आर्किटेक्ट', 'कर्नाटक में झीलें होंगी पुनर्जीवित', 'बुजुर्गों का तजुर्बा एआई से आगे', 'तीस्ता नदी से हाथी का बच्चा बचाया']
+[verify] story 0 flagged: The narration claims that veterinarian Dr. Nick Doley said the calf is completely safe ('डॉक्टर निक डोली ने बताया कि बच्चा पूरी तरह सुरक्षित है'), but the lead cuts off before detailing what Dr. Doley actually said.
+[verify] story 1 flagged: The narration adds unsupported claims about providing clean water to locals, improving groundwater levels, and quenching the thirst of millions in the coming days ('स्थानीय लोगों को साफ़ पानी मिलेगा और भूजल स्तर भी सुधरेगा। यह योजना आने वाले दिनों में लाखों लोगों की प्यास बुझाएगी।'), which are not mentioned in the lead.
+[verify] story 3 flagged: The narration adds multiple unsupported claims and editorializing not in the brief source lead, such as people trusting grandparents over machines and AI never replacing loved ones' love ('लोग आज भी मशीनों से ज़्यादा अपने दादा-दादी और नाना-नानी पर भरोसा करते हैं। यह स्टडी बताती है कि तकनीक कभी भी अपनों के प्यार का विकल्प नहीं बन सकती।').
+[main] 3 stories flagged - asking the writer to fix them...
+[main] approved order: ['बुजुर्गों का अनुभव है सबसे अनमोल', 'आवाज़ों से संवरते हमारे शहर', 'कर्नाटक में संवरेंगी पांच सौ झीलें', 'नन्हे हाथी की सुरक्षित जान']
 [main] 4 stories passed. Sources: Good News Network, Reasons to be Cheerful, The Better India : Latest Posts
 [main] English captions ready
-[main] greeting is 4.9 s long
+[main] greeting is 5.0 s long
 [avatar] talking clip ready (0_navy_blazer_ponytail.jpg)
-[stock] 'Architect designing buildings ': best scores [7.0, 7.0, 7.0] (need 8)
-[stock] 'Architect designing buildings ': 18 candidates, 0 matched
-[stock] second try with broader searches: ['architectural model', 'San Francisco', 'Salesforce Transit Center', 'modern terminal interior']
-[stock] 'Architect designing buildings ': best scores [8.0, 8.0, 7.0] (need 6)
-[stock] 'Architect designing buildings ': 18 candidates, 3 matched
-[stock] 'Architect designing buildings ': best scores [7.0, 6.0, 6.0] (need 8)
-[stock] 'Architect designing buildings ': 24 candidates, 0 matched
-[stock] second try with broader searches: ['wind chimes', 'San Francisco', 'modern transit center', 'architectural blueprints']
-[stock] 'Architect designing buildings ': best scores [7.0, 6.0, 6.0] (need 6)
-[stock] 'Architect designing buildings ': 24 candidates, 1 matched
-[main] story0: 3 video clip(s)
-[stock] 'Lakes to be revived in Karnata': best scores [7.0, 7.0, 5.0] (need 8)
-[stock] 'Lakes to be revived in Karnata': 24 candidates, 0 matched
-[stock] second try with broader searches: ['lake restoration', 'Karnataka India', 'freshwater lake', 'water canal']
-[stock] 'Lakes to be revived in Karnata': best scores [7.0, 7.0, 5.0] (need 6)
-[stock] 'Lakes to be revived in Karnata': 24 candidates, 2 matched
-[stock] 'Elders' experience ahead of AI': best scores [7.0, 6.0, 5.0] (need 8)
-[stock] 'Elders' experience ahead of AI': 18 candidates, 0 matched
-[stock] second try with broader searches: ['Artificial intelligence', 'Great Britain', 'London street', 'Vintage library']
-[stock] 'Elders' experience ahead of AI': best scores [7.0, 6.0, 6.0] (need 6)
-[stock] 'Elders' experience ahead of AI': 18 candidates, 3 matched
-[stock] 'Elders' experience ahead of AI': best scores [8.0, 8.0, 7.0] (need 8)
-[stock] 'Elders' experience ahead of AI': 24 candidates, 1 matched
-[main] story2: 3 video clip(s)
-[stock] 'Baby elephant rescued from Tee': best scores [8.0, 6.0, 6.0] (need 8)
-[stock] 'Baby elephant rescued from Tee': 24 candidates, 1 matched
-[main] 14 stock photos used
-[main] video ready, 199 seconds
+[stock] 'The Experience of Elders Is In': best scores [7.0, 3.0, 3.0] (need 8)
+[stock] 'The Experience of Elders Is In': 18 candidates, 0 matched
+[stock] second try with broader searches: ['artificial intelligence', 'old open book', 'Britain', 'British countryside']
+[stock] 'The Experience of Elders Is In': best scores [8.0, 3.0, 3.0] (need 6)
+[stock] 'The Experience of Elders Is In': 18 candidates, 1 matched
+[stock] 'The Experience of Elders Is In': best scores [9.0, 8.0, 8.0] (need 8)
+[stock] 'The Experience of Elders Is In': 24 candidates, 2 matched
+[main] story0: 1 video clip(s)
+[stock] 'Our Cities Shaped by Sounds': best scores [7.0, 6.0, 6.0] (need 8)
+[stock] 'Our Cities Shaped by Sounds': 24 candidates, 0 matched
+[stock] second try with broader searches: ['acoustic architecture', 'San Francisco', 'Salesforce Transit Center', 'modern transit hall']
+[stock] 'Our Cities Shaped by Sounds': best scores [7.0, 7.0, 6.0] (need 6)
+[stock] 'Our Cities Shaped by Sounds': 24 candidates, 4 matched
+[stock] 'Five Hundred Lakes to Be Reviv': best scores [6.0, 6.0, 5.0] (need 8)
+[stock] 'Five Hundred Lakes to Be Reviv': 18 candidates, 0 matched
+[stock] second try with broader searches: ['lake restoration', 'Karnataka India', 'water reservoir', 'freshwater lake']
+[stock] 'Five Hundred Lakes to Be Reviv': best scores [7.0, 6.0, 5.0] (need 6)
+[stock] 'Five Hundred Lakes to Be Reviv': 18 candidates, 2 matched
+[stock] 'Five Hundred Lakes to Be Reviv': best scores [7.0, 6.0, 6.0] (need 8)
+[stock] 'Five Hundred Lakes to Be Reviv': 24 candidates, 0 matched
+[stock] second try with broader searches: ['freshwater lake', 'Karnataka India', 'water reservoir', 'lake embankment']
+[stock] 'Five Hundred Lakes to Be Reviv': best scores [8.0, 7.0, 6.0] (need 6)
+[stock] 'Five Hundred Lakes to Be Reviv': 24 candidates, 2 matched
+[main] story2: 2 video clip(s)
+[stock] 'Baby Elephant's Life Saved': best scores [9.0, 7.0, 6.0] (need 8)
+[stock] 'Baby Elephant's Life Saved': 24 candidates, 1 matched
+[main] 15 stock photos used
+[main] video ready, 191 seconds
 [music] mixed in piano_glow.mp3
 [main] PREVIEW saved in previews/ - nothing was uploaded to YouTube
 [main] HOLD: the finished video is kept for review - NOT uploaded to YouTube
