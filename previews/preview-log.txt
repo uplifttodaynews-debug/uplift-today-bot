@@ -2,37 +2,43 @@
 [main] 4 candidate stories
 [writer] 4 leads after the family-safe filter
 [main] AI wrote 4 stories; fact-checking them...
-[main] approved order: ['बुजुर्गों की समझ एआई से आगे', 'आवाज़ से बदली शहरों की बनावट', '500 झीलों का होगा कायाकल्प', 'बची नन्हे हाथी की जान']
-[main] title (about the lead story): एआई के दौर में बुजुर्गों का अनुभव सबसे अनमोल
+[verify] story 1 flagged: The narration adds claims about benefits not mentioned in the lead, such as recharging groundwater (भूजल बढ़ाने).
+[verify] story 3 flagged: The narration adds unsupported claims and commentary not in the lead, such as the study shocking everyone and editorial thoughts on computers and elders' love.
+[main] 2 stories flagged - asking the writer to fix them...
+[main] approved order: ['बुजुर्गों के अनुभव का कोई विकल्प नहीं', 'आवाज़ से शहर संवारते दृष्टिहीन आर्किटेक्ट', 'कर्नाटक में 500 झीलों का कायाकल्प', 'मछुआरों ने बचाई हाथी की जान']
+[main] title (about the lead story): एआई के दौर में भी बुजुर्गों का अनुभव सबसे अनमोल
 [main] 4 stories passed. Sources: Good News Network, Reasons to be Cheerful, The Better India : Latest Posts
 [main] English captions ready
-[main] greeting is 4.3 s long
+[main] greeting is 4.7 s long
 [avatar] talking clip ready (0_navy_blazer_ponytail.jpg)
-[stock] 'Wisdom of the Elderly Ahead of': best scores [7.0, 6.0, 4.0] (need 8)
-[stock] 'Wisdom of the Elderly Ahead of': 18 candidates, 0 matched
-[stock] second try with broader searches: ['artificial intelligence', 'vintage books', 'Great Britain', 'British countryside']
-[stock] 'Wisdom of the Elderly Ahead of': best scores [8.0, 6.0, 4.0] (need 6)
-[stock] 'Wisdom of the Elderly Ahead of': 18 candidates, 2 matched
-[stock] 'Wisdom of the Elderly Ahead of': best scores [8.0, 8.0, 7.0] (need 8)
-[stock] 'Wisdom of the Elderly Ahead of': 24 candidates, 2 matched
-[main] story0: 2 video clip(s)
-[stock] 'How Sound Changed the Design o': best scores [8.0, 7.0, 7.0] (need 8)
-[stock] 'How Sound Changed the Design o': 24 candidates, 1 matched
-[stock] '500 Lakes to be Revitalized': best scores [5.0, 5.0, 5.0] (need 8)
-[stock] '500 Lakes to be Revitalized': 18 candidates, 0 matched
-[stock] second try with broader searches: ['lake restoration', 'Karnataka India', 'freshwater lake', 'scenic lake']
-[stock] '500 Lakes to be Revitalized': best scores [6.0, 5.0, 5.0] (need 6)
-[stock] '500 Lakes to be Revitalized': 18 candidates, 1 matched
-[stock] '500 Lakes to be Revitalized': best scores [9.0, 8.0, 8.0] (need 8)
-[stock] '500 Lakes to be Revitalized': 24 candidates, 2 matched
-[main] story2: 1 video clip(s)
-[stock] 'Baby Elephant's Life Saved': best scores [7.0, 6.0, 6.0] (need 8)
-[stock] 'Baby Elephant's Life Saved': 24 candidates, 0 matched
-[stock] second try with broader searches: ['baby elephant', 'Teesta River', 'Jalpaiguri', 'river current']
-[stock] 'Baby Elephant's Life Saved': best scores [8.0, 6.0, 6.0] (need 6)
-[stock] 'Baby Elephant's Life Saved': 24 candidates, 4 matched
-[main] 15 stock photos used
-[main] video ready, 218 seconds
+[stock] 'No substitute for the experien': best scores [6.0, 4.0, 4.0] (need 8)
+[stock] 'No substitute for the experien': 18 candidates, 0 matched
+[stock] second try with broader searches: ['artificial intelligence', 'United Kingdom', 'London skyline', 'antique books']
+[stock] 'No substitute for the experien': best scores [5.0, 5.0, 4.0] (need 6)
+[stock] 'No substitute for the experien': 18 candidates, 0 matched
+[main] story0: no good video clip, using photos
+[stock] 'No substitute for the experien': best scores [8.0, 7.0, 7.0] (need 8)
+[stock] 'No substitute for the experien': 24 candidates, 1 matched
+[stock] 'Blind architect shaping cities': best scores [7.0, 6.0, 6.0] (need 8)
+[stock] 'Blind architect shaping cities': 24 candidates, 0 matched
+[stock] second try with broader searches: ['architectural model', 'Salesforce Transit Center', 'San Francisco', 'modern transit station']
+[stock] 'Blind architect shaping cities': best scores [7.0, 7.0, 7.0] (need 6)
+[stock] 'Blind architect shaping cities': 24 candidates, 4 matched
+[stock] 'Rejuvenation of 500 lakes in K': best scores [6.0, 6.0, 5.0] (need 8)
+[stock] 'Rejuvenation of 500 lakes in K': 18 candidates, 0 matched
+[stock] second try with broader searches: ['freshwater lake', 'Karnataka lake', 'water reservoir', 'lake aerial view']
+[stock] 'Rejuvenation of 500 lakes in K': best scores [6.0, 6.0, 5.0] (need 6)
+[stock] 'Rejuvenation of 500 lakes in K': 18 candidates, 2 matched
+[stock] 'Rejuvenation of 500 lakes in K': best scores [7.0, 6.0, 6.0] (need 8)
+[stock] 'Rejuvenation of 500 lakes in K': 24 candidates, 0 matched
+[stock] second try with broader searches: ['Freshwater lake', 'Karnataka India', 'Water reservoir', 'Lake embankment']
+[stock] 'Rejuvenation of 500 lakes in K': best scores [8.0, 6.0, 5.0] (need 6)
+[stock] 'Rejuvenation of 500 lakes in K': 24 candidates, 2 matched
+[main] story2: 2 video clip(s)
+[stock] 'Fishermen save an elephant's l': best scores [8.0, 8.0, 7.0] (need 8)
+[stock] 'Fishermen save an elephant's l': 24 candidates, 2 matched
+[main] 14 stock photos used
+[main] video ready, 197 seconds
 [music] mixed in piano_glow.mp3
 [main] PREVIEW saved in previews/ - nothing was uploaded to YouTube
 [main] HOLD: the finished video is kept for review - NOT uploaded to YouTube
