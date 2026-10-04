@@ -45,7 +45,7 @@ jobs:
       - name: Install Python packages
         run: pip install -r requirements.txt
 
-      - name: Make and upload the bulletin (tries twice)
+      - name: Make the bulletin (HOLD for review by default, or upload when told)
         env:
           YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
           YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
@@ -56,9 +56,21 @@ jobs:
           PIXABAY_API_KEY: ${{ secrets.PIXABAY_API_KEY }}
           FAL_KEY: ${{ secrets.FAL_KEY }}
         run: |
+          mkdir -p ../../previews
+          mode=hold
+          if [ "$(head -1 ../../upload-mode.txt 2>/dev/null | tr -d '\r ')" = "upload" ]; then mode=upload; fi
+          if [ "${{ github.event_name }}" = "push" ] && head -1 ../../run-now.txt | grep -qi "upload"; then mode=upload; fi
+          dt=$(grep -o 'date=[0-9-]*' ../../run-now.txt 2>/dev/null | head -1 | cut -d= -f2 || true)
+          if [ -n "$dt" ]; then export VIDEO_DATE="$dt"; fi
+          if [ "$mode" = "hold" ]; then
+            echo "HOLD mode: the video is prepared for review and NOT uploaded."
+            export PREVIEW_ONLY=1
+            export HOLD_OUT="$PWD/../../hold_out"
+          fi
           for attempt in 1 2; do
-            python main.py && exit 0
-            code=$?
+            python -u main.py 2>&1 | python redact.py | tee ../../previews/preview-log.txt
+            code=${PIPESTATUS[0]}
+            if [ "$code" -eq 0 ]; then exit 0; fi
             if [ "$code" -eq 3 ]; then
               echo "No video today (not enough good stories). Not retrying."
               exit 3
@@ -67,6 +79,27 @@ jobs:
             sleep 120
           done
           exit 1
+
+      - name: Keep the prepared video for review/upload
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: bulletin
+          path: hold_out
+          retention-days: 7
+          if-no-files-found: ignore
+
+      - name: Save the review copy into the repo
+        if: always()
+        run: |
+          cd ../..
+          git config user.name "uplift-bot"
+          git config user.email "uplift-bot@users.noreply.github.com"
+          git add previews
+          git commit -m "Preview video" || echo "nothing new"
+          git checkout -- . || true
+          git pull --rebase -X theirs -q || true
+          git push || echo "could not save the review copy"
 
       - name: Remember the stories used (never repeat a story)
         if: success()

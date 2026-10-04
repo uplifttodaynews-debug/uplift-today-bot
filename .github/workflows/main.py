@@ -310,6 +310,18 @@ def main():
 
     if os.environ.get("PREVIEW_ONLY") == "1":
         save_preview(mp4, thumb, description, work)
+        hold = os.environ.get("HOLD_OUT")
+        if hold:                                   # full-quality copy kept for a later "upload" command
+            import json
+            import shutil
+            os.makedirs(hold, exist_ok=True)
+            shutil.copy(mp4, os.path.join(hold, "bulletin.mp4"))
+            shutil.copy(thumb, os.path.join(hold, "thumbnail.png"))
+            with open(os.path.join(hold, "meta.json"), "w", encoding="utf-8") as f:
+                json.dump({"title": data["title"], "description": description, "tags": tags,
+                           "date": config.today_india().isoformat(),
+                           "links": [(s.get("source") or {}).get("link") for s in stories]}, f, ensure_ascii=False)
+            print("[main] HOLD: the finished video is kept for review - NOT uploaded to YouTube")
         return 0
     try:
         upload.upload(mp4, data["title"], description, tags, thumb)

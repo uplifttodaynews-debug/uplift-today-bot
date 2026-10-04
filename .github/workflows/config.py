@@ -24,7 +24,7 @@ GEMINI_MODEL = "gemini-3.8-flash"
 NUM_STORIES = 3                  # 3 in-depth stories of ~150 words, read slowly ~ 4 minutes
 # Short, dynamic transitions between stories - ONLY on these dates (India date of the video)
 TRANSITION_DAYS = {"2026-10-05"}
-SPEAKING_RATE = 0.95             # slower, clearer voice (1.0 = normal)
+SPEAKING_RATE = 1.0              # slower, clearer voice (1.0 = normal)
 PICS_PER_STORY = 4               # longer stories need a few more pictures
 MIN_STORIES = 2                  # fewer good stories than this = skip the day
 MAX_PER_SOURCE = 2               # no more than 2 stories from the same website
@@ -102,6 +102,13 @@ from zoneinfo import ZoneInfo as _Zone
 
 def today_india():
     """Today's date in India (the daily build runs at 23:30 UTC, which is already tomorrow in India)."""
+    import os as _os
+    forced = _os.environ.get("VIDEO_DATE", "").strip()     # used when a video is prepared ahead of its publish day
+    if forced:
+        try:
+            return _dt.date.fromisoformat(forced)
+        except ValueError:
+            pass
     return _dt.datetime.now(_Zone("Asia/Kolkata")).date()
 
 
