@@ -1,43 +1,35 @@
-[news] Good News Network: kept 6
-[news] Positive News: kept 8
-[news] Reasons to be Cheerful: kept 7
-[news] The Optimist Daily: Making Solutions the News: kept 6
-[news] The Better India : Latest Posts: kept 8
-[news] Good Good Good: kept 6
-[main] 41 candidate stories
-[writer] 39 leads after the family-safe filter
-[main] AI wrote 6 stories; fact-checking them...
-[main] stories by impact: [('people', 9), ('health', 9), ('environment', 8)]
-[main] 3 stories passed. Sources: Reasons to be Cheerful, The Better India : Latest Posts, The Optimist Daily: Making Solutions the News
+[main] using the 4 stories YOU approved, in your order
+[main] 4 candidate stories
+[writer] 4 leads after the family-safe filter
+[main] AI wrote 3 stories; fact-checking them...
+[main] approved order: ['आवाज़ से इमारतें सजाते अनोखे आर्किटेक्ट', 'कर्नाटक में संवरेंगी पाँच सौ झीलें', 'मछुआरों ने बचाई नन्हे हाथी की जान']
+[main] 3 stories passed. Sources: Reasons to be Cheerful, The Better India : Latest Posts
 [main] English captions ready
-[stock] 'Saved the lives of 400 soldier': best scores [7.0, 7.0, 6.0] (need 8)
-[stock] 'Saved the lives of 400 soldier': 18 candidates, 0 matched
-[stock] second try with broader searches: ['avalanche rescue gear', 'Mount Everest', 'snowy mountain peaks', 'mountain blizzard']
-[stock] 'Saved the lives of 400 soldier': best scores [7.0, 7.0, 6.0] (need 6)
-[stock] 'Saved the lives of 400 soldier': 18 candidates, 3 matched
-[stock] 'Saved the lives of 400 soldier': best scores [7.0, 7.0, 7.0] (need 8)
-[stock] 'Saved the lives of 400 soldier': 24 candidates, 0 matched
-[stock] second try with broader searches: ['avalanche rescue gear', 'Mount Everest', 'Kashmir mountains', 'snowy mountain peaks']
-[stock] 'Saved the lives of 400 soldier': best scores [7.0, 7.0, 7.0] (need 6)
-[stock] 'Saved the lives of 400 soldier': 24 candidates, 1 matched
+[main] greeting is 5.1 s long
+[avatar] talking clip ready (0_navy_blazer_ponytail.jpg)
+[stock] 'The unique architect shaping b': best scores [6.0, 6.0, 6.0] (need 8)
+[stock] 'The unique architect shaping b': 18 candidates, 0 matched
+[stock] second try with broader searches: ['architectural model', 'San Francisco', 'transit center interior', 'modern building architecture']
+[stock] 'The unique architect shaping b': best scores [8.0, 8.0, 7.0] (need 6)
+[stock] 'The unique architect shaping b': 18 candidates, 3 matched
+[stock] 'The unique architect shaping b': best scores [7.0, 6.0, 6.0] (need 8)
+[stock] 'The unique architect shaping b': 24 candidates, 0 matched
+[stock] second try with broader searches: ['acoustic architecture', 'San Francisco', 'Salesforce Transit Center', 'modern building interior']
+[stock] 'The unique architect shaping b': best scores [7.0, 6.0, 6.0] (need 6)
+[stock] 'The unique architect shaping b': 24 candidates, 1 matched
 [main] story0: 3 video clip(s)
-[stock] 'A simple new test for cancer': best scores [7.0, 7.0, 7.0] (need 8)
-[stock] 'A simple new test for cancer': 24 candidates, 0 matched
-[stock] second try with broader searches: ['urine test sample', 'Manchester UK', 'medical laboratory', 'hospital room']
-[stock] 'A simple new test for cancer': best scores [8.0, 8.0, 8.0] (need 6)
-[stock] 'A simple new test for cancer': 24 candidates, 4 matched
-[stock] 'Solar hubs helpful during disa': best scores [6.0, 5.0, 5.0] (need 8)
-[stock] 'Solar hubs helpful during disa': 18 candidates, 0 matched
-[stock] second try with broader searches: ['Rooftop solar panels', 'New Orleans Louisiana', 'Church rooftop', 'Storm clouds']
-[stock] 'Solar hubs helpful during disa': best scores [6.0, 6.0, 6.0] (need 6)
-[stock] 'Solar hubs helpful during disa': 18 candidates, 3 matched
-[stock] 'Solar hubs helpful during disa': best scores [7.0, 7.0, 7.0] (need 8)
-[stock] 'Solar hubs helpful during disa': 24 candidates, 0 matched
-[stock] second try with broader searches: ['rooftop solar panels', 'solar battery storage', 'New Orleans Louisiana', 'storm clouds city']
-[stock] 'Solar hubs helpful during disa': best scores [7.0, 7.0, 7.0] (need 6)
-[stock] 'Solar hubs helpful during disa': 24 candidates, 1 matched
-[main] story2: 3 video clip(s)
-[main] 15 stock photos used
-[main] video ready, 172 seconds
+[stock] 'Five hundred lakes to be reviv': best scores [6.0, 6.0, 5.0] (need 8)
+[stock] 'Five hundred lakes to be reviv': 24 candidates, 0 matched
+[stock] second try with broader searches: ['freshwater lake', 'Karnataka India', 'lake aerial view', 'lake embankment']
+[stock] 'Five hundred lakes to be reviv': best scores [7.0, 6.0, 6.0] (need 6)
+[stock] 'Five hundred lakes to be reviv': 24 candidates, 3 matched
+[stock] 'Fishermen save the life of a b': best scores [8.0, 6.0, 5.0] (need 8)
+[stock] 'Fishermen save the life of a b': 18 candidates, 1 matched
+[stock] 'Fishermen save the life of a b': best scores [8.0, 8.0, 6.0] (need 8)
+[stock] 'Fishermen save the life of a b': 24 candidates, 2 matched
+[main] story2: 1 video clip(s)
+[main] 13 stock photos used
+[main] video ready, 168 seconds
 [music] mixed in piano_glow.mp3
 [main] PREVIEW saved in previews/ - nothing was uploaded to YouTube
+[main] HOLD: the finished video is kept for review - NOT uploaded to YouTube
