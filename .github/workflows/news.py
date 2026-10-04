@@ -13,6 +13,22 @@ def _clean(text):
     return re.sub(r"\s+", " ", text).strip()
 
 
+def _norm(link):
+    return (link or "").split("?")[0].rstrip("/").lower()
+
+
+def used_links():
+    """Links of stories already used in earlier videos (approval/used.json) - we never repeat a story."""
+    import json
+    import os
+    p = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", "approval", "used.json")
+    try:
+        with open(p, encoding="utf-8") as f:
+            return {_norm(x.get("link")) for x in json.load(f)}
+    except Exception:
+        return set()
+
+
 def collect():
     per_feed = []
     for url in config.RSS_FEEDS:
@@ -44,6 +60,11 @@ def collect():
             })
         print(f"[news] {source}: kept {len(kept)}")
         per_feed.append(kept)
+
+    used = used_links()
+    before = sum(len(k) for k in per_feed)
+    per_feed = [[it for it in k if _norm(it["link"]) not in used] for k in per_feed]
+    print(f"[news] {before - sum(len(k) for k in per_feed)} stories skipped: already used in an earlier video")
 
     # Mix the feeds in turn: one from each site, then the next from each...
     items = []

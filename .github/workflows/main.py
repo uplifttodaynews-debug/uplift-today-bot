@@ -55,6 +55,27 @@ def pick_stories(passed):
     return chosen
 
 
+def record_used(stories):
+    """Remember the stories of this video so they are never repeated."""
+    import json
+    p = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", "approval", "used.json")
+    try:
+        try:
+            with open(p, encoding="utf-8") as f:
+                data = json.load(f)
+        except Exception:
+            data = []
+        for s in stories:
+            link = (s.get("source") or {}).get("link")
+            if link:
+                data.append({"link": link, "date": config.today_india().isoformat()})
+        os.makedirs(os.path.dirname(p), exist_ok=True)
+        with open(p, "w", encoding="utf-8") as f:
+            json.dump(data, f, indent=1)
+    except Exception as e:
+        print(f"[main] could not record the used stories: {e}")
+
+
 def load_approved():
     """The owner's approved stories (approval/chosen.json) are used only for the video dated `date`."""
     import json
@@ -298,6 +319,7 @@ def main():
                   "it resets within 24 hours.")
             return SKIPPED
         raise
+    record_used(stories)
     return 0
 
 

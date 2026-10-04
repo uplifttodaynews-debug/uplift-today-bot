@@ -18,8 +18,8 @@ on:
     - cron: "30 23 * * *"
 
 permissions:
-  contents: read
   actions: write   # lets the keep-alive step below work
+  contents: write  # lets the bot remember which stories were used
 
 jobs:
   run:
@@ -67,6 +67,17 @@ jobs:
             sleep 120
           done
           exit 1
+
+      - name: Remember the stories used (never repeat a story)
+        if: success()
+        run: |
+          git config user.name "uplift-bot"
+          git config user.email "uplift-bot@users.noreply.github.com"
+          git add approval/used.json
+          git commit -m "Stories used today" || echo "nothing new"
+          git checkout -- . || true
+          git pull --rebase -X theirs -q || true
+          git push || echo "could not save the list"
 
       - name: Keep the daily schedule alive
         if: always()
