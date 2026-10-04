@@ -103,6 +103,7 @@ jobs:
 
       - name: Remember the stories used (never repeat a story)
         if: success()
+        continue-on-error: true
         run: |
           git config user.name "uplift-bot"
           git config user.email "uplift-bot@users.noreply.github.com"
