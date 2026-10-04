@@ -226,6 +226,27 @@ def translate(texts):
     return out
 
 
+def make_title(stories, old_title=""):
+    """A YouTube title / thumbnail headline that is about the LEAD (first) story - written after the final order is known."""
+    first = stories[0]
+    others = "; ".join(s.get("headline", "") for s in stories[1:])
+    prompt = (
+        f"Write ONE {config.LANGUAGE_NAME} YouTube title (Devanagari, under 60 characters, hopeful, truthful, no numbers of stories, "
+        "no clickbait) for a positive-news bulletin. The title MUST be about the LEAD story below (it is also the thumbnail headline).\n"
+        f"LEAD story headline: {first.get('headline', '')}\nLEAD story text: {first['narration']}\n"
+        f"Other stories (do not mention): {others}\n"
+        'Return ONLY JSON: {"title": "..."}'
+    )
+    try:
+        t = _call(prompt, 0.4).get("title", "")
+        t = polish_hindi((t or "").strip())
+        if 5 <= len(t) <= 80:
+            return t
+    except Exception as e:
+        print(f"[writer] title step failed: {e}")
+    return old_title
+
+
 def polish_hindi(text):
     """Fixed spelling/wording preferences for spoken Hindi (so the voice says them the way we want)."""
     if not isinstance(text, str):

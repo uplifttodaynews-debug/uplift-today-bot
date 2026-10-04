@@ -155,6 +155,8 @@ def main():
     for s_ in stories:
         s_["headline"] = script_writer.polish_hindi(s_.get("headline"))
         s_["narration"] = script_writer.polish_hindi(s_.get("narration"))
+    data["title"] = script_writer.make_title(stories, data.get("title", ""))
+    print(f"[main] title (about the lead story): {data['title']}")
     special = config.SPECIAL_DAYS.get((config.today_india().month, config.today_india().day))
     if special:
         print("[main] special day greeting is used")
