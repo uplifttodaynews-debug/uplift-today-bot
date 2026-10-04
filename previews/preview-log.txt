@@ -7,36 +7,37 @@
 [main] 41 candidate stories
 [writer] 39 leads after the family-safe filter
 [main] AI wrote 6 stories; fact-checking them...
-[main] stories by impact: [('people', 9), ('health', 9), ('people', 8)]
+[main] stories by impact: [('people', 9), ('health', 9), ('environment', 8)]
 [main] 3 stories passed. Sources: Reasons to be Cheerful, The Better India : Latest Posts, The Optimist Daily: Making Solutions the News
 [main] English captions ready
-[main] greeting is 5.1 s long
-[avatar] talking clip ready (1_mustard_blazer_bun.jpg)
-[stock] 'Hemant Sachdev becomes a savio': best scores [7.0, 7.0, 6.0] (need 8)
-[stock] 'Hemant Sachdev becomes a savio': 18 candidates, 0 matched
-[stock] second try with broader searches: ['avalanche rescue equipment', 'Himalayan mountains', 'snow covered peaks', 'rugged winter mountains']
-[stock] 'Hemant Sachdev becomes a savio': best scores [7.0, 7.0, 7.0] (need 6)
-[stock] 'Hemant Sachdev becomes a savio': 18 candidates, 3 matched
-[stock] 'Hemant Sachdev becomes a savio': best scores [7.0, 7.0, 7.0] (need 8)
-[stock] 'Hemant Sachdev becomes a savio': 24 candidates, 0 matched
-[stock] second try with broader searches: ['avalanche', 'Mount Everest', 'Kashmir mountains', 'snow mountain landscape']
-[stock] 'Hemant Sachdev becomes a savio': best scores [7.0, 7.0, 7.0] (need 6)
-[stock] 'Hemant Sachdev becomes a savio': 24 candidates, 1 matched
+[stock] 'Saved the lives of 400 soldier': best scores [7.0, 7.0, 6.0] (need 8)
+[stock] 'Saved the lives of 400 soldier': 18 candidates, 0 matched
+[stock] second try with broader searches: ['avalanche rescue gear', 'Mount Everest', 'snowy mountain peaks', 'mountain blizzard']
+[stock] 'Saved the lives of 400 soldier': best scores [7.0, 7.0, 6.0] (need 6)
+[stock] 'Saved the lives of 400 soldier': 18 candidates, 3 matched
+[stock] 'Saved the lives of 400 soldier': best scores [7.0, 7.0, 7.0] (need 8)
+[stock] 'Saved the lives of 400 soldier': 24 candidates, 0 matched
+[stock] second try with broader searches: ['avalanche rescue gear', 'Mount Everest', 'Kashmir mountains', 'snowy mountain peaks']
+[stock] 'Saved the lives of 400 soldier': best scores [7.0, 7.0, 7.0] (need 6)
+[stock] 'Saved the lives of 400 soldier': 24 candidates, 1 matched
 [main] story0: 3 video clip(s)
-[stock] 'A new simple way to screen for': best scores [8.0, 8.0, 7.0] (need 8)
-[stock] 'A new simple way to screen for': 24 candidates, 2 matched
-[stock] 'Solar hubs become a light in t': best scores [6.0, 6.0, 5.0] (need 8)
-[stock] 'Solar hubs become a light in t': 18 candidates, 0 matched
-[stock] second try with broader searches: ['solar panels', 'New Orleans', 'church exterior', 'battery storage']
-[stock] picture check failed, using nothing from this search: HTTPSConnectionPool(host='generativelanguage.googleapis.com', port=443): Read timed out. (read timeout=180)
-[stock] 'Solar hubs become a light in t': 18 candidates, 0 matched
-[main] story2: no good video clip, using photos
-[stock] 'Solar hubs become a light in t': best scores [7.0, 7.0, 6.0] (need 8)
-[stock] 'Solar hubs become a light in t': 24 candidates, 0 matched
-[stock] second try with broader searches: ['solar panels', 'New Orleans Louisiana', 'solar battery storage', 'church exterior']
-[stock] 'Solar hubs become a light in t': best scores [8.0, 7.0, 7.0] (need 6)
-[stock] 'Solar hubs become a light in t': 24 candidates, 4 matched
-[main] 13 stock photos used
-[main] video ready, 197 seconds
+[stock] 'A simple new test for cancer': best scores [7.0, 7.0, 7.0] (need 8)
+[stock] 'A simple new test for cancer': 24 candidates, 0 matched
+[stock] second try with broader searches: ['urine test sample', 'Manchester UK', 'medical laboratory', 'hospital room']
+[stock] 'A simple new test for cancer': best scores [8.0, 8.0, 8.0] (need 6)
+[stock] 'A simple new test for cancer': 24 candidates, 4 matched
+[stock] 'Solar hubs helpful during disa': best scores [6.0, 5.0, 5.0] (need 8)
+[stock] 'Solar hubs helpful during disa': 18 candidates, 0 matched
+[stock] second try with broader searches: ['Rooftop solar panels', 'New Orleans Louisiana', 'Church rooftop', 'Storm clouds']
+[stock] 'Solar hubs helpful during disa': best scores [6.0, 6.0, 6.0] (need 6)
+[stock] 'Solar hubs helpful during disa': 18 candidates, 3 matched
+[stock] 'Solar hubs helpful during disa': best scores [7.0, 7.0, 7.0] (need 8)
+[stock] 'Solar hubs helpful during disa': 24 candidates, 0 matched
+[stock] second try with broader searches: ['rooftop solar panels', 'solar battery storage', 'New Orleans Louisiana', 'storm clouds city']
+[stock] 'Solar hubs helpful during disa': best scores [7.0, 7.0, 7.0] (need 6)
+[stock] 'Solar hubs helpful during disa': 24 candidates, 1 matched
+[main] story2: 3 video clip(s)
+[main] 15 stock photos used
+[main] video ready, 172 seconds
 [music] mixed in piano_glow.mp3
 [main] PREVIEW saved in previews/ - nothing was uploaded to YouTube
