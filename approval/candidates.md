@@ -1,0 +1,31 @@
+# Candidate stories
+
+## 1. Provided children with a new path to education  (education, impact 10/10)
+A very inspiring story has emerged from Madhya Pradesh. Here, 32-year-old Shruti Shrivastava has brought a big change in education. She had failed to clear the UPSC exam six times. But instead of giving up, she kept full faith in herself. At the age of 30, she started the Sashaktikaran Foundation. The foundation's Project Neev gave new hope to 900 rural children. This initiative has spread across 10 government schools and 9 hostels in 6 districts. Children are now easily learning math and English using tablets with games. Fifth-grade student Jamna Prasad now eagerly plays the monkey game. Along with this, 30 local women have gained employment as Shiksha Saathis. Shruti has proven that with true dedication, every path becomes easy.
+
+Pictures: **video + photos** - Source: The Better India : Latest Posts - https://thebetterindia.com/changemakers/upsc-failure-shruti-shrivastava-project-neev-sashaktikaran-foundation-education-employment-12592812
+
+## 2. Solar power brought relief to people  (environment, impact 9/10)
+Power outages are common during storms in the US state of Louisiana. Hurricane Francine in the year 2024 plunged New Orleans into darkness. In such difficult times, Pastor Shawn Anglim opened the doors of his church. This church had a special setup of solar panels and backup batteries. By afternoon, more than 100 people arrived there to find relief. People enjoyed air conditioning there and also charged their medical devices. Twenty such Community Lighthouse centers are now operating in Louisiana. These include 14 centers in New Orleans and 6 surrounding centers. This solar initiative began after the major Hurricane Ida in 2021. At that time, prolonged power cuts and intense heat had caused severe distress. Now, this network has become a safe refuge for people in times of crisis.
+
+Pictures: **video + photos** - Source: Reasons to be Cheerful - https://reasonstobecheerful.world/the-spark-the-community-lighthouses/
+
+## 3. First solar train ran in the mountains  (science, impact 9/10)
+A unique train powered by solar energy is running in the mountains of Argentina. This is Latin America's first solar-powered passenger train. This train connects six towns in the beautiful valleys of Humahuaca. Train service has returned to this 42-kilometer-long route after 30 years. This two-coach train is fitted with six lithium batteries. These batteries are quickly charged with solar energy from Jujuy province. Once fully charged, this train runs for up to 120 kilometers. Fast charging facilities are available for it at Volcán and Purmamarca stations. By braking on downhill slopes in the mountains, this train also generates additional electricity. This smoke-free and diesel-free journey has become a boon for the environment. For locals and tourists, this journey has now become extremely convenient.
+
+Pictures: **video + photos** - Source: The Optimist Daily: Making Solutions the News - https://www.optimistdaily.com/2026/10/how-argentinas-battery-powered-tren-solar-is-recharging-an-ancient-andean-route/
+
+## 4. Students in need found a safe shelter  (education, impact 8/10)
+Being homeless during college studies is a very big challenge. The Dax Program has taken a great initiative to overcome this problem. A new hostel has opened for homeless students in the US city of Denver. Here, students in need get a safe place to stay for up to two years. A former student named Nykia Harrell shared her past ordeal. While studying in Chicago, she had no place to live or eat. Her life changed completely after joining Dax on a therapist's advice. In this historic Denver building, 15 students will live comfortably together. The organization has provided a safe roof to nearly 500 students so far. Eleven of its centers are running across several major cities, including Chicago and New York. Now, these young people will be able to complete their college degrees without any worries.
+
+Pictures: **video + photos** - Source: Reasons to be Cheerful - https://reasonstobecheerful.world/home-for-denver-homeless-college-students/
+
+## 5. Saved crops with turmeric farming  (people, impact 8/10)
+In Uttar Pradesh's Terai Elephant Reserve, farmers and conservationists are together conducting a new experiment. Farmers here grow paddy, maize, and sugarcane. Elephants like these crops because they provide them with plenty of energy. But crop damage can wipe out months of hard work and all the earnings of the farmers. Now, 100 farmers are trying to plant turmeric alongside these crops. Elephants are less attracted to turmeric compared to paddy, maize, or sugarcane. Therefore, farmers are being encouraged to plant turmeric. This experiment will succeed only if turmeric grows well, farming costs remain low, and it gets a fair price in the market. This reserve spans an area of more than 3,000 square kilometers, and farmers are trying to protect their livelihoods.
+
+Pictures: **video + photos** - Source: The Better India : Latest Posts - https://thebetterindia.com/wildlife/uttar-pradesh-farmers-turmeric-elephant-crop-raids-katarniaghat-conflict-solution-12613759
+
+## 6. Kitchen spices will boost immunity  (health, impact 7/10)
+Common spices from our kitchen are proving to be very beneficial for health. Many important findings have emerged from research by scientists at the New York Institute. Compounds in turmeric, ginger, garlic, and basil strengthen our immune system. They have a natural ability to reduce inflammation in the body and fight bacteria. Curcumin, found in turmeric, gives new strength to immune cells. According to Dr. Mindy Haar, this compound activates the body's T cells. But our body cannot fully absorb curcumin on its own. The simple solution to this is to add a pinch of black pepper with turmeric. The piperine in black pepper helps deliver curcumin directly into the bloodstream. Taking this combination in warm soup or milk protects against seasonal illnesses. This small change in our daily diet can keep all of us healthy throughout the year.
+
+Pictures: **video + photos** - Source: The Optimist Daily: Making Solutions the News - https://www.optimistdaily.com/2026/10/the-herbs-and-spices-dietitians-say-support-immune-function/
