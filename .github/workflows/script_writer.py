@@ -33,7 +33,10 @@ def _call(prompt, temperature):
 
 BLOCKED = ("sex", "sexual", "contracept", "steril", "condom", "abortion", "pregnan", "fertility",
            "porn", "erotic", "genital", "std", "hiv", "mating", "gene drive", "genetically modified mosquito",
-           "mosquito", "dengue", "malaria vector", "insect")
+           "mosquito", "dengue", "malaria vector", "insect",
+           "uter", "womb", "cervi", "vagin", "penis", "prostat", "testic", "testis", "ovar", "genit", "menstru",
+           "period poverty", "sperm", "semen", "hpv", "gynec", "gynaec", "reproductive", "pap smear", "circumcis",
+           "intimate", "libido", "erectile", "puberty", "midwi", "childbirth", "labour ward", "maternity")
 
 
 def _blocked(it):
@@ -89,7 +92,8 @@ RULES:
 6. "thought" = one short, original, uplifting line in {config.LANGUAGE_NAME}. Do NOT attribute it to
    any real person. It must be FRESH every day: today is {day} and today's theme is "{theme}"; build the
    thought and the outro around that theme and never reuse a stock line.
-   REJECT any lead about sex, reproduction, contraception, sterilisation, fertility, pregnancy or
+   REJECT any lead about sex, reproduction, genitals, the uterus/womb/cervix/prostate or any intimate body part or
+   screening of them, contraception, sterilisation, fertility, pregnancy, childbirth or
    mosquito/insect control experiments; the bulletin is for the whole family.
 7. "title" = a YouTube title in {config.LANGUAGE_NAME}, under 70 characters, hopeful, truthful. Do NOT put any number
    of stories in the title (no "8 news", no "5 stories"); name the most inspiring story or the feeling instead.
