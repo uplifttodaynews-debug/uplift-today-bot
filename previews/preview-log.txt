@@ -1,35 +1,42 @@
 [main] using the 4 stories YOU approved, in your order
 [main] 4 candidate stories
 [writer] 4 leads after the family-safe filter
-[main] AI wrote 3 stories; fact-checking them...
-[main] approved order: ['आवाज़ से इमारतें सजाते अनोखे आर्किटेक्ट', 'कर्नाटक में संवरेंगी पाँच सौ झीलें', 'मछुआरों ने बचाई नन्हे हाथी की जान']
-[main] 3 stories passed. Sources: Reasons to be Cheerful, The Better India : Latest Posts
+[main] AI wrote 4 stories; fact-checking them...
+[verify] story 3 flagged: The narration adds unsupported philosophical and emotional commentary not present in the lead (e.g. machines cannot understand human emotions/patience, family elders' guidance matters most in difficult times, warmth of relationships in the tech era).
+[main] 1 stories flagged - asking the writer to fix them...
+[main] approved order: ['आवाज़ से इमारतें बनाते आर्किटेक्ट', 'कर्नाटक में झीलें होंगी पुनर्जीवित', 'बुजुर्गों का तजुर्बा एआई से आगे', 'तीस्ता नदी से हाथी का बच्चा बचाया']
+[main] 4 stories passed. Sources: Good News Network, Reasons to be Cheerful, The Better India : Latest Posts
 [main] English captions ready
-[main] greeting is 5.1 s long
+[main] greeting is 4.9 s long
 [avatar] talking clip ready (0_navy_blazer_ponytail.jpg)
-[stock] 'The unique architect shaping b': best scores [6.0, 6.0, 6.0] (need 8)
-[stock] 'The unique architect shaping b': 18 candidates, 0 matched
-[stock] second try with broader searches: ['architectural model', 'San Francisco', 'transit center interior', 'modern building architecture']
-[stock] 'The unique architect shaping b': best scores [8.0, 8.0, 7.0] (need 6)
-[stock] 'The unique architect shaping b': 18 candidates, 3 matched
-[stock] 'The unique architect shaping b': best scores [7.0, 6.0, 6.0] (need 8)
-[stock] 'The unique architect shaping b': 24 candidates, 0 matched
-[stock] second try with broader searches: ['acoustic architecture', 'San Francisco', 'Salesforce Transit Center', 'modern building interior']
-[stock] 'The unique architect shaping b': best scores [7.0, 6.0, 6.0] (need 6)
-[stock] 'The unique architect shaping b': 24 candidates, 1 matched
+[stock] 'Architect designing buildings ': best scores [7.0, 7.0, 7.0] (need 8)
+[stock] 'Architect designing buildings ': 18 candidates, 0 matched
+[stock] second try with broader searches: ['architectural model', 'San Francisco', 'Salesforce Transit Center', 'modern terminal interior']
+[stock] 'Architect designing buildings ': best scores [8.0, 8.0, 7.0] (need 6)
+[stock] 'Architect designing buildings ': 18 candidates, 3 matched
+[stock] 'Architect designing buildings ': best scores [7.0, 6.0, 6.0] (need 8)
+[stock] 'Architect designing buildings ': 24 candidates, 0 matched
+[stock] second try with broader searches: ['wind chimes', 'San Francisco', 'modern transit center', 'architectural blueprints']
+[stock] 'Architect designing buildings ': best scores [7.0, 6.0, 6.0] (need 6)
+[stock] 'Architect designing buildings ': 24 candidates, 1 matched
 [main] story0: 3 video clip(s)
-[stock] 'Five hundred lakes to be reviv': best scores [6.0, 6.0, 5.0] (need 8)
-[stock] 'Five hundred lakes to be reviv': 24 candidates, 0 matched
-[stock] second try with broader searches: ['freshwater lake', 'Karnataka India', 'lake aerial view', 'lake embankment']
-[stock] 'Five hundred lakes to be reviv': best scores [7.0, 6.0, 6.0] (need 6)
-[stock] 'Five hundred lakes to be reviv': 24 candidates, 3 matched
-[stock] 'Fishermen save the life of a b': best scores [8.0, 6.0, 5.0] (need 8)
-[stock] 'Fishermen save the life of a b': 18 candidates, 1 matched
-[stock] 'Fishermen save the life of a b': best scores [8.0, 8.0, 6.0] (need 8)
-[stock] 'Fishermen save the life of a b': 24 candidates, 2 matched
-[main] story2: 1 video clip(s)
-[main] 13 stock photos used
-[main] video ready, 168 seconds
+[stock] 'Lakes to be revived in Karnata': best scores [7.0, 7.0, 5.0] (need 8)
+[stock] 'Lakes to be revived in Karnata': 24 candidates, 0 matched
+[stock] second try with broader searches: ['lake restoration', 'Karnataka India', 'freshwater lake', 'water canal']
+[stock] 'Lakes to be revived in Karnata': best scores [7.0, 7.0, 5.0] (need 6)
+[stock] 'Lakes to be revived in Karnata': 24 candidates, 2 matched
+[stock] 'Elders' experience ahead of AI': best scores [7.0, 6.0, 5.0] (need 8)
+[stock] 'Elders' experience ahead of AI': 18 candidates, 0 matched
+[stock] second try with broader searches: ['Artificial intelligence', 'Great Britain', 'London street', 'Vintage library']
+[stock] 'Elders' experience ahead of AI': best scores [7.0, 6.0, 6.0] (need 6)
+[stock] 'Elders' experience ahead of AI': 18 candidates, 3 matched
+[stock] 'Elders' experience ahead of AI': best scores [8.0, 8.0, 7.0] (need 8)
+[stock] 'Elders' experience ahead of AI': 24 candidates, 1 matched
+[main] story2: 3 video clip(s)
+[stock] 'Baby elephant rescued from Tee': best scores [8.0, 6.0, 6.0] (need 8)
+[stock] 'Baby elephant rescued from Tee': 24 candidates, 1 matched
+[main] 14 stock photos used
+[main] video ready, 199 seconds
 [music] mixed in piano_glow.mp3
 [main] PREVIEW saved in previews/ - nothing was uploaded to YouTube
 [main] HOLD: the finished video is kept for review - NOT uploaded to YouTube
