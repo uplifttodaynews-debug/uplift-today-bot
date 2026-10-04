@@ -55,6 +55,20 @@ def pick_stories(passed):
     return chosen
 
 
+def load_approved():
+    """The owner's approved stories (approval/chosen.json) are used only for the video dated `date`."""
+    import json
+    p = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", "approval", "chosen.json")
+    try:
+        with open(p, encoding="utf-8") as f:
+            d = json.load(f)
+        if d.get("date") == config.today_india().isoformat() and d.get("leads"):
+            return d["leads"]
+    except Exception:
+        pass
+    return None
+
+
 def save_preview(mp4, thumb, description, work):
     """Preview mode: do NOT upload to YouTube. Save a smaller copy in the repo folder previews/."""
     import shutil
@@ -77,14 +91,20 @@ def main():
     work = tempfile.mkdtemp(prefix="uplift_")  # temp folder, deleted with the runner
     today = config.today_india().strftime("%d %B %Y")
 
-    items = news.collect()
+    approved = load_approved()
+    if approved:
+        items = approved
+        config.NUM_STORIES, config.EXTRA_CANDIDATES = len(items), 0
+        print(f"[main] using the {len(items)} stories YOU approved, in your order")
+    else:
+        items = news.collect()
     print(f"[main] {len(items)} candidate stories")
-    if len(items) < config.MIN_STORIES:
+    if len(items) < (2 if approved else config.MIN_STORIES):
         print("[main] Not enough good news today - skipping.")
         return SKIPPED
 
     data = script_writer.write(items)
-    stories = limit_per_source(data["stories"])
+    stories = data["stories"] if approved else limit_per_source(data["stories"])
     print(f"[main] AI wrote {len(stories)} stories; fact-checking them...")
     passed, failed = script_writer.verify(stories)
     if failed and len(passed) < config.NUM_STORIES:
@@ -92,8 +112,20 @@ def main():
         fixed = script_writer.repair(failed)
         again_ok, _ = script_writer.verify(fixed)
         passed += again_ok
-    stories = pick_stories(passed)
-    if len(stories) < config.MIN_STORIES:
+    if approved:                                   # keep the owner's order
+        order = {it.get("link"): n for n, it in enumerate(items)}
+        stories = sorted(passed, key=lambda s: order.get((s.get("source") or {}).get("link"), 99))
+        seen_links, uniq = set(), []
+        for s in stories:                          # one story per approved lead
+            k = (s.get("source") or {}).get("link")
+            if k not in seen_links:
+                seen_links.add(k)
+                uniq.append(s)
+        stories = uniq
+        print("[main] approved order:", [s.get("headline") for s in stories])
+    else:
+        stories = pick_stories(passed)
+    if len(stories) < (2 if approved else config.MIN_STORIES):
         print(f"[main] Only {len(stories)} stories passed the checks - skipping today.")
         return SKIPPED
     for k_ in ("title", "intro", "thought", "outro"):

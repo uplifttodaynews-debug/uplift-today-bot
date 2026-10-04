@@ -390,7 +390,7 @@ def _dissolve(a, b, out, fade=0.35, kind="fade", whoosh=False):
     if whoosh:
         ms = max(int((da - fade - 0.05) * 1000), 0)
         audio = (f"anoisesrc=d=0.6:c=pink:a=0.5,highpass=f=700,lowpass=f=7000,afade=t=in:d=0.25,"
-                 f"afade=t=out:st=0.25:d=0.35,volume=0.35,adelay={ms}|{ms},aformat=sample_rates=44100:channel_layouts=stereo[w];"
+                 f"afade=t=out:st=0.25:d=0.35,volume=0.6,adelay={ms}|{ms},aformat=sample_rates=44100:channel_layouts=stereo[w];"
                  "[0:a][1:a]concat=n=2:v=0:a=1,aformat=sample_rates=44100:channel_layouts=stereo[ac];"
                  "[ac][w]amix=inputs=2:duration=first:normalize=0[a]")
     else:
@@ -415,7 +415,7 @@ def build(segments, out_mp4, workdir):
     gt = 0.0
     fancy = (config.today_india().isoformat() in getattr(config, "TRANSITION_DAYS", set())
              or os.environ.get("FORCE_TRANSITIONS") == "1")
-    styles = ["circleopen", "slideleft", "radial", "wipeup", "zoomin"]
+    styles = ["circleopen", "slideleft", "radial", "diagtl", "zoomin", "smoothleft"]
     prev_news, n_tr = False, 0
     opening = intro_path()
     if opening:
@@ -481,7 +481,7 @@ def build(segments, out_mp4, workdir):
         elif fancy and prev_news and len(clips) >= 2:     # short dynamic transition between news pieces
             try:
                 merged = os.path.join(workdir, f"trans_{i}.mp4")
-                _dissolve(clips[-2], clips[-1], merged, fade=0.5, kind=styles[n_tr % len(styles)], whoosh=True)
+                _dissolve(clips[-2], clips[-1], merged, fade=0.8, kind=styles[n_tr % len(styles)], whoosh=True)
                 clips.pop()
                 clips.pop()
                 clips.append(merged)
