@@ -383,14 +383,23 @@ def _render_piece(base, photo_png, top, lower, ticker, ticker_len, dur, offset, 
         raise RuntimeError("ffmpeg failed while drawing a story clip")
 
 
-def _dissolve(a, b, out, fade=0.35):
-    """Presenter clip `a` dissolves into news clip `b`; length and sound stay exactly a + b."""
+def _dissolve(a, b, out, fade=0.35, kind="fade", whoosh=False):
+    """Presenter clip `a` dissolves into news clip `b`; length and sound stay exactly a + b.
+    kind = any ffmpeg xfade style; whoosh adds a soft swoosh sound at the join."""
     da = _duration(a)
+    if whoosh:
+        ms = max(int((da - fade - 0.05) * 1000), 0)
+        audio = (f"anoisesrc=d=0.6:c=pink:a=0.5,highpass=f=700,lowpass=f=7000,afade=t=in:d=0.25,"
+                 f"afade=t=out:st=0.25:d=0.35,volume=0.35,adelay={ms}|{ms},aformat=sample_rates=44100:channel_layouts=stereo[w];"
+                 "[0:a][1:a]concat=n=2:v=0:a=1,aformat=sample_rates=44100:channel_layouts=stereo[ac];"
+                 "[ac][w]amix=inputs=2:duration=first:normalize=0[a]")
+    else:
+        audio = "[0:a][1:a]concat=n=2:v=0:a=1[a]"
     subprocess.check_call([
         "ffmpeg", "-y", "-loglevel", "error", "-i", a, "-i", b, "-filter_complex",
         f"[1:v]tpad=start_duration={fade}:start_mode=clone[b];"
-        f"[0:v][b]xfade=transition=fade:duration={fade}:offset={da - fade:.3f},format=yuv420p[v];"
-        "[0:a][1:a]concat=n=2:v=0:a=1[a]",
+        f"[0:v][b]xfade=transition={kind}:duration={fade}:offset={da - fade:.3f},format=yuv420p[v];"
+        + audio,
         "-map", "[v]", "-map", "[a]", "-c:v", "libx264", "-preset", "veryfast", "-crf", "20", "-r", "25",
         "-c:a", "aac", "-b:a", "160k", "-ar", "44100", "-ac", "2", out])
 
@@ -404,6 +413,10 @@ def build(segments, out_mp4, workdir):
     clips = []
     pending = None
     gt = 0.0
+    fancy = (config.today_india().isoformat() in getattr(config, "TRANSITION_DAYS", set())
+             or os.environ.get("FORCE_TRANSITIONS") == "1")
+    styles = ["circleopen", "slideleft", "radial", "wipeup", "zoomin"]
+    prev_news, n_tr = False, 0
     opening = intro_path()
     if opening:
         clips.append(opening)
@@ -465,6 +478,17 @@ def build(segments, out_mp4, workdir):
             except Exception as e:
                 print(f"[video] dissolve skipped: {e}")
             pending = None
+        elif fancy and prev_news and len(clips) >= 2:     # short dynamic transition between news pieces
+            try:
+                merged = os.path.join(workdir, f"trans_{i}.mp4")
+                _dissolve(clips[-2], clips[-1], merged, fade=0.5, kind=styles[n_tr % len(styles)], whoosh=True)
+                clips.pop()
+                clips.pop()
+                clips.append(merged)
+                n_tr += 1
+            except Exception as e:
+                print(f"[video] transition skipped: {e}")
+        prev_news = (seg.get("tag") or ("",))[0] != "UPLIFT"
     listfile = os.path.join(workdir, "list.txt")
     with open(listfile, "w") as f:
         for c in clips:

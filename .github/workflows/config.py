@@ -22,6 +22,8 @@ GEMINI_MODEL = "gemini-3.8-flash"
 
 # ---- Bulletin size ----
 NUM_STORIES = 3                  # 3 in-depth stories of ~150 words, read slowly ~ 4 minutes
+# Short, dynamic transitions between stories - ONLY on these dates (India date of the video)
+TRANSITION_DAYS = {"2026-10-05"}
 SPEAKING_RATE = 0.95             # slower, clearer voice (1.0 = normal)
 PICS_PER_STORY = 4               # longer stories need a few more pictures
 MIN_STORIES = 2                  # fewer good stories than this = skip the day

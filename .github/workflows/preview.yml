@@ -50,6 +50,7 @@ jobs:
           PREVIEW_ONLY: "1"
         run: |
           if [ "$(head -1 ../../preview-now.txt | tr -d '\r')" = "no-kavya" ]; then export ANCHOR_OFF=1; fi
+          if grep -q "transitions" ../../preview-now.txt; then export FORCE_TRANSITIONS=1; fi
           mkdir -p ../../previews
           python -u main.py 2>&1 | python redact.py
           exit ${PIPESTATUS[0]}
