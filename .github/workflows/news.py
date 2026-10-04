@@ -25,7 +25,12 @@ def collect():
         source = feed.feed.get("title", url)
         for entry in feed.entries[: config.MAX_ITEMS_PER_FEED]:
             title = _clean(entry.get("title"))
-            summary = _clean(entry.get("summary"))[:600]
+            summary = _clean(entry.get("summary"))
+            try:
+                body = _clean(entry.content[0].value) if entry.get("content") else ""
+            except Exception:
+                body = ""
+            summary = (body if len(body) > len(summary) else summary)[:1800]
             blob = f"{title} {summary}".lower()
             if any(re.search(rf"\b{re.escape(w)}\b", blob) for w in config.BLOCK_WORDS):
                 continue  # quick safety filter

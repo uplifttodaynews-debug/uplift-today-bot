@@ -141,18 +141,18 @@ def main():
     def story_photos(headline, text, queries, tag):
         if not config.STOCK_PHOTOS:
             return []
-        res = stock.best_photos(headline, text, queries, os.path.join(work, tag))
+        res = stock.best_photos(headline, text, queries, os.path.join(work, tag), want=config.PICS_PER_STORY)
         credits.extend(res)
         return [r["path"] for r in res]
 
     def story_media(headline, text, queries, tag, want_video):
         if want_video:
-            vids = stock.best_photos(headline, text, queries, os.path.join(work, tag + "_v"), want=2, kind="video")
+            vids = stock.best_photos(headline, text, queries, os.path.join(work, tag + "_v"), want=3, kind="video")
             if vids:
                 credits.extend(vids)
                 paths = [v["path"] for v in vids]
-                if len(paths) < 2:                         # one clip + one photo keeps the picture changing
-                    pics = stock.best_photos(headline, text, queries, os.path.join(work, tag), want=1)
+                if len(paths) < 4:                         # clips plus photos keep the picture changing
+                    pics = stock.best_photos(headline, text, queries, os.path.join(work, tag), want=min(2, 4 - len(paths)))
                     credits.extend(pics)
                     paths += [p["path"] for p in pics]
                 print(f"[main] {tag}: {len(vids)} video clip(s)")

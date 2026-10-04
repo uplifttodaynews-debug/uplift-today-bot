@@ -21,8 +21,10 @@ VOICE_NAME = "hi-IN-Chirp3-HD-Aoede"
 GEMINI_MODEL = "gemini-3.8-flash"
 
 # ---- Bulletin size ----
-NUM_STORIES = 5                  # 5 stories of ~70 words ~ 3 minutes
-MIN_STORIES = 3                  # fewer good stories than this = skip the day
+NUM_STORIES = 3                  # 3 in-depth stories of ~150 words, read slowly ~ 4 minutes
+SPEAKING_RATE = 0.85             # slower, clearer voice (1.0 = normal)
+PICS_PER_STORY = 4               # longer stories need a few more pictures
+MIN_STORIES = 2                  # fewer good stories than this = skip the day
 MAX_PER_SOURCE = 2               # no more than 2 stories from the same website
 EXTRA_CANDIDATES = 3             # AI writes a few extra stories, the fact-check keeps the good ones
 

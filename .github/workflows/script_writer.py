@@ -83,7 +83,8 @@ RULES:
    people really say (doctor, hospital, school, computer, scientist, research, team, electric,
    solar, energy, rupees, million), write that English word in Devanagari, like "doctor",
    "scientist", "hospital" - this is normal spoken Hindi/Hinglish. Avoid long lists of numbers.
-   Each story: 60-80 words, in 4-6 short sentences.
+   Each story is IN DEPTH: 130-170 words, in 9-13 short sentences. Explain who, what, where, how it
+   works, why it matters and what happens next, using ONLY facts stated in the lead (never invent).
 5. Return fewer than {config.NUM_STORIES + config.EXTRA_CANDIDATES} stories if there are not enough good ones.
 6. "thought" = one short, original, uplifting line in {config.LANGUAGE_NAME}. Do NOT attribute it to
    any real person. It must be FRESH every day: today is {day} and today's theme is "{theme}"; build the
@@ -186,7 +187,7 @@ def repair(failed):
         f"Rewrite each {config.LANGUAGE_NAME} news narration so it uses ONLY facts stated in its SOURCE "
         "LEAD. Remove the problem described. Do not add benefits, results, opinions, places, numbers "
         "or background that the lead does not state. Keep it warm, positive, in simple everyday spoken "
-        f"{config.LANGUAGE_NAME} (Devanagari) with short sentences, 45-70 words. If the lead has too little "
+        f"{config.LANGUAGE_NAME} (Devanagari) with short sentences, 110-160 words. If the lead has too little "
         "information, write a shorter narration rather than adding anything.\n"
         'Return ONLY JSON: {"results": [{"i": 0, "narration": "..."}]}\n\n' + "\n\n".join(parts)
     )

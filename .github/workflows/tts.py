@@ -13,7 +13,7 @@ def speak(text, out_path):
     body = {
         "input": {"text": text},
         "voice": {"languageCode": config.LANGUAGE_CODE, "name": config.VOICE_NAME},
-        "audioConfig": {"audioEncoding": "MP3"},
+        "audioConfig": {"audioEncoding": "MP3", "speakingRate": getattr(config, "SPEAKING_RATE", 1.0)},
     }
     r = requests.post(
         "https://texttospeech.googleapis.com/v1/text:synthesize",
