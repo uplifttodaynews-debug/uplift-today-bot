@@ -170,6 +170,7 @@ TICK_Y, TICK_H = 662, 58
 BLUE = (18, 76, 172)
 NAVY = (8, 22, 64)
 WHITE = (255, 255, 255)
+SUN = (255, 196, 40)                      # the golden of the sun in the intro
 INK = (14, 14, 20)
 GREY = (70, 82, 112)
 ZOOM_RATE, ZOOM_MAX = 0.00035, 1.18     # very slow, smooth push-in
@@ -312,9 +313,9 @@ def make_ticker(items, out_png):
     L = int(probe.textlength(one, font=f)) + 4
     img = Image.new("RGBA", (L * 2 + W, TICK_H), (0, 0, 0, 0))
     d = ImageDraw.Draw(img)
-    d.text((0, 11), one, font=f, fill=WHITE + (255,))
-    d.text((L, 11), one, font=f, fill=WHITE + (255,))
-    d.text((2 * L, 11), one, font=f, fill=WHITE + (255,))
+    d.text((0, 11), one, font=f, fill=SUN + (255,))
+    d.text((L, 11), one, font=f, fill=SUN + (255,))
+    d.text((2 * L, 11), one, font=f, fill=SUN + (255,))
     img.save(out_png)
     return L
 
