@@ -116,6 +116,7 @@ def main():
     if approved:
         items = approved
         config.NUM_STORIES, config.EXTRA_CANDIDATES = len(items), 0
+        config.APPROVED_MODE = True
         print(f"[main] using the {len(items)} stories YOU approved, in your order")
     else:
         items = news.collect()

@@ -62,6 +62,7 @@ ONLY positive, uplifting news, read aloud by a warm, professional female news an
 Below are candidate story leads (number, source, headline, summary).
 
 RULES:
+0. {"THE OWNER HAS ALREADY APPROVED EVERY LEAD BELOW: write exactly ONE story for EACH lead, none skipped, and set lead_index to that lead's number. Ignore rule 1's rejection list for them." if getattr(config, "APPROVED_MODE", False) else ""}
 1. Choose the {config.NUM_STORIES + config.EXTRA_CANDIDATES} best stories. We want REAL, IMPACTFUL, MORALE-BOOSTING news:
    a concrete good outcome for real people or the planet (lives improved or saved, a problem actually
    solved, measurable results, a breakthrough, courage, kindness, a community or individual who made a
