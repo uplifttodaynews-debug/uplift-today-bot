@@ -26,6 +26,15 @@ def main():
             used.append({"link": link, "date": m.get("date")})
     with open(p, "w", encoding="utf-8") as f:
         json.dump(used, f, indent=1)
+    pm = os.path.join(HERE, "..", "..", "approval", "used_media.json")       # never reuse these pictures/clips
+    try:
+        with open(pm, encoding="utf-8") as f:
+            media = json.load(f)
+    except Exception:
+        media = []
+    media += [u for u in m.get("media", []) if u not in media]
+    with open(pm, "w", encoding="utf-8") as f:
+        json.dump(media, f, indent=1)
     print("[publish] uploaded (private) and stories remembered")
 
 

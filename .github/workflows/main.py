@@ -182,6 +182,13 @@ def main():
     # ---- stock photos for the backgrounds (falls back to the sunrise gradient) ----
     credits = []
     ai_used = []
+    try:                                       # pictures/clips used in earlier videos are never used again
+        import json as _json
+        with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", "approval", "used_media.json"), encoding="utf-8") as _f:
+            stock.EXCLUDE.update(_json.load(_f))
+        print(f"[main] {len(stock.EXCLUDE)} earlier pictures/clips will not be reused")
+    except Exception as e:
+        print(f"[main] no used-media list: {e}")
     day = config.today_india().toordinal()
 
     def photos(queries, tag):
@@ -363,7 +370,8 @@ def main():
             with open(os.path.join(hold, "meta.json"), "w", encoding="utf-8") as f:
                 json.dump({"title": data["title"], "description": description, "tags": tags,
                            "date": config.today_india().isoformat(),
-                           "links": [(s.get("source") or {}).get("link") for s in stories]}, f, ensure_ascii=False)
+                           "links": [(s.get("source") or {}).get("link") for s in stories],
+                           "media": [c["url"] for c in credits]}, f, ensure_ascii=False)
             print("[main] HOLD: the finished video is kept for review - NOT uploaded to YouTube")
         return 0
     try:

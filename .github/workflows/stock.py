@@ -163,11 +163,14 @@ def _cands_videos(query, n=8):
     return out
 
 
+EXCLUDE = set()      # picture/clip pages already used in earlier videos (or earlier in this video)
+
+
 def _gather(queries, kind):
     cands, seen = [], set()
     for q in queries:
         for c in (_cands_videos(q) if kind == "video" else _cands_pexels(q) + _cands_pixabay(q)):
-            if c["full"] not in seen:
+            if c["full"] not in seen and c.get("url") not in EXCLUDE:
                 seen.add(c["full"])
                 cands.append(c)
     return cands
@@ -227,6 +230,7 @@ def _best_photos_once(headline, narration, cands, out_prefix, want, loose, kind=
             else:
                 Image.open(path).verify()
             out.append({"path": path, "photographer": c["photographer"], "url": c["url"], "source": c["source"]})
+            EXCLUDE.add(c["url"])
         except Exception as e:
             print(f"[stock] download skipped: {e}")
     print(f"[stock] '{(headline or '')[:30]}': {len(usable)} candidates, {len(out)} matched")
