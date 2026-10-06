@@ -36,10 +36,10 @@ def make_image(story, out_path, hint=""):
         return None
 
 
-def _fal(prompt, out_path, key):
+def _fal(prompt, out_path, key, size=(1280, 720)):
     r = requests.post("https://fal.run/fal-ai/flux/dev",
                       headers={"Authorization": f"Key {key}", "Content-Type": "application/json"},
-                      json={"prompt": prompt, "image_size": {"width": 1280, "height": 720}, "num_images": 1,
+                      json={"prompt": prompt, "image_size": {"width": size[0], "height": size[1]}, "num_images": 1,
                             "output_format": "jpeg", "enable_safety_checker": True}, timeout=300)
     if r.status_code != 200:
         print(f"[thumb] fal error {r.status_code}: {r.text[:200]}")
