@@ -5,3 +5,49 @@
 [main] using the 4 stories YOU approved, in your order
 [main] 4 candidate stories
 [writer] 4 leads after the family-safe filter
+[main] AI wrote 4 stories; fact-checking them...
+[verify] story 3 flagged: The source does not attribute the rise in anti-ageism laws to the UN Decade of Healthy Ageing, nor does it state that hospitals are making special arrangements or that WHO is drafting new regulations with governments.
+[main] 1 stories flagged - asking the writer to fix them...
+[main] approved order: ['80 वर्षीय नर्स बनीं ग्लोबल फाइनलिस्ट', 'बाढ़ पीड़ित जानमोनी ने जीता गोल्ड', 'बुज़ुर्गों के हक़ में नए कानून', 'बच्चों के डूबने में भारी कमी']
+[main] title (about the lead story): लक्षद्वीप की 80 वर्षीय नर्स बनीं ग्लोबल फाइनलिस्ट
+[main] 4 stories passed. Sources: Our World in Data, Positive News / WHO, The Better India
+[main] English captions ready
+[main] greeting is 4.7 s long
+[avatar] talking clip ready (3_maroon_blazer_halfup.jpg)
+[stock] '80-year-old nurse becomes glob': best scores [6.0, 5.0, 5.0] (need 8)
+[stock] '80-year-old nurse becomes glob': 18 candidates, 0 matched
+[stock] second try with broader searches: ['stethoscope', 'Kavaratti Lakshadweep', 'wooden fishing boat', 'tropical island']
+[stock] '80-year-old nurse becomes glob': best scores [6.0, 5.0, 5.0] (need 6)
+[stock] '80-year-old nurse becomes glob': 18 candidates, 1 matched
+[stock] '80-year-old nurse becomes glob': best scores [8.0, 6.0, 6.0] (need 8)
+[stock] '80-year-old nurse becomes glob': 24 candidates, 1 matched
+[main] story0: 1 video clip(s)
+[stock] 'Flood victim Janmoni wins gold': best scores [7.0, 7.0, 6.0] (need 8)
+[stock] 'Flood victim Janmoni wins gold': 24 candidates, 0 matched
+[stock] second try with broader searches: ['karate gold medal', 'Jorhat Assam', 'flooded village', 'sports arena']
+[stock] 'Flood victim Janmoni wins gold': best scores [7.0, 7.0, 7.0] (need 6)
+[stock] 'Flood victim Janmoni wins gold': 24 candidates, 4 matched
+[stock] 'New laws in favour of the elde': best scores [8.0, 4.0, 3.0] (need 8)
+[stock] 'New laws in favour of the elde': 18 candidates, 1 matched
+[stock] 'New laws in favour of the elde': best scores [7.0, 7.0, 7.0] (need 8)
+[stock] 'New laws in favour of the elde': 24 candidates, 0 matched
+[stock] second try with broader searches: ['legal gavel', 'courthouse exterior', 'city street', 'empty park bench']
+[stock] 'New laws in favour of the elde': best scores [8.0, 8.0, 8.0] (need 6)
+[stock] 'New laws in favour of the elde': 24 candidates, 2 matched
+[main] story2: 1 video clip(s)
+[stock] 'Sharp decline in child drownin': best scores [9.0, 8.0, 8.0] (need 8)
+[stock] 'Sharp decline in child drownin': 24 candidates, 3 matched
+[main] 15 stock photos used
+[main] video ready, 250 seconds
+[music] mixed in piano_sunrise.mp3
+[thumb] image prompt: A heartwarming photographic portrait of a compassionate elderly Indian female nurse in her 80s smiling warmly on the right half of the frame, wearing a classic white nurse uniform with a stethoscope. Warm golden natural sunlight, gentle coastal island clinic background. The left third is a soft, uncluttered negative space with smooth bokeh, emotional, uplifting, shallow depth of field.
+[thumb] image prompt: A cinematic photograph of a smiling elderly Indian nurse in a crisp white uniform, positioned on the right side of the frame. Golden tropical sunlight illuminates her gentle, weathered face outside a sun-drenched island healthcare clinic with palm fronds. The left third features a soft, uncluttered background with gentle bokeh, shallow depth of field, uplifting atmosphere, and vivid natural colors.
+[thumb] option 1: दुनिया में गूंजा सेवा का नाम
+[thumb] image prompt: Photographic shot. On the right, a brave retro-era nurse gently cares for a patient aboard a traditional wooden fishing boat amid rolling ocean waves, illuminated by warm, hopeful lantern light. Emotional, uplifting atmosphere with vivid natural colors. The left third features soft, out-of-focus misty sea spray and clean negative space, shallow depth of field.
+[thumb] option 2: तूफानों से लड़कर रचा इतिहास
+[thumb] image prompt: Cinematic photograph of a graceful elderly South Asian female nurse standing on the right side of the frame, smiling warmly with proud, glistening eyes. She stands on a modern awards stage illuminated by gentle golden spotlights and atmospheric bokeh. The left third is smoothly blurred, soft, and completely uncluttered with ambient light. Emotional, uplifting tone, vivid natural colors, shallow depth of field.
+[thumb] option 3: निस्वार्थ सेवा को दुनिया का सलाम
+[thumb] image prompt: Photographic portrait of a dignified elderly Indian nurse in a modest white uniform on the right side of the frame, looking toward a tropical turquoise sea with a gentle, hopeful expression. Warm golden hour light, vivid natural colors, shallow depth of field. The left third is an uncluttered, softly blurred ocean background providing clean negative space. Uplifting and emotional.
+[thumb] option 4: द्वीप की बेटी बनी दुनिया की शान
+[main] PREVIEW saved in previews/ - nothing was uploaded to YouTube
+[main] HOLD: the finished video is kept for review - NOT uploaded to YouTube
