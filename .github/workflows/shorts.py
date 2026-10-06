@@ -76,7 +76,7 @@ def main():
     os.makedirs(OUT, exist_ok=True)
     with open(os.path.join(HERE, "..", "..", "approval", "chosen.json"), encoding="utf-8") as f:
         lead = json.load(f)["leads"][0]
-    full = news.enrich(lead) or lead.get("summary", "")
+    full = (news.enrich(lead) or lead).get("summary", "")
     plan = _plan(lead, full, 105)
     script = script_writer.polish_hindi(plan["script"])
     mp3 = os.path.join(WORK, "short.mp3")
