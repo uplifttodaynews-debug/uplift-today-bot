@@ -1,0 +1,31 @@
+# publish_short.yml - uploads the prepared Short, PRIVATE. Start it by changing short-publish-request.txt.
+name: Publish the Short (private)
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - short-publish-request.txt
+
+permissions:
+  contents: read
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    defaults:
+      run:
+        working-directory: .github/workflows
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements.txt
+      - name: Upload to YouTube (private)
+        env:
+          YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
+          YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
+          YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
+        run: python -u publish_short.py 2>&1 | python redact.py; exit ${PIPESTATUS[0]}
