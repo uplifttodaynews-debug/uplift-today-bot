@@ -1,41 +1,13 @@
+[news] fuller text fetched for: AI Chatbots Will Never Replace Advice From Elders, (3800 characters)
+[news] fuller text fetched for: Alzheimer's disease starting to be considered a tr (3800 characters)
+[news] fuller text fetched for: No tankers since 1996: how a Vizag colony made rai (1445 characters)
+[news] fuller text fetched for: Baby rhino and zebra bond after losing their mothe (3420 characters)
 [main] using the 4 stories YOU approved, in your order
 [main] 4 candidate stories
 [writer] 4 leads after the family-safe filter
 [main] AI wrote 4 stories; fact-checking them...
-[verify] story 1 flagged: The narration claims that this initiative will provide clean water and relief to millions of people ("इस बड़ी पहल से लाखों लोगों को साफ़ पानी और राहत मिलेगी"), which is not mentioned in the lead.
-[verify] story 3 flagged: The narration adds several unsupported editorialized claims not present in the lead, such as elder love/affection being beyond machines ("बुज़ुर्गों की सीख और उनकी ममता किसी भी मशीन से कहीं बढ़कर है") and having loved ones in tough times ("मुश्किल समय में अपनों का साथ सबसे अनमोल होता है").
-[main] 2 stories flagged - asking the writer to fix them...
-[main] approved order: ['बुज़ुर्गों का अनुभव बना अनमोल', 'आवाज़ से सजेगा शहर का डिज़ाइन', 'कर्नाटक में 500 झीलें संवरेंगी', 'नदी से बचाया नन्हा हाथी']
-[main] title (about the lead story): AI के दौर में भी बुज़ुर्गों का अनुभव है अनमोल
-[main] 4 stories passed. Sources: Good News Network, Reasons to be Cheerful, The Better India : Latest Posts
+[main] approved order: ['एआई पर भारी बुजुर्गों का अनुभव', 'अल्जाइमर के इलाज में बड़ी कामयाबी', 'विशाखापट्टनम में पानी बचाने की मिसाल', 'नन्हे गैंडे और जेब्रा की दोस्ती']
+[main] title (about the lead story): एआई के दौर में सबसे आगे बुजुर्गों का अनुभव
+[main] 4 stories passed. Sources: Good Good Good, Good News Network, RNZ, The Hindu
 [main] English captions ready
-[main] greeting is 4.4 s long
-[avatar] talking clip ready (0_navy_blazer_ponytail.jpg)
-[stock] 'Elders' experience proves inva': best scores [8.0, 7.0, 5.0] (need 8)
-[stock] 'Elders' experience proves inva': 18 candidates, 1 matched
-[stock] 'Elders' experience proves inva': best scores [9.0, 7.0, 7.0] (need 8)
-[stock] 'Elders' experience proves inva': 24 candidates, 1 matched
-[main] story0: 1 video clip(s)
-[stock] 'Urban design to be shaped by s': best scores [8.0, 7.0, 6.0] (need 8)
-[stock] 'Urban design to be shaped by s': 24 candidates, 1 matched
-[stock] '500 lakes to be rejuvenated in': best scores [5.0, 5.0, 4.0] (need 8)
-[stock] '500 lakes to be rejuvenated in': 18 candidates, 0 matched
-[stock] second try with broader searches: ['freshwater lake', 'Karnataka India', 'water reservoir', 'lake aerial view']
-[stock] '500 lakes to be rejuvenated in': best scores [7.0, 6.0, 6.0] (need 6)
-[stock] '500 lakes to be rejuvenated in': 18 candidates, 3 matched
-[stock] picture check failed, using nothing from this search: HTTPSConnectionPool(host='generativelanguage.googleapis.com', port=443): Read timed out. (read timeout=180)
-[stock] '500 lakes to be rejuvenated in': 24 candidates, 0 matched
-[stock] second try with broader searches: ['lake', 'Karnataka India', 'lake landscape', 'aerial lake view']
-[stock] '500 lakes to be rejuvenated in': best scores [8.0, 7.0, 7.0] (need 6)
-[stock] '500 lakes to be rejuvenated in': 24 candidates, 1 matched
-[main] story2: 3 video clip(s)
-[stock] 'Baby elephant rescued from riv': best scores [7.0, 6.0, 5.0] (need 8)
-[stock] 'Baby elephant rescued from riv': 24 candidates, 0 matched
-[stock] second try with broader searches: ['baby elephant', 'Teesta River', 'forest river', 'rushing river']
-[stock] 'Baby elephant rescued from riv': best scores [8.0, 7.0, 6.0] (need 6)
-[stock] 'Baby elephant rescued from riv': 24 candidates, 4 matched
-[main] 14 stock photos used
-[main] video ready, 193 seconds
-[music] mixed in piano_hope.mp3
-[main] PREVIEW saved in previews/ - nothing was uploaded to YouTube
-[main] HOLD: the finished video is kept for review - NOT uploaded to YouTube
+[main] greeting is 4.8 s long
