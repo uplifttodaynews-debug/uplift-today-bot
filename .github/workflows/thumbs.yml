@@ -1,0 +1,41 @@
+# thumbs.yml - makes thumbnail background pictures from thumb-request.txt. Nothing is uploaded.
+name: Thumbnail pictures (no upload)
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - thumb-request.txt
+
+permissions:
+  contents: write
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    defaults:
+      run:
+        working-directory: .github/workflows
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements.txt
+      - name: Make the pictures
+        env:
+          FAL_KEY: ${{ secrets.FAL_KEY }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: python -u thumbs_img.py 2>&1 | python redact.py; exit ${PIPESTATUS[0]}
+      - name: Save into the repo
+        if: always()
+        run: |
+          cd ../..
+          git config user.name "uplift-bot"
+          git config user.email "uplift-bot@users.noreply.github.com"
+          git add previews
+          git commit -m "Thumbnail pictures" || echo "nothing new"
+          git checkout -- . || true
+          git pull --rebase -X theirs -q || true
+          git push || (git pull --rebase -X theirs -q && git push)

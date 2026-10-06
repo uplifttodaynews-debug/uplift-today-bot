@@ -14,7 +14,7 @@ def make_image(story, out_path, hint=""):
             "about this news story. Photographic, warm natural light, vivid but natural colours, shallow depth of field, "
             "emotional and uplifting. The main subject sits on the RIGHT half of the frame; the LEFT third is soft and "
             "uncluttered (a headline will be placed there). Show ordinary, generic people or things that symbolise the "
-            "story. NO text, letters, logos, flags, no real or famous people, no newsroom. Max 70 words.\n" + (f"Composition idea to follow: {hint}\n" if hint else "") + 
+            "story. People must look like they belong to the story's own country and culture (for an Indian story show Indian people and a local setting, never generic Western stock-photo people). NO text, letters, logos, flags, no real or famous people, no newsroom. Max 70 words.\n" + (f"Composition idea to follow: {hint}\n" if hint else "") + 
             f"Story headline: {story.get('headline', '')}\nStory: {story['narration'][:900]}\n"
             'Return ONLY JSON: {"prompt": "..."}', 0.6).get("prompt", "")
         if len(p) < 20:
