@@ -181,6 +181,7 @@ def main():
 
     # ---- stock photos for the backgrounds (falls back to the sunrise gradient) ----
     credits = []
+    ai_used = []
     day = config.today_india().toordinal()
 
     def photos(queries, tag):
@@ -216,7 +217,18 @@ def main():
             print(f"[main] {tag}: no good video clip, using photos")
         return story_photos(headline, text, queries, tag)
 
-    def add(headline, text, name, title_slide=False, eng="", headline_en="", queries=None, tag=None, smart=False, want_video=False):
+    def story_media_ai(headline, text, queries, tag, want_video, idx=None):
+        paths = story_media(headline, text, queries, tag, want_video)
+        if len(paths) < 2 and idx is not None:           # nothing suitable in the stock libraries: AI illustrations
+            import thumb_ai
+            extra = thumb_ai.make_illustrations(stories[idx], os.path.join(work, tag), n=3)
+            if extra:
+                print(f"[main] {tag}: {len(extra)} AI illustration(s) added (no good stock footage)")
+                ai_used.extend(extra)
+                paths = paths + extra
+        return paths
+
+    def add(headline, text, name, title_slide=False, eng="", headline_en="", queries=None, tag=None, smart=False, want_video=False, idx=None):
         mp3 = os.path.join(work, f"{name}.mp3")
         tts.speak(text, mp3)
         if name == "intro" and config.ANCHOR:  # noqa
@@ -236,7 +248,7 @@ def main():
             print(f"[main] greeting is {video._duration(mp3):.1f} s long")
         seg = {"headline": headline, "audio": mp3, "title_slide": title_slide,
                "english": eng, "headline_en": headline_en if config.ENGLISH_CAPTIONS else "",
-               "backgrounds": (story_media(headline_en or headline, eng or text, queries or [], name, want_video) if smart
+               "backgrounds": (story_media_ai(headline_en or headline, eng or text, queries or [], name, want_video, idx) if smart
                                else photos(queries or [], name)), "tag": tag}
         if name == "intro" and config.ANCHOR and video._duration(mp3) <= config.ANCHOR_MAX_SECONDS:
             seg["clip"] = avatar.make_clip(mp3, os.path.join(work, "anchor_intro.mp4"))
@@ -246,7 +258,7 @@ def main():
     add("आज की पॉज़िटिव ख़बरें", data["intro"], "intro", True, english[0], "Today's Uplifting News", [fq["intro"]], ("UPLIFT", "TODAY"))
     for i, s in enumerate(stories):
         add(s.get("headline", ""), s["narration"], f"story{i}", False, english[1 + i], english_heads[i],
-            s.get("visual_queries") or [], ("STORY", f"{i + 1:02d}"), True,
+            s.get("visual_queries") or [], ("STORY", f"{i + 1:02d}"), True, idx=i,
             want_video=bool(config.STOCK_VIDEOS and (i * config.VIDEO_SHARE) % 1 < config.VIDEO_SHARE - 1e-9))
     add("आज का विचार", data["thought"], "thought", True, english[-2], "Thought of the Day", [fq["thought"]], ("TODAY'S", "THOUGHT"))
     add("धन्यवाद! सब्सक्राइब करें", data["outro"], "outro", True, english[-1], "Thank you! Please subscribe", [fq["outro"]], ("THANK", "YOU"))
@@ -289,6 +301,25 @@ def main():
         if pic:
             thumb_src, ai_thumb = pic, True
     video.make_thumbnail(data["title"], thumb, thumb_src)
+    if os.environ.get("THUMB_OPTIONS") == "1":
+        import thumb_ai
+        try:
+            r = script_writer._call(
+                "For the lead story below write 4 DIFFERENT short Hindi (Devanagari) thumbnail headlines, 18-34 characters each, "
+                "hopeful and punchy, no numbers; write the word AI as एआई. Also write 4 matching, clearly different image ideas "
+                "(English, one sentence each, a different scene/subject each).\n"
+                f"Lead story: {stories[0].get('headline','')}. {stories[0]['narration'][:900]}\n"
+                'Return ONLY JSON: {"options": [{"headline": "...", "idea": "..."}]}', 0.8).get("options", [])
+        except Exception as e:
+            print(f"[thumb] options failed: {e}")
+            r = []
+        odir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", "previews", "thumb_options")
+        os.makedirs(odir, exist_ok=True)
+        for k, o in enumerate(r[:4], 1):
+            pic = thumb_ai.make_image(stories[0], os.path.join(work, f"opt{k}.jpg"), hint=o.get("idea", ""))
+            if pic:
+                video.make_thumbnail(script_writer.polish_hindi(o.get("headline", data["title"])), os.path.join(odir, f"option{k}.png"), pic)
+                print(f"[thumb] option {k}: {o.get('headline')}")
 
     # ---- description with sources + disclosures ----
     src_lines, seen = [], set()
@@ -308,6 +339,7 @@ def main():
         + ("\n\nStock photos (for illustration only - they do not show the actual events):\n"
            + "\n".join(f"- Photo by {c['photographer']} on {c.get('source', 'Pexels')}: {c['url']}" for c in credits)
            if credits else "")
+        + ("\n\nSome pictures in this video are AI-generated illustrations (not photos of the actual events)." if ai_used else "")
         + ("\n\nThumbnail picture: AI-generated illustration (not a photo of the actual event)." if ai_thumb else "")
         + "\n\nMusic: original tracks created for Uplift Today. Our presenter Kavya is an AI-generated character."
         + "\n\nThis video was made with AI: the script is AI-written from public news "

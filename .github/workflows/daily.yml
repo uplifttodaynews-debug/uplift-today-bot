@@ -62,6 +62,7 @@ jobs:
           if [ "${{ github.event_name }}" = "push" ] && head -1 ../../run-now.txt | grep -qi "upload"; then mode=upload; fi
           dt=$(grep -o 'date=[0-9-]*' ../../run-now.txt 2>/dev/null | head -1 | cut -d= -f2 || true)
           if [ -n "$dt" ]; then export VIDEO_DATE="$dt"; fi
+          if grep -qi "options" ../../run-now.txt 2>/dev/null; then export THUMB_OPTIONS=1; fi
           if [ "$mode" = "hold" ]; then
             echo "HOLD mode: the video is prepared for review and NOT uploaded."
             export PREVIEW_ONLY=1
