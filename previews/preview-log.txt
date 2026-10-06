@@ -1,4 +1,50 @@
-[thumb] picture 1 done
-[thumb] picture 2 done
-[thumb] picture 3 done
-[thumb] picture 4 done
+[news] fuller text fetched for: At 80, a Lakshadweep nurse is a global top-10 fina (3800 characters)
+[news] fuller text fetched for: Her home was washed away in the Assam floods. Days (3800 characters)
+[news] fuller text fetched for: Laws against ageism are now in 57.7% of countries, (3800 characters)
+[news] fuller text fetched for: Child drowning deaths worldwide fell from 30 to 7. (3800 characters)
+[main] using the 4 stories YOU approved, in your order
+[main] 4 candidate stories
+[writer] 4 leads after the family-safe filter
+[main] AI wrote 4 stories; fact-checking them...
+[main] approved order: ['लक्षद्वीप की नर्स का वैश्विक सम्मान', 'बाढ़ के बाद जीता नेशनल गोल्ड', 'बुज़ुर्गों के अधिकारों की नई पहल', 'बच्चों के डूबने में भारी गिरावट']
+[main] title (about the lead story): लक्षद्वीप की समर्पित नर्स को मिला वैश्विक सम्मान
+[main] 4 stories passed. Sources: Our World in Data, Positive News / WHO, The Better India
+[main] English captions ready
+[main] 214 earlier pictures/clips will not be reused
+[main] greeting is 4.8 s long
+[avatar] talking clip ready (3_maroon_blazer_halfup.jpg)
+[stock] 'Global Honor for Lakshadweep N': best scores [7.0, 7.0, 5.0] (need 8)
+[stock] 'Global Honor for Lakshadweep N': 18 candidates, 0 matched
+[stock] second try with broader searches: ['stethoscope', 'Lakshadweep India', 'tropical island beach', 'wooden fishing boat']
+[stock] 'Global Honor for Lakshadweep N': best scores [7.0, 6.0, 6.0] (need 6)
+[stock] 'Global Honor for Lakshadweep N': 18 candidates, 3 matched
+[stock] 'Global Honor for Lakshadweep N': best scores [7.0, 5.0, 4.0] (need 8)
+[stock] 'Global Honor for Lakshadweep N': 24 candidates, 0 matched
+[stock] second try with broader searches: ['nurse stethoscope', 'Lakshadweep islands', 'tropical island sea', 'wooden fishing boat']
+[stock] 'Global Honor for Lakshadweep N': best scores [7.0, 6.0, 5.0] (need 6)
+[stock] 'Global Honor for Lakshadweep N': 24 candidates, 1 matched
+[main] story0: 3 video clip(s)
+[stock] 'Won National Gold After the Fl': best scores [6.0, 6.0, 6.0] (need 8)
+[stock] 'Won National Gold After the Fl': 24 candidates, 0 matched
+[stock] second try with broader searches: ['gold medal', 'Jorhat Assam', 'flooded village', 'indoor sports arena']
+[stock] 'Won National Gold After the Fl': best scores [7.0, 6.0, 5.0] (need 6)
+[stock] 'Won National Gold After the Fl': 24 candidates, 2 matched
+[stock] 'New Initiative for the Rights ': best scores [9.0, 8.0, 8.0] (need 8)
+[stock] 'New Initiative for the Rights ': 18 candidates, 3 matched
+[stock] 'New Initiative for the Rights ': best scores [7.0, 7.0, 7.0] (need 8)
+[stock] 'New Initiative for the Rights ': 24 candidates, 0 matched
+[stock] second try with broader searches: ['wheelchair ramp', 'empty nursing home', 'accessible park bench', 'peaceful city park']
+[stock] 'New Initiative for the Rights ': best scores [8.0, 8.0, 8.0] (need 6)
+[stock] 'New Initiative for the Rights ': 24 candidates, 1 matched
+[main] story2: 3 video clip(s)
+[stock] 'Massive Decline in Child Drown': best scores [7.0, 7.0, 7.0] (need 8)
+[stock] 'Massive Decline in Child Drown': 24 candidates, 0 matched
+[stock] second try with broader searches: ['covered well', 'village pond', 'pool safety fence', 'rural water well']
+[stock] 'Massive Decline in Child Drown': best scores [8.0, 8.0, 7.0] (need 6)
+[stock] 'Massive Decline in Child Drown': 24 candidates, 4 matched
+[main] 17 stock photos used
+[main] video ready, 243 seconds
+[music] mixed in piano_sunrise.mp3
+[thumb] image prompt: Photographic close portrait on the right half of a smiling, elderly South Indian female nurse with kind eyes, wearing a simple modest healthcare uniform. Warm golden sunset light illuminates her face. In the background, a serene tropical island coastline with turquoise sea and palm trees. Left third soft, uncluttered negative space, shallow depth of field, vivid natural colors, deeply emotional and uplifting.
+[main] PREVIEW saved in previews/ - nothing was uploaded to YouTube
+[main] HOLD: the finished video is kept for review - NOT uploaded to YouTube
