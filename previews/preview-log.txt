@@ -1,48 +1,7 @@
 [news] fuller text fetched for: At 80, a Lakshadweep nurse is a global top-10 fina (3800 characters)
 [news] fuller text fetched for: Her home was washed away in the Assam floods. Days (3800 characters)
-[news] could not fetch the full article: HTTPSConnectionPool(host='www.who.int', port=443): Read timed out. (read timeout=40)
+[news] fuller text fetched for: Laws against ageism are now in 57.7% of countries, (3800 characters)
 [news] fuller text fetched for: Child drowning deaths worldwide fell from 30 to 7. (3800 characters)
 [main] using the 4 stories YOU approved, in your order
 [main] 4 candidate stories
 [writer] 4 leads after the family-safe filter
-[main] AI wrote 4 stories; fact-checking them...
-[verify] story 3 flagged: The narration attributes the finding to the World Health Organization (WHO) and adds specific claims about jobs and healthcare, none of which are mentioned in the source lead.
-[main] 1 stories flagged - asking the writer to fix them...
-[main] approved order: ['80 वर्षीय नर्स बनीं वैश्विक मिसाल', 'बाढ़ झेलकर जीता कराटे में गोल्ड', 'बुजुर्गों के हक में सख्त कानून', 'बच्चों के डूबने में भारी कमी']
-[main] title (about the lead story): लक्षद्वीप की 80 वर्षीय नर्स बनीं वैश्विक मिसाल
-[main] 4 stories passed. Sources: Our World in Data, Positive News / WHO, The Better India
-[main] English captions ready
-[main] greeting is 5.4 s long
-[avatar] talking clip ready (1_mustard_blazer_bun.jpg)
-[stock] '80-Year-Old Nurse Becomes a Gl': best scores [6.0, 5.0, 5.0] (need 8)
-[stock] '80-Year-Old Nurse Becomes a Gl': 18 candidates, 0 matched
-[stock] second try with broader searches: ['stethoscope', 'Kavaratti Lakshadweep', 'tropical island sea', 'hospital room']
-[stock] '80-Year-Old Nurse Becomes a Gl': best scores [7.0, 6.0, 6.0] (need 6)
-[stock] '80-Year-Old Nurse Becomes a Gl': 18 candidates, 3 matched
-[stock] '80-Year-Old Nurse Becomes a Gl': best scores [7.0, 7.0, 5.0] (need 8)
-[stock] '80-Year-Old Nurse Becomes a Gl': 24 candidates, 0 matched
-[stock] second try with broader searches: ['stethoscope', 'Lakshadweep islands', 'tropical island beach', 'coastal wooden boat']
-[stock] '80-Year-Old Nurse Becomes a Gl': best scores [7.0, 7.0, 7.0] (need 6)
-[stock] '80-Year-Old Nurse Becomes a Gl': 24 candidates, 1 matched
-[main] story0: 3 video clip(s)
-[stock] 'Braving Floods to Win Gold in ': best scores [8.0, 7.0, 7.0] (need 8)
-[stock] 'Braving Floods to Win Gold in ': 24 candidates, 1 matched
-[main] story1: 3 AI illustration(s) added (no good stock footage)
-[stock] 'Stricter Laws in Favor of the ': best scores [7.0, 7.0, 4.0] (need 8)
-[stock] 'Stricter Laws in Favor of the ': 18 candidates, 0 matched
-[stock] second try with broader searches: ['wooden gavel', 'walking cane', 'empty courtroom', 'nursing home interior']
-[stock] 'Stricter Laws in Favor of the ': best scores [7.0, 7.0, 5.0] (need 6)
-[stock] 'Stricter Laws in Favor of the ': 18 candidates, 2 matched
-[stock] 'Stricter Laws in Favor of the ': best scores [7.0, 7.0, 7.0] (need 8)
-[stock] 'Stricter Laws in Favor of the ': 24 candidates, 0 matched
-[stock] second try with broader searches: ['scales of justice', 'walking cane', 'courtroom', 'nursing home interior']
-[stock] 'Stricter Laws in Favor of the ': best scores [8.0, 8.0, 8.0] (need 6)
-[stock] 'Stricter Laws in Favor of the ': 24 candidates, 2 matched
-[main] story2: 2 video clip(s)
-[stock] 'Sharp Decline in Child Drownin': best scores [5.0, 4.0, 4.0] (need 8)
-[stock] 'Sharp Decline in Child Drownin': 24 candidates, 0 matched
-[stock] second try with broader searches: ['water well', 'rural pond', 'lifebuoy', 'calm river']
-[stock] 'Sharp Decline in Child Drownin': best scores [8.0, 5.0, 4.0] (need 6)
-[stock] 'Sharp Decline in Child Drownin': 24 candidates, 1 matched
-[main] story3: 3 AI illustration(s) added (no good stock footage)
-[main] 13 stock photos used
