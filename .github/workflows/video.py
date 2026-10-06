@@ -47,6 +47,17 @@ def _sun(d, cx, cy, r):
     d.ellipse([cx - r, cy - r, cx + r, cy + r], fill=col)
 
 
+def _draw_mixed(d, xy, text, size, **kw):
+    """Draw Hindi text, but words written in English letters (e.g. AI) with the Latin font so they never show as boxes."""
+    x, y = xy
+    hi, la = _font(size), _font(size, latin=True)
+    sp = d.textlength(" ", font=hi)
+    for w in text.split(" "):
+        f = la if w.isascii() and any(c.isalpha() for c in w) else hi
+        d.text((x, y), w, font=f, **kw)
+        x += d.textlength(w, font=f) + sp
+
+
 def _wrap(d, text, font, max_w):
     lines, cur = [], ""
     for word in text.split():
@@ -561,7 +572,7 @@ def make_thumbnail(title, out_png, photo_path=None):
     line_h = int(font.size * 1.26)
     y = 150
     for ln in lines:
-        d.text((44, y), ln, font=font, fill=(255, 255, 255), stroke_width=7, stroke_fill=(8, 28, 100))
+        _draw_mixed(d, (44, y), ln, font.size, fill=(255, 255, 255), stroke_width=7, stroke_fill=(8, 28, 100))
         y += line_h
     d.rounded_rectangle([44, y + 8, 44 + 260, y + 16], radius=4, fill=(255, 205, 40))
     d.text((44, y + 30), "आज की पॉज़िटिव ख़बरें", font=_font(46), fill=(255, 226, 120), stroke_width=4, stroke_fill=(8, 28, 100))

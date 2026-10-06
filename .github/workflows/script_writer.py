@@ -251,5 +251,4 @@ def polish_hindi(text):
     """Fixed spelling/wording preferences for spoken Hindi (so the voice says them the way we want)."""
     if not isinstance(text, str):
         return text
-    text = text.replace("खबर", "ख़बर").replace("सकारात्मक", "पॉज़िटिव")
-    return re.sub(r"\bA\.?I\.?(?![A-Za-z])", "एआई", text) if "re" in globals() else text
+    return text.replace("खबर", "ख़बर").replace("सकारात्मक", "पॉज़िटिव")

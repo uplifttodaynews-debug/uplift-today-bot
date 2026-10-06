@@ -306,7 +306,7 @@ def main():
         try:
             r = script_writer._call(
                 "For the lead story below write 4 DIFFERENT short Hindi (Devanagari) thumbnail headlines, 18-34 characters each, "
-                "hopeful and punchy, no numbers; write the word AI as एआई. Also write 4 matching, clearly different image ideas "
+                "hopeful and punchy, no numbers; keep the word AI in English letters. Also write 4 matching, clearly different image ideas "
                 "(English, one sentence each, a different scene/subject each).\n"
                 f"Lead story: {stories[0].get('headline','')}. {stories[0]['narration'][:900]}\n"
                 'Return ONLY JSON: {"options": [{"headline": "...", "idea": "..."}]}', 0.8).get("options", [])
