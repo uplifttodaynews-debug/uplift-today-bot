@@ -218,10 +218,11 @@ def main():
         return story_photos(headline, text, queries, tag)
 
     def story_media_ai(headline, text, queries, tag, want_video, idx=None):
-        paths = story_media(headline, text, queries, tag, want_video)
-        if len(paths) < 2 and idx is not None:           # nothing suitable in the stock libraries: AI illustrations
+        force = idx is not None and str(idx) in os.environ.get("FORCE_AI_VISUALS", "").split(",")
+        paths = [] if force else story_media(headline, text, queries, tag, want_video)
+        if (len(paths) < 2 or force) and idx is not None:           # nothing suitable in the stock libraries: AI illustrations
             import thumb_ai
-            extra = thumb_ai.make_illustrations(stories[idx], os.path.join(work, tag), n=3)
+            extra = thumb_ai.make_illustrations(stories[idx], os.path.join(work, tag), n=4 if force else 3)
             if extra:
                 print(f"[main] {tag}: {len(extra)} AI illustration(s) added (no good stock footage)")
                 ai_used.extend(extra)
