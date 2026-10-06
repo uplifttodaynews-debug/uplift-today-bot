@@ -6,8 +6,50 @@
 [main] 4 candidate stories
 [writer] 4 leads after the family-safe filter
 [main] AI wrote 4 stories; fact-checking them...
-[main] approved order: ['बुजुर्गों की सीख एआई से बेहतर', 'बिना टैंकर बुझाई अपनी प्यास', 'अल्जाइमर के इलाज में नई उम्मीद', 'गैंडे और ज़ेबरा की अनोखी दोस्ती']
-[main] title (about the lead story): एआई से कहीं ज्यादा अनमोल है बुजुर्गों की सीख
+[main] approved order: ['एआई से बेहतर बुजुर्गों की सीख', 'विशाखापट्टनम में बारिश का पानी बचाया', 'अल्ज़ाइमर का इलाज अब मुमकिन', 'गैंडे और ज़ेब्रा की अनोखी दोस्ती']
+[main] title (about the lead story): एआई के दौर में बुजुर्गों का तजुर्बा सबसे अनमोल
 [main] 4 stories passed. Sources: Good Good Good, Good News Network, RNZ, The Hindu
 [main] English captions ready
-[main] greeting is 4.8 s long
+[main] greeting is 4.9 s long
+[avatar] talking clip ready (0_navy_blazer_ponytail.jpg)
+[stock] 'Elders' Wisdom Is Better Than ': best scores [7.0, 7.0, 5.0] (need 8)
+[stock] 'Elders' Wisdom Is Better Than ': 18 candidates, 0 matched
+[stock] second try with broader searches: ['artificial intelligence', 'old books', 'United Kingdom', 'cozy living room']
+[stock] 'Elders' Wisdom Is Better Than ': best scores [7.0, 7.0, 5.0] (need 6)
+[stock] 'Elders' Wisdom Is Better Than ': 18 candidates, 2 matched
+[stock] 'Elders' Wisdom Is Better Than ': best scores [8.0, 7.0, 7.0] (need 8)
+[stock] 'Elders' Wisdom Is Better Than ': 24 candidates, 1 matched
+[main] story0: 2 video clip(s)
+[stock] 'Rainwater Conserved in Visakha': best scores [6.0, 6.0, 5.0] (need 8)
+[stock] 'Rainwater Conserved in Visakha': 24 candidates, 0 matched
+[stock] second try with broader searches: ['rainwater harvesting', 'Visakhapatnam India', 'water well', 'residential neighborhood']
+[stock] 'Rainwater Conserved in Visakha': best scores [7.0, 5.0, 4.0] (need 6)
+[stock] 'Rainwater Conserved in Visakha': 24 candidates, 1 matched
+[main] story1: 3 AI illustration(s) added (no good stock footage)
+[stock] 'Alzheimer's Treatment Now Poss': best scores [7.0, 7.0, 7.0] (need 8)
+[stock] 'Alzheimer's Treatment Now Poss': 18 candidates, 0 matched
+[stock] second try with broader searches: ['Brain scan', 'Medical laboratory', 'Blood test tubes', 'New Zealand']
+[stock] 'Alzheimer's Treatment Now Poss': best scores [7.0, 7.0, 7.0] (need 6)
+[stock] 'Alzheimer's Treatment Now Poss': 18 candidates, 3 matched
+[stock] 'Alzheimer's Treatment Now Poss': best scores [8.0, 8.0, 8.0] (need 8)
+[stock] 'Alzheimer's Treatment Now Poss': 24 candidates, 1 matched
+[main] story2: 3 video clip(s)
+[stock] 'A Rhino and Zebra's Unique Fri': best scores [6.0, 6.0, 6.0] (need 8)
+[stock] 'A Rhino and Zebra's Unique Fri': 24 candidates, 0 matched
+[stock] second try with broader searches: ['Baby rhino', 'Baby zebra', 'Nairobi Kenya', 'African savanna']
+[stock] 'A Rhino and Zebra's Unique Fri': best scores [8.0, 7.0, 7.0] (need 6)
+[stock] 'A Rhino and Zebra's Unique Fri': 24 candidates, 4 matched
+[main] 15 stock photos used
+[main] video ready, 241 seconds
+[music] mixed in piano_sunrise.mp3
+[thumb] image prompt: Photographic, warm natural light. On the right side, an elderly woman with kind, experienced eyes warmly holds hands and laughs with a younger woman, sharing heartfelt life wisdom. Vivid natural colors, shallow depth of field, emotional and uplifting atmosphere. The left third features soft, uncluttered blurred interior background providing clean negative space. No text, no logos.
+[thumb] image prompt: A warm photographic shot with the main subject on the right: an elderly grandmother affectionately holding her granddaughter's hands, both sharing genuine, loving smiles. An ignored smartphone with a subtle glow rests forgotten on the wooden table. The left third is soft, uncluttered, filled with gentle golden sunlight and smooth bokeh. Shallow depth of field, vivid natural colors, heartwarming emotional atmosphere.
+[thumb] option 1: AI से आगे बुजुर्गों का तजुर्बा
+[thumb] image prompt: Cinematic photograph in warm natural morning light. On the right, an affectionate elderly mother gently comforts her stressed adult son over steaming cups of tea at a rustic wooden table, offering heartfelt wisdom. Emotional, uplifting, vivid natural colors, shallow depth of field. The left third is softly blurred and uncluttered, leaving clean negative space for text overlay.
+[thumb] option 2: AI नहीं, अपनों का प्यार जीतेगा
+[thumb] image prompt: Photographic, emotional scene on the right half showing a cheerful elderly grandfather warmly sharing life advice with his young adult grandson as they walk along a sun-dappled garden path. Golden hour natural sunlight, vivid greenery, shallow depth of field. The left third features softly blurred background foliage, clean and uncluttered. Heartwarming, candid, uplifting atmosphere.
+[thumb] option 3: तजुर्बे की समझ AI से बेहतर
+[thumb] image prompt: A warm photographic shot. On the right half of the frame, two adult sisters sit closely on a cozy woven rug, laughing joyfully while flipping through an old family photo album. The left third remains soft, uncluttered negative space. Golden sunbeam illumination, warm natural tones, vivid organic colors, and a shallow depth of field create an uplifting, emotional atmosphere.
+[thumb] option 4: AI से अनमोल मां की सीख
+[main] PREVIEW saved in previews/ - nothing was uploaded to YouTube
+[main] HOLD: the finished video is kept for review - NOT uploaded to YouTube
