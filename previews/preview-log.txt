@@ -6,40 +6,8 @@
 [main] 4 candidate stories
 [writer] 4 leads after the family-safe filter
 [main] AI wrote 4 stories; fact-checking them...
-[verify] story 2 flagged: The narration states that 42 percent believed their close ones understand their emotions better ("बयालीस फीसदी लोगों ने माना कि अपने लोग हमारी भावनाएं बेहतर समझते हैं"), whereas the source lead states it was 43 percent ("with 43 percent believing they're better able to understand the nuances and emotions behind a situation").
-[main] 1 stories flagged - asking the writer to fix them...
-[main] approved order: ['बुजुर्गों का तजुर्बा एआई से आगे', 'विशाखापट्टनम में पानी का सफल मॉडल', 'अल्ज़ाइमर के इलाज में नई उम्मीद', 'नन्हे गैंडे और ज़ेबरा की दोस्ती']
-[main] title (about the lead story): बुजुर्गों की सीख और तजुर्बा AI से कहीं आगे
+[main] approved order: ['बुजुर्गों की सीख एआई से बेहतर', 'बिना टैंकर बुझाई अपनी प्यास', 'अल्जाइमर के इलाज में नई उम्मीद', 'गैंडे और ज़ेबरा की अनोखी दोस्ती']
+[main] title (about the lead story): एआई से कहीं ज्यादा अनमोल है बुजुर्गों की सीख
 [main] 4 stories passed. Sources: Good Good Good, Good News Network, RNZ, The Hindu
 [main] English captions ready
-[main] greeting is 3.7 s long
-[avatar] talking clip ready (0_navy_blazer_ponytail.jpg)
-[stock] 'Elders' experience ahead of AI': best scores [8.0, 3.0, 2.0] (need 8)
-[stock] 'Elders' experience ahead of AI': 18 candidates, 1 matched
-[stock] 'Elders' experience ahead of AI': best scores [8.0, 7.0, 4.0] (need 8)
-[stock] 'Elders' experience ahead of AI': 24 candidates, 1 matched
-[main] story0: 1 video clip(s)
-[stock] 'Successful water model in Visa': best scores [5.0, 4.0, 4.0] (need 8)
-[stock] 'Successful water model in Visa': 24 candidates, 0 matched
-[stock] second try with broader searches: ['Rainwater harvesting', 'Visakhapatnam', 'Water well', 'Residential neighborhood']
-[stock] 'Successful water model in Visa': best scores [4.0, 4.0, 3.0] (need 6)
-[stock] 'Successful water model in Visa': 24 candidates, 0 matched
-[stock] 'New hope in Alzheimer's treatm': best scores [7.0, 7.0, 7.0] (need 8)
-[stock] 'New hope in Alzheimer's treatm': 18 candidates, 0 matched
-[stock] second try with broader searches: ['human brain', 'United Kingdom', 'medical laboratory', 'brain scan']
-[stock] 'New hope in Alzheimer's treatm': best scores [8.0, 8.0, 8.0] (need 6)
-[stock] 'New hope in Alzheimer's treatm': 18 candidates, 3 matched
-[stock] 'New hope in Alzheimer's treatm': best scores [8.0, 8.0, 8.0] (need 8)
-[stock] 'New hope in Alzheimer's treatm': 24 candidates, 1 matched
-[main] story2: 3 video clip(s)
-[stock] 'Friendship of baby rhino and z': best scores [7.0, 6.0, 6.0] (need 8)
-[stock] 'Friendship of baby rhino and z': 24 candidates, 0 matched
-[stock] second try with broader searches: ['baby rhino', 'baby zebra', 'Kenya', 'African savanna']
-[stock] 'Friendship of baby rhino and z': best scores [7.0, 7.0, 7.0] (need 6)
-[stock] 'Friendship of baby rhino and z': 24 candidates, 4 matched
-[main] 13 stock photos used
-[main] video ready, 228 seconds
-[music] mixed in piano_sunrise.mp3
-[thumb] image prompt: Photographic, emotional and uplifting scene. On the right, a kind elderly grandmother with a gentle smile warmly holds hands with a younger woman, sharing heartfelt life wisdom. Warm golden natural light streaming through a window, vivid natural colors, shallow depth of field. The left third is a soft, uncluttered, beautifully blurred interior with warm bokeh.
-[main] PREVIEW saved in previews/ - nothing was uploaded to YouTube
-[main] HOLD: the finished video is kept for review - NOT uploaded to YouTube
+[main] greeting is 4.8 s long
