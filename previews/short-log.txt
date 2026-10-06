@@ -1,11 +1,5 @@
 [news] fuller text fetched for: AI Chatbots Will Never Replace Advice From Elders, (3800 characters)
-Traceback (most recent call last):
-  File "/home/runner/work/uplift-today-bot/uplift-today-bot/.github/workflows/shorts.py", line 160, in <module>
-    main()
-  File "/home/runner/work/uplift-today-bot/uplift-today-bot/.github/workflows/shorts.py", line 80, in main
-    plan = _plan(lead, full, 105)
-           ^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/runner/work/uplift-today-bot/uplift-today-bot/.github/workflows/shorts.py", line 29, in _plan
-    f"Story headline: {lead.get('title', '')}\nStory text: {text[:3500]}\n"
-                                                            ~~~~^^^^^^^
-KeyError: slice(None, 3500, None)
+[short] voice 26.0 s
+[short] script: क्या AI हमारे बुजुर्गों की जगह ले सकता है? एक नए सर्वे में 10 में से 7 लोगों ने कहा - कभी नहीं! 92 प्रतिशत लोगों का मानना है कि सच्चा ज्ञान सिर्फ जीवन के अनुभवों से आता है। 71 प्रतिशत लोग मानते हैं कि AI कभी भी असली मानवीय जुड़ाव की जगह नहीं ले सकता। रिश्तों को संभालने और तनाव दूर करने के लिए लोग आज भी AI से ज़्यादा अपने बड़ों की सलाह पर भरोसा करते हैं। पूरी ख़बर हमारे चैनल पर देखें।
+[music] mixed in piano_sunrise.mp3
+[short] ready: 26 s - nothing uploaded
