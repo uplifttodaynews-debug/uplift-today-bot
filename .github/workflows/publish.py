@@ -10,8 +10,11 @@ HOLD = os.path.join(HERE, "..", "..", "hold_out")
 def main():
     with open(os.path.join(HOLD, "meta.json"), encoding="utf-8") as f:
         m = json.load(f)
-    upload.upload(os.path.join(HOLD, "bulletin.mp4"), m["title"], m["description"], m["tags"],
-                  os.path.join(HOLD, "thumbnail.png"))
+    thumb = os.path.join(HERE, "..", "..", "approval", "thumbnail_override.png")   # a thumbnail the owner picked
+    if not os.path.exists(thumb):
+        thumb = os.path.join(HOLD, "thumbnail.png")
+    print(f"[publish] thumbnail: {os.path.basename(thumb)}")
+    upload.upload(os.path.join(HOLD, "bulletin.mp4"), m["title"], m["description"], m["tags"], thumb)
     p = os.path.join(HERE, "..", "..", "approval", "used.json")
     try:
         with open(p, encoding="utf-8") as f:
