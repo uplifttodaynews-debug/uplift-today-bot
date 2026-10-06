@@ -29,6 +29,26 @@ def used_links():
         return set()
 
 
+def enrich(lead):
+    """Fetch the article page and use its paragraphs as a fuller lead (more facts for an in-depth story)."""
+    import requests
+    try:
+        r = requests.get(lead["link"], timeout=40, headers={"User-Agent": "Mozilla/5.0 (UpliftToday bot)"})
+        if r.status_code != 200:
+            return lead
+        html = re.sub(r"(?is)<(script|style|noscript|header|footer|nav|aside)[^>]*>.*?</\1>", " ", r.text)
+        paras = [_clean(p) for p in re.findall(r"(?is)<p[^>]*>(.*?)</p>", html)]
+        paras = [p for p in paras if len(p) > 60 and "cookie" not in p.lower() and "subscribe" not in p.lower()]
+        text = " ".join(paras)[:3800]
+        if len(text) > len(lead.get("summary", "")) + 150:
+            print(f"[news] fuller text fetched for: {lead['title'][:50]} ({len(text)} characters)")
+            lead = dict(lead)
+            lead["summary"] = text
+    except Exception as e:
+        print(f"[news] could not fetch the full article: {e}")
+    return lead
+
+
 def collect():
     per_feed = []
     for url in config.RSS_FEEDS:

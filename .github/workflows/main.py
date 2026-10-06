@@ -114,7 +114,7 @@ def main():
 
     approved = load_approved()
     if approved:
-        items = approved
+        items = [news.enrich(l) for l in approved]
         config.NUM_STORIES, config.EXTRA_CANDIDATES = len(items), 0
         config.APPROVED_MODE = True
         print(f"[main] using the {len(items)} stories YOU approved, in your order")
@@ -282,6 +282,12 @@ def main():
                 break
         if thumb_src:
             break
+    ai_thumb = False
+    if config.today_india().isoformat() in getattr(config, "AI_THUMBNAIL_DAYS", set()) or os.environ.get("FORCE_AI_THUMB") == "1":
+        import thumb_ai
+        pic = thumb_ai.make_image(stories[0], os.path.join(work, "thumb_ai.jpg"))
+        if pic:
+            thumb_src, ai_thumb = pic, True
     video.make_thumbnail(data["title"], thumb, thumb_src)
 
     # ---- description with sources + disclosures ----
@@ -302,6 +308,7 @@ def main():
         + ("\n\nStock photos (for illustration only - they do not show the actual events):\n"
            + "\n".join(f"- Photo by {c['photographer']} on {c.get('source', 'Pexels')}: {c['url']}" for c in credits)
            if credits else "")
+        + ("\n\nThumbnail picture: AI-generated illustration (not a photo of the actual event)." if ai_thumb else "")
         + "\n\nMusic: original tracks created for Uplift Today. Our presenter Kavya is an AI-generated character."
         + "\n\nThis video was made with AI: the script is AI-written from public news "
           "sources, and the voice is synthetic.\n"

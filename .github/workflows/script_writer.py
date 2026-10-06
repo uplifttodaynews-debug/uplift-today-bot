@@ -87,7 +87,7 @@ RULES:
    people really say (doctor, hospital, school, computer, scientist, research, team, electric,
    solar, energy, rupees, million), write that English word in Devanagari, like "doctor",
    "scientist", "hospital" - this is normal spoken Hindi/Hinglish. Avoid long lists of numbers.
-   Each story is IN DEPTH: 130-170 words, in 9-13 short sentences. Explain who, what, where, how it
+   {"The FIRST story is the lead of the bulletin: make it richer, 200-260 words, using every relevant fact in its lead. " if getattr(config, "APPROVED_MODE", False) else ""}Each story is IN DEPTH: 130-170 words, in 9-13 short sentences. Explain who, what, where, how it
    works, why it matters and what happens next, using ONLY facts stated in the lead (never invent).
 5. Return fewer than {config.NUM_STORIES + config.EXTRA_CANDIDATES} stories if there are not enough good ones.
 6. "thought" = one short, original, uplifting line in {config.LANGUAGE_NAME}. Do NOT attribute it to
