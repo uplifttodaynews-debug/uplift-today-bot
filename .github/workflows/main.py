@@ -110,7 +110,7 @@ def main():
     if os.environ.get("ANCHOR_OFF") == "1":
         config.ANCHOR = False
     work = tempfile.mkdtemp(prefix="uplift_")  # temp folder, deleted with the runner
-    today = config.today_india().strftime("%d %B %Y")
+    today = f"{config.today_india().day} {config.today_india().strftime('%B %Y')}"
 
     approved = load_approved()
     if approved:
