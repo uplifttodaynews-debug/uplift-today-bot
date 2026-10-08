@@ -1,4 +1,16 @@
-[thumb] picture 1 done
-[thumb] picture 2 done
-[thumb] picture 3 done
-[thumb] picture 4 done
+[news] fuller text fetched for: Smartphone Free Childhood: the unstoppable rise of (3800 characters)
+[news] fuller text fetched for: People in Odisha's Babojola village sweep streets  (3653 characters)
+[news] fuller text fetched for: This 16-YO's 'Glow Guide' answers the questions bu (3800 characters)
+[news] fuller text fetched for: At 92, this Gujarat 'Nani' turned her crochet love (1853 characters)
+[main] using the 4 stories YOU approved, in your order
+[main] 4 candidate stories
+[writer] 4 leads after the family-safe filter
+[main] AI wrote 4 stories; fact-checking them...
+[verify] story 3 flagged: The narration adds that she makes toys (खिलौने), which is not mentioned in the source lead.
+[main] 1 stories flagged - asking the writer to fix them...
+[main] approved order: ['बच्चों को स्मार्टफ़ोन से बचाने की मुहिम', 'ओडिशा के गाँव में अनोखी सफ़ाई', 'सर्वाइवर्स के लिए 16 साल की सिया की गाइड', '92 साल की नानी का क्रोशिया बिज़नेस']
+[main] title (about the lead story): बच्चों के बचपन को स्मार्टफ़ोन से बचाने की मुहिम
+[main] 4 stories passed. Sources: Positive News, The Better India
+[main] English captions ready
+[main] 228 earlier pictures/clips will not be reused
+[main] greeting is 4.3 s long
