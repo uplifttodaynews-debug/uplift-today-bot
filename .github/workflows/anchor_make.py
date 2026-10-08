@@ -193,7 +193,44 @@ def studio():
         print("saved studio", i, flush=True)
 
 
-if __name__ == "__main__" and len(sys.argv) > 1 and sys.argv[1] == "studio":
+MALE_LOOKS = [
+    ("1_navy_suit", "a navy suit with a white shirt and no tie, clean-shaven, short neat black hair"),
+    ("2_charcoal_glasses", "a charcoal grey suit with a light blue shirt, slim modern glasses, light stubble, short neat hair"),
+    ("3_nehru_jacket", "a light grey Nehru (bandhgala) jacket over a white shirt, clean-shaven, neat side-parted hair"),
+    ("4_maroon_blazer", "a deep maroon blazer over an open-collar cream shirt, a short well-trimmed beard, short neat hair"),
+]
+MALE_VOICES = ["Charon", "Orus", "Fenrir", "Puck"]
+
+
+def male():
+    """4 male presenter candidates + 4 Hindi voice samples, saved in anchor/male/. About 10 cents."""
+    import base64
+    os.makedirs(os.path.join(OUT, "male"), exist_ok=True)
+    for i, (name, desc) in enumerate(MALE_LOOKS, start=1):
+        prompt = ("Professional studio photograph of a handsome Indian male television news presenter, about 35 years old, "
+                  f"wearing {desc}, warm confident friendly expression with a soft closed-mouth smile, sitting at a modern news desk, "
+                  "bright warm studio with soft golden sunrise-coloured lights in the background, medium shot from the waist up, "
+                  "facing the camera directly, hands out of the picture, sharp focus, realistic skin, natural lighting, high quality broadcast look")
+        data = generate(prompt, 500 + i)
+        path = os.path.join(OUT, "male", f"man_{name}.jpg")
+        open(path, "wb").write(data)
+        print("saved", path, flush=True)
+    key = os.environ.get("GOOGLE_TTS_API_KEY", "").strip()
+    line = "नमस्ते! आपका स्वागत है अपलिफ्ट टुडे में। आज की सबसे अच्छी और उम्मीद भरी खबरें, सीधे आपके लिए।"
+    for v in MALE_VOICES:
+        r = requests.post("https://texttospeech.googleapis.com/v1/text:synthesize?key=" + key, json={
+            "input": {"text": line}, "voice": {"languageCode": "hi-IN", "name": f"hi-IN-Chirp3-HD-{v}"},
+            "audioConfig": {"audioEncoding": "MP3"}}, timeout=120)
+        if r.status_code != 200:
+            print("tts error", v, r.status_code, r.text[:200])
+            continue
+        open(os.path.join(OUT, "male", f"voice_{v}.mp3"), "wb").write(base64.b64decode(r.json()["audioContent"]))
+        print("saved voice", v, flush=True)
+
+
+if __name__ == "__main__" and len(sys.argv) > 1 and sys.argv[1] == "male":
+    male()
+elif __name__ == "__main__" and len(sys.argv) > 1 and sys.argv[1] == "studio":
     studio()
 elif __name__ == "__main__" and len(sys.argv) > 1 and sys.argv[1] == "test":
     import traceback
