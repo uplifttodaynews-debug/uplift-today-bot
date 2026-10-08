@@ -63,6 +63,8 @@ jobs:
           dt=$(grep -o 'date=[0-9-]*' ../../run-now.txt 2>/dev/null | head -1 | cut -d= -f2 || true)
           if [ -n "$dt" ]; then export VIDEO_DATE="$dt"; fi
           if grep -qi "ailead" ../../run-now.txt 2>/dev/null; then export FORCE_AI_VISUALS=0; fi
+          fa=$(grep -o 'forceai=[0-9,]*' ../../run-now.txt 2>/dev/null | head -1 | cut -d= -f2 || true)
+          if [ -n "$fa" ]; then export FORCE_AI_VISUALS="$fa"; fi
           if grep -qiw "male" ../../run-now.txt 2>/dev/null; then export PRESENTER=male; fi
           if grep -qi "options" ../../run-now.txt 2>/dev/null; then export THUMB_OPTIONS=1; fi
           if [ "$mode" = "hold" ]; then

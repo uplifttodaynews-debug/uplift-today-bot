@@ -57,9 +57,12 @@ def make_illustrations(story, out_prefix, n=3):
     try:
         ps = script_writer._call(
             f"Write {n} DIFFERENT English prompts for an AI image generator, each a photographic, natural, uplifting "
-            "wide scene (different subject and angle each) that illustrates this news story. Generic people or places "
-            "only, NO text, letters, logos, flags, no famous people. Max 50 words each.\n"
-            f"Story: {story.get('headline', '')}. {story['narration'][:900]}\n"
+            "wide scene (different subject and angle each) that illustrates THIS news story. Show the specific things the "
+            "story text describes (for example painted murals on village walls, a street being swept, a booklet being written), "
+            "set in the story's own country and culture (Indian stories: Indian people, clothing and local setting). "
+            "Generic people or places only, NO text, letters, logos, flags, no famous people. NEVER show injuries, wounds, "
+            "scars, blood, hospitals beds in distress or anything disturbing: show dignity, hope, support and recovery instead. Max 50 words each.\n"
+            f"Story: {story.get('headline', '')}. {story['narration'][:2200]}\n"
             'Return ONLY JSON: {"prompts": ["...", "..."]}', 0.7).get("prompts", [])
     except Exception as e:
         print(f"[thumb] illustration prompts failed: {e}")
