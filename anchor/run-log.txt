@@ -1,6 +1,4 @@
-saved /home/runner/work/uplift-today-bot/uplift-today-bot/.github/workflows/../../anchor/looks/1_mustard_blazer_bun.jpg
-saved /home/runner/work/uplift-today-bot/uplift-today-bot/.github/workflows/../../anchor/looks/2_teal_kurta_braid.jpg
-saved /home/runner/work/uplift-today-bot/uplift-today-bot/.github/workflows/../../anchor/looks/3_maroon_blazer_halfup.jpg
-saved /home/runner/work/uplift-today-bot/uplift-today-bot/.github/workflows/../../anchor/looks/4_peach_kurta_ponytail.jpg
-saved /home/runner/work/uplift-today-bot/uplift-today-bot/.github/workflows/../../anchor/looks/5_grey_blazer_bun.jpg
-saved /home/runner/work/uplift-today-bot/uplift-today-bot/.github/workflows/../../anchor/looks/6_ivory_blazer_braid.jpg
+saved /home/runner/work/uplift-today-bot/uplift-today-bot/.github/workflows/../../anchor/candidates/kavya_1.jpg 503006 bytes
+saved /home/runner/work/uplift-today-bot/uplift-today-bot/.github/workflows/../../anchor/candidates/kavya_2.jpg 554114 bytes
+saved /home/runner/work/uplift-today-bot/uplift-today-bot/.github/workflows/../../anchor/candidates/kavya_3.jpg 508268 bytes
+saved /home/runner/work/uplift-today-bot/uplift-today-bot/.github/workflows/../../anchor/candidates/kavya_4.jpg 561222 bytes
