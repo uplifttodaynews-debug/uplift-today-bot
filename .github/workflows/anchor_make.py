@@ -228,7 +228,22 @@ def male():
         print("saved voice", v, flush=True)
 
 
-if __name__ == "__main__" and len(sys.argv) > 1 and sys.argv[1] == "male":
+def malewide():
+    """Wider, more upright versions of the male presenter (man_1). Saved in anchor/male/."""
+    src = os.path.join(OUT, "male", "man_1_navy_suit.jpg")
+    for i, seed in enumerate([11, 22, 33], start=1):
+        data = edit(src, "Pull the camera back to a wider medium shot: the same man sitting tall and upright at the news desk, "
+                         "shoulders square to the camera, relaxed confident posture, his head fairly small in the frame with "
+                         "his full upper body, the desk and the studio visible, hands resting out of view below the desk. "
+                         "Keep exactly the same face, hair, navy suit, white shirt, smile and warm studio background.", seed)
+        path = os.path.join(OUT, "male", f"wide_{i}.jpg")
+        open(path, "wb").write(data)
+        print("saved", path, flush=True)
+
+
+if __name__ == "__main__" and len(sys.argv) > 1 and sys.argv[1] == "malewide":
+    malewide()
+elif __name__ == "__main__" and len(sys.argv) > 1 and sys.argv[1] == "male":
     male()
 elif __name__ == "__main__" and len(sys.argv) > 1 and sys.argv[1] == "studio":
     studio()
