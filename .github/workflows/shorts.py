@@ -119,8 +119,17 @@ def main():
     bg = os.path.join(WORK, "bg.mp4")
     subprocess.check_call(["ffmpeg", "-y", "-loglevel", "error", "-f", "concat", "-safe", "0", "-i", lst, "-c", "copy", bg])
 
-    # captions timed by length of text
-    ch = _chunks(script)
+    # captions timed by length of text (English subtitles under the Hindi voice when SHORT_SUBS=en)
+    cap_text = script
+    if os.environ.get("SHORT_SUBS") == "en":
+        try:
+            t_ = script_writer._call("Translate this spoken Hindi news script into simple, natural English subtitles. Keep it short and "
+                                     "faithful, no additions. Return ONLY JSON: {\"english\": \"...\"}\n\n" + script, 0.2)
+            cap_text = (t_.get("english") or script).strip()
+            print("[short] english subtitles:", cap_text)
+        except Exception as e:
+            print(f"[short] translation failed, using Hindi captions: {e}")
+    ch = _chunks(cap_text, per=6 if cap_text is not script else 5)
     total = sum(len(c) for c in ch) or 1
     t, items = 0.0, []
     for i, c in enumerate(ch):

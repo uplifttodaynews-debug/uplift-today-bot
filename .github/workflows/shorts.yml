@@ -35,6 +35,7 @@ jobs:
           FAL_KEY: ${{ secrets.FAL_KEY }}
         run: |
           if grep -qiw male ../../shorts-request.txt; then export PRESENTER=male; fi
+          if grep -qiw english ../../shorts-request.txt; then export SHORT_SUBS=en; fi
           python -u shorts.py 2>&1 | python redact.py | tee ../../previews/short-log.txt
           exit ${PIPESTATUS[0]}
       - name: Save the preview into the repo
