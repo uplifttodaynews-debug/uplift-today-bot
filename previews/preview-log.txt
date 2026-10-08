@@ -6,11 +6,41 @@
 [main] 4 candidate stories
 [writer] 4 leads after the family-safe filter
 [main] AI wrote 4 stories; fact-checking them...
-[verify] story 3 flagged: The narration adds that she makes toys (खिलौने), which is not mentioned in the source lead.
+[verify] story 3 flagged: The narration states that she received more than 70 orders ('सत्तर से ज्यादा ऑर्डर'), whereas the source specifies exactly 70 orders ('70 orders from at least 10 countries').
 [main] 1 stories flagged - asking the writer to fix them...
-[main] approved order: ['बच्चों को स्मार्टफ़ोन से बचाने की मुहिम', 'ओडिशा के गाँव में अनोखी सफ़ाई', 'सर्वाइवर्स के लिए 16 साल की सिया की गाइड', '92 साल की नानी का क्रोशिया बिज़नेस']
-[main] title (about the lead story): बच्चों के बचपन को स्मार्टफ़ोन से बचाने की मुहिम
+[main] approved order: ['बचपन को स्मार्टफोन से आज़ादी', 'ओडिशा के गांव की अनोखी मिसाल', 'एसिड अटैक सर्वाइवर्स के लिए गाइड', 'बानवे की नानी का नया बिज़नेस']
+[main] title (about the lead story): बचपन को स्मार्टफोन से आज़ादी दिलाने की नई मुहिम
 [main] 4 stories passed. Sources: Positive News, The Better India
 [main] English captions ready
 [main] 228 earlier pictures/clips will not be reused
-[main] greeting is 4.3 s long
+[main] greeting is 4.2 s long
+[avatar] talking clip ready (bg_1_blue_led.jpg)
+[stock] 'Freeing Childhood from Smartph': best scores [6.0, 6.0, 6.0] (need 8)
+[stock] 'Freeing Childhood from Smartph': 18 candidates, 0 matched
+[stock] second try with broader searches: ['smartphone', 'United Kingdom', 'empty classroom', 'school playground']
+[stock] 'Freeing Childhood from Smartph': best scores [7.0, 6.0, 6.0] (need 6)
+[stock] 'Freeing Childhood from Smartph': 18 candidates, 3 matched
+[stock] 'Freeing Childhood from Smartph': best scores [7.0, 7.0, 6.0] (need 8)
+[stock] 'Freeing Childhood from Smartph': 24 candidates, 0 matched
+[stock] second try with broader searches: ['Smartphone', 'United Kingdom', 'Empty classroom', 'School playground']
+[stock] 'Freeing Childhood from Smartph': best scores [7.0, 7.0, 6.0] (need 6)
+[stock] 'Freeing Childhood from Smartph': 24 candidates, 1 matched
+[main] story0: 3 video clip(s)
+[main] story1: 4 AI illustration(s) added (no good stock footage)
+[main] story2: 4 AI illustration(s) added (no good stock footage)
+[stock] 'A Ninety-Two-Year-Old Grandmot': best scores [9.0, 9.0, 8.0] (need 8)
+[stock] 'A Ninety-Two-Year-Old Grandmot': 24 candidates, 4 matched
+[main] 11 stock photos used
+[main] video ready, 224 seconds
+[music] mixed in piano_glow.mp3
+[thumb] image prompt: Photographic, warm golden sunlight. On the right half, a joyful British child laughs happily while running freely through a lush green park, arms outstretched enjoying pure outdoor play. The left third is soft and uncluttered with a gently blurred background and warm bokeh. Shallow depth of field, vivid natural colors, deeply emotional and uplifting atmosphere.
+[thumb] image prompt: Cinematic photo of cheerful young children laughing and running on the right half of the frame, flying vibrant kites across a lush sunlit park. Warm natural golden-hour lighting, vivid colors, uplifting and carefree atmosphere. The left third is a soft, uncluttered, blurred grassy meadow with warm sunlight creating clean negative space. Shallow depth of field, authentic British park setting.
+[thumb] option 1: फिर लौटेगा खिलखिलाता बचपन
+[thumb] image prompt: A smiling British mother and her young son sitting on a cozy sofa on the right side of the frame, warmly bonding over a colorful storybook. Bright natural sunlight pours through a window, creating an uplifting, emotional atmosphere. Shallow depth of field, with the left third softly blurred and uncluttered. Authentic photographic style, vivid natural colors, completely free of digital screens.
+[thumb] option 2: मोबाइल छूटा, मुस्कुराया बचपन
+[thumb] image prompt: A lively British schoolyard during recess bathed in warm golden afternoon sunlight. On the right side, diverse joyful schoolchildren energetically play soccer and hopscotch, laughing and fully immersed in active screen-free play. The left third is soft, uncluttered, and smoothly blurred with ample negative space. Photographic, vivid natural colors, shallow depth of field, emotional and uplifting candid documentary feel.
+[thumb] option 3: स्क्रीन बंद, असली खेल शुरू
+[thumb] image prompt: Photographic close-up on the right side of a sunlit table, where a child's hands pick up vibrant art paintbrushes, with a smartphone placed inside an open wooden keepsake box nearby. Warm golden sunlight, joyful and uplifting atmosphere, vivid natural colours. Shallow depth of field, with the left third soft, smooth, and uncluttered negative space featuring gentle bokeh.
+[thumb] option 4: स्मार्टफोन से आज़ाद नया बचपन
+[main] PREVIEW saved in previews/ - nothing was uploaded to YouTube
+[main] HOLD: the finished video is kept for review - NOT uploaded to YouTube
