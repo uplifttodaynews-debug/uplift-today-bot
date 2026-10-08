@@ -1,5 +1,6 @@
 [news] fuller text fetched for: Smartphone Free Childhood: the unstoppable rise of (3800 characters)
-[short] voice 23.9 s
-[short] script: क्या आप जानते हैं कि औसतन नौ साल की उम्र में ही बच्चों को अपना पहला स्मार्टफोन मिल जाता है? इसी चिंता को देखते हुए दो माताओं की बातचीत से 'स्मार्टफोन फ्री चाइल्डहुड' अभियान की शुरुआत हुई। आज लाखों माता-पिता इस मुहिम से जुड़ चुके हैं और स्कूलों के नियमों में भी बदलाव हो रहे हैं। यह अभियान बच्चों को 14 साल तक स्मार्टफोन और 16 साल तक सोशल मीडिया से दूर रखने की सलाह देता है। पूरी ख़ब़र हमारे चैनल पर देखें।
+[short] voice 23.7 s
+[short] script: क्या आप जानते हैं कि बच्चे औसतन सिर्फ नौ साल की उम्र में ही स्मार्टफोन पा रहे हैं? इसी को बदलने के लिए दो माताओं की बातचीत से 'स्मार्टफोन फ्री चाइल्डहुड' नाम की मुहिम शुरू हुई। आज इस अभियान से लाखों माता-पिता जुड़ चुके हैं। यह आंदोलन बच्चों को 14 साल तक स्मार्टफोन और 16 साल तक सोशल मीडिया से दूर रखने की अपील करता है। इससे अब स्कूलों के नियमों में भी बड़े बदलाव आ रहे हैं। पूरी ख़बर हमारे चैनल पर देखें।
+[short] english subtitles: Did you know that on average, children get smartphones at just nine years old? To change this, a conversation between two mothers sparked the 'Smartphone Free Childhood' campaign. Today, hundreds of thousands of parents have joined the movement. It urges keeping kids away from smartphones until age 14 and social media until 16. This is now leading to major changes in school rules as well. Watch the full story on our channel.
 [music] mixed in piano_glow.mp3
 [short] ready: 24 s - nothing uploaded
