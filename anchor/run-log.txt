@@ -1,4 +1,8 @@
-saved /home/runner/work/uplift-today-bot/uplift-today-bot/.github/workflows/../../anchor/candidates/kavya_1.jpg 504658 bytes
-saved /home/runner/work/uplift-today-bot/uplift-today-bot/.github/workflows/../../anchor/candidates/kavya_2.jpg 554045 bytes
-saved /home/runner/work/uplift-today-bot/uplift-today-bot/.github/workflows/../../anchor/candidates/kavya_3.jpg 510285 bytes
-saved /home/runner/work/uplift-today-bot/uplift-today-bot/.github/workflows/../../anchor/candidates/kavya_4.jpg 564341 bytes
+saved /home/runner/work/uplift-today-bot/uplift-today-bot/.github/workflows/../../anchor/male/man_1_navy_suit.jpg
+saved /home/runner/work/uplift-today-bot/uplift-today-bot/.github/workflows/../../anchor/male/man_2_charcoal_glasses.jpg
+saved /home/runner/work/uplift-today-bot/uplift-today-bot/.github/workflows/../../anchor/male/man_3_nehru_jacket.jpg
+saved /home/runner/work/uplift-today-bot/uplift-today-bot/.github/workflows/../../anchor/male/man_4_maroon_blazer.jpg
+saved voice Charon
+saved voice Orus
+saved voice Fenrir
+saved voice Puck
