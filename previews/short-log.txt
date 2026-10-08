@@ -1,5 +1,5 @@
-[news] fuller text fetched for: AI Chatbots Will Never Replace Advice From Elders, (3800 characters)
-[short] voice 26.0 s
-[short] script: क्या AI हमारे बुजुर्गों की जगह ले सकता है? एक नए सर्वे में 10 में से 7 लोगों ने कहा - कभी नहीं! 92 प्रतिशत लोगों का मानना है कि सच्चा ज्ञान सिर्फ जीवन के अनुभवों से आता है। 71 प्रतिशत लोग मानते हैं कि AI कभी भी असली मानवीय जुड़ाव की जगह नहीं ले सकता। रिश्तों को संभालने और तनाव दूर करने के लिए लोग आज भी AI से ज़्यादा अपने बड़ों की सलाह पर भरोसा करते हैं। पूरी ख़बर हमारे चैनल पर देखें।
-[music] mixed in piano_sunrise.mp3
-[short] ready: 26 s - nothing uploaded
+[news] fuller text fetched for: Smartphone Free Childhood: the unstoppable rise of (3800 characters)
+[short] voice 23.9 s
+[short] script: क्या आप जानते हैं कि औसतन नौ साल की उम्र में ही बच्चों को अपना पहला स्मार्टफोन मिल जाता है? इसी चिंता को देखते हुए दो माताओं की बातचीत से 'स्मार्टफोन फ्री चाइल्डहुड' अभियान की शुरुआत हुई। आज लाखों माता-पिता इस मुहिम से जुड़ चुके हैं और स्कूलों के नियमों में भी बदलाव हो रहे हैं। यह अभियान बच्चों को 14 साल तक स्मार्टफोन और 16 साल तक सोशल मीडिया से दूर रखने की सलाह देता है। पूरी ख़ब़र हमारे चैनल पर देखें।
+[music] mixed in piano_glow.mp3
+[short] ready: 24 s - nothing uploaded
