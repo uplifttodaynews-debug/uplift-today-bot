@@ -512,7 +512,7 @@ def build(segments, out_mp4, workdir):
     return _duration(out_mp4)
 
 
-def make_thumbnail(title, out_png, photo_path=None):
+def make_thumbnail(title, out_png, photo_path=None, subtitle="आज की पॉज़िटिव ख़बरें"):
     """Thumbnail: a strong story photo full-bleed, dark-blue fade on the left for the big headline,
     gold channel badge and a sun mark. Without a photo it falls back to the blue-sky / golden-sun design."""
     import math
@@ -562,12 +562,13 @@ def make_thumbnail(title, out_png, photo_path=None):
     d.text((40 + 86, 46), label, font=badge, fill=(20, 40, 110))
     # headline, left aligned, as large as fits in up to 4 lines
     text_w = 720
-    font = _font(104)
+    _lat = title.isascii()
+    font = _font(104, latin=_lat)
     lines = _wrap(d, title, font, text_w)
     for size in (96, 88, 80, 72):
         if len(lines) <= 3:
             break
-        font = _font(size)
+        font = _font(size, latin=_lat)
         lines = _wrap(d, title, font, text_w)
     lines = lines[:4]
     line_h = int(font.size * 1.26)
@@ -576,5 +577,5 @@ def make_thumbnail(title, out_png, photo_path=None):
         _draw_mixed(d, (44, y), ln, font.size, fill=(255, 255, 255), stroke_width=7, stroke_fill=(8, 28, 100))
         y += line_h
     d.rounded_rectangle([44, y + 8, 44 + 260, y + 16], radius=4, fill=(255, 205, 40))
-    d.text((44, y + 30), "आज की पॉज़िटिव ख़बरें", font=_font(46), fill=(255, 226, 120), stroke_width=4, stroke_fill=(8, 28, 100))
+    d.text((44, y + 30), subtitle, font=_font(46, latin=subtitle.isascii()), fill=(255, 226, 120), stroke_width=4, stroke_fill=(8, 28, 100))
     img.save(out_png)
