@@ -1,4 +1,15 @@
-[thumb] picture 1 done
-[thumb] picture 2 done
-[thumb] picture 3 done
-[thumb] picture 4 done
+[news] fuller text fetched for: Smartphone Free Childhood: the unstoppable rise of (3800 characters)
+[news] fuller text fetched for: People in Odisha's Babojola village sweep streets  (3653 characters)
+[news] fuller text fetched for: This 16-YO's 'Glow Guide' answers the questions bu (3800 characters)
+[main] using the 3 stories YOU approved, in your order
+[main] 3 candidate stories
+[writer] 3 leads after the family-safe filter
+[main] AI wrote 3 stories; fact-checking them...
+[verify] story 1 flagged: The narration claims that Sia's effort is making the lives of thousands of people easier ('हज़ारों लोगों का जीवन आसान बना रही है'), adding a number/exaggeration not supported by the lead, which only says it 'may change recovery for many others'.
+[main] 1 stories flagged - asking the writer to fix them...
+[main] approved order: ['स्मार्टफोन से बच्चों की सुरक्षा मुहिम', 'ओडिशा के गांव की अनोखी सफ़ाई', 'सर्वाइवर्स के लिए बनी खास गाइड']
+[main] title (about the lead story): स्मार्टफोन से बच्चों का बचपन बचाने की सुंदर पहल
+[main] 3 stories passed. Sources: Positive News, The Better India
+[main] English captions ready
+[main] 228 earlier pictures/clips will not be reused
+[main] greeting is 4.4 s long
