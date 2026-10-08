@@ -243,7 +243,7 @@ def main():
             for _try in range(3):
                 if video._duration(mp3) <= config.ANCHOR_MAX_SECONDS:
                     break
-                try:                       # the greeting is read by Kavya: keep it short so her clip stays cheap
+                try:                       # the greeting is read by the presenter: keep it short so her clip stays cheap
                     r = script_writer._call(
                         "Shorten this Hindi news greeting to ONE short sentence of at most 14 words that still says "
                         "the channel name Uplift Today (written as in the original). Keep the same language and script.\n"
@@ -349,7 +349,7 @@ def main():
            if credits else "")
         + ("\n\nSome pictures in this video are AI-generated illustrations (not photos of the actual events)." if ai_used else "")
         + ("\n\nThumbnail picture: AI-generated illustration (not a photo of the actual event)." if ai_thumb else "")
-        + "\n\nMusic: original tracks created for Uplift Today. Our presenter Kavya is an AI-generated character."
+        + "\n\nMusic: original tracks created for Uplift Today. Our presenter " + config.PRESENTER_NAME + " is an AI-generated character."
         + "\n\nThis video was made with AI: the script is AI-written from public news "
           "sources, and the voice is synthetic.\n"
           "इस वीडियो में AI द्वारा बनाई गई आवाज़ और स्क्रिप्ट का उपयोग हुआ है।\n\n"

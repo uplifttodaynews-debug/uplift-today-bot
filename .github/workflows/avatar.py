@@ -34,6 +34,9 @@ def _upload(path, content_type):
 
 
 def todays_picture():
+    if getattr(config, "PRESENTER", "kavya") == "male":
+        m = os.path.join(HERE, "..", "..", "anchor", "male", "man_1_navy_suit.jpg")
+        return m if os.path.exists(m) else None
     pics = sorted(glob.glob(os.path.join(OUTFITS, "*.jpg")))
     if not pics:
         return None

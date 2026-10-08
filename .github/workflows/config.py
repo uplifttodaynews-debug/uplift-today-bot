@@ -23,8 +23,8 @@ GEMINI_MODEL = "gemini-3.8-flash"
 # ---- Bulletin size ----
 NUM_STORIES = 3                  # 3 in-depth stories of ~150 words, read slowly ~ 4 minutes
 # Short, dynamic transitions between stories - ONLY on these dates (India date of the video)
-TRANSITION_DAYS = {"2026-10-05", "2026-10-06", "2026-10-07"}
-AI_THUMBNAIL_DAYS = {"2026-10-05", "2026-10-06", "2026-10-07"}    # days whose thumbnail picture is made with AI (story-specific, about 3 cents)
+TRANSITION_DAYS = {"2026-10-05", "2026-10-06", "2026-10-07", "2026-10-08", "2026-10-09"}
+AI_THUMBNAIL_DAYS = {"2026-10-05", "2026-10-06", "2026-10-07", "2026-10-08", "2026-10-09"}    # days whose thumbnail picture is made with AI (story-specific, about 3 cents)
 SPEAKING_RATE = 1.0              # slower, clearer voice (1.0 = normal)
 PICS_PER_STORY = 4               # longer stories need a few more pictures
 MIN_STORIES = 2                  # fewer good stories than this = skip the day
@@ -120,3 +120,12 @@ SPECIAL_DAYS = {
     (8, 15): "स्वतंत्रता दिवस की हार्दिक शुभकामनाएं! अपलिफ्ट टुडे में आपका स्वागत है। आइए सुनें आज की पॉज़िटिव ख़बरें।",
     (10, 2): "गांधी जयंती की हार्दिक शुभकामनाएं! अपलिफ्ट टुडे में आपका स्वागत है। आइए सुनें आज की पॉज़िटिव ख़बरें।",
 }
+
+
+# ---- Presenter choice: set PRESENTER=male (run-now.txt contains the word "male") for the male presenter Arjun ----
+import os as _os
+PRESENTER = _os.environ.get("PRESENTER", "kavya")
+PRESENTER_NAME = "Arjun" if PRESENTER == "male" else "Kavya"
+PRESENTER_WORD = "male" if PRESENTER == "male" else "female"
+if PRESENTER == "male":
+    VOICE_NAME = "hi-IN-Chirp3-HD-Puck"

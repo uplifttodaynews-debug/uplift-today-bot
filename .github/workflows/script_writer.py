@@ -57,7 +57,7 @@ def _write_prompt(items):
         lines.append(f"[{i}] ({it['source']}) {it['title']} - {it['summary']}")
     leads = "\n".join(lines)
     return f"""You are the editor of "{config.CHANNEL_NAME}", a daily {config.LANGUAGE_NAME} bulletin of
-ONLY positive, uplifting news, read aloud by a warm, professional female news anchor.
+ONLY positive, uplifting news, read aloud by a warm, professional {config.PRESENTER_WORD} news anchor (if the anchor refers to himself or herself, use the correct {config.PRESENTER_WORD} Hindi grammar).
 
 Below are candidate story leads (number, source, headline, summary).
 
