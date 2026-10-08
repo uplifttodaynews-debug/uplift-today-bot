@@ -129,3 +129,4 @@ PRESENTER_NAME = "Arjun" if PRESENTER == "male" else "Kavya"
 PRESENTER_WORD = "male" if PRESENTER == "male" else "female"
 if PRESENTER == "male":
     VOICE_NAME = "hi-IN-Chirp3-HD-Puck"
+    ANCHOR_ZOOM = 1.12          # the wide, upright shot needs only a gentle zoom
