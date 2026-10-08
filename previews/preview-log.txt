@@ -1,6 +1,40 @@
 [news] fuller text fetched for: Smartphone Free Childhood: the unstoppable rise of (3800 characters)
-[short] voice 23.7 s
-[short] script: क्या आप जानते हैं कि बच्चे औसतन सिर्फ नौ साल की उम्र में ही स्मार्टफोन पा रहे हैं? इसी को बदलने के लिए दो माताओं की बातचीत से 'स्मार्टफोन फ्री चाइल्डहुड' नाम की मुहिम शुरू हुई। आज इस अभियान से लाखों माता-पिता जुड़ चुके हैं। यह आंदोलन बच्चों को 14 साल तक स्मार्टफोन और 16 साल तक सोशल मीडिया से दूर रखने की अपील करता है। इससे अब स्कूलों के नियमों में भी बड़े बदलाव आ रहे हैं। पूरी ख़बर हमारे चैनल पर देखें।
-[short] english subtitles: Did you know that on average, children get smartphones at just nine years old? To change this, a conversation between two mothers sparked the 'Smartphone Free Childhood' campaign. Today, hundreds of thousands of parents have joined the movement. It urges keeping kids away from smartphones until age 14 and social media until 16. This is now leading to major changes in school rules as well. Watch the full story on our channel.
+[news] fuller text fetched for: People in Odisha's Babojola village sweep streets  (3653 characters)
+[news] fuller text fetched for: This 16-YO's 'Glow Guide' answers the questions bu (3800 characters)
+[news] fuller text fetched for: At 92, this Gujarat 'Nani' turned her crochet love (1853 characters)
+[main] using the 4 stories YOU approved, in your order
+[main] 4 candidate stories
+[writer] 4 leads after the family-safe filter
+[main] AI wrote 4 stories; fact-checking them...
+[verify] story 3 flagged: The lead states that she received 70 orders, but the narration claims she received more than 70 orders ('सत्तर से ज्यादा ऑर्डर').
+[main] 1 stories flagged - asking the writer to fix them...
+[main] approved order: ['बच्चों को स्मार्टफोन से आजादी', 'दिन में तीन बार सफाई', 'एसिड अटैक सर्वाइवर्स के लिए गाइड', 'बयान्वे साल में क्रोशिया का बिजनेस']
+[main] title (about the lead story): बच्चों को स्मार्टफोन से आजादी दिलाने की नई पहल
+[main] 4 stories passed. Sources: Positive News, The Better India
+[main] English captions ready
+[main] 236 earlier pictures/clips will not be reused
+[main] greeting is 4.2 s long
+[avatar] talking clip ready (bg_1_blue_led.jpg)
+[stock] 'Freedom from smartphones for c': best scores [8.0, 7.0, 6.0] (need 8)
+[stock] 'Freedom from smartphones for c': 18 candidates, 1 matched
+[stock] 'Freedom from smartphones for c': best scores [8.0, 7.0, 7.0] (need 8)
+[stock] 'Freedom from smartphones for c': 24 candidates, 1 matched
+[main] story0: 1 video clip(s)
+[main] story1: 4 AI illustration(s) added (no good stock footage)
+[main] story2: 4 AI illustration(s) added (no good stock footage)
+[stock] 'Crochet business at ninety-two': best scores [8.0, 8.0, 7.0] (need 8)
+[stock] 'Crochet business at ninety-two': 24 candidates, 2 matched
+[main] 7 stock photos used
+[main] video ready, 240 seconds
 [music] mixed in piano_glow.mp3
-[short] ready: 24 s - nothing uploaded
+[thumb] image prompt: Photographic shot. On the right side, a cheerful British mother and her eight-year-old daughter laugh joyfully in a park during golden hour, playing freely outdoors without screens or devices. Warm natural sunlight, vivid natural colours, deep emotional connection. The left third features a soft, uncluttered, blurred backdrop of a sun-drenched green meadow. Cinematic shallow depth of field, candid and uplifting.
+[thumb] image prompt: Photographic shot of cheerful young children running joyfully through a vibrant, sunlit grassy meadow, flying colorful kites into the sky. The lively children are composed on the right half of the frame, laughing warmly in golden sunlight. The left third features a soft, uncluttered field and open sky with shallow depth of field, creating a bright, uplifting, emotional mood free of screens.
+[thumb] option 1: फोन छूटा, लौटी सच्ची मुस्कान
+[thumb] image prompt: A candid photograph of a happy Indian mother and her young daughter laughing joyfully as they play hopscotch on a sunny sidewalk. Positioned on the right side, capturing energetic, playful bonding. The left third is soft, uncluttered negative space with warm bokeh. Shot in golden-hour natural light, vivid natural colors, shallow depth of field, uplifting, authentic, and emotionally vibrant.
+[thumb] option 2: डिजिटल कैद से आजाद हुआ बचपन
+[thumb] image prompt: Photographic, warm natural light. On the right side, two young Indian children sit peacefully under a lush leafy tree, happily engrossed in an open illustrated storybook and drawing with crayons. Emotional, serene, and uplifting atmosphere. The left third is a soft, uncluttered blur of green grass with gentle golden bokeh. Shallow depth of field, vivid natural colours, candid joy.
+[thumb] option 3: स्क्रीन से दूर, खिल उठा बचपन
+[thumb] image prompt: Photographic shot, warm natural sunlight. On the right, a turned-off smartphone rests face-down on a rustic wooden table in the foreground. In the soft-focus background on the right, cheerful Indian children laugh while enthusiastically building a colorful wooden block tower. The left third is softly blurred and uncluttered negative space. Emotional, uplifting mood, shallow depth of field, rich natural colors.
+[thumb] option 4: स्मार्टफोन मुक्त सुनहरा बचपन
+[main] PREVIEW saved in previews/ - nothing was uploaded to YouTube
+[main] HOLD: the finished video is kept for review - NOT uploaded to YouTube
