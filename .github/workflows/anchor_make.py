@@ -241,7 +241,27 @@ def malewide():
         print("saved", path, flush=True)
 
 
-if __name__ == "__main__" and len(sys.argv) > 1 and sys.argv[1] == "malewide":
+BGS = [
+    ("blue_led", "a modern television news studio with a large curved deep-blue LED video wall glowing behind him and warm golden accent lights, glossy white news desk"),
+    ("sunrise_city", "a bright airy modern studio with floor-to-ceiling windows showing a golden sunrise over a city skyline, soft warm light, clean white desk"),
+    ("blue_gold_clean", "a clean elegant studio with a soft sky-blue gradient wall, subtle golden sun-ray graphics and gentle glowing circles, polished white desk, professional broadcast look"),
+]
+
+
+def malebg():
+    """The wide male presenter (wide_2) with 3 different, better studio backgrounds. Saved in anchor/male/."""
+    src = os.path.join(OUT, "male", "wide_2.jpg")
+    for i, (name, desc) in enumerate(BGS, start=1):
+        data = edit(src, f"Replace ONLY the background and desk with {desc}. Keep exactly the same man, face, hair, navy suit, white shirt, "
+                         "smile, upright posture, hands, camera angle and framing. No text or logos.", 40 + i)
+        path = os.path.join(OUT, "male", f"bg_{i}_{name}.jpg")
+        open(path, "wb").write(data)
+        print("saved", path, flush=True)
+
+
+if __name__ == "__main__" and len(sys.argv) > 1 and sys.argv[1] == "malebg":
+    malebg()
+elif __name__ == "__main__" and len(sys.argv) > 1 and sys.argv[1] == "malewide":
     malewide()
 elif __name__ == "__main__" and len(sys.argv) > 1 and sys.argv[1] == "male":
     male()
