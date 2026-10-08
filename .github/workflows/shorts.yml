@@ -34,6 +34,7 @@ jobs:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           FAL_KEY: ${{ secrets.FAL_KEY }}
         run: |
+          if grep -qiw male ../../shorts-request.txt; then export PRESENTER=male; fi
           python -u shorts.py 2>&1 | python redact.py | tee ../../previews/short-log.txt
           exit ${PIPESTATUS[0]}
       - name: Save the preview into the repo
