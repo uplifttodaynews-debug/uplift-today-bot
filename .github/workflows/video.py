@@ -53,7 +53,7 @@ def _draw_mixed(d, xy, text, size, **kw):
     hi, la = _font(size), _font(size, latin=True)
     sp = d.textlength(" ", font=hi)
     for w in text.split(" "):
-        f = la if w.isascii() and any(c.isalpha() for c in w) else hi
+        f = la if w.isascii() and any(c.isalnum() for c in w) else hi
         d.text((x, y), w, font=f, **kw)
         x += d.textlength(w, font=f) + sp
 
