@@ -1,8 +1,3 @@
-saved /home/runner/work/uplift-today-bot/uplift-today-bot/.github/workflows/../../anchor/male/man_1_navy_suit.jpg
-saved /home/runner/work/uplift-today-bot/uplift-today-bot/.github/workflows/../../anchor/male/man_2_charcoal_glasses.jpg
-saved /home/runner/work/uplift-today-bot/uplift-today-bot/.github/workflows/../../anchor/male/man_3_nehru_jacket.jpg
-saved /home/runner/work/uplift-today-bot/uplift-today-bot/.github/workflows/../../anchor/male/man_4_maroon_blazer.jpg
-saved voice Charon
-saved voice Orus
-saved voice Fenrir
-saved voice Puck
+saved /home/runner/work/uplift-today-bot/uplift-today-bot/.github/workflows/../../anchor/male/wide_1.jpg
+saved /home/runner/work/uplift-today-bot/uplift-today-bot/.github/workflows/../../anchor/male/wide_2.jpg
+saved /home/runner/work/uplift-today-bot/uplift-today-bot/.github/workflows/../../anchor/male/wide_3.jpg
