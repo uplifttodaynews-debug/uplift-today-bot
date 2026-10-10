@@ -6,42 +6,36 @@
 [main] 4 candidate stories
 [writer] 4 leads after the family-safe filter
 [main] AI wrote 4 stories; fact-checking them...
-[verify] story 3 flagged: The source lead states she received 70 orders, but the narration exaggerates this to 'more than 70 orders' (सत्तर से ज़्यादा ऑर्डर).
-[main] 1 stories flagged - asking the writer to fix them...
-[main] approved order: ['बच्चों को स्मार्टफोन से आज़ादी', 'सफाई की मिसाल बना बाबोजोला गांव', 'एसिड अटैक सर्वाइवर्स के लिए खास गाइड', 'बानवे साल की नानी का बिज़नेस']
-[main] title (about the lead story): बच्चों को स्मार्टफोन से आज़ादी दिलाने की मुहिम
+[main] approved order: ['स्मार्टफ़ोन से बच्चों की दूरी', 'ओडिशा के गाँव में अनूठी सफ़ाई', 'सर्वाइवर्स के लिए बनी ख़ास गाइड', 'बानवे साल की नानी का कमाल']
+[main] title (about the lead story): स्मार्टफ़ोन से दूर, लौट रहा बच्चों का बचपन
 [main] 4 stories passed. Sources: Positive News, The Better India
 [main] English captions ready
 [main] 236 earlier pictures/clips will not be reused
-[main] greeting is 3.9 s long
+[main] greeting is 4.1 s long
 [avatar] talking clip ready (bg_1_blue_led.jpg)
-[stock] 'Freedom for children from smar': best scores [7.0, 7.0, 6.0] (need 8)
-[stock] 'Freedom for children from smar': 18 candidates, 0 matched
-[stock] second try with broader searches: ['smartphone on desk', 'United Kingdom', 'empty classroom', 'school playground']
-[stock] 'Freedom for children from smar': best scores [7.0, 7.0, 6.0] (need 6)
-[stock] 'Freedom for children from smar': 18 candidates, 3 matched
-[stock] 'Freedom for children from smar': best scores [7.0, 6.0, 6.0] (need 8)
-[stock] 'Freedom for children from smar': 24 candidates, 0 matched
-[stock] second try with broader searches: ['smartphone', 'United Kingdom', 'empty classroom', 'school playground']
-[stock] 'Freedom for children from smar': best scores [7.0, 7.0, 6.0] (need 6)
-[stock] 'Freedom for children from smar': 24 candidates, 1 matched
+[stock] 'Keeping Children Away from Sma': best scores [7.0, 7.0, 7.0] (need 8)
+[stock] 'Keeping Children Away from Sma': 18 candidates, 0 matched
+[stock] second try with broader searches: ['smartphone', 'United Kingdom', 'empty classroom', 'empty playground']
+[stock] 'Keeping Children Away from Sma': best scores [8.0, 7.0, 6.0] (need 6)
+[stock] 'Keeping Children Away from Sma': 18 candidates, 3 matched
+[stock] 'Keeping Children Away from Sma': best scores [8.0, 8.0, 8.0] (need 8)
+[stock] 'Keeping Children Away from Sma': 24 candidates, 1 matched
 [main] story0: 3 video clip(s)
 [main] story1: 4 AI illustration(s) added (no good stock footage)
 [main] story2: 4 AI illustration(s) added (no good stock footage)
-[stock] 'A ninety-two-year-old grandmot': best scores [8.0, 6.0, 5.0] (need 8)
-[stock] 'A ninety-two-year-old grandmot': 24 candidates, 1 matched
-[main] story3: 3 AI illustration(s) added (no good stock footage)
-[main] 8 stock photos used
+[stock] 'The Wonder of a Ninety-Two-Yea': best scores [8.0, 8.0, 8.0] (need 8)
+[stock] 'The Wonder of a Ninety-Two-Yea': 24 candidates, 3 matched
+[main] 10 stock photos used
 [main] video ready, 220 seconds
-[music] mixed in piano_hope.mp3
-[thumb] image prompt: Photographic shot in warm golden sunlight. On the right half, a joyful British pre-teen child laughs freely while playing outdoors in a lush green park, holding a kite string, completely unplugged and happy. The left third is soft, uncluttered with smooth blurred green foliage. Vivid natural colors, shallow depth of field, emotional, uplifting atmosphere celebrating an active, smartphone-free childhood.
-[thumb] image prompt: Cinematic photograph of a joyful group of British young children laughing and running together playing tag in a sunlit green park, free from screens. The children are positioned on the right half of the frame. The left third is a soft, uncluttered background of golden sunlight bokeh and blurred greenery. Vivid natural colors, shallow depth of field, warm and uplifting mood.
-[thumb] option 1: फोन छूटा, लौटा असली बचपन
-[thumb] image prompt: A photographic shot of a smiling British mother and her young daughter happily painting colorful art together on a cozy living room floor, positioned on the right side. Warm natural sunlight pours in, creating an uplifting, joyful mood. The left third is softly blurred with clean, uncluttered negative space. Vivid natural tones, shallow depth of field, emotional candid family moment.
-[thumb] option 2: स्क्रीन बंद, खिल उठी मुस्कान
-[thumb] image prompt: A warm photographic shot of cheerful, diverse British school children on the right half of the frame, enthusiastically collaborating to build a tall wooden block tower. Bright classroom illuminated by soft, natural sunlight streaming through a window. The left third is clean, softly blurred, and uncluttered. Uplifting candid moment, shallow depth of field, vivid natural colors, celebrating screen-free childhood play.
-[thumb] option 3: बचपन को मिली फोन से आज़ादी
-[thumb] image prompt: Photographic shot of a joyful young British boy on the right half, looking up with pure wonder as he flies a vibrant kite outdoors. Bathed in warm golden sunlight in an open green park. The left third is soft, uncluttered open sky and blurred meadow with shallow depth of field, creating an uplifting, carefree, screen-free childhood atmosphere.
-[thumb] option 4: स्मार्टफोन मुक्त खुशहाल बचपन
+[music] mixed in piano_sunrise.mp3
+[thumb] image prompt: A heartwarming photograph in a lush British park during golden hour. On the right half, a happy British mother and her eight-year-old daughter laugh together, joyfully tossing a vintage paper glider, embracing screen-free play. The left third features a soft, uncluttered blurred lawn with warm natural bokeh. Cinematic shallow depth of field, vivid natural colors, emotional and uplifting.
+[thumb] image prompt: Photographic shot. On the right side, a joyful young British girl runs freely through a sunlit public park flying a kite, while a smartphone lies forgotten on a wooden bench nearby. The left third remains soft, uncluttered, filled with gentle, out-of-focus green grass and warm bokeh. Warm golden sunlight, vivid natural colors, shallow depth of field, emotional, uplifting.
+[thumb] option 1: बच्चों को लौटा सुंदर बचपन
+[thumb] image prompt: A warm photographic shot of a smiling British mother sitting on a cozy sofa, reading a colorful storybook with her joyful young daughter on the right half of the frame. Gentle natural sunlight fills the screen-free living room, creating an uplifting, heartwarming mood with vivid tones. The left third is soft, uncluttered, and blurred with shallow depth of field.
+[thumb] option 2: स्क्रीन छूटी, मुस्कान लौटी
+[thumb] image prompt: Photographic style, warm natural sunlight. On the right, a determined, smiling group of British parents stand outside a classic red-brick school gate, holding blank colorful cardboard signs. Happy children play outdoors in the soft background. The left third is a soft, uncluttered blurred pathway with shallow depth of field. Vivid natural colors, uplifting community atmosphere, authentic documentary photo.
+[thumb] option 3: स्मार्टफ़ोन से आज़ाद बचपन
+[thumb] image prompt: Photographic shot of a cheerful group of British teenagers laughing and riding bicycles down a sunlit UK suburban street, positioned on the right half of the frame. Pure outdoor freedom without any phones. The left third features a soft, uncluttered blurred street with green foliage for text copy space. Warm golden-hour natural light, shallow depth of field, vivid authentic colors, uplifting.
+[thumb] option 4: स्क्रीन से दूर, अपनों के पास
 [main] PREVIEW saved in previews/ - nothing was uploaded to YouTube
 [main] HOLD: the finished video is kept for review - NOT uploaded to YouTube
