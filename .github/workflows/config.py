@@ -23,8 +23,8 @@ GEMINI_MODEL = "gemini-3.8-flash"
 # ---- Bulletin size ----
 NUM_STORIES = 3                  # 3 in-depth stories of ~150 words, read slowly ~ 4 minutes
 # Short, dynamic transitions between stories - ONLY on these dates (India date of the video)
-TRANSITION_DAYS = {"2026-10-05", "2026-10-06", "2026-10-07", "2026-10-08", "2026-10-09"}
-AI_THUMBNAIL_DAYS = {"2026-10-05", "2026-10-06", "2026-10-07", "2026-10-08", "2026-10-09"}    # days whose thumbnail picture is made with AI (story-specific, about 3 cents)
+TRANSITION_DAYS = {"2026-10-05", "2026-10-06", "2026-10-07", "2026-10-08", "2026-10-09", "2026-10-10", "2026-10-11"}
+AI_THUMBNAIL_DAYS = {"2026-10-05", "2026-10-06", "2026-10-07", "2026-10-08", "2026-10-09", "2026-10-10", "2026-10-11"}    # days whose thumbnail picture is made with AI (story-specific, about 3 cents)
 SPEAKING_RATE = 1.0              # slower, clearer voice (1.0 = normal)
 PICS_PER_STORY = 4               # longer stories need a few more pictures
 MIN_STORIES = 2                  # fewer good stories than this = skip the day
