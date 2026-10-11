@@ -1,4 +1,48 @@
-[thumb] picture 1 done
-[thumb] picture 2 done
-[thumb] picture 3 done
-[thumb] picture 4 done
+[news] fuller text fetched for: Social physiology: the hidden health cost of eatin (3800 characters)
+[news] fuller text fetched for: This Truck Eats Garbage Before It Reaches Landfill (1595 characters)
+[main] using the 3 stories YOU approved, in your order
+[main] 3 candidate stories
+[writer] 3 leads after the family-safe filter
+[main] AI wrote 3 stories; fact-checking them...
+[main] approved order: ['समुद्र के कचरे से बनीं स्कूल बेंच', 'अपनों संग भोजन से सुधरेगी सेहत', 'हैदराबाद का सोलर कचरा प्रोसेस ट्रक']
+[main] title (about the lead story): समुद्र के कचरे से बनीं बच्चों की स्कूल बेंच
+[main] 3 stories passed. Sources: The Better India : Latest Posts, The Optimist Daily: Making Solutions the News
+[main] English captions ready
+[main] 236 earlier pictures/clips will not be reused
+[main] greeting is 4.8 s long
+[avatar] talking clip ready (1_mustard_blazer_bun.jpg)
+[stock] 'School benches made from ocean': best scores [6.0, 6.0, 5.0] (need 8)
+[stock] 'School benches made from ocean': 18 candidates, 0 matched
+[stock] second try with broader searches: ['recycled plastic bench', 'Mumbai beach', 'ocean plastic pollution', 'empty school classroom']
+[stock] 'School benches made from ocean': best scores [7.0, 7.0, 6.0] (need 6)
+[stock] 'School benches made from ocean': 18 candidates, 3 matched
+[stock] 'School benches made from ocean': best scores [8.0, 8.0, 5.0] (need 8)
+[stock] 'School benches made from ocean': 24 candidates, 1 matched
+[main] story0: 3 video clip(s)
+[stock] 'Eating meals with loved ones w': best scores [9.0, 9.0, 8.0] (need 8)
+[stock] 'Eating meals with loved ones w': 24 candidates, 3 matched
+[stock] 'Hyderabad's solar waste proces': best scores [5.0, 3.0, 2.0] (need 8)
+[stock] 'Hyderabad's solar waste proces': 18 candidates, 0 matched
+[stock] second try with broader searches: ['Recycling truck', 'Hyderabad India', 'Plastic waste', 'Landfill']
+[stock] 'Hyderabad's solar waste proces': best scores [6.0, 3.0, 2.0] (need 6)
+[stock] 'Hyderabad's solar waste proces': 18 candidates, 1 matched
+[stock] 'Hyderabad's solar waste proces': best scores [7.0, 7.0, 6.0] (need 8)
+[stock] 'Hyderabad's solar waste proces': 24 candidates, 0 matched
+[stock] second try with broader searches: ['recycling truck', 'Hyderabad India', 'plastic recycling', 'urban landfill']
+[stock] 'Hyderabad's solar waste proces': best scores [8.0, 7.0, 7.0] (need 6)
+[stock] 'Hyderabad's solar waste proces': 24 candidates, 2 matched
+[main] story2: 1 video clip(s)
+[main] 13 stock photos used
+[main] video ready, 190 seconds
+[music] mixed in piano_bright.mp3
+[thumb] image prompt: On the right half, a joyful young Indian schoolboy sits happily at a bright, colorful bench made from recycled materials inside a sunlit classroom, looking forward with hope. Warm golden morning sunlight streams in, creating an uplifting, emotional atmosphere. The left third features a soft-focus, uncluttered classroom background with gentle bokeh. Photographic style, vivid natural colors, shallow depth of field.
+[thumb] image prompt: A heartwarming photograph of smiling Indian schoolchildren sitting at a vibrant desk made from speckled recycled plastic, positioned on the right side of the frame. Warm morning sunlight streams through a classroom window. The left third is soft, uncluttered, and blurred with shallow depth of field. Vivid natural colors, joyful expressions, authentic Indian classroom setting, uplifting atmosphere.
+[thumb] option 1: समुद्र के कचरे से सजा स्कूल
+[thumb] image prompt: A group of smiling Indian volunteers on the right side of a sunlit Mumbai beach, lifting heavy sacks of collected ocean plastic debris against the glowing coastline. Uplifting, proud expressions, warm golden hour sunlight, vivid natural colors. Shallow depth of field, with the left third showing soft, uncluttered blurred wet sand and gentle waves for copy space. Realistic photographic style.
+[thumb] option 2: प्लास्टिक से संवरा बचपन
+[thumb] image prompt: Photographic shot of a bright Indian recycling workshop. On the right, weathered hands of an Indian artisan inspect smooth, colorful planks made from pressed recycled ocean plastic, with scattered colorful plastic flakes on the workbench. Warm golden sunlight streams across the scene. The left third is softly blurred and empty with gentle bokeh. Vivid natural tones, shallow depth of field, inspiring and hopeful atmosphere.
+[thumb] option 3: कचरा बना बच्चों का सहारा
+[thumb] image prompt: A split-composition photographic scene. The left third is soft and uncluttered, showing dark ocean waves carrying plastic beach litter into blurry negative space. The right half features a colorful, modern student desk made of recycled ocean plastic inside a sunlit Indian classroom, with a cheerful Indian child beside it. Warm natural sunlight, vivid colors, shallow depth of field, emotional and uplifting.
+[thumb] option 4: कचरे से चमकी बच्चों की क्लास
+[main] PREVIEW saved in previews/ - nothing was uploaded to YouTube
+[main] HOLD: the finished video is kept for review - NOT uploaded to YouTube
