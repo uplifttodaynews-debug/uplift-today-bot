@@ -1,6 +1,4 @@
-[news] fuller text fetched for: Social physiology: the hidden health cost of eatin (3800 characters)
-[short] voice 28.1 s
-[short] script: क्या आप जानते हैं कि अकेले खाने के मुकाबले किसी करीबी के साथ खाने से ब्लड शुगर बेहतर कंट्रोल रहता है? साइंस एडवांसेज की नई स्टडी के मुताबिक, जब लोग किसी अपने के साथ भोजन करते हैं, तो ब्लड शुगर कम बढ़ता है और तेजी से सामान्य स्तर पर लौट आता है। वैज्ञानिकों का कहना है कि हमारा शरीर अपनों के करीब होने पर शारीरिक रूप से अधिक कुशलता से काम करता है। इतना ही नहीं, किसी साथी की मौजूदगी से तनाव भी काफी कम हो जाता है। पूरी ख़बर हमारे चैनल पर देखें।
-[short] english subtitles: Did you know that eating with a loved one controls blood sugar better than eating alone? According to a new study in Science Advances, when people eat with someone close, blood sugar spikes less and returns to normal faster. Scientists say our bodies function more efficiently when we are around loved ones. Not only that, having a companion also significantly reduces stress. Watch the full story on our channel.
-[music] mixed in piano_bright.mp3
-[short] ready: 28 s - nothing uploaded
+[thumb] picture 1 done
+[thumb] picture 2 done
+[thumb] picture 3 done
+[thumb] picture 4 done
