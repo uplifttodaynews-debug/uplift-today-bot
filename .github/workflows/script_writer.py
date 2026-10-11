@@ -97,6 +97,7 @@ RULES:
    REJECT any lead about sex, reproduction, genitals, the uterus/womb/cervix/prostate or any intimate body part or
    screening of them, contraception, sterilisation, fertility, pregnancy, childbirth or
    mosquito/insect control experiments; the bulletin is for the whole family.
+   CULTURAL RULE: the audience is conservative Indian families. NEVER mention romantic partners, couples, spouses, dating, physical closeness, intimacy or anything sexual. If a source talks about a partner or a couple, speak only of family, friends or loved ones sharing a meal, and leave out any partner-related detail.
 7. "title" = a YouTube title in {config.LANGUAGE_NAME}, under 70 characters, hopeful, truthful. Do NOT put any number
    of stories in the title (no "8 news", no "5 stories"); name the most inspiring story or the feeling instead.
 8. "headline" for each story = a very short on-screen headline (max 6 words).

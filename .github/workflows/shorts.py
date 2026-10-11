@@ -23,9 +23,9 @@ def _plan(lead, text, max_words):
         f"Write a YouTube SHORT (vertical, about 45 seconds) in simple spoken {config.LANGUAGE_NAME} (Devanagari) about this "
         f"positive news story. At most {max_words} words in total. Start with ONE strong hook sentence that makes people stop "
         "scrolling (a surprising fact from the story), then 3-4 short sentences with the key facts, then end with exactly: "
-        "पूरी ख़बर हमारे चैनल पर देखें। Use only facts from the text; keep the word AI in English letters. "
+        "पूरी ख़बर हमारे चैनल पर देखें। Use only facts from the text; keep the word AI in English letters. The audience is conservative Indian families: NEVER mention romantic partners, couples, intimacy or physical closeness; speak only of family, friends or loved ones. "
         "Also write a title (Devanagari, under 60 characters) and 5 DIFFERENT English image prompts (photographic, warm natural light, "
-        "vertical composition, generic people or places that illustrate the story, NO text, letters, logos, flags, famous people; max 40 words each).\n"
+        "vertical composition, generic people or places that illustrate the story (modest, family-friendly: families, friends, children; never couples or intimate scenes; Indian stories show Indian people), NO text, letters, logos, flags, famous people; max 40 words each).\n"
         f"Story headline: {lead.get('title', '')}\nStory text: {text[:3500]}\n"
         'Return ONLY JSON: {"title": "...", "script": "...", "prompts": ["..."]}', 0.5)
 
