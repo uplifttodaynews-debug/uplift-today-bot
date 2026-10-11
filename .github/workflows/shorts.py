@@ -71,6 +71,44 @@ def _frame_furniture(path):
     img.save(path)
 
 
+def _title_card(title, first_img, out_png):
+    """Full-height cover with the WHOLE title in big letters: used as the Short's thumbnail and for the first second of the video."""
+    from PIL import ImageEnhance
+    src = Image.open(first_img).convert("RGB")
+    sc = max(W / src.width, H / src.height)
+    src = src.resize((int(src.width * sc) + 1, int(src.height * sc) + 1), Image.LANCZOS)
+    l, t = (src.width - W) // 2, (src.height - H) // 2
+    img = src.crop((l, t, l + W, t + H))
+    img = ImageEnhance.Brightness(img).enhance(0.85).convert("RGBA")
+    shade = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+    sd = ImageDraw.Draw(shade)
+    for y in range(H):
+        a = int(215 * max(0.0, (y - H * 0.38) / (H * 0.62)) ** 1.1)
+        sd.line([(0, y), (W, y)], fill=(8, 24, 80, a))
+    img = Image.alpha_composite(img, shade)
+    d = ImageDraw.Draw(img)
+    size = 104
+    font = video._font(size)
+    lines = video._wrap(d, title, font, W - 120)
+    while len(lines) > 5 and size > 60:
+        size -= 8
+        font = video._font(size)
+        lines = video._wrap(d, title, font, W - 120)
+    lh = int(size * 1.3)
+    y = H - 260 - lh * len(lines)
+    for ln in lines:
+        w = sum(d.textlength(x, font=font) for x in ln.split(" ")) + d.textlength(" ", font=font) * (len(ln.split(" ")) - 1)
+        video._draw_mixed(d, ((W - w) / 2, y), ln, size, fill=(255, 215, 40), stroke_width=7, stroke_fill=(5, 20, 70))
+        y += lh
+    badge = video._font(46, latin=True)
+    label = "UPLIFT TODAY"
+    bw = int(d.textlength(label, font=badge)) + 120
+    d.rounded_rectangle([50, 70, 50 + bw, 150], radius=18, fill=(255, 205, 40, 255))
+    video._sun(d, 50 + 46, 110, 19)
+    d.text((50 + 90, 80), label, font=badge, fill=(20, 40, 110, 255))
+    img.convert("RGB").save(out_png)
+
+
 def main():
     os.makedirs(WORK, exist_ok=True)
     os.makedirs(OUT, exist_ok=True)
@@ -157,6 +195,17 @@ def main():
         print(f"[short] music skipped: {e}")
         subprocess.check_call(["cp", raw, final])
     title = (plan.get("title") or lead.get("title", "")).strip()
+    # the whole title as the thumbnail, and on screen for the first 1.2 s (YouTube often picks the opening frame)
+    try:
+        card = os.path.join(OUT, "thumbnail.png")
+        _title_card(title, imgs[0], card)
+        titled = os.path.join(WORK, "titled.mp4")
+        subprocess.check_call(["ffmpeg", "-y", "-loglevel", "error", "-i", final, "-i", card, "-filter_complex",
+                               "[0:v][1:v]overlay=0:0:enable='lt(t,1.2)'[v]", "-map", "[v]", "-map", "0:a", "-c:v", "libx264",
+                               "-preset", "veryfast", "-pix_fmt", "yuv420p", "-c:a", "copy", titled])
+        subprocess.check_call(["cp", titled, final])
+    except Exception as e:
+        print(f"[short] title card skipped: {e}")
     desc = (f"{title}\n\nपूरी ख़बर हमारे चैनल Uplift Today पर देखें। (Source: {lead.get('source','')}: {lead.get('link','')})\n\n"
             "Pictures are AI-generated illustrations. The voice is synthetic and the script is AI-written from public news sources.\n\n"
             "#Shorts #GoodNews #PositiveNews #UpliftToday #अच्छीखबर")

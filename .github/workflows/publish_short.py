@@ -11,7 +11,8 @@ def main():
     title = lines[0].strip()
     desc = "\n".join(lines[2:]).strip()
     upload.upload(os.path.join(D, "short.mp4"), title, desc,
-                  ["shorts", "good news", "positive news", "uplift today", "अच्छी खबर", "hindi news"], None)
+                  ["shorts", "good news", "positive news", "uplift today", "अच्छी खबर", "hindi news"],
+                  os.path.join(D, "thumbnail.png") if os.path.exists(os.path.join(D, "thumbnail.png")) else None)
     print("[publish] Short uploaded (private)")
 
 
