@@ -45,8 +45,13 @@ def _speak(script, mp3):
     raise SystemExit("no Urdu voice available")
 
 
+PK_RULE = ("The Short is for a PAKISTANI audience, so in EVERY image prompt show Pakistani people and homes: women wearing a dupatta or "
+           "shawl loosely covering the head (NOT a hijab and NOT a niqab or any face covering), men in shalwar kameez, Pakistani home settings "
+           "(dastarkhwan, roti, daal, biryani), always groups of at least three (families or same-gender friends), modest, never couples. ")
+
+
 def _plan(lead, text, max_words):
-    return script_writer._call(
+    return script_writer._call((PK_RULE if os.environ.get("SHORT_LANG") == "ur" else "") +
         f"Write a YouTube SHORT (vertical, about 45 seconds) in simple spoken {config.LANGUAGE_NAME} (Devanagari) about this "
         f"positive news story. At most {max_words} words in total. Start with ONE strong hook sentence that makes people stop "
         "scrolling (a surprising fact from the story), then 3-4 short sentences with the key facts, then end with exactly: "
