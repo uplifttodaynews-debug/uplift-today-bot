@@ -1,5 +1,10 @@
-[short] voice 26.3 s
-[short] script: क्या आप जानते हैं कि मुंबई के एक समुद्र तट से सिर्फ एक दिन में 18,000 किलो प्लास्टिक कचरा बाहर निकाला गया? 1,500 से ज्यादा वॉलंटियर्स ने मिलकर इस विशाल कचरे को रेत से साफ किया। इसके बाद इस पूरे प्लास्टिक को रीसाइक्लिंग केंद्र ले जाया गया, जहाँ इसे धोकर और प्रोसेस करके दोबारा तैयार किया गया। फिर इसी कचरे से सुंदर स्कूल बेंच बनाई गईं और ज़रूरतमंद बच्चों की क्लासरूम तक पहुँचाई गईं। पूरी ख़बर हमारे चैनल पर देखें।
-[short] english subtitles: Did you know that 18,000 kg of plastic waste was removed from a Mumbai beach in just one day? Over 1,500 volunteers came together to clear this massive trash from the sand. All of this plastic was then taken to a recycling center, where it was washed and processed. Beautiful school benches were made from this waste and delivered to classrooms of children in need. Watch the full story on our channel.
-[music] mixed in piano_bright.mp3
-[short] ready: 26 s - nothing uploaded
+Traceback (most recent call last):
+  File "/home/runner/work/uplift-today-bot/uplift-today-bot/.github/workflows/shorts.py", line 172, in <module>
+    main()
+  File "/home/runner/work/uplift-today-bot/uplift-today-bot/.github/workflows/shorts.py", line 81, in main
+    script = script_writer.polish_hindi(plan["script"])
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/uplift-today-bot/uplift-today-bot/.github/workflows/script_writer.py", line 255, in polish_hindi
+    if re.search(r"\d", text) and os.environ.get("GEMINI_API_KEY"):
+       ^^
+NameError: name 're' is not defined. Did you mean: 'r'? Or did you forget to import 're'?
