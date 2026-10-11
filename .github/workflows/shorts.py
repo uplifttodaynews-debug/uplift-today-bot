@@ -56,7 +56,7 @@ def _plan(lead, text, max_words):
         f"positive news story. At most {max_words} words in total. Start with ONE strong hook sentence that makes people stop "
         "scrolling (a surprising fact from the story), then 3-4 short sentences with the key facts, then end with exactly: "
         "पूरी ख़बर हमारे चैनल पर देखें। Use only facts from the text; keep the word AI in English letters. The audience is conservative Indian families: NEVER mention romantic partners, couples, intimacy or physical closeness; speak only of family, friends or loved ones. "
-        "Also write a title (Devanagari, under 60 characters) and 5 DIFFERENT English image prompts (photographic, warm natural light, "
+        "Also write a title (Devanagari, under 60 characters, always POSITIVE and hopeful: never fear, danger, warning or loss words) and 5 DIFFERENT English image prompts (photographic, warm natural light, "
         "vertical composition, generic people or places that illustrate the story (modest, family-friendly: families, friends, children; never couples or intimate scenes; Indian stories show Indian people), NO text, letters, logos, flags, famous people; max 40 words each).\n"
         f"Story headline: {lead.get('title', '')}\nStory text: {text[:3500]}\n"
         'Return ONLY JSON: {"title": "...", "script": "...", "prompts": ["..."]}', 0.5)
@@ -229,7 +229,7 @@ def main():
     title = (plan.get("title") or lead.get("title", "")).strip()
     if UR:
         try:
-            title = script_writer._call("Write a short catchy English YouTube title (under 60 characters) for this story: "
+            title = script_writer._call("Write a short catchy, POSITIVE and hopeful English YouTube title (under 60 characters; never fear, danger or warning words) for this story: "
                                         + lead.get("title", "") + '. Return ONLY JSON: {"title": "..."}', 0.4).get("title", title).strip() or title
         except Exception as e:
             print(f"[short] english title skipped: {e}")
