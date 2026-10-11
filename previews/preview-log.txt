@@ -1,41 +1,8 @@
 [news] fuller text fetched for: Social physiology: the hidden health cost of eatin (3800 characters)
-[news] fuller text fetched for: This Truck Eats Garbage Before It Reaches Landfill (1595 characters)
-[main] using the 3 stories YOU approved, in your order
-[main] 3 candidate stories
-[writer] 3 leads after the family-safe filter
-[main] AI wrote 3 stories; fact-checking them...
-[main] approved order: ['अपनों के साथ भोजन से सुधरेगी सेहत', 'प्लास्टिक कचरे से बनीं स्कूल बेंच', 'कचरा प्रोसेस करने वाला सोलर ट्रक']
-[main] title (about the lead story): अपनों के साथ भोजन करने से बेहतर होगी सेहत
-[main] 3 stories passed. Sources: The Better India : Latest Posts, The Optimist Daily: Making Solutions the News
-[main] English captions ready
-[main] 251 earlier pictures/clips will not be reused
-[main] greeting is 4.7 s long
-[avatar] talking clip ready (1_mustard_blazer_bun.jpg)
-[main] story0: 4 AI illustration(s) added (no good stock footage)
-[main] story1: 4 AI illustration(s) added (no good stock footage)
-[stock] 'Solar truck that processes was': best scores [5.0, 5.0, 3.0] (need 8)
-[stock] 'Solar truck that processes was': 18 candidates, 0 matched
-[stock] second try with broader searches: ['solar recycling truck', 'waste management truck', 'Hyderabad India', 'urban city street']
-[stock] 'Solar truck that processes was': best scores [5.0, 4.0, 4.0] (need 6)
-[stock] 'Solar truck that processes was': 18 candidates, 0 matched
-[main] story2: no good video clip, using photos
-[stock] 'Solar truck that processes was': best scores [7.0, 4.0, 3.0] (need 8)
-[stock] 'Solar truck that processes was': 24 candidates, 0 matched
-[stock] second try with broader searches: ['solar recycling truck', 'Hyderabad India', 'urban neighborhood', 'waste sorting']
-[stock] 'Solar truck that processes was': best scores [8.0, 4.0, 3.0] (need 6)
-[stock] 'Solar truck that processes was': 24 candidates, 1 matched
-[main] story2: 3 AI illustration(s) added (no good stock footage)
-[main] 4 stock photos used
-[main] video ready, 162 seconds
+[short] urdu script: کیا آپ جانتے ہیں کہ اکیلے کھانے کے بجائے اپنوں کے ساتھ کھانا کھانے سے آپ کا بلڈ شوگر بہتر کنٹرول میں رہتا ہے؟ سائنس ایڈوانسز کی ایک نئی تحقیق کے مطابق، جب لوگ خاندان یا دوستوں کے ساتھ کھانا کھاتے ہیں، تو ان کا بلڈ شوگر کم بڑھتا ہے اور تیزی سے معمول پر آ جاتا ہے۔ محققین کا کہنا ہے کہ ہمارا جسم اپنوں کے ساتھ رہنے پر بہتر طریقے سے کام کرتا ہے۔ ساتھ بیٹھ کر کھانے سے میٹابولزم اچھا رہتا ہے اور تناؤ بھی کم ہوتا ہے۔ پوری خبر ہمارے چینل پر دیکھیں۔
+[short] urdu voice: ur-IN-Chirp3-HD-Aoede
+[short] voice 33.0 s
+[short] script: क्या आप जानते हैं कि अकेले खाने के बजाय अपनों के साथ खाना खाने से आपका ब्लड शुगर बेहतर कंट्रोल में रहता है? साइंस एडवांसेज के एक नए अध्ययन के अनुसार, जब लोग परिवार या दोस्तों के साथ खाना खाते हैं, तो उनका ब्लड शुगर कम बढ़ता है और तेजी से सामान्य स्तर पर लौटता है। शोधकर्ताओं का कहना है कि हमारा शरीर अपनों के साथ रहने पर बेहतर तरीके से काम करता है। साथ बैठकर खाने से मेटाबॉलिज्म अच्छा रहता है और तनाव भी घटता है। पूरी ख़बर हमारे चैनल पर देखें।
+[short] english subtitles: Did you know that eating with loved ones instead of alone helps keep your blood sugar under better control? According to a new study in Science Advances, when people eat with family or friends, their blood sugar spikes less and returns to normal faster. Researchers say our bodies function better around loved ones. Eating together improves metabolism and reduces stress. Watch the full story on our channel.
 [music] mixed in piano_bright.mp3
-[thumb] image prompt: Photographic, warm natural light. On the right, a happy multigenerational Indian family—an elderly grandfather, mother, and smiling young child—enjoying a wholesome meal together around a dining table, laughing joyfully. Modest Indian home setting, vivid natural colors, uplifting and emotional. The left third is softly blurred and uncluttered with gentle bokeh for headline space. Shallow depth of field.
-[thumb] image prompt: A warm photographic shot of a multi-generational Indian family—a smiling grandfather, grandmother, and cheerful young child—happily sharing a traditional meal on the right side of the frame. Brass thalis with colorful food, soft warm home lighting, joyful atmosphere. The left third is clean, uncluttered, and softly blurred with shallow depth of field. Vivid natural colors, highly detailed.
-[thumb] option 1: अपनों के साथ से बनेगी सेहत
-[thumb] image prompt: Photographic shot of a cheerful Indian family—mother, father, and young child—sharing a healthy meal of whole-grain flatbreads and fresh salad at a sunlit wooden dining table on the right side. Warm, uplifting smiles, genuine connection. The left third is soft and uncluttered with diffused morning window light. Shallow depth of field, vivid natural colors, heartwarming home interior.
-[thumb] option 2: साथ बैठकर खाएं, शुगर घटाएं
-[thumb] image prompt: Photographic shot of an elderly Indian grandfather, grandmother, and young grandchild happily sharing a nutritious home-cooked dinner at a cozy wooden table, positioned on the right half. Left third soft, uncluttered Indian dining room background. Warm natural lighting, authentic modest clothing, joyful smiles, emotional and uplifting mood, shallow depth of field, vivid natural colors.
-[thumb] option 3: परिवार संग भोजन, स्वस्थ जीवन
-[thumb] image prompt: A happy Indian family—grandparents, mother, and child—gathered outdoors on a sunny lawn on the right side of the frame, passing healthy homemade dishes in steel bowls and laughing warmly together. Soft focus, warm golden sunlight, shallow depth of field, vibrant natural garden setting. The left third is softly blurred and uncluttered with lush green bokeh, photographic and uplifting.
-[thumb] option 4: अपनों का साथ, बीमारी को मात
-[main] PREVIEW saved in previews/ - nothing was uploaded to YouTube
-[main] HOLD: the finished video is kept for review - NOT uploaded to YouTube
+[short] ready: 33 s - nothing uploaded
