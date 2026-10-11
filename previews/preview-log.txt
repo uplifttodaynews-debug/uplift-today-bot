@@ -1,4 +1,13 @@
-[thumb] picture 1 done
-[thumb] picture 2 done
-[thumb] picture 3 done
-[thumb] picture 4 done
+[news] fuller text fetched for: Social physiology: the hidden health cost of eatin (3800 characters)
+[news] fuller text fetched for: This Truck Eats Garbage Before It Reaches Landfill (1595 characters)
+[main] using the 3 stories YOU approved, in your order
+[main] 3 candidate stories
+[writer] 3 leads after the family-safe filter
+[main] AI wrote 3 stories; fact-checking them...
+[main] approved order: ['साथ खाने से बेहतर ब्लड शुगर', 'प्लास्टिक कचरे से बने स्कूल बेंच', 'सोलर ट्रक ने बदला कचरा प्रबंधन']
+[main] title (about the lead story): अपनों के साथ खाना खाने से बेहतर रहता है ब्लड शुगर
+[main] 3 stories passed. Sources: The Better India : Latest Posts, The Optimist Daily: Making Solutions the News
+[main] English captions ready
+[main] 249 earlier pictures/clips will not be reused
+[main] greeting is 4.4 s long
+[avatar] talking clip ready (1_mustard_blazer_bun.jpg)
