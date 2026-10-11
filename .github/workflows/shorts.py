@@ -119,13 +119,14 @@ def _title_card(title, first_img, out_png):
         sd.line([(0, y), (W, y)], fill=(8, 24, 80, a))
     img = Image.alpha_composite(img, shade)
     d = ImageDraw.Draw(img)
+    lat = title.isascii()
     size = 104
-    font = video._font(size)
-    lines = video._wrap(d, title, font, W - 120)
+    font = video._font(size, latin=lat)
+    lines = video._wrap(d, title, font, W - 160)
     while len(lines) > 5 and size > 60:
         size -= 8
-        font = video._font(size)
-        lines = video._wrap(d, title, font, W - 120)
+        font = video._font(size, latin=lat)
+        lines = video._wrap(d, title, font, W - 160)
     lh = int(size * 1.3)
     y = H - 260 - lh * len(lines)
     for ln in lines:
