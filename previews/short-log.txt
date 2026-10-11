@@ -1,11 +1,5 @@
-[news] fuller text fetched for: Social physiology: the hidden health cost of eatin (3800 characters)
-Traceback (most recent call last):
-  File "/home/runner/work/uplift-today-bot/uplift-today-bot/.github/workflows/shorts.py", line 172, in <module>
-    main()
-  File "/home/runner/work/uplift-today-bot/uplift-today-bot/.github/workflows/shorts.py", line 81, in main
-    script = script_writer.polish_hindi(plan["script"])
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/runner/work/uplift-today-bot/uplift-today-bot/.github/workflows/script_writer.py", line 255, in polish_hindi
-    if re.search(r"\d", text) and os.environ.get("GEMINI_API_KEY"):
-       ^^
-NameError: name 're' is not defined. Did you mean: 'r'? Or did you forget to import 're'?
+[short] voice 21.6 s
+[short] script: क्या आप जानते हैं कि मुंबई के एक तट से एक ही दिन में अठारह हज़ार किलो प्लास्टिक कचरा हटाया गया? पंद्रह सौ से ज़्यादा वॉलंटियर्स ने मिलकर इस पूरे समुद्री कचरे को साफ़ किया। इसके बाद इस कचरे को रीसाइक्लिंग फ़ैसिलिटी में धोकर और प्रोसेस करके नया रूप दिया गया। और फिर इसी प्लास्टिक से ज़रूरतमंद बच्चों के लिए स्कूल बेंच तैयार किए गए। पूरी ख़बर हमारे चैनल पर देखें।
+[short] english subtitles: Did you know that 18,000 kg of plastic waste was removed from a Mumbai beach in just one day? Over 1,500 volunteers came together to clear this marine debris. The waste was then washed and processed at a recycling facility, and turned into school benches for children in need. Watch the full story on our channel.
+[music] mixed in piano_bright.mp3
+[short] ready: 22 s - nothing uploaded
