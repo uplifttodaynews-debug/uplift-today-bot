@@ -18,6 +18,33 @@ W, H = 1080, 1920
 WORK = "/tmp/short_work"
 
 
+UR = os.environ.get("SHORT_LANG") == "ur"
+
+
+def _urdu(script):
+    """Urdu (Nastaliq-script) version of the Hindi script, for the Urdu voice."""
+    r = script_writer._call("Translate this spoken Hindi news script into natural, simple spoken Urdu written in Urdu (Perso-Arabic) script. "
+                            "Keep every fact and number (write numbers as Urdu words), keep AI as 'اے آئی'. "
+                            'Return ONLY JSON: {"urdu": "..."}\n\n' + script, 0.2)
+    return (r.get("urdu") or "").strip()
+
+
+def _speak(script, mp3):
+    if not UR:
+        return tts.speak(script, mp3)
+    text = _urdu(script)
+    print("[short] urdu script:", text)
+    config.LANGUAGE_CODE = "ur-IN"
+    for voice in ("ur-IN-Chirp3-HD-Aoede", "ur-IN-Wavenet-A", "ur-IN-Standard-A"):
+        config.VOICE_NAME = voice
+        try:
+            print("[short] urdu voice:", voice)
+            return tts.speak(text, mp3)
+        except Exception as e:
+            print(f"[short] voice {voice} failed: {e}")
+    raise SystemExit("no Urdu voice available")
+
+
 def _plan(lead, text, max_words):
     return script_writer._call(
         f"Write a YouTube SHORT (vertical, about 45 seconds) in simple spoken {config.LANGUAGE_NAME} (Devanagari) about this "
@@ -119,7 +146,7 @@ def main():
     script = script_writer.polish_hindi(plan["script"])
     mp3 = os.path.join(WORK, "short.mp3")
     for _ in range(3):
-        tts.speak(script, mp3)
+        _speak(script, mp3)
         dur = video._duration(mp3)
         print(f"[short] voice {dur:.1f} s")
         if dur <= 57:
@@ -195,6 +222,12 @@ def main():
         print(f"[short] music skipped: {e}")
         subprocess.check_call(["cp", raw, final])
     title = (plan.get("title") or lead.get("title", "")).strip()
+    if UR:
+        try:
+            title = script_writer._call("Write a short catchy English YouTube title (under 60 characters) for this story: "
+                                        + lead.get("title", "") + '. Return ONLY JSON: {"title": "..."}', 0.4).get("title", title).strip() or title
+        except Exception as e:
+            print(f"[short] english title skipped: {e}")
     # the whole title as the thumbnail, and on screen for the first 1.2 s (YouTube often picks the opening frame)
     try:
         card = os.path.join(OUT, "thumbnail.png")
