@@ -579,3 +579,97 @@ def make_thumbnail(title, out_png, photo_path=None, subtitle="आज की प�
     d.rounded_rectangle([44, y + 8, 44 + 260, y + 16], radius=4, fill=(255, 205, 40))
     d.text((44, y + 30), subtitle, font=_font(46, latin=subtitle.isascii()), fill=(255, 226, 120), stroke_width=4, stroke_fill=(8, 28, 100))
     img.save(out_png)
+
+
+def make_thumbnail_v2(title, out_png, photo_path, subtitle="", style="split", kicker="GOOD NEWS", reverse=False):
+    """New thumbnail designs. style="split": photo on the right inside a white frame, bold headline on a navy-to-blue panel at left,
+    gold highlight bar. style="banner": photo full-bleed, big headline on a gold banner across the bottom."""
+    from PIL import ImageEnhance
+    src = Image.open(photo_path).convert("RGB")
+    src = ImageEnhance.Color(ImageEnhance.Contrast(src).enhance(1.08)).enhance(1.15)
+
+    def cover(im, w, h):
+        sc = max(w / im.width, h / im.height)
+        im = im.resize((int(im.width * sc) + 1, int(im.height * sc) + 1), Image.LANCZOS)
+        l, t = (im.width - w) // 2, (im.height - h) // 2
+        return im.crop((l, t, l + w, t + h))
+
+    lat = title.isascii()
+    if style == "banner":
+        img = cover(src, W, H)
+        d = ImageDraw.Draw(img)
+        bh = 300
+        band, edge = ((255, 205, 40), (8, 28, 100)) if not reverse else ((12, 36, 110), (255, 205, 40))
+        d.rectangle([0, H - bh, W, H], fill=band)
+        d.rectangle([0, H - bh - 12, W, H - bh], fill=edge)
+        font = _font(104, latin=lat)
+        lines = _wrap(d, title, font, W - 120)
+        for size in (96, 88, 80, 70):
+            if len(lines) <= 2:
+                break
+            font = _font(size, latin=lat)
+            lines = _wrap(d, title, font, W - 120)
+        lines = lines[:2]
+        lh = int(font.size * 1.25)
+        y = H - bh + (bh - lh * len(lines)) // 2 - 6
+        for ln in lines:
+            w = sum(d.textlength(x, font=font) for x in ln.split(" ")) + d.textlength(" ", font=font) * (len(ln.split(" ")) - 1)
+            if reverse:
+                _draw_mixed(d, ((W - w) / 2, y), ln, font.size, fill=(255, 215, 40), stroke_width=3, stroke_fill=(4, 14, 55))
+            else:
+                _draw_mixed(d, ((W - w) / 2, y), ln, font.size, fill=(8, 28, 100))
+            y += lh
+        badge = _font(40, latin=True)
+        label = "UPLIFT TODAY"
+        bw = int(d.textlength(label, font=badge)) + 120
+        d.rounded_rectangle([40, 36, 40 + bw, 108], radius=16, fill=(255, 205, 40))
+        _sun(d, 40 + 44, 72, 17)
+        d.text((40 + 86, 46), label, font=badge, fill=(20, 40, 110))
+        img.save(out_png)
+        return
+    # split design
+    img = Image.new("RGB", (W, H))
+    px = ImageDraw.Draw(img)
+    for x in range(W):
+        t = x / (W - 1)
+        c = (int(10 + 20 * t), int(30 + 70 * t), int(100 + 110 * t))
+        px.line([(x, 0), (x, H)], fill=c)
+    pw, ph = 640, 600
+    ph_img = cover(src, pw, ph)
+    mask = Image.new("L", (pw, ph), 0)
+    ImageDraw.Draw(mask).rounded_rectangle([0, 0, pw, ph], radius=36, fill=255)
+    frame = Image.new("RGBA", (pw + 24, ph + 24), (0, 0, 0, 0))
+    ImageDraw.Draw(frame).rounded_rectangle([0, 0, pw + 24, ph + 24], radius=44, fill=(255, 255, 255, 255))
+    frame = frame.rotate(2.5, expand=True, resample=Image.BICUBIC)
+    card = Image.new("RGBA", (pw, ph))
+    card.paste(ph_img, (0, 0), mask)
+    card = card.rotate(2.5, expand=True, resample=Image.BICUBIC)
+    fx, fy = W - frame.width - 20, (H - frame.height) // 2 + 20
+    img.paste(frame, (fx, fy), frame)
+    img.paste(card, (fx + (frame.width - card.width) // 2, fy + (frame.height - card.height) // 2), card)
+    d = ImageDraw.Draw(img)
+    badge = _font(40, latin=True)
+    label = "UPLIFT TODAY"
+    bw = int(d.textlength(label, font=badge)) + 120
+    d.rounded_rectangle([40, 36, 40 + bw, 108], radius=16, fill=(255, 205, 40))
+    _sun(d, 40 + 44, 72, 17)
+    d.text((40 + 86, 46), label, font=badge, fill=(20, 40, 110))
+    text_w = 575
+    font = _font(110, latin=lat)
+    lines = _wrap(d, title, font, text_w)
+    for size in (100, 92, 84, 76, 68):
+        if len(lines) <= 3:
+            break
+        font = _font(size, latin=lat)
+        lines = _wrap(d, title, font, text_w)
+    lines = lines[:4]
+    lh = int(font.size * 1.25)
+    y = 160
+    for i, ln in enumerate(lines):
+        col = (255, 215, 60) if i == len(lines) - 1 else (255, 255, 255)
+        _draw_mixed(d, (44, y), ln, font.size, fill=col, stroke_width=6, stroke_fill=(5, 20, 70))
+        y += lh
+    d.rounded_rectangle([44, y + 10, 44 + 300, y + 20], radius=5, fill=(255, 205, 40))
+    if subtitle:
+        d.text((44, y + 40), subtitle, font=_font(44, latin=subtitle.isascii()), fill=(200, 230, 255), stroke_width=3, stroke_fill=(5, 20, 70))
+    img.save(out_png)
