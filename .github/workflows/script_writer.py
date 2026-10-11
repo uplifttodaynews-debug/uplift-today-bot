@@ -6,6 +6,7 @@ lead and throws away anything that adds facts that are not in the source.
 """
 import json
 import os
+import re
 import requests
 import config
 
