@@ -251,4 +251,17 @@ def polish_hindi(text):
     """Fixed spelling/wording preferences for spoken Hindi (so the voice says them the way we want)."""
     if not isinstance(text, str):
         return text
-    return text.replace("खबर", "ख़बर").replace("सकारात्मक", "पॉज़िटिव")
+    text = text.replace("खबर", "ख़बर").replace("सकारात्मक", "पॉज़िटिव")
+    if re.search(r"\d", text) and os.environ.get("GEMINI_API_KEY"):
+        # the voice reads digits one by one ("1 8 0 0 0"), so spell every number out the way it is spoken
+        try:
+            r = _call("Rewrite this Hindi text EXACTLY the same, but write every number (also ones with commas, decimals or %) as Hindi "
+                      "words the way it is spoken: 18,000 -> अठारह हज़ार, 1,500 -> पंद्रह सौ, 5 -> पाँच, 2015 -> दो हज़ार पंद्रह, "
+                      "12% -> बारह प्रतिशत. Keep every other word unchanged; keep AI in English letters. "
+                      'Return ONLY JSON: {"text": "..."}\n\n' + text, 0.0)
+            new = (r.get("text") or "").strip()
+            if new and not re.search(r"\d", new):
+                text = new
+        except Exception as e:
+            print(f"[script] number spelling skipped: {e}")
+    return text

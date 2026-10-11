@@ -75,7 +75,7 @@ def main():
     os.makedirs(WORK, exist_ok=True)
     os.makedirs(OUT, exist_ok=True)
     with open(os.path.join(HERE, "..", "..", "approval", "chosen.json"), encoding="utf-8") as f:
-        lead = json.load(f)["leads"][0]
+        lead = json.load(f)["leads"][max(int(os.environ.get("SHORT_STORY", "1")) - 1, 0)]
     full = (news.enrich(lead) or lead).get("summary", "")
     plan = _plan(lead, full, 105)
     script = script_writer.polish_hindi(plan["script"])
@@ -162,6 +162,9 @@ def main():
             "#Shorts #GoodNews #PositiveNews #UpliftToday #अच्छीखबर")
     with open(os.path.join(OUT, "description.txt"), "w", encoding="utf-8") as f:
         f.write(title + " #Shorts\n\n" + desc)
+    n_ = os.environ.get("SHORT_STORY", "1")
+    subprocess.check_call(["cp", final, os.path.join(OUT, f"short_{n_}.mp4")])
+    subprocess.check_call(["cp", os.path.join(OUT, "description.txt"), os.path.join(OUT, f"description_{n_}.txt")])
     print(f"[short] ready: {dur:.0f} s - nothing uploaded")
 
 
