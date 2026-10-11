@@ -4,48 +4,44 @@
 [main] 3 candidate stories
 [writer] 3 leads after the family-safe filter
 [main] AI wrote 3 stories; fact-checking them...
-[verify] story 0 flagged: The narration adds an unsupported claim that the plastic waste causes heavy damage to the environment ('यह कचरा हमारे पर्यावरण को बहुत भारी नुकसान पहुंचाता है'), which is not mentioned in the lead.
-[verify] story 1 flagged: The narration asserts as a cause that the cow died because of plastic (the lead only mentions dying with plastic in its stomach) and adds the unsupported claim that this technology is currently making waste management much easier in cities (the lead only poses this as an open question).
-[main] 2 stories flagged - asking the writer to fix them...
-[main] approved order: ['अपनों के साथ खाना सेहतमंद', 'समुद्र के कचरे से बनी बेंच', 'कचरा साफ़ करने वाला सोलर ट्रक']
-[writer] title step failed: Gemini error 503: {
-  "error": {
-    "code": 503,
-    "message": "The service is currently unavailable.",
-    "status": "UNAVAILABLE"
-  }
-}
-
-[main] title (about the lead story): समुद्र के कचरे से बच्चों के लिए बनी बेंच और नई उम्मीदें
+[main] approved order: ['अपनों के साथ भोजन सेहतमंद', 'समुद्री कचरे से बनी स्कूल बेंच', 'हैदराबाद का सोलर कचरा ट्रक']
+[main] title (about the lead story): अपनों के साथ खाना खाने से सेहत रहती है बेहतर
 [main] 3 stories passed. Sources: The Better India : Latest Posts, The Optimist Daily: Making Solutions the News
 [main] English captions ready
 [main] 249 earlier pictures/clips will not be reused
 [main] greeting is 4.2 s long
 [avatar] talking clip ready (1_mustard_blazer_bun.jpg)
-[main] story0: 4 AI illustration(s) added (no good stock footage)
-[main] story1: 4 AI illustration(s) added (no good stock footage)
-[stock] 'Solar truck that cleans waste': best scores [3.0, 2.0, 2.0] (need 8)
-[stock] 'Solar truck that cleans waste': 18 candidates, 0 matched
-[stock] second try with broader searches: ['recycling truck', 'Hyderabad India', 'plastic waste', 'recycling facility']
-[stock] 'Solar truck that cleans waste': best scores [3.0, 3.0, 2.0] (need 6)
-[stock] 'Solar truck that cleans waste': 18 candidates, 0 matched
+[thumb] fal error 403: {"detail":"User is locked. Reason: TOP_UP."}
+[thumb] fal error 403: {"detail":"User is locked. Reason: TOP_UP."}
+[thumb] fal error 403: {"detail":"User is locked. Reason: TOP_UP."}
+[main] story0: 1 AI illustration(s) added (no good stock footage)
+[thumb] fal error 403: {"detail":"User is locked. Reason: TOP_UP."}
+[thumb] fal error 403: {"detail":"User is locked. Reason: TOP_UP."}
+[thumb] fal error 403: {"detail":"User is locked. Reason: TOP_UP."}
+[thumb] fal error 403: {"detail":"User is locked. Reason: TOP_UP."}
+[stock] 'Hyderabad's solar garbage truc': best scores [5.0, 5.0, 4.0] (need 8)
+[stock] 'Hyderabad's solar garbage truc': 18 candidates, 0 matched
+[stock] second try with broader searches: ['solar garbage truck', 'Hyderabad India', 'plastic waste recycling', 'city street India']
+[stock] 'Hyderabad's solar garbage truc': best scores [5.0, 5.0, 5.0] (need 6)
+[stock] 'Hyderabad's solar garbage truc': 18 candidates, 0 matched
 [main] story2: no good video clip, using photos
-[stock] 'Solar truck that cleans waste': best scores [6.0, 5.0, 4.0] (need 8)
-[stock] 'Solar truck that cleans waste': 24 candidates, 0 matched
-[stock] second try with broader searches: ['waste recycling truck', 'Hyderabad India', 'plastic waste landfill', 'waste sorting facility']
-[stock] 'Solar truck that cleans waste': best scores [7.0, 7.0, 6.0] (need 6)
-[stock] 'Solar truck that cleans waste': 24 candidates, 4 matched
-[main] 7 stock photos used
-[main] video ready, 148 seconds
+[stock] 'Hyderabad's solar garbage truc': best scores [6.0, 4.0, 4.0] (need 8)
+[stock] 'Hyderabad's solar garbage truc': 24 candidates, 0 matched
+[stock] second try with broader searches: ['solar garbage truck', 'Hyderabad India', 'plastic waste recycling', 'urban landfill']
+[stock] 'Hyderabad's solar garbage truc': best scores [7.0, 6.0, 6.0] (need 6)
+[stock] 'Hyderabad's solar garbage truc': 24 candidates, 3 matched
+[main] 6 stock photos used
+[main] video ready, 200 seconds
 [music] mixed in piano_bright.mp3
-[thumb] image prompt: A heartwarming photograph of a cheerful Indian family happily sharing a meal at a sunlit dining table, positioned on the right half of the frame. Warm golden natural light, authentic smiles, vivid natural colors, shallow depth of field. The left third of the image is softly blurred and uncluttered negative space. Modest, uplifting, family-friendly atmosphere.
-[thumb] image prompt: Photographic, candid style. On the right half, a cheerful Indian multi-generational family warmly shares a wholesome meal, happily passing a basket of bread across a cozy wooden table. Left third is softly blurred, clean, and uncluttered. Beautiful warm natural sunlight, rich natural colors, shallow depth of field, radiating an uplifting, healthy, and heartwarming family bond.
-[thumb] option 1: साथ खाने से बेहतर होगी सेहत
-[thumb] image prompt: A cheerful group of Indian friends laughing heartily while sharing food outdoors under soft fairy lights, placed on the right half. Warm natural illumination, vivid natural colors, shallow depth of field, heartwarming and uplifting emotion. The left third is soft, uncluttered with smooth bokeh for copy space. Modest, authentic, beautiful photographic capture of connection.
-[thumb] option 2: अपनों का साथ, तनाव से राहत
-[thumb] image prompt: A cheerful Indian father and his young daughter playfully sharing breakfast, seated on the right half of the frame in a bright, sunlit modern kitchen. Warm natural morning sunlight, vivid natural colors, candid joyful moment. Shallow depth of field, leaving the left third soft, clean, and softly blurred for copy space. High-detail photographic style, uplifting family atmosphere.
-[thumb] option 3: परिवार संग खाएं, स्वस्थ रहें
-[thumb] image prompt: Photographic style with warm morning light. On the right side, an Indian family warmly shares healthy food around a wooden table, smiling peacefully beside a soft, subtle glowing health vitals line floating gently. Vivid natural colors, shallow depth of field. The left third is clean, soft, and completely uncluttered with gentle warm bokeh. Emotional, uplifting, and family-friendly atmosphere.
-[thumb] option 4: अपनों का साथ घटाएगा ब्लड शुगर
+[thumb] image prompt: Photographic, warm natural light shot. On the right, a happy multi-generational Indian family—a smiling grandmother, mother, and young child—share a wholesome home-cooked meal at a warm wooden dining table, laughing together. The left third features a soft, clean, out-of-focus background of a cozy Indian living room bathed in gentle morning sunlight. Uplifting, vivid natural colors, shallow depth of field.
+[thumb] fal error 403: {"detail":"User is locked. Reason: TOP_UP."}
+[thumb] image prompt: Photographic shot with warm natural sunlight. On the right side, a happy multi-generational Indian family—grandparents, mother, and child—laughing together around a wooden dining table, sharing warm homemade dishes. The left third is soft, uncluttered, and gently blurred with airy ambient light. Authentic Indian home setting, modest everyday clothing, uplifting emotional mood, vivid natural colors, shallow depth of field.
+[thumb] fal error 403: {"detail":"User is locked. Reason: TOP_UP."}
+[thumb] image prompt: Photographic, warm natural sunlight. On the right half, an elderly Indian grandfather warmly shares a wholesome home-cooked meal with his cheerful young grandchild in a cozy, sunlit kitchen. Traditional steel thali filled with simple food rests between them. The left third is softly blurred and uncluttered negative space. Uplifting, emotional atmosphere, vibrant yet natural colours, shallow depth of field.
+[thumb] fal error 403: {"detail":"User is locked. Reason: TOP_UP."}
+[thumb] image prompt: A heartwarming photograph of a smiling Indian mother and her young child enjoying a wholesome breakfast together, laughing affectionately, positioned on the right side of the frame. Warm morning sunlight illuminates a cozy Indian dining room with fresh food on the table. The left third is softly blurred, bright, and uncluttered, with a shallow depth of field, natural vivid colors, and an uplifting atmosphere.
+[thumb] fal error 403: {"detail":"User is locked. Reason: TOP_UP."}
+[thumb] image prompt: Photographic shot of a joyful group of Indian friends enjoying a sunny outdoor picnic in a lush park, happily sharing bread, positioned on the right half. Modest casual attire, uplifting and warm atmosphere. The left third consists of soft, uncluttered blurred park greenery for text space. Golden natural sunlight, vivid natural colors, shallow depth of field, heartwarming and authentic.
+[thumb] fal error 403: {"detail":"User is locked. Reason: TOP_UP."}
 [main] PREVIEW saved in previews/ - nothing was uploaded to YouTube
 [main] HOLD: the finished video is kept for review - NOT uploaded to YouTube
