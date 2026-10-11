@@ -1,5 +1,6 @@
-[short] voice 21.6 s
-[short] script: क्या आप जानते हैं कि मुंबई के एक तट से एक ही दिन में अठारह हज़ार किलो प्लास्टिक कचरा हटाया गया? पंद्रह सौ से ज़्यादा वॉलंटियर्स ने मिलकर इस पूरे समुद्री कचरे को साफ़ किया। इसके बाद इस कचरे को रीसाइक्लिंग फ़ैसिलिटी में धोकर और प्रोसेस करके नया रूप दिया गया। और फिर इसी प्लास्टिक से ज़रूरतमंद बच्चों के लिए स्कूल बेंच तैयार किए गए। पूरी ख़बर हमारे चैनल पर देखें।
-[short] english subtitles: Did you know that 18,000 kg of plastic waste was removed from a Mumbai beach in just one day? Over 1,500 volunteers came together to clear this marine debris. The waste was then washed and processed at a recycling facility, and turned into school benches for children in need. Watch the full story on our channel.
+[news] fuller text fetched for: Social physiology: the hidden health cost of eatin (3800 characters)
+[short] voice 28.1 s
+[short] script: क्या आप जानते हैं कि अकेले खाने के मुकाबले किसी करीबी के साथ खाने से ब्लड शुगर बेहतर कंट्रोल रहता है? साइंस एडवांसेज की नई स्टडी के मुताबिक, जब लोग किसी अपने के साथ भोजन करते हैं, तो ब्लड शुगर कम बढ़ता है और तेजी से सामान्य स्तर पर लौट आता है। वैज्ञानिकों का कहना है कि हमारा शरीर अपनों के करीब होने पर शारीरिक रूप से अधिक कुशलता से काम करता है। इतना ही नहीं, किसी साथी की मौजूदगी से तनाव भी काफी कम हो जाता है। पूरी ख़बर हमारे चैनल पर देखें।
+[short] english subtitles: Did you know that eating with a loved one controls blood sugar better than eating alone? According to a new study in Science Advances, when people eat with someone close, blood sugar spikes less and returns to normal faster. Scientists say our bodies function more efficiently when we are around loved ones. Not only that, having a companion also significantly reduces stress. Watch the full story on our channel.
 [music] mixed in piano_bright.mp3
-[short] ready: 22 s - nothing uploaded
+[short] ready: 28 s - nothing uploaded
