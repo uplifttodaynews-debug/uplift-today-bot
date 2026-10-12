@@ -1,43 +1,4 @@
-[news] fuller text fetched for: Small daily habit changes could add years to your  (3498 characters)
-[news] fuller text fetched for: A Kargil teacher turns old war bunkers into classr (3800 characters)
-[news] fuller text fetched for: Berlin mapped 900,000 street trees. Now 12,000 peo (3800 characters)
-[news] fuller text fetched for: The Hospital That Silenced the Machines (3800 characters)
-[news] fuller text fetched for: A Place to Sleep for Denver’s Homeless College Stu (3800 characters)
-[main] using the 5 stories YOU approved, in your order
-[main] 5 candidate stories
-[writer] 4 leads after the family-safe filter
-[main] AI wrote 4 stories; fact-checking them...
-[verify] story 2 flagged: The narration incorrectly states that 94% (चौरानवे फ़ीसदी) of students stay in school or graduate, whereas the source states it is about 84%.
-[main] 1 stories flagged - asking the writer to fix them...
-[main] approved order: ['छोटी आदतें बढ़ाएंगी आपकी उम्र', 'कारगिल के बंकर बने आधुनिक क्लासरूम', 'बर्लिन में लोगों ने बचाए पेड़', 'छात्रों को मिला नया सुरक्षित आशियाना']
-[main] title (about the lead story): छोटी-छोटी आदतें देंगी लंबी और स्वस्थ ज़िंदगी
-[main] 4 stories passed. Sources: FindMyCollege, Powers Health / University of Sydney study, Reasons to be Cheerful, The Optimist Daily: Making Solutions the News
-[main] English captions ready
-[main] 251 earlier pictures/clips will not be reused
-[main] story0: 4 AI illustration(s) added (no good stock footage)
-[main] story1: 4 AI illustration(s) added (no good stock footage)
-[stock] 'People in Berlin saved trees': best scores [6.0, 5.0, 5.0] (need 8)
-[stock] 'People in Berlin saved trees': 18 candidates, 0 matched
-[stock] second try with broader searches: ['street tree', 'Berlin Germany', 'tree lined street', 'watering can']
-[stock] 'People in Berlin saved trees': best scores [6.0, 5.0, 5.0] (need 6)
-[stock] 'People in Berlin saved trees': 18 candidates, 1 matched
-[stock] 'People in Berlin saved trees': best scores [8.0, 7.0, 7.0] (need 8)
-[stock] 'People in Berlin saved trees': 24 candidates, 1 matched
-[main] story2: 1 video clip(s)
-[stock] 'Students get a new safe haven': best scores [8.0, 7.0, 6.0] (need 8)
-[stock] 'Students get a new safe haven': 24 candidates, 1 matched
-[main] story3: 3 AI illustration(s) added (no good stock footage)
-[main] 6 stock photos used
-[main] hook ready (10.2 s): रोज़ाना पचास मिनट की हल्की सैर जैसी छोटी आदतें आपकी ज़िंदगी में कई सेहतमंद साल जोड़ सकती हैं। लंबी उम्र का यह आसान राज़, जानिए पूरी ख़बर।
-[main] video ready, 240 seconds
-[music] mixed in piano_glow.mp3
-[thumb] image prompt: Photographic shot. On the right half, an energetic elderly Indian grandfather, grandmother, and their cheerful young grandson briskly walking together along a sunlit park pathway bordered by flowering trees. Warm golden morning light, vivid natural colors, uplifting healthy atmosphere. Left third softly blurred and uncluttered for text space, shallow depth of field, authentic modest Indian clothing.
-[thumb] option 1: छोटी आदतें, लंबी ज़िंदगी
-[thumb] image prompt: Photographic, warm natural light. On the right, close-up of hands placing fresh leafy green vegetables into a wholesome bowl on a rustic table, while an Indian grandmother, mother, and child smile together in the soft background kitchen. Left third is softly blurred and uncluttered. Shallow depth of field, vivid natural colours, uplifting, healthy, modest multi-generational scene.
-[thumb] option 2: छोटे बदलाव, लंबी खुशहाल उम्र
-[thumb] image prompt: Photographic shot of a bright, airy Indian bedroom with soft morning light streaming through sheer curtains. On the right, an elderly Indian grandfather rests peacefully on a neat bed, while a caring grandmother and their young grandchild smile softly beside him. The left third is clean, soft, and uncluttered with gentle morning glow, shallow depth of field, vivid natural colors, uplifting and serene.
-[thumb] option 3: स्वस्थ और लंबी ज़िंदगी का मंत्र
-[thumb] image prompt: Photographic shot. On the right side, an energetic elderly Indian grandmother stretches her arms happily during sunrise atop a scenic green hill, accompanied by her smiling daughter and cheerful young grandchild. They wear modest everyday Indian clothes, bathed in warm golden light. The left third is soft, uncluttered misty morning sky with shallow depth of field, emotional, uplifting, and vibrant.
-[thumb] option 4: हल्की आदतें देंगी लंबा जीवन
-[main] PREVIEW saved in previews/ - nothing was uploaded to YouTube
-[main] HOLD: the finished video is kept for review - NOT uploaded to YouTube
+[thumb] picture 1 done
+[thumb] picture 2 done
+[thumb] picture 3 done
+[thumb] picture 4 done
