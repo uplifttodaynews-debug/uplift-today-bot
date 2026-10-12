@@ -1,47 +1,41 @@
 [news] fuller text fetched for: Small daily habit changes could add years to your  (3498 characters)
 [news] fuller text fetched for: A Kargil teacher turns old war bunkers into classr (3800 characters)
 [news] fuller text fetched for: Berlin mapped 900,000 street trees. Now 12,000 peo (3800 characters)
-[news] fuller text fetched for: The Hospital That Silenced the Machines (3800 characters)
-[news] fuller text fetched for: A Place to Sleep for Denver’s Homeless College Stu (3800 characters)
-[main] using the 5 stories YOU approved, in your order
-[main] 5 candidate stories
-[writer] 4 leads after the family-safe filter
-[main] AI wrote 4 stories; fact-checking them...
-[main] approved order: ['छोटी आदतें बढ़ाएँगी आपकी उम्र', 'बंकरों को बनाया अनोखा क्लासरूम', 'बर्लिन में मिलकर बचाए लाखों पेड़', 'बेघर छात्रों को मिला नया आशियाना']
-[main] title (about the lead story): रोज़ाना की छोटी आदतें बढ़ा सकती हैं आपकी उम्र
-[main] 4 stories passed. Sources: FindMyCollege, Powers Health / University of Sydney study, Reasons to be Cheerful, The Optimist Daily: Making Solutions the News
+[main] using the 3 stories YOU approved, in your order
+[main] 3 candidate stories
+[writer] 3 leads after the family-safe filter
+[main] AI wrote 3 stories; fact-checking them...
+[verify] story 2 flagged: The narration claims that simply adding half a serving of vegetables can add a year to life, whereas the lead specifies that adding about one year requires making all three small changes together (diet, sleep, and exercise).
+[main] 1 stories flagged - asking the writer to fix them...
+[main] approved order: ['छोटी आदतें बढ़ा सकती हैं उम्र', 'कारगिल में बंकर बने अनोखे क्लासरूम', 'सड़कों के पेड़ों को मिला जनता का सहारा']
+[main] title (about the lead story): रोज़ की छोटी आदतें बढ़ा सकती हैं आपकी उम्र
+[main] 3 stories passed. Sources: FindMyCollege, Powers Health / University of Sydney study, The Optimist Daily: Making Solutions the News
 [main] English captions ready
 [main] 251 earlier pictures/clips will not be reused
-[main] story0: 4 AI illustration(s) added (no good stock footage)
-[main] story1: 4 AI illustration(s) added (no good stock footage)
-[stock] 'Saved hundreds of thousands of': best scores [4.0, 3.0, 3.0] (need 8)
-[stock] 'Saved hundreds of thousands of': 18 candidates, 0 matched
-[stock] second try with broader searches: ['Berlin Germany', 'urban tree', 'young sapling', 'tree lined street']
-[stock] 'Saved hundreds of thousands of': best scores [5.0, 3.0, 3.0] (need 6)
-[stock] 'Saved hundreds of thousands of': 18 candidates, 0 matched
-[main] story2: no good video clip, using photos
-[stock] 'Saved hundreds of thousands of': best scores [7.0, 7.0, 4.0] (need 8)
-[stock] 'Saved hundreds of thousands of': 24 candidates, 0 matched
-[stock] second try with broader searches: ['Street tree', 'Berlin Germany', 'Tree watering bag', 'Green city street']
-[stock] 'Saved hundreds of thousands of': best scores [8.0, 7.0, 6.0] (need 6)
-[stock] 'Saved hundreds of thousands of': 24 candidates, 3 matched
-[stock] 'Homeless students get a new ho': best scores [7.0, 6.0, 5.0] (need 8)
-[stock] 'Homeless students get a new ho': 24 candidates, 0 matched
-[stock] second try with broader searches: ['student housing', 'Denver Colorado', 'historic brick building', 'empty dorm room']
-[stock] 'Homeless students get a new ho': best scores [7.0, 5.0, 5.0] (need 6)
-[stock] 'Homeless students get a new ho': 24 candidates, 1 matched
-[main] story3: 3 AI illustration(s) added (no good stock footage)
-[main] 7 stock photos used
-[main] hook ready (8.7 s): खान-पान में ज़रा सा सुधार और कुछ मिनट ज़्यादा नींद जैसे छोटे बदलावों से आप बीमारियों के बिना चार साल ज़्यादा जी सकते हैं। जानिए पूरी ख़बर।
-[main] video ready, 250 seconds
+[stock] 'Small habits can increase life': best scores [8.0, 8.0, 7.0] (need 8)
+[stock] 'Small habits can increase life': 18 candidates, 2 matched
+[stock] 'Small habits can increase life': best scores [8.0, 8.0, 7.0] (need 8)
+[stock] 'Small habits can increase life': 24 candidates, 2 matched
+[main] story0: 2 video clip(s)
+[stock] 'Bunkers become unique classroo': best scores [6.0, 5.0, 5.0] (need 8)
+[stock] 'Bunkers become unique classroo': 24 candidates, 0 matched
+[stock] second try with broader searches: ['concrete bunker', 'Kargil Ladakh', 'Ladakh mountains', 'empty classroom']
+[stock] 'Bunkers become unique classroo': best scores [7.0, 7.0, 7.0] (need 6)
+[stock] 'Bunkers become unique classroo': 24 candidates, 4 matched
+[stock] 'Roadside trees get support fro': best scores [6.0, 6.0, 5.0] (need 8)
+[stock] 'Roadside trees get support fro': 18 candidates, 0 matched
+[stock] second try with broader searches: ['street tree', 'Berlin Germany', 'roadside trees', 'city street trees']
+[stock] 'Roadside trees get support fro': best scores [7.0, 6.0, 5.0] (need 6)
+[stock] 'Roadside trees get support fro': 18 candidates, 2 matched
+[stock] 'Roadside trees get support fro': best scores [6.0, 6.0, 6.0] (need 8)
+[stock] 'Roadside trees get support fro': 24 candidates, 0 matched
+[stock] second try with broader searches: ['roadside tree', 'Berlin Germany', 'tree lined street', 'urban greenery']
+[stock] 'Roadside trees get support fro': best scores [7.0, 7.0, 6.0] (need 6)
+[stock] 'Roadside trees get support fro': 24 candidates, 2 matched
+[main] story2: 2 video clip(s)
+[main] 15 stock photos used
+[main] hook ready (9.3 s): थोड़ी ज़्यादा नींद, थोड़ा चलना-फिरना और बेहतर खाना जैसे छोटे बदलाव ज़िंदगी में लगभग एक साल जोड़ सकते हैं। लंबी उम्र की उम्मीद, जानिए पूरी ख़बर।
+[main] video ready, 189 seconds
 [music] mixed in piano_glow.mp3
-[thumb] image prompt: Photographic shot of an energetic elderly Indian grandfather, grandmother, and their cheerful young grandchild walking together on a sunlit park pathway, positioned on the right half. Dressed in modest everyday Indian clothing, smiling and vibrant. Warm golden morning light, lush greenery, vivid natural colors. The left third is softly blurred and uncluttered with shallow depth of field. Uplifting family atmosphere, no text.
-[thumb] option 1: छोटी आदतें, लंबी उम्र का राज
-[thumb] image prompt: A photographic shot with warm morning light. On the right, an elderly Indian grandfather, grandmother, and their young grandchild happily prepare a meal around a wooden kitchen table, focusing on a vibrant bowl of fresh green vegetables and grains. The left third is soft, uncluttered, and blurred with gentle golden sunlight. Modest Indian attire, joyful atmosphere, vivid natural colors, shallow depth of field.
-[thumb] option 2: रोज़ की आदतें बदलेंगी ज़िंदगी
-[thumb] image prompt: Photographic shot of a cozy Indian bedroom bathed in soft morning sunlight. On the right, a young child sleeps peacefully under a blanket, while an elderly Indian grandfather, grandmother, and mother smile warmly nearby in modest home wear. Left third is soft, uncluttered, with gentle golden light from a window. Vivid natural colors, shallow depth of field, emotional, uplifting family atmosphere.
-[thumb] option 3: आसान बदलाव से पाएं लंबी उम्र
-[thumb] image prompt: Photographic shot in warm natural light. On the right, a friendly Indian doctor in a white coat warmly holds a blank wellness checklist, smiling with an elderly Indian grandfather and his cheerful young grandson in a bright clinic. Left third is soft, uncluttered, and smoothly blurred for text space. Vivid natural tones, shallow depth of field, uplifting, healthy multi-generational family atmosphere.
-[thumb] option 4: छोटे सुधार, बीमारियों से मुक्ति
 [main] PREVIEW saved in previews/ - nothing was uploaded to YouTube
 [main] HOLD: the finished video is kept for review - NOT uploaded to YouTube
