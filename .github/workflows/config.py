@@ -87,6 +87,7 @@ FIXED_SLIDE_QUERIES = {          # for the opening, thought and closing slides
 }
 
 # ---- News-style opening (about 5 seconds, made once by make_intro.py) ----
+INTRO_START = 4.2                # use only the last ~1.8 s of the 6 s opening (the logo reveal)
 INTRO_CLIP = "intro/intro.mp4"   # set to "" to switch the opening off
 
 # ---- Talking AI presenter (Kavya) via fal.ai. Needs the FAL_KEY secret. ----

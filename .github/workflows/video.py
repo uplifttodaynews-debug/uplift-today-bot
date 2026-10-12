@@ -155,7 +155,7 @@ def intro_path():
 
 def intro_length():
     p = intro_path()
-    return _duration(p) if p else 0.0
+    return max(_duration(p) - getattr(config, "INTRO_START", 0.0), 0.0) if p else 0.0
 
 
 def _talking_clip(seg, clip):
@@ -431,6 +431,12 @@ def build(segments, out_mp4, workdir):
     styles = ["circleopen", "slideleft", "radial", "diagtl", "zoomin", "smoothleft"]
     prev_news, n_tr = False, 0
     opening = intro_path()
+    if opening and getattr(config, "INTRO_START", 0.0) > 0:      # only the last part of the opening (logo reveal) is used
+        cut = os.path.join(workdir, "opening_cut.mp4")
+        subprocess.check_call(["ffmpeg", "-y", "-loglevel", "error", "-ss", str(config.INTRO_START), "-i", opening,
+                               "-c:v", "libx264", "-preset", "fast", "-crf", "18", "-pix_fmt", "yuv420p", "-r", "25",
+                               "-c:a", "aac", "-b:a", "160k", "-ar", "44100", "-ac", "2", cut])
+        opening = cut
     if opening:
         clips.append(opening)
         gt += _duration(opening)
@@ -598,10 +604,6 @@ def make_thumbnail_v2(title, out_png, photo_path, subtitle="", style="split", ki
     if style == "banner":
         img = cover(src, W, H)
         d = ImageDraw.Draw(img)
-        bh = 300
-        band, edge = ((255, 205, 40), (8, 28, 100)) if not reverse else ((12, 36, 110), (255, 205, 40))
-        d.rectangle([0, H - bh, W, H], fill=band)
-        d.rectangle([0, H - bh - 12, W, H - bh], fill=edge)
         font = _font(104, latin=lat)
         lines = _wrap(d, title, font, W - 120)
         for size in (96, 88, 80, 70):
@@ -610,8 +612,18 @@ def make_thumbnail_v2(title, out_png, photo_path, subtitle="", style="split", ki
             font = _font(size, latin=lat)
             lines = _wrap(d, title, font, W - 120)
         lines = lines[:2]
-        lh = int(font.size * 1.25)
-        y = H - bh + (bh - lh * len(lines)) // 2 - 6
+        lh = int(font.size * 1.22)
+        bh = lh * len(lines) + 70                      # the band is only as tall as its text (short band)
+        band, edge = ((255, 205, 40), (8, 28, 100)) if not reverse else ((12, 36, 110), (255, 205, 40))
+        fade = Image.new("RGBA", (W, 160), (0, 0, 0, 0))   # soft shadow above the band
+        fd = ImageDraw.Draw(fade)
+        for yy in range(160):
+            fd.line([(0, yy), (W, yy)], fill=(5, 15, 60, int(120 * yy / 159)))
+        img.paste(fade, (0, H - bh - 160), fade)
+        d = ImageDraw.Draw(img)
+        d.rectangle([0, H - bh, W, H], fill=band)
+        d.rectangle([0, H - bh - 8, W, H - bh], fill=edge)
+        y = H - bh + 31
         for ln in lines:
             w = sum(d.textlength(x, font=font) for x in ln.split(" ")) + d.textlength(" ", font=font) * (len(ln.split(" ")) - 1)
             if reverse:
@@ -634,7 +646,7 @@ def make_thumbnail_v2(title, out_png, photo_path, subtitle="", style="split", ki
         t = x / (W - 1)
         c = (int(10 + 20 * t), int(30 + 70 * t), int(100 + 110 * t))
         px.line([(x, 0), (x, H)], fill=c)
-    pw, ph = 640, 600
+    pw, ph = 660, 620
     ph_img = cover(src, pw, ph)
     mask = Image.new("L", (pw, ph), 0)
     ImageDraw.Draw(mask).rounded_rectangle([0, 0, pw, ph], radius=36, fill=255)
@@ -654,14 +666,13 @@ def make_thumbnail_v2(title, out_png, photo_path, subtitle="", style="split", ki
     d.rounded_rectangle([40, 36, 40 + bw, 108], radius=16, fill=(255, 205, 40))
     _sun(d, 40 + 44, 72, 17)
     d.text((40 + 86, 46), label, font=badge, fill=(20, 40, 110))
-    text_w = 575
-    font = _font(110, latin=lat)
-    lines = _wrap(d, title, font, text_w)
-    for size in (100, 92, 84, 76, 68):
-        if len(lines) <= 3:
-            break
+    text_w = 500
+    for size in (110, 100, 92, 84, 76, 68, 60):
         font = _font(size, latin=lat)
         lines = _wrap(d, title, font, text_w)
+        widest = max(sum(d.textlength(x, font=font) for x in ln.split(" ")) + d.textlength(" ", font=font) * (len(ln.split(" ")) - 1) for ln in lines)
+        if len(lines) <= 3 and widest <= text_w:
+            break
     lines = lines[:4]
     lh = int(font.size * 1.25)
     y = 160
