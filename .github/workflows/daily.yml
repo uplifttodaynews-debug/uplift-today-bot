@@ -66,6 +66,8 @@ jobs:
           fa=$(grep -o 'forceai=[0-9,]*' ../../run-now.txt 2>/dev/null | head -1 | cut -d= -f2 || true)
           if [ -n "$fa" ]; then export FORCE_AI_VISUALS="$fa"; fi
           if grep -qiw "male" ../../run-now.txt 2>/dev/null; then export PRESENTER=male; fi
+          if grep -qiw "voice" ../../run-now.txt 2>/dev/null; then export ANCHOR_OFF=1; fi
+          if grep -qiw "hook" ../../run-now.txt 2>/dev/null; then export HOOK_FIRST=1; fi
           if grep -qi "options" ../../run-now.txt 2>/dev/null; then export THUMB_OPTIONS=1; fi
           if [ "$mode" = "hold" ]; then
             echo "HOLD mode: the video is prepared for review and NOT uploaded."

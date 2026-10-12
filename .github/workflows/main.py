@@ -271,6 +271,30 @@ def main():
     add("आज का विचार", data["thought"], "thought", True, english[-2], "Thought of the Day", [fq["thought"]], ("TODAY'S", "THOUGHT"))
     add("धन्यवाद! सब्सक्राइब करें", data["outro"], "outro", True, english[-1], "Thank you! Please subscribe", [fq["outro"]], ("THANK", "YOU"))
     print(f"[main] {len(credits)} stock photos used")
+    if os.environ.get("HOOK_FIRST") == "1" and stories:      # 10-15 s teaser of the lead story, placed before the greeting
+        try:
+            lead = stories[0]
+            r = script_writer._call(
+                "Write a Hindi (Devanagari) teaser of at most 28 words for a news video about this lead story. "
+                "It must create curiosity and hope, state the single most interesting fact, and end with a short phrase "
+                "like 'जानिए पूरी ख़बर'. Positive tone, no fear words. Spell every number in Hindi words, no digits. "
+                "Never mention couples or romance.\nHeadline: " + str(lead.get("headline")) + "\nStory: " + str(lead.get("narration")) +
+                '\nReturn ONLY JSON: {"text": "..."}', 0.5)
+            hook = script_writer.polish_hindi(r.get("text", ""))
+            if hook:
+                hmp3 = os.path.join(work, "hook.mp3")
+                tts.speak(hook, hmp3)
+                try:
+                    hen = script_writer.translate([hook])[0] if config.ENGLISH_CAPTIONS else ""
+                except Exception:
+                    hen = ""
+                lb = [b for b in (segments[1].get("backgrounds") or []) if b and not str(b).lower().endswith(".mp4")]
+                segments.insert(0, {"headline": "आज की मुख्य ख़बर", "audio": hmp3, "title_slide": False, "english": hen,
+                                    "headline_en": "Top story today" if config.ENGLISH_CAPTIONS else "",
+                                    "backgrounds": lb[-2:] or segments[1].get("backgrounds") or [], "tag": ("TOP", "STORY")})
+                print(f"[main] hook ready ({video._duration(hmp3):.1f} s): {hook}")
+        except Exception as e:
+            print(f"[main] hook skipped: {e}")
 
     mp4 = os.path.join(work, "bulletin.mp4")
     secs = video.build(segments, mp4, work)
