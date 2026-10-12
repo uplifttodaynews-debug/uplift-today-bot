@@ -5,37 +5,19 @@
 [main] 3 candidate stories
 [writer] 3 leads after the family-safe filter
 [main] AI wrote 3 stories; fact-checking them...
-[verify] story 2 flagged: The narration claims that simply adding half a serving of vegetables can add a year to life, whereas the lead specifies that adding about one year requires making all three small changes together (diet, sleep, and exercise).
+[verify] story 1 flagged: The lead states that benefits peaked at 50 minutes of exercise per day (not specifically walking), and that a one-year lifespan increase was linked to making all three small lifestyle changes together, not diet improvements alone.
 [main] 1 stories flagged - asking the writer to fix them...
-[main] approved order: ['छोटी आदतें बढ़ा सकती हैं उम्र', 'कारगिल में बंकर बने अनोखे क्लासरूम', 'सड़कों के पेड़ों को मिला जनता का सहारा']
-[main] title (about the lead story): रोज़ की छोटी आदतें बढ़ा सकती हैं आपकी उम्र
+[main] approved order: ['छोटी आदतें बढ़ाएंगी आपकी उम्र', 'कारगिल बंकर बने अनोखी क्लासरूम', 'बर्लिन में पेड़ों की अनोखी देखभाल']
+[main] title (about the lead story): छोटी आदतों से पाएं लंबी और सेहतमंद ज़िंदगी
 [main] 3 stories passed. Sources: FindMyCollege, Powers Health / University of Sydney study, The Optimist Daily: Making Solutions the News
 [main] English captions ready
 [main] 251 earlier pictures/clips will not be reused
-[stock] 'Small habits can increase life': best scores [8.0, 8.0, 7.0] (need 8)
-[stock] 'Small habits can increase life': 18 candidates, 2 matched
-[stock] 'Small habits can increase life': best scores [8.0, 8.0, 7.0] (need 8)
-[stock] 'Small habits can increase life': 24 candidates, 2 matched
-[main] story0: 2 video clip(s)
-[stock] 'Bunkers become unique classroo': best scores [6.0, 5.0, 5.0] (need 8)
-[stock] 'Bunkers become unique classroo': 24 candidates, 0 matched
-[stock] second try with broader searches: ['concrete bunker', 'Kargil Ladakh', 'Ladakh mountains', 'empty classroom']
-[stock] 'Bunkers become unique classroo': best scores [7.0, 7.0, 7.0] (need 6)
-[stock] 'Bunkers become unique classroo': 24 candidates, 4 matched
-[stock] 'Roadside trees get support fro': best scores [6.0, 6.0, 5.0] (need 8)
-[stock] 'Roadside trees get support fro': 18 candidates, 0 matched
-[stock] second try with broader searches: ['street tree', 'Berlin Germany', 'roadside trees', 'city street trees']
-[stock] 'Roadside trees get support fro': best scores [7.0, 6.0, 5.0] (need 6)
-[stock] 'Roadside trees get support fro': 18 candidates, 2 matched
-[stock] 'Roadside trees get support fro': best scores [6.0, 6.0, 6.0] (need 8)
-[stock] 'Roadside trees get support fro': 24 candidates, 0 matched
-[stock] second try with broader searches: ['roadside tree', 'Berlin Germany', 'tree lined street', 'urban greenery']
-[stock] 'Roadside trees get support fro': best scores [7.0, 7.0, 6.0] (need 6)
-[stock] 'Roadside trees get support fro': 24 candidates, 2 matched
-[main] story2: 2 video clip(s)
-[main] 15 stock photos used
-[main] hook ready (9.3 s): थोड़ी ज़्यादा नींद, थोड़ा चलना-फिरना और बेहतर खाना जैसे छोटे बदलाव ज़िंदगी में लगभग एक साल जोड़ सकते हैं। लंबी उम्र की उम्मीद, जानिए पूरी ख़बर।
-[main] video ready, 189 seconds
+[main] story0: 4 AI illustration(s) added (no good stock footage)
+[main] story1: 4 AI illustration(s) added (no good stock footage)
+[main] story2: 4 AI illustration(s) added (no good stock footage)
+[main] 3 stock photos used
+[main] hook ready (9.2 s): थोड़ा ज़्यादा सोना, चलना-फिरना और बेहतर खाना आपकी उम्र में करीब एक साल जोड़ सकते हैं। छोटे कदमों का यह बड़ा असर, जानिए पूरी ख़बर।
+[main] video ready, 198 seconds
 [music] mixed in piano_glow.mp3
 [main] PREVIEW saved in previews/ - nothing was uploaded to YouTube
 [main] HOLD: the finished video is kept for review - NOT uploaded to YouTube
