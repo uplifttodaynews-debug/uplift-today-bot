@@ -1,2 +1,1 @@
-short story=1 english urdu
-1791762812
+story=1 english
