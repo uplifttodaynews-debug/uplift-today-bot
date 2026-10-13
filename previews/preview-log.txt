@@ -5,17 +5,12 @@
 [main] 3 candidate stories
 [writer] 3 leads after the family-safe filter
 [main] AI wrote 3 stories; fact-checking them...
-[main] approved order: ['छोटी आदतें बढ़ा सकती हैं उम्र', 'कारगिल में बंकर बने अनोखी क्लासरूम', 'बर्लिन में पेड़ बचाने आगे आए लोग']
-[main] title (about the lead story): रोज़ की छोटी आदतें भी बढ़ा सकती हैं आपकी उम्र
+[verify] story 1 flagged: The narration claims that these small daily changes can stave off serious diseases for four years, but the source states that gaining up to four disease-free years required larger improvements (such as a 23-point boost in diet quality), whereas the small changes were linked to adding about one year.
+[main] 1 stories flagged - asking the writer to fix them...
+[main] approved order: ['छोटी आदतें बढ़ाएंगी आपकी उम्र', 'कारगिल के बंकर बने शानदार क्लासरूम', 'बर्लिन में लोगों ने बचाए पेड़']
+[main] title (about the lead story): छोटी आदतें भी बढ़ा सकती हैं आपकी उम्र
 [main] 3 stories passed. Sources: FindMyCollege, Powers Health / University of Sydney study, The Optimist Daily: Making Solutions the News
 [main] English captions ready
 [main] 251 earlier pictures/clips will not be reused
 [main] story0: 4 AI illustration(s) added (no good stock footage)
 [main] story1: 4 AI illustration(s) added (no good stock footage)
-[main] story2: 4 AI illustration(s) added (no good stock footage)
-[main] 3 stock photos used
-[main] hook ready (8.7 s): थोड़ी ज़्यादा नींद, हल्का व्यायाम और बेहतर खानपान से ज़िंदगी में चार साल तक जुड़ सकते हैं। रोज़मर्रा के इन आसान बदलावों का असर, जानिए पूरी ख़बर।
-[main] video ready, 178 seconds
-[music] mixed in piano_glow.mp3
-[main] PREVIEW saved in previews/ - nothing was uploaded to YouTube
-[main] HOLD: the finished video is kept for review - NOT uploaded to YouTube
