@@ -1,8 +1,6 @@
-[news] fuller text fetched for: Social physiology: the hidden health cost of eatin (3800 characters)
-[short] urdu script: کیا آپ جانتے ہیں کہ اکیلے کھانے کے بجائے اپنوں کے ساتھ کھانا کھانے سے آپ کا بلڈ شوگر بہتر کنٹرول میں رہتا ہے؟ سائنس ایڈوانسز کی ایک نئی تحقیق کے مطابق، جب لوگ خاندان یا دوستوں کے ساتھ کھانا کھاتے ہیں، تو ان کا بلڈ شوگر کم بڑھتا ہے اور تیزی سے معمول پر آ جاتا ہے۔ محققین کا کہنا ہے کہ ہمارا جسم اپنوں کے ساتھ رہنے پر بہتر طریقے سے کام کرتا ہے۔ ساتھ بیٹھ کر کھانے سے میٹابولزم اچھا رہتا ہے اور تناؤ بھی کم ہوتا ہے۔ پوری خبر ہمارے چینل پر دیکھیں۔
-[short] urdu voice: ur-IN-Chirp3-HD-Aoede
-[short] voice 33.0 s
-[short] script: क्या आप जानते हैं कि अकेले खाने के बजाय अपनों के साथ खाना खाने से आपका ब्लड शुगर बेहतर कंट्रोल में रहता है? साइंस एडवांसेज के एक नए अध्ययन के अनुसार, जब लोग परिवार या दोस्तों के साथ खाना खाते हैं, तो उनका ब्लड शुगर कम बढ़ता है और तेजी से सामान्य स्तर पर लौटता है। शोधकर्ताओं का कहना है कि हमारा शरीर अपनों के साथ रहने पर बेहतर तरीके से काम करता है। साथ बैठकर खाने से मेटाबॉलिज्म अच्छा रहता है और तनाव भी घटता है। पूरी ख़बर हमारे चैनल पर देखें।
-[short] english subtitles: Did you know that eating with loved ones instead of alone helps keep your blood sugar under better control? According to a new study in Science Advances, when people eat with family or friends, their blood sugar spikes less and returns to normal faster. Researchers say our bodies function better around loved ones. Eating together improves metabolism and reduces stress. Watch the full story on our channel.
-[music] mixed in piano_bright.mp3
-[short] ready: 33 s - nothing uploaded
+[news] fuller text fetched for: Small daily habit changes could add years to your  (3498 characters)
+[short] voice 27.6 s
+[short] script: क्या आप जानते हैं कि रोज़ बस कुछ मिनट ज़्यादा सोने और थोड़ा बेहतर खाने से आपकी उम्र बढ़ सकती है? यूनिवर्सिटी ऑफ सिडनी के एक बड़े शोध में पाया गया कि रोज़मर्रा के छोटे बदलाव चमत्कार कर सकते हैं। भोजन में थोड़ी अधिक हरी सब्ज़ियाँ शामिल करना और हल्की सैर करना आपके जीवन में चार स्वस्थ साल जोड़ सकता है। लंबी उम्र और अच्छी सेहत के लिए किसी भारी कसरत की ज़रूरत नहीं, बस ये छोटी आदतें ही काफ़ी हैं। पूरी ख़बर हमारे चैनल पर देखें।
+[short] english subtitles: Did you know that sleeping a few extra minutes and eating slightly better each day can extend your life? A major study by the University of Sydney found that small daily changes can work wonders. Adding more green vegetables to your meals and taking light walks can add four healthy years to your life. You don't need intense workouts for a long, healthy life—these small habits are enough. Watch the full report on our channel.
+[music] mixed in piano_hope.mp3
+[short] ready: 28 s - nothing uploaded
