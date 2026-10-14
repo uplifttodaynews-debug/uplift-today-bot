@@ -1,20 +1,4 @@
-[news] fuller text fetched for: As India's Weakest Monsoon in Over a Decade Hits M (3800 characters)
-[news] fuller text fetched for: Elderly Theater Worker Surprised by $146,000 for H (1729 characters)
-[news] fuller text fetched for: 1 Million Children, 57 Years: How Mobile Creches i (3800 characters)
-[main] using the 3 stories YOU approved, in your order
-[main] 3 candidate stories
-[writer] 2 leads after the family-safe filter
-[main] AI wrote 2 stories; fact-checking them...
-[main] approved order: ['हिवरे बाजार ने हराया सूखा', 'बुजुर्ग महिला को अनोखा तोहफ़ा']
-[main] title (about the lead story): जल संरक्षण की मिसाल: हिवरे बाजार ने हराया सूखा
-[main] 2 stories passed. Sources: Good News Network, The Better India : Latest Posts
-[main] English captions ready
-[main] 252 earlier pictures/clips will not be reused
-[main] story0: 4 AI illustration(s) added (no good stock footage)
-[main] story1: 4 AI illustration(s) added (no good stock footage)
-[main] 3 stock photos used
-[main] hook ready (8.1 s): कैसे पानी के सही प्रबंध से हिवरे बाजार में कुएँ संतानवे से बढ़कर दो सौ सत्रह हो गए और हरियाली लौटी? जानिए पूरी ख़बर।
-[main] video ready, 160 seconds
-[music] mixed in piano_sunrise.mp3
-[main] PREVIEW saved in previews/ - nothing was uploaded to YouTube
-[main] HOLD: the finished video is kept for review - NOT uploaded to YouTube
+[thumb] picture 1 done
+[thumb] picture 2 done
+[thumb] picture 3 done
+[thumb] picture 4 done
