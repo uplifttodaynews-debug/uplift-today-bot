@@ -278,7 +278,7 @@ def main():
                 "Write a Hindi (Devanagari) teaser of at most 28 words for a news video about this lead story. "
                 "It must create curiosity and hope, state the single most interesting fact, and end with a short phrase "
                 "like 'जानिए पूरी ख़बर'. Positive tone, no fear words. Spell every number in Hindi words, no digits. "
-                "Use ONLY facts that are written in the story below: do not add numbers, activities (for example walking) or claims that it does not state. Prefer wording like small changes, a little more sleep, a little more movement, better food. If the story reports a study or a link, use cautious words such as "linked to" or "may" and never say it proves or causes something. Never mention couples or romance.\nHeadline: " + str(lead.get("headline")) + "\nStory: " + str(lead.get("narration")) +
+                "Use ONLY facts that are written in the story below: do not add numbers, activities (for example walking) or claims that it does not state. Prefer wording like small changes, a little more sleep, a little more movement, better food. If the story reports a study or a link, use cautious words such as linked to or may and never say it proves or causes something. Never mention couples or romance.\nHeadline: " + str(lead.get("headline")) + "\nStory: " + str(lead.get("narration")) +
                 '\nReturn ONLY JSON: {"text": "..."}', 0.5)
             hook = script_writer.polish_hindi(r.get("text", ""))
             if hook:
