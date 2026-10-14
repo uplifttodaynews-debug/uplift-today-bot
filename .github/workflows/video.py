@@ -587,7 +587,7 @@ def make_thumbnail(title, out_png, photo_path=None, subtitle="आज की प�
     img.save(out_png)
 
 
-def make_thumbnail_v2(title, out_png, photo_path, subtitle="", style="split", kicker="GOOD NEWS", reverse=False):
+def make_thumbnail_v2(title, out_png, photo_path, subtitle="", style="split", kicker="GOOD NEWS", reverse=False, palette="navy"):
     """New thumbnail designs. style="split": photo on the right inside a white frame, bold headline on a navy-to-blue panel at left,
     gold highlight bar. style="banner": photo full-bleed, big headline on a gold banner across the bottom."""
     from PIL import ImageEnhance
@@ -615,6 +615,8 @@ def make_thumbnail_v2(title, out_png, photo_path, subtitle="", style="split", ki
         lh = int(font.size * 1.22)
         bh = lh * len(lines) + 70                      # the band is only as tall as its text (short band)
         band, edge = ((255, 205, 40), (8, 28, 100)) if not reverse else ((12, 36, 110), (255, 205, 40))
+        if palette == "green" and reverse:
+            band = (8, 78, 62)
         fade = Image.new("RGBA", (W, 160), (0, 0, 0, 0))   # soft shadow above the band
         fd = ImageDraw.Draw(fade)
         for yy in range(160):
@@ -645,6 +647,8 @@ def make_thumbnail_v2(title, out_png, photo_path, subtitle="", style="split", ki
     for x in range(W):
         t = x / (W - 1)
         c = (int(10 + 20 * t), int(30 + 70 * t), int(100 + 110 * t))
+        if palette == "green":
+            c = (int(6 + 14 * t), int(64 + 80 * t), int(52 + 48 * t))
         px.line([(x, 0), (x, H)], fill=c)
     pw, ph = 660, 620
     ph_img = cover(src, pw, ph)
