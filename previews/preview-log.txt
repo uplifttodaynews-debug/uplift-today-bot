@@ -1,5 +1,19 @@
-[short] voice 34.6 s
-[short] script: क्या आप जानते हैं कि नाती-पोतों की देखभाल करने से दादा-दादी और नाना-नानी का दिमाग ज़्यादा तेज़ रहता है? टिलबर्ग यूनिवर्सिटी के एक नए अध्ययन में दो हज़ार आठ सौ सत्तासी बुज़ुर्गों पर शोध किया गया। इसमें पाया गया कि बच्चों को संभालने, उनके साथ खेलने या पढ़ाई में मदद करने वाले बुज़ुर्गों की याददाश्त बेहतर रहती है। खासकर देखभाल करने वाली दादियों और नानियों में मानसिक क्षमता की गिरावट काफी कम देखी गई। अध्ययन के अनुसार, परिवार में बच्चों की देखभाल करना बुज़ुर्गों के दिमाग को सक्रिय और स्वस्थ रखने में मदद करता है। पूरी ख़बर हमारे चैनल पर देखें।
-[short] english subtitles: Did you know that caring for grandchildren keeps grandparents' minds sharper? A new study by Tilburg University examined 2,887 seniors. It found that older adults who look after kids, play with them, or help with their studies have better memory. In particular, caregiving grandmothers showed significantly less cognitive decline. According to the study, caring for children in the family helps keep seniors' minds active and healthy. Watch the full report on our channel.
+[news] fuller text fetched for: From Hostel Room Model to 1500+ Foldable Buildings (3800 characters)
+[main] using the 2 stories YOU approved, in your order
+[main] 2 candidate stories
+[writer] 2 leads after the family-safe filter
+[main] AI wrote 2 stories; fact-checking them...
+[verify] story 1 flagged: The claim that a family's loving support strengthens the mental health of elderly people is not stated in the source lead.
+[main] 1 stories flagged - asking the writer to fix them...
+[main] approved order: ['बच्चों की देखभाल से दिमाग तेज़', 'आईआईटी छात्रों के फ़ोल्डेबल घर']
+[main] title (about the lead story): बच्चों की देखभाल से बुज़ुर्गों का दिमाग रहता है तेज़
+[main] 2 stories passed. Sources: American Psychological Association, The Better India : Latest Posts
+[main] English captions ready
+[main] 252 earlier pictures/clips will not be reused
+[main] story0: 4 AI illustration(s) added (no good stock footage)
+[main] story1: 4 AI illustration(s) added (no good stock footage)
+[main] 3 stock photos used
+[main] hook ready (8.8 s): क्या आप जानते हैं कि बच्चों की देखभाल से बुज़ुर्गों का दिमाग अधिक तेज़ रहता है और उनकी याददाश्त बेहतर होती है? जानिए पूरी ख़बर।
+[main] video ready, 166 seconds
 [music] mixed in piano_sunrise.mp3
 [short] ready: 35 s - nothing uploaded
