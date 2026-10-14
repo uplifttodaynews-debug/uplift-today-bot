@@ -1,4 +1,24 @@
-  File "/home/runner/work/uplift-today-bot/uplift-today-bot/.github/workflows/main.py", line 278
-    "Write a Hindi (Devanagari) teaser of at most 28 words for a news video about this lead story. "
-    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-SyntaxError: invalid syntax. Perhaps you forgot a comma?
+[news] fuller text fetched for: From Hostel Room Model to 1500+ Foldable Buildings (3800 characters)
+[main] using the 2 stories YOU approved, in your order
+[main] 2 candidate stories
+[writer] 2 leads after the family-safe filter
+[main] AI wrote 2 stories; fact-checking them...
+[verify] story 0 flagged: The narration claims that both founders quit their jobs ('दोनों ने नौकरी छोड़ दी'), whereas the source text only states that one had a pre-placement offer and the other had conventional career options upon graduating.
+[main] 1 stories flagged - asking the writer to fix them...
+[main] approved order: ['नाती-पोतों की देखभाल और तेज दिमाग', 'फोल्डेबल घर बने लोगों का सहारा']
+[main] title (about the lead story): नाती-पोतों की देखभाल रखती है बुजुर्गों का दिमाग तेज
+[main] 2 stories passed. Sources: American Psychological Association, The Better India : Latest Posts
+[main] English captions ready
+[main] 252 earlier pictures/clips will not be reused
+[main] story0: 4 AI illustration(s) added (no good stock footage)
+[stock] 'Foldable homes become a suppor': best scores [6.0, 6.0, 4.0] (need 8)
+[stock] 'Foldable homes become a suppor': 24 candidates, 0 matched
+[stock] second try with broader searches: ['Modular house', 'Chennai India', 'Emergency shelter', 'Prefabricated building']
+[stock] 'Foldable homes become a suppor': best scores [7.0, 7.0, 6.0] (need 6)
+[stock] 'Foldable homes become a suppor': 24 candidates, 4 matched
+[main] 7 stock photos used
+[main] hook ready (8.7 s): नाती-पोतों की देखभाल बुजुर्गों की बेहतर याददाश्त से जुड़ी हो सकती है। एक नए अध्ययन में सामने आई यह उम्मीद भरी बात, जानिए पूरी ख़बर।
+[main] video ready, 92 seconds
+[music] mixed in piano_sunrise.mp3
+[main] PREVIEW saved in previews/ - nothing was uploaded to YouTube
+[main] HOLD: the finished video is kept for review - NOT uploaded to YouTube
