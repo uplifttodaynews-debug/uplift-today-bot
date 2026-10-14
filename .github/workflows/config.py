@@ -80,6 +80,7 @@ STOCK_PHOTOS = True
 STOCK_VIDEOS = True              # use short stock video clips for some stories
 VIDEO_SHARE = 0.5                # about this share of the stories get video clips (the rest photos)
 PHOTOS_PER_STORY = 2             # the picture changes once in the middle of each story
+INTRO_QUERIES = ["sunrise sky", "morning sun rays", "golden sunrise over hills", "dawn over fields", "sunrise over the sea", "morning mist forest", "sunrise mountains", "sunrise over river", "village morning sunrise", "blue sky white clouds morning", "sunflower field morning", "sunrise lake reflection"]   # a different one each day
 FIXED_SLIDE_QUERIES = {          # for the opening, thought and closing slides
     "intro": "sunrise sky",
     "thought": "calm lake morning",

@@ -1,1 +1,1 @@
-prepare for review date=2026-10-15 forceai=0,1 voice hook
+prepare for review date=2026-10-15 forceai=0 voice hook v2

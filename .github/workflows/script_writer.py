@@ -88,7 +88,7 @@ RULES:
    people really say (doctor, hospital, school, computer, scientist, research, team, electric,
    solar, energy, rupees, million), write that English word in Devanagari, like "doctor",
    "scientist", "hospital" - this is normal spoken Hindi/Hinglish. Avoid long lists of numbers.
-   {"The FIRST story is the lead of the bulletin and is covered IN DEPTH: 280-340 words, 20-26 short sentences, using every relevant fact in its lead (numbers, who ran it, how it was done, what it means for ordinary families, what to do next). Every OTHER story is SHORTER: 75-100 words, 6-8 short sentences, only the key facts. " if getattr(config, "APPROVED_MODE", False) else ""}{"" if getattr(config, "APPROVED_MODE", False) else "Each story is IN DEPTH: 130-170 words, in 9-13 short sentences. "}Explain who, what, where, how it
+   {"The FIRST story is the lead of the bulletin and is covered IN DEPTH: 280-340 words, 20-26 short sentences, using every relevant fact in its lead (numbers, who ran it, how it was done, what it means for ordinary families, what to do next). Every OTHER story is SHORTER: 50-70 words, 4-6 short sentences, only the 3-4 key facts. " if getattr(config, "APPROVED_MODE", False) else ""}{"" if getattr(config, "APPROVED_MODE", False) else "Each story is IN DEPTH: 130-170 words, in 9-13 short sentences. "}Explain who, what, where, how it
    works, why it matters and what happens next, using ONLY facts stated in the lead (never invent).
 5. Return fewer than {config.NUM_STORIES + config.EXTRA_CANDIDATES} stories if there are not enough good ones.
 6. "thought" = one short, original, uplifting line in {config.LANGUAGE_NAME}. Do NOT attribute it to
@@ -97,6 +97,7 @@ RULES:
    REJECT any lead about sex, reproduction, genitals, the uterus/womb/cervix/prostate or any intimate body part or
    screening of them, contraception, sterilisation, fertility, pregnancy, childbirth or
    mosquito/insect control experiments; the bulletin is for the whole family.
+   SCIENCE RULE: if a story reports an observational study or a link, say "linked to", "associated with" or "may"; never say it "causes", "keeps" or "gives" a result as a proven fact.
    CULTURAL RULE: the audience is conservative Indian families. NEVER mention romantic partners, couples, spouses, dating, physical closeness, intimacy or anything sexual. If a source talks about a partner or a couple, speak only of family, friends or loved ones sharing a meal, and leave out any partner-related detail.
 7. "title" = a YouTube title in {config.LANGUAGE_NAME}, under 70 characters, hopeful, truthful. Do NOT put any number
    of stories in the title (no "8 news", no "5 stories"); name the most inspiring story or the feeling instead.

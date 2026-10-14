@@ -38,7 +38,9 @@ def _pixabay(query, out_path, seed=0):
         if not hits:
             print(f"[stock] Pixabay: no photo found for '{query}'")
             return None
-        hit = random.Random(seed).choice(hits[:10])
+        fresh = [h for h in hits if h.get("pageURL") not in EXCLUDE] or hits
+        hit = random.Random(seed).choice(fresh[:10])
+        EXCLUDE.add(hit.get("pageURL"))
         data = requests.get(hit["largeImageURL"], timeout=60)
         data.raise_for_status()
         with open(out_path, "wb") as f:
@@ -69,7 +71,9 @@ def _pexels(query, out_path, seed=0):
         if not photos:
             print(f"[stock] no photo found for '{query}'")
             return None
-        photo = random.Random(seed).choice(photos[:10])
+        fresh = [p for p in photos if p.get("url") not in EXCLUDE] or photos      # never the same picture as an earlier video
+        photo = random.Random(seed).choice(fresh[:10])
+        EXCLUDE.add(photo.get("url"))
         img_url = photo["src"].get("large2x") or photo["src"]["large"]
         data = requests.get(img_url, timeout=60)
         data.raise_for_status()
