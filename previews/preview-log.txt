@@ -3,22 +3,16 @@
 [main] 2 candidate stories
 [writer] 2 leads after the family-safe filter
 [main] AI wrote 2 stories; fact-checking them...
-[verify] story 0 flagged: The narration introduces unsupported claims not found in the lead, such as transport via trucks and that the structures are now providing relief to 'lakhs of people' (लाखों लोगों).
-[main] 1 stories flagged - asking the writer to fix them...
-[main] approved order: ['दादा-दादी की याददाश्त और बच्चे', 'आईआईटी छात्रों का फोल्डेबल घर']
-[main] title (about the lead story): पोते-पोतियों का साथ बढ़ाता है दादा-दादी की याददाश्त
+[main] approved order: ['पोते-पोतियों का साथ, दिमाग रहे चुस्त', 'आईआईटी छात्रों ने बनाए फोल्डेबल घर']
+[main] title (about the lead story): पोते-पोतियों का साथ रखेगा बुजुर्गों का दिमाग चुस्त
 [main] 2 stories passed. Sources: American Psychological Association, The Better India : Latest Posts
 [main] English captions ready
 [main] 252 earlier pictures/clips will not be reused
 [main] story0: 4 AI illustration(s) added (no good stock footage)
-[stock] 'IIT Students' Foldable House': best scores [5.0, 5.0, 4.0] (need 8)
-[stock] 'IIT Students' Foldable House': 24 candidates, 0 matched
-[stock] second try with broader searches: ['foldable house', 'Chennai India', 'modular building', 'disaster relief shelter']
-[stock] 'IIT Students' Foldable House': best scores [7.0, 6.0, 6.0] (need 6)
-[stock] 'IIT Students' Foldable House': 24 candidates, 3 matched
-[main] 6 stock photos used
-[main] hook ready (8.0 s): पोते-पोतियों की देखभाल दादा-दादी की याददाश्त बेहतर करने और दिमाग तेज़ रखने से जुड़ी हो सकती है। जानिए पूरी ख़बर।
-[main] video ready, 100 seconds
+[main] story1: 4 AI illustration(s) added (no good stock footage)
+[main] 3 stock photos used
+[main] hook ready (8.7 s): पोते-पोतियों की देखभाल दादा-दादी के दिमाग को चुस्त रखने से जुड़ी हो सकती है। याददाश्त से जुड़े इस दिलचस्प अध्ययन के बारे में जानिए पूरी ख़बर।
+[main] video ready, 148 seconds
 [music] mixed in piano_sunrise.mp3
 [main] PREVIEW saved in previews/ - nothing was uploaded to YouTube
 [main] HOLD: the finished video is kept for review - NOT uploaded to YouTube
