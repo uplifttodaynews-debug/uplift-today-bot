@@ -1,19 +1,4 @@
-[news] fuller text fetched for: From Hostel Room Model to 1500+ Foldable Buildings (3800 characters)
-[main] using the 2 stories YOU approved, in your order
-[main] 2 candidate stories
-[writer] 2 leads after the family-safe filter
-[main] AI wrote 2 stories; fact-checking them...
-[verify] story 1 flagged: The claim that a family's loving support strengthens the mental health of elderly people is not stated in the source lead.
-[main] 1 stories flagged - asking the writer to fix them...
-[main] approved order: ['बच्चों की देखभाल से दिमाग तेज़', 'आईआईटी छात्रों के फ़ोल्डेबल घर']
-[main] title (about the lead story): बच्चों की देखभाल से बुज़ुर्गों का दिमाग रहता है तेज़
-[main] 2 stories passed. Sources: American Psychological Association, The Better India : Latest Posts
-[main] English captions ready
-[main] 252 earlier pictures/clips will not be reused
-[main] story0: 4 AI illustration(s) added (no good stock footage)
-[main] story1: 4 AI illustration(s) added (no good stock footage)
-[main] 3 stock photos used
-[main] hook ready (8.8 s): क्या आप जानते हैं कि बच्चों की देखभाल से बुज़ुर्गों का दिमाग अधिक तेज़ रहता है और उनकी याददाश्त बेहतर होती है? जानिए पूरी ख़बर।
-[main] video ready, 166 seconds
-[music] mixed in piano_sunrise.mp3
-[short] ready: 35 s - nothing uploaded
+  File "/home/runner/work/uplift-today-bot/uplift-today-bot/.github/workflows/main.py", line 278
+    "Write a Hindi (Devanagari) teaser of at most 28 words for a news video about this lead story. "
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+SyntaxError: invalid syntax. Perhaps you forgot a comma?
