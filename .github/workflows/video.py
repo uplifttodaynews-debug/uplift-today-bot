@@ -617,6 +617,8 @@ def make_thumbnail_v2(title, out_png, photo_path, subtitle="", style="split", ki
         band, edge = ((255, 205, 40), (8, 28, 100)) if not reverse else ((12, 36, 110), (255, 205, 40))
         if palette == "green" and reverse:
             band = (8, 78, 62)
+        if palette == "warm" and reverse:
+            band = (112, 30, 52)
         fade = Image.new("RGBA", (W, 160), (0, 0, 0, 0))   # soft shadow above the band
         fd = ImageDraw.Draw(fade)
         for yy in range(160):
@@ -649,6 +651,8 @@ def make_thumbnail_v2(title, out_png, photo_path, subtitle="", style="split", ki
         c = (int(10 + 20 * t), int(30 + 70 * t), int(100 + 110 * t))
         if palette == "green":
             c = (int(6 + 14 * t), int(64 + 80 * t), int(52 + 48 * t))
+        if palette == "warm":
+            c = (int(100 + 90 * t), int(24 + 56 * t), int(56 - 16 * t))
         px.line([(x, 0), (x, H)], fill=c)
     pw, ph = 660, 620
     ph_img = cover(src, pw, ph)
