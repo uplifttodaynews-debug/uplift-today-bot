@@ -1,6 +1,20 @@
 [news] fuller text fetched for: As India's Weakest Monsoon in Over a Decade Hits M (3800 characters)
-[short] voice 27.9 s
-[short] script: जहाँ नब्बे प्रतिशत लोग गाँव छोड़ चुके थे, आज वही हिवरे बाज़ार पानी के दम पर खुशहाल है! महाराष्ट्र के अहिल्यानगर का यह गाँव हर साल उपलब्ध पानी का सटीक बजट बनाता है। यहाँ के लोगों ने राहत योजनाओं और श्रमदान की मदद से हज़ारों जल संरचनाएं बनाईं। इससे गाँव में कुओं की संख्या संतानवे से बढ़कर दो सौ सत्रह हो गई और सिंचित ज़मीन दोगुनी से ज़्यादा बढ़ गई। अपने गाँव को छोड़कर गए परिवार भी अब वापस लौट आए हैं। पूरी ख़बर हमारे चैनल पर देखें।
-[short] english subtitles: Once abandoned by 90% of its residents, Hiware Bazar now thrives thanks to water! This village in Maharashtra's Ahilyanagar precisely budgets its available water every year. Using relief schemes and voluntary labor, locals built thousands of water structures. As a result, wells increased from 97 to 217, and irrigated land more than doubled. Families who had left have now returned. Watch the full story on our channel.
+[news] fuller text fetched for: Elderly Theater Worker Surprised by $146,000 for H (1729 characters)
+[news] fuller text fetched for: 1 Million Children, 57 Years: How Mobile Creches i (3800 characters)
+[main] using the 3 stories YOU approved, in your order
+[main] 3 candidate stories
+[writer] 2 leads after the family-safe filter
+[main] AI wrote 2 stories; fact-checking them...
+[main] approved order: ['हिवरे बाजार ने हराया सूखा', 'बुजुर्ग महिला को अनोखा तोहफ़ा']
+[main] title (about the lead story): जल संरक्षण की मिसाल: हिवरे बाजार ने हराया सूखा
+[main] 2 stories passed. Sources: Good News Network, The Better India : Latest Posts
+[main] English captions ready
+[main] 252 earlier pictures/clips will not be reused
+[main] story0: 4 AI illustration(s) added (no good stock footage)
+[main] story1: 4 AI illustration(s) added (no good stock footage)
+[main] 3 stock photos used
+[main] hook ready (8.1 s): कैसे पानी के सही प्रबंध से हिवरे बाजार में कुएँ संतानवे से बढ़कर दो सौ सत्रह हो गए और हरियाली लौटी? जानिए पूरी ख़बर।
+[main] video ready, 160 seconds
 [music] mixed in piano_sunrise.mp3
-[short] ready: 28 s - nothing uploaded
+[main] PREVIEW saved in previews/ - nothing was uploaded to YouTube
+[main] HOLD: the finished video is kept for review - NOT uploaded to YouTube
