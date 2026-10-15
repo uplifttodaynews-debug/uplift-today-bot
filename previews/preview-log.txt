@@ -3,16 +3,16 @@
 [main] 2 candidate stories
 [writer] 2 leads after the family-safe filter
 [main] AI wrote 2 stories; fact-checking them...
-[main] approved order: ['पोते-पोतियों का साथ, दिमाग रहे चुस्त', 'आईआईटी छात्रों ने बनाए फोल्डेबल घर']
-[main] title (about the lead story): पोते-पोतियों का साथ रखेगा बुजुर्गों का दिमाग चुस्त
+[main] approved order: ['बच्चों का साथ, तेज़ दिमाग', 'आईआईटी छात्रों का अनोखा आविष्कार']
+[main] title (about the lead story): बच्चों के साथ से बुजुर्गों का दिमाग रहता है तेज
 [main] 2 stories passed. Sources: American Psychological Association, The Better India : Latest Posts
 [main] English captions ready
 [main] 252 earlier pictures/clips will not be reused
 [main] story0: 4 AI illustration(s) added (no good stock footage)
 [main] story1: 4 AI illustration(s) added (no good stock footage)
 [main] 3 stock photos used
-[main] hook ready (8.7 s): पोते-पोतियों की देखभाल दादा-दादी के दिमाग को चुस्त रखने से जुड़ी हो सकती है। याददाश्त से जुड़े इस दिलचस्प अध्ययन के बारे में जानिए पूरी ख़बर।
-[main] video ready, 148 seconds
-[music] mixed in piano_sunrise.mp3
+[main] hook ready (8.8 s): पोते-पोतियों की देखभाल बुजुर्गों की बेहतर याददाश्त से जुड़ी पाई गई है। क्या बच्चों का साथ दिमाग तेज़ रख सकता है? जानिए पूरी ख़बर।
+[main] video ready, 156 seconds
+[music] mixed in piano_bright.mp3
 [main] PREVIEW saved in previews/ - nothing was uploaded to YouTube
 [main] HOLD: the finished video is kept for review - NOT uploaded to YouTube
