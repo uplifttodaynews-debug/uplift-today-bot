@@ -3,16 +3,18 @@
 [main] 2 candidate stories
 [writer] 2 leads after the family-safe filter
 [main] AI wrote 2 stories; fact-checking them...
-[main] approved order: ['पोते-पोतियों की देखभाल और याददाश्त', 'आईआईटी छात्रों की फोल्डेबल बिल्डिंग्स']
-[main] title (about the lead story): पोते-पोतियों की देखभाल से बुजुर्गों की याददाश्त बेहतर
+[verify] story 0 flagged: The narration adds unsupported opinions and advice not found in the source lead, claiming that stress-free caregiving is always good and telling readers to let elderly family members mingle with children.
+[main] 1 stories flagged - asking the writer to fix them...
+[main] approved order: ['नाती-पोतों का साथ, दिमाग तेज़', 'आईआईटी छात्रों के फोल्डेबल घर']
+[main] title (about the lead story): नाती-पोतों के साथ से तेज़ रहता है बुजुर्गों का दिमाग
 [main] 2 stories passed. Sources: American Psychological Association, The Better India : Latest Posts
 [main] English captions ready
 [main] 252 earlier pictures/clips will not be reused
 [main] story0: 4 AI illustration(s) added (no good stock footage)
 [main] story1: 4 AI illustration(s) added (no good stock footage)
 [main] 3 stock photos used
-[main] hook ready (9.9 s): पोते-पोतियों की देखभाल बुजुर्गों की बेहतर याददाश्त से जुड़ी हो सकती है। शोध में बुजुर्गों के मेमोरी टेस्ट के नतीजे काफी अच्छे रहे। जानिए पूरी ख़बर।
-[main] video ready, 147 seconds
-[music] mixed in piano_glow.mp3
+[main] hook ready (8.3 s): क्या नाती-पोतों की देखभाल से बुजुर्गों का दिमाग तेज़ रह सकता है? एक अध्ययन में याददाश्त से इसका जुड़ाव पाया गया है। जानिए पूरी ख़बर।
+[main] video ready, 92 seconds
+[music] mixed in piano_hope.mp3
 [main] PREVIEW saved in previews/ - nothing was uploaded to YouTube
 [main] HOLD: the finished video is kept for review - NOT uploaded to YouTube
