@@ -1,20 +1,30 @@
 [news] fuller text fetched for: From Hostel Room Model to 1500+ Foldable Buildings (3800 characters)
-[main] using the 2 stories YOU approved, in your order
-[main] 2 candidate stories
-[writer] 2 leads after the family-safe filter
-[main] AI wrote 2 stories; fact-checking them...
-[verify] story 0 flagged: The narration adds unsupported opinions and advice not found in the source lead, claiming that stress-free caregiving is always good and telling readers to let elderly family members mingle with children.
-[main] 1 stories flagged - asking the writer to fix them...
-[main] approved order: ['नाती-पोतों का साथ, दिमाग तेज़', 'आईआईटी छात्रों के फोल्डेबल घर']
-[main] title (about the lead story): नाती-पोतों के साथ से तेज़ रहता है बुजुर्गों का दिमाग
-[main] 2 stories passed. Sources: American Psychological Association, The Better India : Latest Posts
+[news] fuller text fetched for: Japanese sweet potato: what sets it apart nutritio (3650 characters)
+[main] using the 3 stories YOU approved, in your order
+[main] 3 candidate stories
+[writer] 3 leads after the family-safe filter
+[main] AI wrote 3 stories; fact-checking them...
+[verify] story 0 flagged: The narration claims that both students were involved in relief work and that displaced families were forced to live out in the open, neither of which is stated in the lead.
+[verify] story 2 flagged: The lead attributes energy and fueling effort to carbohydrates rather than antioxidants, and the word antioxidant is not mentioned in the lead.
+[main] 2 stories flagged - asking the writer to fix them...
+[main] approved order: ['पोते-पोतियों का साथ तेज रखेगा याददाश्त', 'आईआईटी छात्रों के अनोखे फोल्डेबल घर', 'जापानी शकरकंद के बेहतरीन सेहतमंद फायदे']
+[main] title (about the lead story): पोते-पोतियों का साथ तेज रखेगा बुजुर्गों की याददाश्त
+[main] 3 stories passed. Sources: American Psychological Association, The Better India : Latest Posts, The Optimist Daily
 [main] English captions ready
 [main] 252 earlier pictures/clips will not be reused
 [main] story0: 4 AI illustration(s) added (no good stock footage)
 [main] story1: 4 AI illustration(s) added (no good stock footage)
-[main] 3 stock photos used
-[main] hook ready (8.3 s): क्या नाती-पोतों की देखभाल से बुजुर्गों का दिमाग तेज़ रह सकता है? एक अध्ययन में याददाश्त से इसका जुड़ाव पाया गया है। जानिए पूरी ख़बर।
-[main] video ready, 92 seconds
-[music] mixed in piano_hope.mp3
+[stock] 'Great health benefits of Japan': best scores [4.0, 3.0, 2.0] (need 8)
+[stock] 'Great health benefits of Japan': 18 candidates, 0 matched
+[stock] second try with broader searches: ['Japanese sweet potato', 'baked sweet potato', 'sweet potato farm', 'fresh produce market']
+[stock] 'Great health benefits of Japan': best scores [5.0, 4.0, 3.0] (need 6)
+[stock] 'Great health benefits of Japan': 18 candidates, 0 matched
+[main] story2: no good video clip, using photos
+[stock] 'Great health benefits of Japan': best scores [9.0, 9.0, 8.0] (need 8)
+[stock] 'Great health benefits of Japan': 24 candidates, 3 matched
+[main] 6 stock photos used
+[main] hook ready (9.2 s): पोते-पोतियों की देखभाल बुजुर्गों की याददाश्त बेहतर और दिमाग सक्रिय रख सकती है। एक नए अध्ययन से जुड़ी यह उम्मीद भरी बात, जानिए पूरी ख़बर।
+[main] video ready, 146 seconds
+[music] mixed in piano_sunrise.mp3
 [main] PREVIEW saved in previews/ - nothing was uploaded to YouTube
 [main] HOLD: the finished video is kept for review - NOT uploaded to YouTube
