@@ -1,32 +1,27 @@
 [news] fuller text fetched for: From Hostel Room Model to 1500+ Foldable Buildings (3800 characters)
-[news] fuller text fetched for: Japanese sweet potato: what sets it apart nutritio (3635 characters)
+[news] fuller text fetched for: Japanese sweet potato: what sets it apart nutritio (3668 characters)
 [main] using the 3 stories YOU approved, in your order
 [main] 3 candidate stories
 [writer] 3 leads after the family-safe filter
 [main] AI wrote 3 stories; fact-checking them...
-[verify] story 1 flagged: The narration claims grandmothers who live with children showed less cognitive decline ('बच्चों के साथ रहने वाली'), but the lead specifies grandmothers who provided childcare/caregiving, not co-residence.
-[main] 1 stories flagged - asking the writer to fix them...
-[main] approved order: ['नाना-नानी की याददाश्त रहती तेज', 'आईआईटी छात्रों के फोल्डेबल घर', 'जापानी शकरकंद के सेहतमंद फायदे']
-[main] title (about the lead story): बच्चों की देखभाल से तेज रहती है बुजुर्गों की याददाश्त
+[main] approved order: ['पोते-पोतियों संग देखभाल से तेज़ याददाश्त', 'आईआईटी छात्रों ने बनाए फोल्डेबल घर', 'जापानी शकरकंद के बेहतरीन फायदे']
+[main] title (about the lead story): पोते-पोतियों का साथ बढ़ाता है बुजुर्गों की याददाश्त
 [main] 3 stories passed. Sources: American Psychological Association, The Better India : Latest Posts, The Optimist Daily
 [main] English captions ready
 [main] 258 earlier pictures/clips will not be reused
 [main] story0: 4 AI illustration(s) added (no good stock footage)
 [main] story1: 4 AI illustration(s) added (no good stock footage)
-[stock] 'Health benefits of Japanese sw': best scores [4.0, 3.0, 2.0] (need 8)
-[stock] 'Health benefits of Japanese sw': 18 candidates, 0 matched
-[stock] second try with broader searches: ['Japanese sweet potato', 'Purple sweet potato', 'Japan', 'Produce market']
-[stock] 'Health benefits of Japanese sw': best scores [6.0, 4.0, 3.0] (need 6)
-[stock] 'Health benefits of Japanese sw': 18 candidates, 1 matched
-[stock] 'Health benefits of Japanese sw': best scores [6.0, 5.0, 5.0] (need 8)
-[stock] 'Health benefits of Japanese sw': 24 candidates, 0 matched
-[stock] second try with broader searches: ['Japanese sweet potato', 'Purple sweet potato', 'Japan', 'Japanese farm']
-[stock] 'Health benefits of Japanese sw': best scores [6.0, 5.0, 5.0] (need 6)
-[stock] 'Health benefits of Japanese sw': 24 candidates, 1 matched
-[main] story2: 1 video clip(s)
+[stock] 'Great benefits of Japanese swe': best scores [6.0, 3.0, 2.0] (need 8)
+[stock] 'Great benefits of Japanese swe': 18 candidates, 0 matched
+[stock] second try with broader searches: ['Japanese sweet potato', 'sweet potato slices', 'sweet potato farm', 'vegetable harvest']
+[stock] 'Great benefits of Japanese swe': best scores [5.0, 3.0, 3.0] (need 6)
+[stock] 'Great benefits of Japanese swe': 18 candidates, 0 matched
+[main] story2: no good video clip, using photos
+[stock] 'Great benefits of Japanese swe': best scores [10.0, 9.0, 5.0] (need 8)
+[stock] 'Great benefits of Japanese swe': 24 candidates, 2 matched
 [main] 5 stock photos used
-[main] hook ready (9.3 s): पोते-पोतियों की देखभाल बुज़ुर्गों की याददाश्त और दिमाग़ को तेज़ रखने से जुड़ी हो सकती है। अध्ययन में यह अच्छी बात सामने आई है। जानिए पूरी ख़बर।
-[main] video ready, 184 seconds
+[main] hook ready (8.5 s): बच्चों की प्यार से देखभाल बुजुर्गों की बेहतर याददाश्त और तरोताज़ा मन से जुड़ी हो सकती है। इस खूबसूरत रिसर्च के बारे में जानिए पूरी ख़बर।
+[main] video ready, 158 seconds
 [music] mixed in piano_glow.mp3
 [main] PREVIEW saved in previews/ - nothing was uploaded to YouTube
 [main] HOLD: the finished video is kept for review - NOT uploaded to YouTube
