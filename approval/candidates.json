@@ -1,13 +1,32 @@
 [
  {
   "n": 1,
-  "headline_hi": "कार की अनोखी घूमने वाली सीट",
-  "headline_en": "A car's unique swivel seat",
-  "summary_en": "Very inspiring news has come from Bengaluru. Here, engineers Naina Padaki and Anand Kutre have done wonderful work. They started a special initiative called 'True Assistive Technology'. Their team has made a swivel seat for cars named 'TurnPlus'. This seat turns ninety degrees towards the door. This makes it very easy to seat any patient in a car. Rashmi Sampath from Bengaluru lives with her sixteen-year-old daughter Deeksha. Deeksha had severe mobility issues, so going out was difficult. With the help of this new seat, they traveled from Bengaluru to Kanyakumari. Throughout this nearly one thousand-kilometer journey, Deeksha remained very comfortable. This technology has helped more than one thousand people across India. Now, going out together has become extremely easy for many families.",
-  "topic": "health",
+  "headline_hi": "पहाड़ों के लिए उड़ने वाली कार",
+  "headline_en": "Flying car for the mountains",
+  "summary_en": "Very inspiring news has emerged from Almora district of Uttarakhand. Ravi Tamta, a resident of Kaflikhan village, has made a unique invention. Ravi, the son of a mechanic, did not hold any engineering degree. He learned technology from the internet and developed the prototype of a flying car. It used to take hours to reach the hospital on the winding mountain roads. To solve this very problem of medical emergencies, he worked hard for thirteen years. This electric flying vehicle has been named 'Hapida Skynex'. This vehicle can take off directly upwards and also land without a runway. Its first test was conducted at the Army helipad in Almora in the month of August. This electric vehicle successfully flew in the air for about one minute. This technology will prove to be a boon for patients in remote hilly areas.",
+  "topic": "science",
   "impact": 9,
   "media": "video + photos",
   "videos": 2,
+  "photos": 2,
+  "source": "The Better India : Latest Posts",
+  "link": "https://thebetterindia.com/innovation/ravi-tamta-electric-tesla-flying-vehicle-almora-uttrakhand-indian-innovation-12695251",
+  "lead": {
+   "title": "‘I Had No Engineering Degree’: Almora Mechanic’s Son Learnt From the Internet & Built a Flying Car",
+   "summary": "Flying cars are once again taking over the internet, with Tesla&rsquo;s plans fuelling conversations about a future where people could travel through the air instead of sitting in traffic. But in Almora, Uttarakhand, an innovator has spent 13 years working towards a similar idea, driven by a problem much closer to home. Ravi Tamta grew up in the mountains of Kaflikhan village near Jageswar Dham, where reaching a hospital could mean hours on winding roads. He began wondering if there was another way to travel through the hills, one that did not depend on roads or require an airport. Inspired by the challenges of reaching hospitals in the hills, Ravi Tamta spent 13 years developing a flying vehicle that can take off and land vertically. Photograph: ( Zee News) That question led him to build HAPIDA SKYNeX, an electric flying vehicle prototype that can take off and land vertically. After years of experiments, the vehicle completed its maiden test flight in August, taking off from an army helipad in Almora and remaining airborne for nearly a minute. A mountain problem sparked the idea For people living in hilly regions, distance is not always measured in kilometres. Winding roads and difficult terrain can turn a relatively short journey into a long trip, particularly when someone needs medical attention. Tamta began exploring whether a flying vehicle could help people cover such distances faster. His idea was to develop a vehicle that could rise vertically, travel over difficult terrain, and land without needing a runway. View this post on Instagram A post shared by The Better India (@thebetterindia) The aim is to make air travel more accessible in hilly regions, particularly during medical emergencies and in areas that are difficult to reach by road. Developed under his ven",
+   "source": "The Better India : Latest Posts",
+   "link": "https://thebetterindia.com/innovation/ravi-tamta-electric-tesla-flying-vehicle-almora-uttrakhand-indian-innovation-12695251"
+  }
+ },
+ {
+  "n": 2,
+  "headline_hi": "घूमने वाली सीट से आसान सफ़र",
+  "headline_en": "Easy travel with a swivel seat",
+  "summary_en": "Two engineers from Bengaluru have made travel extremely easy for persons with disabilities. Naina Padaki and Anand Kutre started a company named 'True Assistive Technology'. They have created a special swivel car seat named 'TurnPlus'. This seat rotates up to ninety degrees towards the car door. Because of this, passengers can be seated in the car without any trouble. Rashmi Sampat from Bengaluru lives with her sixteen-year-old daughter Deeksha. Deeksha is battling a disease called Spinal Muscular Atrophy. Earlier, seating Deeksha in the car was an exhausting task. With the help of this new seat, their family traveled from Bengaluru to Kanyakumari. They completed this long journey of one thousand kilometers very comfortably. The company has helped more than one thousand people so far. This technology is proving useful for patients with conditions like paralysis and Parkinson's.",
+  "topic": "health",
+  "impact": 9,
+  "media": "video + photos",
+  "videos": 1,
   "photos": 2,
   "source": "The Better India : Latest Posts",
   "link": "https://thebetterindia.com/startup/accessible-mobility-solutions-true-assistive-technology-bengaluru-india-12689609",
@@ -19,15 +38,34 @@
   }
  },
  {
-  "n": 2,
-  "headline_hi": "छात्रों ने घटाया प्लास्टिक का कचरा",
-  "headline_en": "Students reduced plastic waste",
-  "summary_en": "Schoolchildren across the world are coming forward against plastic pollution. In a school in Singapore, children saw plastic waste in the canteen. There, two thousand children used seventy-two thousand plastic items every year. The students ran a major campaign to stop this problem. They introduced the practice of reusable tiffin boxes. For this brilliant idea, they won first place in the 'Unplastify Challenge'. Four hundred schools from twenty-five countries have joined this global program. Together, around three thousand schoolchildren have saved seventy-two tons of plastic waste. Students in Chile discovered a natural alternative to glittery plastic. Meanwhile, in Costa Rica, children chose natural loofah instead of plastic sponges. Children in Turkey prepared new types of gloves for hospitals. With the wisdom of these young children, our Earth is becoming clean and safe.",
-  "topic": "education",
-  "impact": 9,
+  "n": 3,
+  "headline_hi": "दुनिया का सबसे ऊंचा विंड टरबाइन",
+  "headline_en": "The world's tallest wind turbine",
+  "summary_en": "The world's tallest wind turbine has been completed in Germany. This massive structure has been erected in the Schipkau area of eastern Germany. The total height of this turbine has reached three hundred and sixty-five meters. After Berlin's TV tower, it is the second tallest structure in Germany. It has been built with the help of the company 'Gicon' and the government agency 'SPRIND'. At such a high altitude, wind speed remains very fast and steady. The company says it can generate twice as much electricity as a conventional turbine. The production capacity of this turbine has been set at three point eight megawatts. For construction at such a height, a telescoping tower was used instead of a crane. The inner tower was raised up and safely locked within the lattice structure. Company CEO Jochen Grossmann called it a major achievement for his team.",
+  "topic": "science",
+  "impact": 8,
   "media": "video + photos",
   "videos": 1,
-  "photos": 1,
+  "photos": 2,
+  "source": "The Optimist Daily: Making Solutions the News",
+  "link": "https://www.optimistdaily.com/2026/10/worlds-tallest-wind-turbine-reaches-1197-feet-in-germany/",
+  "lead": {
+   "title": "World’s tallest wind turbine reaches 1,197 feet in Germany",
+   "summary": "BY THE OPTIMIST DAILY EDITORIAL TEAM The world&#8217;s tallest wind turbine just reached full height in Germany. GICON &#8216;s pilot turbine in Schipkau, eastern Germany, now stands 365 meters (1,197 feet) tall from base to blade tip, making it Germany&#8217;s second-tallest structure after Berlin&#8217;s TV tower . Official commissioning is set for November. Higher altitude, stronger winds Higher up, winds are faster and more reliable. That translates to more hours of generation per year, and GICON says its design could produce roughly twice the electricity of a conventional turbine with the same rotor diameter. One thing to flag: that&#8217;s a claim about cumulative generation over time, not rated power. The turbine&#8217;s rated capacity is 3.8 megawatts; future versions are designed to go past seven. The rotor hub sits 300 meters (984 feet) above the ground. Building that high required rethinking construction. A crane capable of reaching 1,197 feet wasn&#8217;t realistic, so GICON used a telescoping tower instead. A specialized lifting system raised an inner tower through a surrounding lattice structure, then locked it at full extension. &#8220;365 meters – this is an overwhelming moment for our entire team,&#8221; said GICON founder and CEO Jochen Großmann. &#8220;What was long a challenging idea and then an equally challenging construction project now stands as a globally unique facility in Schipkau.&#8221; A second tier for existing wind farms GICON and its funder, Germany&#8217;s Federal Agency for Disruptive Innovation (SPRIND), aren&#8217;t pitching these turbines as replacements for existing wind farms. The plan is to stack them above. A &#8220;second tier&#8221; of tall turbines with their rotors spinning above those of conventional turbines already in the",
+   "source": "The Optimist Daily: Making Solutions the News",
+   "link": "https://www.optimistdaily.com/2026/10/worlds-tallest-wind-turbine-reaches-1197-feet-in-germany/"
+  }
+ },
+ {
+  "n": 4,
+  "headline_hi": "बच्चों की प्लास्टिक मुक्ति मुहिम",
+  "headline_en": "Children's plastic-free campaign",
+  "summary_en": "Teenagers around the world are stepping forward to tackle the plastic crisis. In a school in Singapore, two thousand students used seventy-two thousand items made of thermocol and other plastics every year. For a solution, they joined the 'Unplastify Challenge'. In this initiative by the Latin American organization Unplastify, fifteen to sixteen-year-old teenagers design solutions. The students of Singapore secured first place by running a campaign for reusable lunch boxes. Over the past eight years, more than three thousand students from four hundred schools across twenty-five countries have joined this campaign. They have helped prevent seventy-two tons of plastic. In Chile, students saved four kilograms of plastic by making biodegradable glitter. In Costa Rica, natural loofahs were adopted instead of plastic sponges. In Turkey, teenagers have explored eco-friendly alternatives to medical equipment like plastic gloves.",
+  "topic": "education",
+  "impact": 8,
+  "media": "video + photos",
+  "videos": 2,
+  "photos": 2,
   "source": "Reasons to be Cheerful",
   "link": "https://reasonstobecheerful.world/teenagers-worldwide-are-tackling-the-plastics-crisis/",
   "lead": {
@@ -38,15 +76,15 @@
   }
  },
  {
-  "n": 3,
-  "headline_hi": "कंक्रीट की दीवार पर उगेगी हरियाली",
-  "headline_en": "Greenery will grow on concrete walls",
-  "summary_en": "Science has made a unique discovery for environmental improvement. Respyre, a new startup from the Netherlands, has created the 'Mosscrete' technology. This is a method to grow moss on concrete walls. This technology was developed through research from Delft University of Technology. In this technology, there is no need to put soil or pipes on walls. Fine moss fibers absorb moisture directly from rain and air. With this, both old and new buildings can be made green. Its testing is underway on eight different buildings in the Netherlands and Belgium. In Kortrijk, Belgium, a wall of four hundred and fifty square meters was made green. Meanwhile, an experiment was conducted on a three hundred square meter wall in Hoofddorp, Netherlands. This invention will make cities' blank walls beautiful without any maintenance. Through this, our cities will be able to become full of clean air and natural greenery.",
-  "topic": "science",
-  "impact": 8,
+  "n": 5,
+  "headline_hi": "दीवारों पर काई उगाने वाला कंक्रीट",
+  "headline_en": "Concrete that grows moss on walls",
+  "summary_en": "A startup from the Netherlands has discovered a unique, eco-friendly technology. This Dutch company, named 'Respyre', has created a coating called 'Mosscrete'. It helps grow green moss naturally on concrete walls. This technology is based on research from Delft University of Technology. This moss does not need soil or irrigation to grow. The moss derives its nourishment solely from rainwater and moisture in the air. The fine roots of the moss stick to the surface without damaging the wall. The company has worked on eight different projects in Belgium and the Netherlands. This coating was applied to the wall of a warehouse in Kortrijk, Belgium. In Hoofddorp, Netherlands, it is being tested on a roadside wall. This technology will prove very effective in making bare city walls green.",
+  "topic": "environment",
+  "impact": 7,
   "media": "video + photos",
   "videos": 2,
-  "photos": 1,
+  "photos": 2,
   "source": "The Optimist Daily: Making Solutions the News",
   "link": "https://www.optimistdaily.com/2026/10/a-dutch-startup-is-making-concrete-that-grows-its-own-moss/",
   "lead": {
@@ -57,14 +95,14 @@
   }
  },
  {
-  "n": 4,
-  "headline_hi": "बंद होने पर भी खुली लाइब्रेरी",
-  "headline_en": "Library open even when closed",
-  "summary_en": "There is lovely news related to education and books from Minnesota, USA. Here, the library in the town of Wyoming has started a new facility. This facility has been named 'Extended Access'. Under this, people can go inside even after the library closes. Readers can use computers even when no staff is present there. Local resident Michael Sayen often comes here to work on his days off. Sitting in this quiet place, he works on his novels and important documents. Library director Carla Lydon says this is very useful. Due to busy work hours, many people cannot come during the day. Now, such people can read at any time according to their convenience. Such arrangements are also starting in other states like California and Utah. This initiative is continuously expanding the reach of knowledge in rural areas.",
+  "n": 6,
+  "headline_hi": "बंद होने के बाद भी खुली लाइब्रेरी",
+  "headline_en": "A library open even after closing",
+  "summary_en": "The Wyoming branch of East Central Regional Library in Minnesota, USA, has launched a new initiative called 'Extended Access'. Under this, people can enter even when the library is closed and unstaffed. A man named Michael Sayen works on his novel here on a computer. He shared that even on closed days, one can come here to work or find relief from the heat. Sayen has also found this facility useful for submitting important job applications and court documents. According to the library's executive director, Carla Lydon, this arrangement will allow even those people to use the library who cannot visit during regular hours due to work or family commitments. Such a facility is also running under different names in Utah and Nevada County, California.",
   "topic": "education",
-  "impact": 8,
+  "impact": 7,
   "media": "video + photos",
-  "videos": 1,
+  "videos": 2,
   "photos": 2,
   "source": "Reasons to be Cheerful",
   "link": "https://reasonstobecheerful.world/the-library-is-closed-feel-free-to-come-in/",
@@ -73,25 +111,6 @@
    "summary": "This story was originally published in the Daily Yonder. For more rural reporting and small-town stories visit dailyyonder.com . For Michael Sayen, visiting the local library after hours is a great way to get work done, or seek respite from the weather, regardless of what day it is. “We just had Labor Day, the library is closed all day. But if you have extended hours, you can come in and do the work, or cool down from a hot day or whatever you need to do,” Sayen said the day after Labor Day while working on a novel at the Wyoming, Minnesota branch of the East Central Regional Library (ECRL) in Chisago County. Sayen, who lives in nearby Forest Lake north of Minneapolis, adds that he has found after-hours access useful for filing time-sensitive job applications or court documents. Michael Sayen uses a computer at the Wyoming Giese Memorial Library to work on a novel. Sayen is a user of the Extended Access program at the Wyoming Library. Credit: H. Jiahong Pan/Daily Yonder The Wyoming branch library is home to a new ECRL initiative called “extended access,” which allows users to access a library branch when it is unstaffed. “We hope that it allows more people to use the facility, in particular those who may not be able to get to the library during otherwise limited hours due to work and family schedules,” ECRL executive director Carla Lydon wrote in an email. ECRL is one of a handful of rural library systems across the United States to offer such a service, increasing library access at a time when libraries are struggling for funding. How it works Extended access goes by many names depending on location. The Summit County Library in Utah calls it extended access hours . In Nevada County, California, the program is called Open+ Access . At the Independence Public Library in",
    "source": "Reasons to be Cheerful",
    "link": "https://reasonstobecheerful.world/the-library-is-closed-feel-free-to-come-in/"
-  }
- },
- {
-  "n": 5,
-  "headline_hi": "अल्पना कला से खुशियां बांटती दादी",
-  "headline_en": "Grandmother spreading joy through Alpana art",
-  "summary_en": "A very beautiful and heartwarming story has emerged from Kolkata. Here, seventy-four-year-old Ratnabali Ghosh wakes up at five-thirty in the morning. She creates traditional Bengali Alpana on the streets of Kolkata and outside people's doors. This initiative of hers started to surprise people and brighten their day. Now, it has become a beautiful mission to save Bengal's cultural heritage. She is spreading joy with her art among old houses, elderly couples, and residents of slums. Ratnabali ji is inspired by her grandmother and the artistic legacy of Rabindranath Tagore. She wants to revive this old tradition and pass it on to the new generation. Her effort teaches that along with modernity, preserving our roots is also very important. Truly, traditions are preserved through the desire to bring a smile to someone's face.",
-  "topic": "people",
-  "impact": 7,
-  "media": "photos",
-  "videos": 0,
-  "photos": 1,
-  "source": "The Better India : Latest Posts",
-  "link": "https://thebetterindia.com/videos/hobby/this-74-year-old-woman-is-bringing-alpona-art-back-to-kolkata-12691197",
-  "lead": {
-   "title": "This 74 Year Old Woman Is Bringing Alpona Art Back to Kolkata",
-   "summary": "At 74, Ratnabali Ghosh wakes up at 5:30 AM to bring smiles to Kolkata’s streets, one Alpona at a time! Known for creating traditional Bengali Alpona designs outside doorsteps, she began with a simple idea: surprise people and brighten their day. What started as a small initiative has grown into a beautiful mission to preserve Bengal’s cultural heritage. From decorating dilapidated houses to bringing joy to elderly couples and slum residents, her art reminds us that beauty and kindness belong everywhere. Inspired by her grandmother and Rabindranath Tagore’s artistic legacy, Ratnabali hopes to revive a fading Bengali tradition and pass it on to future generations. Her story carries a powerful message: modernisation matters, but our cultural roots deserve to be cherished, too. Sometimes, preserving a tradition begins with one person, a little creativity and the desire to make someone smile. Do you think traditional Indian art deserves more space in our modern cities? Tell us in the comments! kalipuja #TraditionalArt #DurgaPuja #DurgaPujo #AlponaDesign #BengaliAlpona #Art #AlponaDidi #Alpona #Kolkata #BengaliArt #TheBetterIndia #folkart Follow Ratnabali Ghosh on Instagram: https://www.instagram.com/ratnabali.ghosh/ Subscribe Us Now : https://www.youtube.com/thebetterindia Follow us for more: Facebook: https://www.facebook.com/thebetterindia Instagram: https://www.instagram.com/thebetterindia/ Twitter: https://twitter.com/thebetterindia LinkedIn: https://www.linkedin.com/company/thebetterindia/ Website: https://www.thebetterindia.com/",
-   "source": "The Better India : Latest Posts",
-   "link": "https://thebetterindia.com/videos/hobby/this-74-year-old-woman-is-bringing-alpona-art-back-to-kolkata-12691197"
   }
  }
 ]
