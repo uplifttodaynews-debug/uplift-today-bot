@@ -1,27 +1,30 @@
 [news] fuller text fetched for: From Hostel Room Model to 1500+ Foldable Buildings (3800 characters)
-[news] fuller text fetched for: Japanese sweet potato: what sets it apart nutritio (3668 characters)
+[news] fuller text fetched for: Japanese sweet potato: what sets it apart nutritio (3698 characters)
 [main] using the 3 stories YOU approved, in your order
 [main] 3 candidate stories
 [writer] 3 leads after the family-safe filter
 [main] AI wrote 3 stories; fact-checking them...
-[main] approved order: ['पोते-पोतियों संग देखभाल से तेज़ याददाश्त', 'आईआईटी छात्रों ने बनाए फोल्डेबल घर', 'जापानी शकरकंद के बेहतरीन फायदे']
-[main] title (about the lead story): पोते-पोतियों का साथ बढ़ाता है बुजुर्गों की याददाश्त
+[verify] story 2 flagged: The claim that Japanese sweet potatoes provide good energy throughout the day ('दिनभर शरीर को अच्छी ऊर्जा देते हैं') is an added benefit not stated in the lead.
+[main] 1 stories flagged - asking the writer to fix them...
+[main] approved order: ['नाती-पोतों की देखभाल से तेज याददाश्त', 'आईआईटी छात्रों के फोल्डेबल घर', 'जापानी शकरकंद के बेहतरीन पोषक गुण']
+[main] title (about the lead story): नाती-पोतों की देखभाल से तेज होती है बुजुर्गों की याददाश्त
 [main] 3 stories passed. Sources: American Psychological Association, The Better India : Latest Posts, The Optimist Daily
 [main] English captions ready
 [main] 258 earlier pictures/clips will not be reused
 [main] story0: 4 AI illustration(s) added (no good stock footage)
 [main] story1: 4 AI illustration(s) added (no good stock footage)
-[stock] 'Great benefits of Japanese swe': best scores [6.0, 3.0, 2.0] (need 8)
-[stock] 'Great benefits of Japanese swe': 18 candidates, 0 matched
-[stock] second try with broader searches: ['Japanese sweet potato', 'sweet potato slices', 'sweet potato farm', 'vegetable harvest']
-[stock] 'Great benefits of Japanese swe': best scores [5.0, 3.0, 3.0] (need 6)
-[stock] 'Great benefits of Japanese swe': 18 candidates, 0 matched
+[stock] 'Excellent nutritional benefits': best scores [3.0, 3.0, 2.0] (need 8)
+[stock] 'Excellent nutritional benefits': 18 candidates, 0 matched
+[stock] second try with broader searches: ['Japanese sweet potato', 'Japan', 'sweet potato field', 'vegetable farm']
+[stock] 'Excellent nutritional benefits': best scores [5.0, 5.0, 3.0] (need 6)
+[stock] 'Excellent nutritional benefits': 18 candidates, 0 matched
 [main] story2: no good video clip, using photos
-[stock] 'Great benefits of Japanese swe': best scores [10.0, 9.0, 5.0] (need 8)
-[stock] 'Great benefits of Japanese swe': 24 candidates, 2 matched
-[main] 5 stock photos used
-[main] hook ready (8.5 s): बच्चों की प्यार से देखभाल बुजुर्गों की बेहतर याददाश्त और तरोताज़ा मन से जुड़ी हो सकती है। इस खूबसूरत रिसर्च के बारे में जानिए पूरी ख़बर।
-[main] video ready, 158 seconds
-[music] mixed in piano_glow.mp3
+[stock] 'Excellent nutritional benefits': best scores [9.0, 7.0, 5.0] (need 8)
+[stock] 'Excellent nutritional benefits': 24 candidates, 1 matched
+[main] story2: 3 AI illustration(s) added (no good stock footage)
+[main] 4 stock photos used
+[main] hook ready (8.1 s): नाती-पोतों की देखभाल बुजुर्गों की याददाश्त के लिए मानसिक रूप से मददगार हो सकती है। एक नई रिसर्च के नतीजे, जानिए पूरी ख़बर।
+[main] video ready, 195 seconds
+[music] mixed in piano_hope.mp3
 [main] PREVIEW saved in previews/ - nothing was uploaded to YouTube
 [main] HOLD: the finished video is kept for review - NOT uploaded to YouTube
