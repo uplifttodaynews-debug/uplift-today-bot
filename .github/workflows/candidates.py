@@ -15,7 +15,7 @@ import stock
 def main():
     out_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", "approval")
     os.makedirs(out_dir, exist_ok=True)
-    want = int(os.environ.get("CANDIDATE_COUNT", "7"))
+    want = int(os.environ.get("CANDIDATE_COUNT", "12"))
     items = news.collect()
     print(f"[cand] {len(items)} leads")
     config.NUM_STORIES, config.EXTRA_CANDIDATES = want + 2, 3

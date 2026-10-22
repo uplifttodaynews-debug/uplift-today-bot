@@ -40,7 +40,7 @@ RSS_FEEDS = [
     "https://www.thebetterindia.com/feed/",
     "https://www.goodgoodgood.co/articles/rss.xml",
 ]
-MAX_ITEMS_PER_FEED = 8
+MAX_ITEMS_PER_FEED = 14
 
 # ---- Words that make us reject a story before the AI even sees it ----
 BLOCK_WORDS = [
