@@ -37,6 +37,7 @@ jobs:
           if grep -qiw male ../../shorts-request.txt; then export PRESENTER=male; fi
           if grep -qiw english ../../shorts-request.txt; then export SHORT_SUBS=en; fi
           export SHORT_STORY=$(grep -o 'story=[0-9]*' ../../shorts-request.txt | head -1 | cut -d= -f2); SHORT_STORY=${SHORT_STORY:-1}; export SHORT_STORY
+          if grep -qiw mix ../../shorts-request.txt; then export SHORT_MIX=1; fi
           if grep -qiw urdu ../../shorts-request.txt; then export SHORT_LANG=ur; fi
           python -u shorts.py 2>&1 | python redact.py | tee ../../previews/short-log.txt
           exit ${PIPESTATUS[0]}

@@ -50,6 +50,11 @@ PK_RULE = ("The Short is for a PAKISTANI audience, so in EVERY image prompt show
            "(dastarkhwan, roti, daal, biryani), always groups of at least three (families or same-gender friends), modest, never couples. ")
 
 
+MIX_RULE = ("STYLE: write in Hinglish. Use LESS pure Hindi: simple spoken Hindi with MANY everyday English words (at least one in three nouns/verbs, for example work from home, video call, team, study, trust, family, company, result, free, tip), "
+            "but write the English words in Devanagari letters (e.g. वर्क फ्रॉम होम, वीडियो कॉल, टीम, स्टडी) so the Hindi voice reads them well; keep AI in English letters. Short, punchy sentences. "
+            "For the 5 image prompts, use a MIX: show Indian people and settings in 2 or 3 of them and Western/international people and settings (Europe or America, modest, groups, family-friendly) in the others, so the pictures suit both Indian and Western audiences.\n")
+
+
 def _plan(lead, text, max_words):
     return script_writer._call((PK_RULE if os.environ.get("SHORT_LANG") == "ur" else "") +
         f"Write a YouTube SHORT (vertical, about 45 seconds) in simple spoken {config.LANGUAGE_NAME} (Devanagari) about this "
@@ -58,6 +63,7 @@ def _plan(lead, text, max_words):
         "पूरी ख़बर हमारे चैनल पर देखें। Use only facts from the text; keep the word AI in English letters. The audience is conservative Indian families: NEVER mention romantic partners, couples, intimacy or physical closeness; speak only of family, friends or loved ones. "
         "Also write a title (Devanagari, under 60 characters, always POSITIVE and hopeful: never fear, danger, warning or loss words) and 5 DIFFERENT English image prompts (photographic, warm natural light, "
         "vertical composition, generic people or places that illustrate the story (modest, family-friendly: families, friends, children; never couples or intimate scenes; Indian stories show Indian people), NO text, letters, logos, flags, famous people; max 40 words each).\n"
+        + (MIX_RULE if os.environ.get("SHORT_MIX") == "1" else "") +
         f"Story headline: {lead.get('title', '')}\nStory text: {text[:3500]}\n"
         'Return ONLY JSON: {"title": "...", "script": "...", "prompts": ["..."]}', 0.5)
 
