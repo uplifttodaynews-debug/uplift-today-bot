@@ -1,6 +1,6 @@
 [news] fuller text fetched for: Remote work brought colleagues closer, a study of  (3800 characters)
-[short] voice 29.3 s
-[short] script: क्या आप जानते हैं कि घर से काम करने ने सहकर्मियों को दूर करने के बजाय आपस में और करीब ला दिया है? एक नए शोध में यह बात सामने आई है कि वीडियो बैठकों के दौरान जब सहकर्मियों ने एक-दूसरे के घर, परिवार और बच्चों को देखा, तो उनके बीच का रिश्ता और गहरा हो गया। पहले दफ़्तर में लोग अपनी पारिवारिक जिम्मेदारियों को साझा करने में झिझकते थे। लेकिन अब सहकर्मी एक-दूसरे की परिस्थितियों को बेहतर समझने लगे हैं और उनके बीच खुलापन और भरोसा बढ़ गया है। पूरी ख़बर हमारे चैनल पर देखें।
-[short] english subtitles: Did you know that working from home brought coworkers closer together instead of pushing them apart? A new study reveals that seeing each other's homes, families, and kids during video meetings deepened their bonds. Previously, people hesitated to share family responsibilities at work. But now, colleagues understand each other's situations better, building greater openness and trust. Watch the full story on our channel.
+[short] voice 25.5 s
+[short] script: क्या आप जानते हैं, वर्क फ्रॉम होम ने कलीग्स को दूर करने के बजाय और भी करीब ला दिया है? एक नई रिसर्च स्टडी में यह सरप्राइजिंग रिजल्ट सामने आया है। जब लोग वीडियो कॉल पर मिले, तो बच्चों और फैमिली की बातें शेयर करने से टीम में ट्रस्ट बढ़ गया। ऑफिस के मुकाबले अब लोग अपने कलीग्स से ज्यादा ओपन हैं और बेझिझक हेल्प मांगते हैं। घर से काम करने से आपसी रिश्ते और भी मजबूत हुए हैं। पूरी ख़बर हमारे चैनल पर देखें।
+[short] english subtitles: Did you know that working from home has brought colleagues closer instead of drifting them apart? A new research study has revealed this surprising finding. On video calls, sharing about kids and family built greater trust within teams. Compared to the office, people are now more open with their colleagues and hesitate less to ask for help. Working from home has actually strengthened relationships. Watch the full story on our channel.
 [music] mixed in piano_sunrise.mp3
-[short] ready: 29 s - nothing uploaded
+[short] ready: 25 s - nothing uploaded
