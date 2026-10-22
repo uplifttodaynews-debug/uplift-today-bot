@@ -1,2 +1,38 @@
-[thumb] picture 1 done
-[thumb] picture 2 done
+[news] fuller text fetched for: Remote work brought colleagues closer, a study of  (3800 characters)
+[news] fuller text fetched for: Easy travel with a swivel seat (3800 characters)
+[news] fuller text fetched for: Youth initiative for plastic freedom (3800 characters)
+[main] using the 3 stories YOU approved, in your order
+[main] 3 candidate stories
+[writer] 3 leads after the family-safe filter
+[main] AI wrote 3 stories; fact-checking them...
+[verify] story 0 flagged: The narration adds an unsupported claim and exaggerates the number by stating that smiles have returned to the faces of thousands of families ('हज़ारों परिवारों के चेहरे पर मुस्कान लौट आई है'), whereas the source lead states that it helped over 1,000 people.
+[main] 1 stories flagged - asking the writer to fix them...
+[main] approved order: ['वर्क फ्रॉम होम से बढ़ा भरोसा', 'दिव्यांगों के लिए खास कार सीट', 'छात्रों ने घटाया प्लास्टिक का कचरा']
+[main] story 1: shortened 145 -> 43 words
+[main] title (about the lead story): वर्क फ्रॉम होम से बढ़ा सहकर्मियों में आपसी भरोसा
+[main] 3 stories passed. Sources: Good Good Good (from The Conversation), Reasons to be Cheerful, The Better India : Latest Posts
+[main] English captions ready
+[main] 258 earlier pictures/clips will not be reused
+[stock] 'Trust increased through work f': best scores [8.0, 8.0, 8.0] (need 8)
+[stock] 'Trust increased through work f': 18 candidates, 3 matched
+[stock] 'Trust increased through work f': best scores [10.0, 7.0, 7.0] (need 8)
+[stock] 'Trust increased through work f': 24 candidates, 1 matched
+[main] story0: 3 video clip(s)
+[main] story1: 4 AI illustration(s) added (no good stock footage)
+[stock] 'Students reduced plastic waste': best scores [5.0, 4.0, 4.0] (need 8)
+[stock] 'Students reduced plastic waste': 18 candidates, 0 matched
+[stock] second try with broader searches: ['reusable lunchbox', 'plastic waste', 'Singapore', 'school cafeteria']
+[stock] 'Students reduced plastic waste': best scores [6.0, 5.0, 3.0] (need 6)
+[stock] 'Students reduced plastic waste': 18 candidates, 1 matched
+[stock] 'Students reduced plastic waste': best scores [7.0, 5.0, 5.0] (need 8)
+[stock] 'Students reduced plastic waste': 24 candidates, 0 matched
+[stock] second try with broader searches: ['reusable lunchbox', 'plastic waste', 'Singapore', 'school cafeteria']
+[stock] 'Students reduced plastic waste': best scores [8.0, 7.0, 7.0] (need 6)
+[stock] 'Students reduced plastic waste': 24 candidates, 2 matched
+[main] story2: 1 video clip(s)
+[main] 10 stock photos used
+[main] hook ready (9.4 s): घर से काम करने से सहकर्मियों के बीच आपसी भरोसा और खुलापन बढ़ सकता है। एक नए अध्ययन की यह अच्छी बात, जानिए पूरी ख़बर।
+[main] video ready, 73 seconds
+[music] mixed in piano_sunrise.mp3
+[main] PREVIEW saved in previews/ - nothing was uploaded to YouTube
+[main] HOLD: the finished video is kept for review - NOT uploaded to YouTube
