@@ -155,6 +155,19 @@ def main():
     for s_ in stories:
         s_["headline"] = script_writer.polish_hindi(s_.get("headline"))
         s_["narration"] = script_writer.polish_hindi(s_.get("narration"))
+    if approved and stories:  # the lead must be IN DEPTH: expand it from the approved text if the writer made it short
+        n0_ = len(str(stories[0].get("narration", "")).split())
+        src_ = str((items[0] or {}).get("summary", ""))
+        if n0_ < 200 and len(src_.split()) > 120:
+            try:
+                r0_ = script_writer._call("Write the LEAD story of a Hindi (Devanagari) news bulletin, to be read aloud slowly, 260-320 words in 20-26 short, simple sentences. Use ONLY facts written in the text below (who did the study, where, how many interviews/hours, what they found, the example, what it means, the limitation that it is one company so it may not apply everywhere). Use cautious wording (a study found, may, linked to), never say it proves anything. Never mention couples or romance. Spell numbers in Hindi words, keep AI in English letters. "
+                                          f"Text: {src_[:3800]}\nReturn ONLY JSON: " + '{"narration": "..."}', 0.4)
+                t0_ = script_writer.polish_hindi(r0_.get("narration", ""))
+                if t0_ and len(t0_.split()) > n0_:
+                    print(f"[main] lead expanded {n0_} -> {len(t0_.split())} words")
+                    stories[0]["narration"] = t0_
+            except Exception as e0_:
+                print(f"[main] could not expand the lead: {e0_}")
     if approved:  # hard cap: only the lead is long; story 2 is the shortest
         for i_, s_ in enumerate(stories):
             cap_ = None if i_ == 0 else (42 if i_ == 1 else 55)
