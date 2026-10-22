@@ -1,30 +1,6 @@
-[news] fuller text fetched for: From Hostel Room Model to 1500+ Foldable Buildings (3800 characters)
-[news] fuller text fetched for: Japanese sweet potato: what sets it apart nutritio (3698 characters)
-[main] using the 3 stories YOU approved, in your order
-[main] 3 candidate stories
-[writer] 3 leads after the family-safe filter
-[main] AI wrote 3 stories; fact-checking them...
-[verify] story 2 flagged: The claim that Japanese sweet potatoes provide good energy throughout the day ('दिनभर शरीर को अच्छी ऊर्जा देते हैं') is an added benefit not stated in the lead.
-[main] 1 stories flagged - asking the writer to fix them...
-[main] approved order: ['नाती-पोतों की देखभाल से तेज याददाश्त', 'आईआईटी छात्रों के फोल्डेबल घर', 'जापानी शकरकंद के बेहतरीन पोषक गुण']
-[main] title (about the lead story): नाती-पोतों की देखभाल से तेज होती है बुजुर्गों की याददाश्त
-[main] 3 stories passed. Sources: American Psychological Association, The Better India : Latest Posts, The Optimist Daily
-[main] English captions ready
-[main] 258 earlier pictures/clips will not be reused
-[main] story0: 4 AI illustration(s) added (no good stock footage)
-[main] story1: 4 AI illustration(s) added (no good stock footage)
-[stock] 'Excellent nutritional benefits': best scores [3.0, 3.0, 2.0] (need 8)
-[stock] 'Excellent nutritional benefits': 18 candidates, 0 matched
-[stock] second try with broader searches: ['Japanese sweet potato', 'Japan', 'sweet potato field', 'vegetable farm']
-[stock] 'Excellent nutritional benefits': best scores [5.0, 5.0, 3.0] (need 6)
-[stock] 'Excellent nutritional benefits': 18 candidates, 0 matched
-[main] story2: no good video clip, using photos
-[stock] 'Excellent nutritional benefits': best scores [9.0, 7.0, 5.0] (need 8)
-[stock] 'Excellent nutritional benefits': 24 candidates, 1 matched
-[main] story2: 3 AI illustration(s) added (no good stock footage)
-[main] 4 stock photos used
-[main] hook ready (8.1 s): नाती-पोतों की देखभाल बुजुर्गों की याददाश्त के लिए मानसिक रूप से मददगार हो सकती है। एक नई रिसर्च के नतीजे, जानिए पूरी ख़बर।
-[main] video ready, 195 seconds
-[music] mixed in piano_hope.mp3
-[main] PREVIEW saved in previews/ - nothing was uploaded to YouTube
-[main] HOLD: the finished video is kept for review - NOT uploaded to YouTube
+[news] fuller text fetched for: Remote work brought colleagues closer, a study of  (3800 characters)
+[short] voice 29.3 s
+[short] script: क्या आप जानते हैं कि घर से काम करने ने सहकर्मियों को दूर करने के बजाय आपस में और करीब ला दिया है? एक नए शोध में यह बात सामने आई है कि वीडियो बैठकों के दौरान जब सहकर्मियों ने एक-दूसरे के घर, परिवार और बच्चों को देखा, तो उनके बीच का रिश्ता और गहरा हो गया। पहले दफ़्तर में लोग अपनी पारिवारिक जिम्मेदारियों को साझा करने में झिझकते थे। लेकिन अब सहकर्मी एक-दूसरे की परिस्थितियों को बेहतर समझने लगे हैं और उनके बीच खुलापन और भरोसा बढ़ गया है। पूरी ख़बर हमारे चैनल पर देखें।
+[short] english subtitles: Did you know that working from home brought coworkers closer together instead of pushing them apart? A new study reveals that seeing each other's homes, families, and kids during video meetings deepened their bonds. Previously, people hesitated to share family responsibilities at work. But now, colleagues understand each other's situations better, building greater openness and trust. Watch the full story on our channel.
+[music] mixed in piano_sunrise.mp3
+[short] ready: 29 s - nothing uploaded
