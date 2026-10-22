@@ -1,1 +1,1 @@
-prepare for review date=2026-10-18 forceai=0,1 voice hook v5
+prepare for review date=2026-10-22 voice hook v6
