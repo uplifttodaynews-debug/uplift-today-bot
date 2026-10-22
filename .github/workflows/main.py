@@ -155,6 +155,20 @@ def main():
     for s_ in stories:
         s_["headline"] = script_writer.polish_hindi(s_.get("headline"))
         s_["narration"] = script_writer.polish_hindi(s_.get("narration"))
+    if approved:  # hard cap: only the lead is long; story 2 is the shortest
+        for i_, s_ in enumerate(stories):
+            cap_ = None if i_ == 0 else (42 if i_ == 1 else 55)
+            n_ = len(str(s_.get("narration", "")).split())
+            if cap_ and n_ > cap_ + 8:
+                try:
+                    r_ = script_writer._call(f"Shorten this Hindi (Devanagari) news story to at most {cap_} words (about {max(3, cap_ // 12)} short sentences). Keep only the 2-3 most important facts from it (who, what, result); do not add any new fact; keep the cautious wording; keep AI in English letters. Spell numbers in Hindi words. "
+                                             f"Text: {s_['narration']}\nReturn ONLY JSON: " + '{"narration": "..."}', 0.3)
+                    t_ = script_writer.polish_hindi(r_.get("narration", ""))
+                    if t_ and len(t_.split()) <= cap_ + 8:
+                        print(f"[main] story {i_}: shortened {n_} -> {len(t_.split())} words")
+                        s_["narration"] = t_
+                except Exception as e_:
+                    print(f"[main] could not shorten story {i_}: {e_}")
     data["title"] = script_writer.make_title(stories, data.get("title", ""))
     print(f"[main] title (about the lead story): {data['title']}")
     special = config.SPECIAL_DAYS.get((config.today_india().month, config.today_india().day))
