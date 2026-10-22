@@ -5,32 +5,28 @@
 [main] 3 candidate stories
 [writer] 3 leads after the family-safe filter
 [main] AI wrote 3 stories; fact-checking them...
-[main] approved order: ['घर से काम ने बढ़ाई नज़दीकी', 'खास कार सीट से आसान सफर', 'बच्चों ने घटाया प्लास्टिक कचरा']
-[main] lead expanded 44 -> 316 words
-[main] story 1: shortened 307 -> 36 words
-[main] title (about the lead story): घर से काम ने बढ़ाई सहकर्मियों में नज़दीकी
+[verify] story 0 flagged: The narration exaggerates by stating that thousands of families are now embarking on long journeys, whereas the source lead states that the technology has helped over 1,000 individuals and only describes a single family going on a long road trip.
+[main] 1 stories flagged - asking the writer to fix them...
+[main] approved order: ['वर्क फ़्रॉम होम से बढ़े रिश्ते', 'आसान सफ़र के लिए अनोखी सीट', 'छात्रों ने घटाया प्लास्टिक का कचरा']
+[main] lead expanded 54 -> 318 words
+[main] story 1: shortened 137 -> 41 words
+[main] title (about the lead story): वर्क फ्रॉम होम से मजबूत हुए सहकर्मियों के रिश्ते
 [main] 3 stories passed. Sources: Good Good Good (from The Conversation), Reasons to be Cheerful, The Better India : Latest Posts
 [main] English captions ready
-[main] 258 earlier pictures/clips will not be reused
-[stock] 'Work from home brought people ': best scores [8.0, 8.0, 8.0] (need 8)
-[stock] 'Work from home brought people ': 18 candidates, 3 matched
-[stock] 'Work from home brought people ': best scores [8.0, 8.0, 6.0] (need 8)
-[stock] 'Work from home brought people ': 24 candidates, 1 matched
-[main] story0: 3 video clip(s)
+[main] 269 earlier pictures/clips will not be reused
+[stock] 'Work from home strengthens rel': best scores [8.0, 7.0, 6.0] (need 8)
+[stock] 'Work from home strengthens rel': 18 candidates, 1 matched
+[stock] 'Work from home strengthens rel': best scores [8.0, 7.0, 7.0] (need 8)
+[stock] 'Work from home strengthens rel': 24 candidates, 1 matched
+[main] story0: 1 video clip(s)
 [main] story1: 4 AI illustration(s) added (no good stock footage)
-[stock] 'Children reduced plastic waste': best scores [7.0, 5.0, 4.0] (need 8)
-[stock] 'Children reduced plastic waste': 18 candidates, 0 matched
-[stock] second try with broader searches: ['reusable tiffin box', 'Singapore', 'school classroom', 'plastic waste']
-[stock] 'Children reduced plastic waste': best scores [8.0, 6.0, 4.0] (need 6)
-[stock] 'Children reduced plastic waste': 18 candidates, 2 matched
-[stock] 'Children reduced plastic waste': best scores [7.0, 4.0, 3.0] (need 8)
-[stock] 'Children reduced plastic waste': 24 candidates, 0 matched
-[stock] second try with broader searches: ['reusable tiffin box', 'plastic waste', 'Singapore', 'empty classroom']
-[stock] 'Children reduced plastic waste': best scores [7.0, 6.0, 6.0] (need 6)
-[stock] 'Children reduced plastic waste': 24 candidates, 2 matched
-[main] story2: 2 video clip(s)
-[main] 11 stock photos used
-[main] hook ready (8.3 s): क्या घर से काम करना सहकर्मियों को करीब ला सकता है? यह मनोवैज्ञानिक सुरक्षा में सुधार से कैसे जुड़ा हो सकता है, जानिए पूरी ख़बर।
+[stock] 'Students reduced plastic waste': best scores [8.0, 7.0, 6.0] (need 8)
+[stock] 'Students reduced plastic waste': 18 candidates, 1 matched
+[stock] 'Students reduced plastic waste': best scores [8.0, 8.0, 8.0] (need 8)
+[stock] 'Students reduced plastic waste': 24 candidates, 2 matched
+[main] story2: 1 video clip(s)
+[main] 8 stock photos used
+[main] hook ready (8.7 s): एक अध्ययन के अनुसार घर से काम करने से सहकर्मी आपस में अधिक जुड़ सकते हैं और खुलकर बात कर सकते हैं। जानिए पूरी ख़बर।
 [main] video ready, 155 seconds
 [music] mixed in piano_sunrise.mp3
 [main] PREVIEW saved in previews/ - nothing was uploaded to YouTube
