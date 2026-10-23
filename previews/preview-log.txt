@@ -5,29 +5,36 @@
 [main] 3 candidate stories
 [writer] 3 leads after the family-safe filter
 [main] AI wrote 3 stories; fact-checking them...
-[verify] story 0 flagged: The narration exaggerates by stating that thousands of families are now embarking on long journeys, whereas the source lead states that the technology has helped over 1,000 individuals and only describes a single family going on a long road trip.
+[verify] story 0 flagged: The narration adds the unsupported claim that the founders said helping people brings them great joy ('वे कहते हैं कि लोगों की मदद करके उन्हें बहुत खुशी मिलती है'), which is not mentioned in the lead.
 [main] 1 stories flagged - asking the writer to fix them...
-[main] approved order: ['वर्क फ़्रॉम होम से बढ़े रिश्ते', 'आसान सफ़र के लिए अनोखी सीट', 'छात्रों ने घटाया प्लास्टिक का कचरा']
-[main] lead expanded 54 -> 318 words
-[main] story 1: shortened 137 -> 41 words
-[main] title (about the lead story): वर्क फ्रॉम होम से मजबूत हुए सहकर्मियों के रिश्ते
+[main] approved order: ['वर्क फ्रॉम होम से बढ़ा भरोसा', 'दिव्यांगों के लिए आसान सफर', 'प्लास्टिक मुक्त भविष्य की पहल']
+[main] lead expanded 55 -> 342 words
+[main] story 1: shortened 151 -> 40 words
+[main] title (about the lead story): वर्क फ्रॉम होम से मजबूत हुआ आपसी भरोसा
 [main] 3 stories passed. Sources: Good Good Good (from The Conversation), Reasons to be Cheerful, The Better India : Latest Posts
 [main] English captions ready
 [main] 269 earlier pictures/clips will not be reused
-[stock] 'Work from home strengthens rel': best scores [8.0, 7.0, 6.0] (need 8)
-[stock] 'Work from home strengthens rel': 18 candidates, 1 matched
-[stock] 'Work from home strengthens rel': best scores [8.0, 7.0, 7.0] (need 8)
-[stock] 'Work from home strengthens rel': 24 candidates, 1 matched
-[main] story0: 1 video clip(s)
+[stock] 'Work from Home Increases Trust': best scores [8.0, 8.0, 7.0] (need 8)
+[stock] 'Work from Home Increases Trust': 18 candidates, 2 matched
+[stock] 'Work from Home Increases Trust': best scores [8.0, 7.0, 7.0] (need 8)
+[stock] 'Work from Home Increases Trust': 24 candidates, 1 matched
+[main] story0: 2 video clip(s)
 [main] story1: 4 AI illustration(s) added (no good stock footage)
-[stock] 'Students reduced plastic waste': best scores [8.0, 7.0, 6.0] (need 8)
-[stock] 'Students reduced plastic waste': 18 candidates, 1 matched
-[stock] 'Students reduced plastic waste': best scores [8.0, 8.0, 8.0] (need 8)
-[stock] 'Students reduced plastic waste': 24 candidates, 2 matched
+[stock] 'Initiative for a Plastic-Free ': best scores [5.0, 3.0, 3.0] (need 8)
+[stock] 'Initiative for a Plastic-Free ': 18 candidates, 0 matched
+[stock] second try with broader searches: ['reusable tiffin', 'banana leaf packaging', 'Singapore', 'Colombia landscape']
+[stock] 'Initiative for a Plastic-Free ': best scores [8.0, 3.0, 3.0] (need 6)
+[stock] 'Initiative for a Plastic-Free ': 18 candidates, 1 matched
+[stock] 'Initiative for a Plastic-Free ': best scores [5.0, 3.0, 2.0] (need 8)
+[stock] 'Initiative for a Plastic-Free ': 24 candidates, 0 matched
+[stock] second try with broader searches: ['plastic waste', 'reusable tiffin', 'Singapore', 'empty classroom']
+[stock] 'Initiative for a Plastic-Free ': best scores [5.0, 4.0, 4.0] (need 6)
+[stock] 'Initiative for a Plastic-Free ': 24 candidates, 0 matched
 [main] story2: 1 video clip(s)
-[main] 8 stock photos used
-[main] hook ready (8.7 s): एक अध्ययन के अनुसार घर से काम करने से सहकर्मी आपस में अधिक जुड़ सकते हैं और खुलकर बात कर सकते हैं। जानिए पूरी ख़बर।
-[main] video ready, 155 seconds
-[music] mixed in piano_sunrise.mp3
+[main] story2: 3 AI illustration(s) added (no good stock footage)
+[main] 7 stock photos used
+[main] hook ready (7.9 s): घर से काम करने से सहकर्मी एक-दूसरे के करीब आ सकते हैं और कार्यस्थल पर मनोवैज्ञानिक सुरक्षा बढ़ सकती है। जानिए पूरी ख़बर।
+[main] video ready, 162 seconds
+[music] mixed in piano_bright.mp3
 [main] PREVIEW saved in previews/ - nothing was uploaded to YouTube
 [main] HOLD: the finished video is kept for review - NOT uploaded to YouTube
