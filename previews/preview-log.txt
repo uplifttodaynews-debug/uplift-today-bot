@@ -5,33 +5,40 @@
 [main] 3 candidate stories
 [writer] 3 leads after the family-safe filter
 [main] AI wrote 3 stories; fact-checking them...
-[main] approved order: ['रिमोट वर्क से बढ़े आपसी रिश्ते', 'दिव्यांगों के लिए ख़ास कार सीट', 'छात्रों ने घटाया प्लास्टिक का कचरा']
-[main] lead expanded 57 -> 304 words
-[main] story 1: shortened 333 -> 40 words
-[main] title (about the lead story): रिमोट वर्क से मजबूत हुए सहकर्मियों के आपसी रिश्ते
+[main] approved order: ['रिमोट वर्क ने बढ़ाई नज़दीकी', 'दिव्यांगों के लिए ख़ास कार सीट', 'बच्चों ने घटाया प्लास्टिक कचरा']
+[main] lead expanded 43 -> 308 words
+[main] story 1: shortened 330 -> 39 words
+[main] title (about the lead story): रिमोट वर्क ने बढ़ाई सहकर्मियों के बीच नज़दीकी
 [main] 3 stories passed. Sources: Good Good Good (from The Conversation), Reasons to be Cheerful, The Better India : Latest Posts
-[main] English captions ready
+[main] English captions skipped: Gemini error 503: {
+  "error": {
+    "code": 503,
+    "message": "The service is currently unavailable.",
+    "status": "UNAVAILABLE"
+  }
+}
+
 [main] 269 earlier pictures/clips will not be reused
-[stock] 'Remote work strengthens interp': best scores [8.0, 8.0, 8.0] (need 8)
-[stock] 'Remote work strengthens interp': 18 candidates, 3 matched
-[stock] 'Remote work strengthens interp': best scores [8.0, 7.0, 7.0] (need 8)
-[stock] 'Remote work strengthens interp': 24 candidates, 1 matched
-[main] story0: 3 video clip(s)
+[stock] 'रिमोट वर्क ने बढ़ाई नज़दीकी': best scores [8.0, 7.0, 4.0] (need 8)
+[stock] 'रिमोट वर्क ने बढ़ाई नज़दीकी': 18 candidates, 1 matched
+[stock] 'रिमोट वर्क ने बढ़ाई नज़दीकी': best scores [8.0, 7.0, 7.0] (need 8)
+[stock] 'रिमोट वर्क ने बढ़ाई नज़दीकी': 24 candidates, 1 matched
+[main] story0: 1 video clip(s)
 [main] story1: 4 AI illustration(s) added (no good stock footage)
-[stock] 'Students reduce plastic waste': best scores [7.0, 6.0, 6.0] (need 8)
-[stock] 'Students reduce plastic waste': 18 candidates, 0 matched
-[stock] second try with broader searches: ['plastic waste', 'Singapore', 'school hallway', 'plastic recycling']
-[stock] 'Students reduce plastic waste': best scores [8.0, 8.0, 7.0] (need 6)
-[stock] 'Students reduce plastic waste': 18 candidates, 3 matched
-[stock] 'Students reduce plastic waste': best scores [7.0, 6.0, 6.0] (need 8)
-[stock] 'Students reduce plastic waste': 24 candidates, 0 matched
-[stock] second try with broader searches: ['Plastic waste', 'Singapore', 'Empty classroom', 'Recycling bins']
-[stock] 'Students reduce plastic waste': best scores [7.0, 7.0, 7.0] (need 6)
-[stock] 'Students reduce plastic waste': 24 candidates, 1 matched
-[main] story2: 3 video clip(s)
-[main] 11 stock photos used
-[main] hook ready (9.2 s): क्या रिमोट वर्क सहकर्मियों को करीब ला सकता है? नया अध्ययन बताता है कि यह मनोवैज्ञानिक सुरक्षा बेहतर बना सकता है। जानिए पूरी ख़बर।
-[main] video ready, 157 seconds
-[music] mixed in piano_sunrise.mp3
+[stock] 'बच्चों ने घटाया प्लास्टिक कचरा': best scores [7.0, 5.0, 4.0] (need 8)
+[stock] 'बच्चों ने घटाया प्लास्टिक कचरा': 18 candidates, 0 matched
+[stock] second try with broader searches: ['plastic waste', 'banana leaf plate', 'reusable lunch box', 'school recycling bins']
+[stock] 'बच्चों ने घटाया प्लास्टिक कचरा': best scores [8.0, 6.0, 5.0] (need 6)
+[stock] 'बच्चों ने घटाया प्लास्टिक कचरा': 18 candidates, 2 matched
+[stock] 'बच्चों ने घटाया प्लास्टिक कचरा': best scores [6.0, 5.0, 5.0] (need 8)
+[stock] 'बच्चों ने घटाया प्लास्टिक कचरा': 24 candidates, 0 matched
+[stock] second try with broader searches: ['plastic waste', 'reusable lunch box', 'banana leaf packaging', 'empty school classroom']
+[stock] 'बच्चों ने घटाया प्लास्टिक कचरा': best scores [7.0, 6.0, 5.0] (need 6)
+[stock] 'बच्चों ने घटाया प्लास्टिक कचरा': 24 candidates, 2 matched
+[main] story2: 2 video clip(s)
+[main] 9 stock photos used
+[main] hook ready (9.1 s): अध्ययन के अनुसार, घर से काम करना सहकर्मियों को अलग करने के बजाय करीब ला सकता है और आपसी समझ बढ़ा सकता है। जानिए पूरी ख़बर।
+[main] video ready, 155 seconds
+[music] mixed in piano_bright.mp3
 [main] PREVIEW saved in previews/ - nothing was uploaded to YouTube
 [main] HOLD: the finished video is kept for review - NOT uploaded to YouTube
